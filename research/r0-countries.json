@@ -1,18 +1,442 @@
 [
-  {"country": "European Union", "agency": "European Commission (Preparedness Union Strategy)", "url": null, "target_days_min": 3, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
-  {"country": "Japan", "agency": "tidak terverifikasi", "url": null, "target_days_min": 3, "target_days_recommended": 7, "accessed": "2026-11-03", "verified": false},
-  {"country": "United Kingdom", "agency": "tidak terverifikasi", "url": null, "target_days_min": 3, "target_days_recommended": 7, "accessed": "2026-11-03", "verified": false},
-  {"country": "Sweden", "agency": "tidak terverifikasi", "url": null, "target_days_min": 7, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
-  {"country": "Norway", "agency": "tidak terverifikasi", "url": null, "target_days_min": 7, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
-  {"country": "Germany", "agency": "tidak terverifikasi", "url": null, "target_days_min": null, "target_days_recommended": 10, "accessed": "2026-11-03", "verified": false},
-  {"country": "Poland", "agency": "tidak terverifikasi", "url": null, "target_days_min": 3, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
-  {"country": "Netherlands", "agency": "tidak terverifikasi", "url": null, "target_days_min": 3, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
-  {"country": "Luxembourg", "agency": "tidak terverifikasi", "url": null, "target_days_min": 3, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
-  {"country": "Czech Republic", "agency": "Ministry of the Interior (menurut cuplikan)", "url": null, "target_days_min": 3, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
-  {"country": "Canada", "agency": "tidak terverifikasi", "url": null, "target_days_min": 3, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
-  {"country": "Finland", "agency": "tidak terverifikasi", "url": null, "target_days_min": null, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
-  {"country": "Denmark", "agency": "tidak terverifikasi", "url": null, "target_days_min": 3, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
-  {"country": "Latvia", "agency": "tidak terverifikasi", "url": null, "target_days_min": 3, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
-  {"country": "Romania", "agency": "tidak terverifikasi", "url": null, "target_days_min": null, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
-  {"country": "India", "agency": "National Disaster Management Authority (menurut cuplikan)", "url": null, "target_days_min": null, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false}
+  {
+    "country": "European Union",
+    "agency": "European Commission & High Representative — European Preparedness Union Strategy, JOIN(2025) 130",
+    "url": "https://commission.europa.eu/document/download/526806b6-c4e1-43d1-81b7-947308efbab1_en?filename=eu-preparedness-union-strategy.pdf",
+    "target_days_min": 3,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "Bukan negara. Strategi meminta negara anggota menyusun pedoman agar warga mandiri minimal 72 jam (teks diperiksa)."
+  },
+  {
+    "country": "Japan",
+    "agency": "防災庁 Disaster Prevention Agency (berdiri 2026-11-02; sebelumnya Cabinet Office 防災担当)",
+    "url": "https://www.bousai.go.jp/common2026/pdf/Urgent_Request_for_Stronger_Pre_Disaster_Preparedness_Public.pdf",
+    "target_days_min": 3,
+    "target_days_recommended": 7,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "'Minimal 3 hari, sebisa mungkin 1 minggu' air & pangan (teks PDF diperiksa). Sesuai pernyataan Menteri Hosono di Business Today 2026-10-27."
+  },
+  {
+    "country": "United Kingdom",
+    "agency": "Cabinet Office — kampanye Be Ready (diluncurkan 2026-10-22)",
+    "url": "https://beready.campaign.gov.uk/wp-content/uploads/sites/252/2026/10/Be-Ready-Checklist_English.pdf",
+    "target_days_min": 3,
+    "target_days_recommended": 3,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "'Being ready for 3 days'; air kemasan untuk 3 hari (checklist diperiksa)."
+  },
+  {
+    "country": "Sweden",
+    "agency": "Myndigheten för civilt försvar (MCF; dulu MSB) — 'Om krisen eller kriget kommer' edisi 2024",
+    "url": "https://rib.msb.se/filer/pdf/31523.pdf",
+    "target_days_min": 7,
+    "target_days_recommended": 7,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "'at least one week' (teks PDF EN diperiksa)."
+  },
+  {
+    "country": "Norway",
+    "agency": "Direktoratet for samfunnssikkerhet og beredskap (DSB) — Egenberedskap",
+    "url": "https://www.dsb.no/siteassets/sikkerhverdag/egenberedskap/brosjyren/dsb-egenberedskap-engelsk-web.pdf",
+    "target_days_min": 7,
+    "target_days_recommended": 7,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "'self-sustained for one week' (naik dari 3 hari pada 2024)."
+  },
+  {
+    "country": "Finland",
+    "agency": "Sisäministeriö + Digi- ja väestötietovirasto — panduan kesiapsiagaan Suomi.fi",
+    "url": "https://www.suomi.fi/guides/preparedness/checklist",
+    "target_days_min": 3,
+    "target_days_recommended": 3,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "'supplies for at least three days' (halaman diperiksa)."
+  },
+  {
+    "country": "Denmark",
+    "agency": "Styrelsen for Samfundssikkerhed (dulu Beredskabsstyrelsen/DEMA) — 'Forberedt på kriser'",
+    "url": "https://www.brs.dk/en/prepared/",
+    "target_days_min": 3,
+    "target_days_recommended": 3,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "'manage for three days'; 3 L air/orang/hari (halaman diperiksa)."
+  },
+  {
+    "country": "Estonia",
+    "agency": "Päästeamet (Estonian Rescue Board) — Ole valmis!",
+    "url": "https://www.olevalmis.ee/en/emergency-supplies",
+    "target_days_min": 7,
+    "target_days_recommended": 7,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "'at least one week' (halaman diperiksa)."
+  },
+  {
+    "country": "Latvia",
+    "agency": "Aizsardzības ministrija (Kementerian Pertahanan) — brosur '72 hours' edisi 2024",
+    "url": "https://www.mod.gov.lv/sites/mod/files/document/72H%20buklets_ENG_WEB_2024.pdf",
+    "target_days_min": 3,
+    "target_days_recommended": 7,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "'first 72 hours / 3 days'; persediaan 'at least 3 - 7 days' (teks PDF diperiksa)."
+  },
+  {
+    "country": "Lithuania",
+    "agency": "Priešgaisrinės apsaugos ir gelbėjimo departamentas (PAGD) — lt72.lt; Kementerian Pertahanan (KAM)",
+    "url": "https://kam.lt/wp-content/uploads/2025/04/Jeikrizearbakaraskaipelgtisanglukalba.pdf",
+    "target_days_min": 3,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "PDF KAM & lt72.lt membalas 403 dari sesi ini; angka 72 jam dari R2/nama situs, belum dibaca ulang oleh R0."
+  },
+  {
+    "country": "Poland",
+    "agency": "Ministerstwo Spraw Wewnętrznych i Administracji (MSWiA) — Poradnik bezpieczeństwa / Safety Handbook 1/2025",
+    "url": "https://www.gov.pl/attachment/9aa63303-0c11-4756-9369-646f5ef4a595",
+    "target_days_min": 3,
+    "target_days_recommended": 3,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "'Home stockpile for a minimum of 3 days' (teks PDF diperiksa)."
+  },
+  {
+    "country": "Germany",
+    "agency": "Bundesamt für Bevölkerungsschutz und Katastrophenhilfe (BBK) — Ratgeber 'Vorsorgen für Krisen und Katastrophen' (Okt 2025)",
+    "url": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/Buergerinformationen/Ratgeber/BBK-Vorsorgen-fuer-Krisen-und-Katastrophen.pdf?__blob=publicationFile&v=44",
+    "target_days_min": 3,
+    "target_days_recommended": 10,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "'möglichst 10 Tage selbst versorgen ... zumindest 3 Tage' (teks PDF diperiksa)."
+  },
+  {
+    "country": "Netherlands",
+    "agency": "NCTV / Rijksoverheid — Denk Vooruit",
+    "url": "https://www.denkvooruit.nl/bereid-je-voor/stel-je-noodpakket-samen",
+    "target_days_min": 3,
+    "target_days_recommended": 3,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "'de eerste 72 uur' (halaman diperiksa)."
+  },
+  {
+    "country": "Belgium",
+    "agency": "Centre de Crise National / Nationaal Crisiscentrum (FPS Interior) — 'Prêts. Ensemble.' (2026-10-01)",
+    "url": "https://centredecrise.be/sites/default/files/documents/files/WEB-Brochure-Pr%C3%AAts.%20Ensemble-FR.pdf",
+    "target_days_min": 3,
+    "target_days_recommended": 3,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "'tenir de manière autonome pendant au moins 72 heures' (teks PDF diperiksa)."
+  },
+  {
+    "country": "France",
+    "agency": "Secrétariat général de la défense et de la sécurité nationale (SGDSN) — 'Tous responsables' (Nov 2025)",
+    "url": "https://www.info.gouv.fr/upload/media/mixed/0001/16/b250783992e0c766ae97bce7cb6eb1e8f081fe33.pdf",
+    "target_days_min": 3,
+    "target_days_recommended": 3,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "'LE KIT POUR 72H'; 'premières 72h' (teks PDF diperiksa)."
+  },
+  {
+    "country": "Luxembourg",
+    "agency": "Gouvernement du Grand-Duché de Luxembourg — 'Mon Guide – 72H d'autonomie', kampanye 'Bass du prett?' (2026-10-09); infocrise.lu",
+    "url": "https://gouvernement.lu/fr/actualites.gouvernement2024+fr+actualites+toutes_actualites+communiques+2026+10-octobre+09-frieden-gloden-resilience.html",
+    "target_days_min": 3,
+    "target_days_recommended": 3,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "Siaran pers pemerintah: kebutuhan esensial 'durant les premières 72 heures' (diperiksa)."
+  },
+  {
+    "country": "Switzerland",
+    "agency": "Bundesamt für wirtschaftliche Landesversorgung (BWL) — 'Kluger Rat – Notvorrat'",
+    "url": "https://www.bwl.admin.ch/dam/de/sd-web/T9r68p19kgxB/Prospekt_Notvorrat_DE_Web.pdf",
+    "target_days_min": null,
+    "target_days_recommended": 7,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "'Empfehlung persönlicher Notvorrat für 7 Tage' (teks PDF diperiksa). Angka minimum tidak dikonfirmasi R0."
+  },
+  {
+    "country": "Austria",
+    "agency": "Land Tirol (pemerintah negara bagian) — flyer 'Vorrat. Zur Sicherheit!' (2023)",
+    "url": "https://tirol.gv.at/fileadmin/themen/sicherheit/feuerwehr-und-rettungswesen/downloads/Flyer/2023_Vorrat.pdf",
+    "target_days_min": 14,
+    "target_days_recommended": 14,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "Tingkat negara bagian, bukan federal: 'für mindestens 14 Tage'; ≥2,5 L minum/orang/hari. Unggahan viral: Austria 10–14 hari (federal tidak ditemukan)."
+  },
+  {
+    "country": "Czech Republic",
+    "agency": "Ministerstvo vnitra ČR (+ HZS ČR) — příručka '72 hodin'",
+    "url": "https://www.72h.gov.cz/",
+    "target_days_min": 3,
+    "target_days_recommended": 3,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "Situs resmi '72 hodin' ('Pravidlo 72 hodin'); 5,2 juta buku dikirim ke rumah tangga (mv.gov.cz)."
+  },
+  {
+    "country": "Slovakia",
+    "agency": "Ministerstvo vnútra SR, Sekcia krízového riadenia — 'Čo robiť v prípade krízy alebo ozbrojeného konfliktu'",
+    "url": "https://www.minv.sk/swift_data/source/miestna_statna_sprava/okres_zm/krizove_riadenie/Co%20robit%20v%20pripade%20krizy%20alebo%20ozbrojeneho%20konfliktu.pdf",
+    "target_days_min": null,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "Panduan resmi ada; air 3–5 L/orang/hari; durasi swadaya TIDAK disebutkan. Klaim viral '14 hari (pemadaman listrik)' tidak ditemukan di dokumen ini."
+  },
+  {
+    "country": "Slovenia",
+    "agency": "Pemerintah RS (gov.si) — 'Bodite pripravljeni ob nesrečah'",
+    "url": "https://www.gov.si/teme/bodite-pripravljeni-ob-nesrecah/",
+    "target_days_min": 3,
+    "target_days_recommended": 30,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "Air minum 'vsaj za tri dni'; tabel pangan untuk kebutuhan orang dewasa selama 30 hari (halaman diperiksa)."
+  },
+  {
+    "country": "Ireland",
+    "agency": "Department of Defence, Office of Emergency Planning — 'Be Emergency Ready' (Agt/Sep 2026)",
+    "url": "https://www.sdcc.ie/en/services/environment/be-emergency-ready/english_accessible_booklet.pdf",
+    "target_days_min": null,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "gov.ie/BeEmergencyReady membalas 403; booklet dibaca dari salinan dewan kota (SDCC). Air 2–3 L/orang/hari; durasi target TIDAK disebutkan."
+  },
+  {
+    "country": "Taiwan",
+    "agency": "國防部全民防衛動員署 All-out Defense Mobilization Agency — 'In Case of Crisis' (2025)",
+    "url": "https://prepare.mnd.gov.tw/emergency-supplies/household-supplies",
+    "target_days_min": 7,
+    "target_days_recommended": 7,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "Stok rumah 'minimal 7 hari' per rumah tangga (halaman diperiksa)."
+  },
+  {
+    "country": "South Korea",
+    "agency": "행정안전부 Ministry of the Interior and Safety — 국민재난안전포털 Safety Korea",
+    "url": "https://safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=stateOfEmergency&actsHeaderTitle=%EB%B9%84%EC%83%81%EC%82%AC%ED%83%9C&menuSn=4",
+    "target_days_min": 2,
+    "target_days_recommended": 3,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "Air/pangan/kebutuhan pokok '2~3일 분' (halaman diperiksa). R1 mencatat 2 minggu untuk skenario nuklir."
+  },
+  {
+    "country": "Singapore",
+    "agency": "Singapore Civil Defence Force (SCDF) — Civil Defence Emergency Handbook edisi 10 (2026)",
+    "url": "https://www.scdf.gov.sg/docs/default-source/comm.---volunteers-(docs)/(2026)-scdf-emergency-handbook-(english).pdf?sfvrsn=1407b4dd_1",
+    "target_days_min": null,
+    "target_days_recommended": 14,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "'two-week supply of essential food items' (teks PDF diperiksa)."
+  },
+  {
+    "country": "Philippines",
+    "agency": "NDRRMC / Office of Civil Defense (dikutip dalam dokumen Office of the Solicitor General)",
+    "url": "https://osg.gov.ph/public/documents/procurement/bidding/2023/023-11-220/TOR%20Emergency%20Go%20Bags%20NEP%20FY2024.pdf",
+    "target_days_min": 3,
+    "target_days_recommended": 3,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "'at least three (3) days, or seventy-two (72) hours, as recommended by the National ...' — sumber pemerintah sekunder (dokumen pengadaan), bukan panduan warga NDRRMC langsung."
+  },
+  {
+    "country": "Australia",
+    "agency": "Queensland Government — Get Ready Queensland (negara bagian); NEMA federal",
+    "url": "https://www.getready.qld.gov.au/sites/default/files/2023-12/GRQ%20Emergency%20Kit%20checklist.pdf",
+    "target_days_min": 3,
+    "target_days_recommended": 3,
+    "accessed": "2026-11-03",
+    "verified": true,
+    "note": "Tingkat negara bagian: air & pangan 'for three days' (teks PDF diperiksa)."
+  },
+  {
+    "country": "New Zealand",
+    "agency": "National Emergency Management Agency (NEMA) — Get Ready",
+    "url": "https://getready.govt.nz/prepared/household/supplies",
+    "target_days_min": 3,
+    "target_days_recommended": 7,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "403 dari sesi ini; angka dari R1 (3 hari, 'a week or more if you can'), belum dibaca ulang."
+  },
+  {
+    "country": "United States",
+    "agency": "FEMA — Ready.gov",
+    "url": "https://www.ready.gov/kit",
+    "target_days_min": 3,
+    "target_days_recommended": 14,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "ready.gov membalas 403; angka dari R4 (beberapa hari/min. 3 hari; 2 minggu di rumah per CDC/Red Cross)."
+  },
+  {
+    "country": "Canada",
+    "agency": "Public Safety Canada — Get Prepared (canada.ca)",
+    "url": "https://www.canada.ca/en/services/policing/emergencies/preparedness/get-prepared/emergency-kits/get-kit.html",
+    "target_days_min": 3,
+    "target_days_recommended": 3,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "canada.ca gagal (HTTP/2 INTERNAL_ERROR / empty reply); angka 72 jam dari R4."
+  },
+  {
+    "country": "Indonesia",
+    "agency": "BNPB — Tas Siaga Bencana / Buku Saku",
+    "url": "https://bnpb.go.id/uploads/24/buku-data-bencana/6-buku-saku-cetakan-4-2019.pdf",
+    "target_days_min": 3,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "bnpb.go.id membalas 403; 3 hari hanya dari baseline PLAN/pengetahuan umum."
+  },
+  {
+    "country": "Romania",
+    "agency": "Departamentul pentru Situații de Urgență (DSU) — fiipregatit.ro",
+    "url": "https://fiipregatit.ro/",
+    "target_days_min": 3,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "Situs resmi terbuka (200) tetapi angka tidak ada di beranda; 72 jam & ≥4 L air dari ringkasan Resistance Hub atas 'Guide for Crisis Situations'."
+  },
+  {
+    "country": "Ukraine",
+    "agency": "Center for Strategic Communications (Kemenkebudayaan) + DSNS + Kemenhan — 'Handbook: In Case of Emergency or War'",
+    "url": null,
+    "target_days_min": null,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "Tercantum di Resistance Hub; tidak dibuka R0."
+  },
+  {
+    "country": "Turkey",
+    "agency": "AFAD (Afet ve Acil Durum Yönetimi Başkanlığı)",
+    "url": "https://www.afad.gov.tr/",
+    "target_days_min": 3,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "afad.gov.tr membalas HTTP 500; 72 jam hanya dari media Turki. AFAD dikutip di Community Note X."
+  },
+  {
+    "country": "Croatia",
+    "agency": "tidak terverifikasi",
+    "url": null,
+    "target_days_min": null,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "Hanya muncul di daftar Newsweek/Brandsynario (33 negara)."
+  },
+  {
+    "country": "Mexico",
+    "agency": "tidak terverifikasi",
+    "url": null,
+    "target_days_min": 3,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "Brandsynario (mengutip Newsweek): ≥72 jam."
+  },
+  {
+    "country": "Brazil",
+    "agency": "tidak terverifikasi",
+    "url": null,
+    "target_days_min": null,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "Hanya daftar Newsweek/Brandsynario."
+  },
+  {
+    "country": "Chile",
+    "agency": "tidak terverifikasi",
+    "url": null,
+    "target_days_min": null,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "Hanya daftar Newsweek/Brandsynario."
+  },
+  {
+    "country": "Colombia",
+    "agency": "tidak terverifikasi",
+    "url": null,
+    "target_days_min": null,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "Hanya daftar Newsweek/Brandsynario."
+  },
+  {
+    "country": "Argentina",
+    "agency": "tidak terverifikasi",
+    "url": null,
+    "target_days_min": null,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "Hanya daftar Newsweek/Brandsynario."
+  },
+  {
+    "country": "South Africa",
+    "agency": "tidak terverifikasi",
+    "url": null,
+    "target_days_min": null,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "Hanya daftar Newsweek/Brandsynario."
+  },
+  {
+    "country": "Israel",
+    "agency": "tidak terverifikasi (kemungkinan Home Front Command)",
+    "url": null,
+    "target_days_min": null,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "Hanya daftar Newsweek/Brandsynario."
+  },
+  {
+    "country": "India",
+    "agency": "National Disaster Management Authority (menurut cuplikan)",
+    "url": null,
+    "target_days_min": null,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "Hanya daftar Newsweek/Brandsynario; durasi tidak diketahui."
+  },
+  {
+    "country": "Spain",
+    "agency": "Dirección General de Protección Civil y Emergencias — Estrategia Nacional de Protección Civil 2024",
+    "url": null,
+    "target_days_min": null,
+    "target_days_recommended": null,
+    "accessed": "2026-11-03",
+    "verified": false,
+    "note": "Menurut Resistance Hub, dokumen strategi tanpa instruksi rumah tangga; tidak dibuka R0."
+  }
 ]
