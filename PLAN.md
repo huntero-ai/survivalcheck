@@ -2,6 +2,16 @@
 
 > Status: **PLAN SAJA — belum dieksekusi.** Dokumen ini membagi pekerjaan ke beberapa agent terpisah, lalu semua hasilnya dikumpulkan dan diintegrasikan oleh satu agent PM.
 
+### Keputusan yang sudah dikunci (dari user)
+
+| Topik | Keputusan | Dampak ke plan |
+|---|---|---|
+| Lokalisasi | **Fokus Indonesia** | Panduan BNPB/BMKG/Badan Geologi/Kemenkes jadi rujukan utama lokal; panduan luar negeri dipakai sebagai pembanding & pelengkap. Tempat beli = toko/jaringan di Indonesia. Agent riset baru **R5 (Indonesia)**. |
+| Skenario | **Semua skenario** | Ada modul skenario (§2.1): item tambahan per jenis krisis, dipilih user. |
+| Harga | **Tanpa harga** | S3 & E3 hanya menampilkan tempat beli + alternatif, tanpa nominal Rupiah. |
+| Hosting | **GitHub Pages** | E1 menyiapkan path relatif, scope service worker untuk sub-path repo, dan workflow deploy GitHub Actions. |
+| Bahasa | Default tetap: **Indonesia (utama) + English** | — |
+
 ---
 
 ## 0. Tujuan
@@ -16,7 +26,7 @@
 
 ## 1. Ringkasan Awal Panduan Resmi (baseline, WAJIB diverifikasi agent riset)
 
-> Angka di bawah ini adalah titik awal dari pengetahuan umum, **bukan hasil riset final**. Agent R1–R4 harus mengonfirmasi tiap angka ke sumber resmi + URL, dan mengoreksi kalau sudah ada pembaruan. Konteks "53 negara" juga perlu dikonfirmasi oleh R0.
+> Angka di bawah ini adalah titik awal dari pengetahuan umum, **bukan hasil riset final**. Agent R1–R5 harus mengonfirmasi tiap angka ke sumber resmi + URL, dan mengoreksi kalau sudah ada pembaruan. Konteks "53 negara" juga perlu dikonfirmasi oleh R0.
 
 | Negara / Lembaga | Sumber resmi (perkiraan) | Target swadaya | Air minum | Catatan khas |
 |---|---|---|---|---|
@@ -52,8 +62,9 @@
 
 ## 2. Arsitektur Web-App (usulan)
 
-- **Bentuk:** PWA statis (HTML + CSS + JS tanpa backend). Bisa di-host di GitHub Pages / Cloudflare Pages, lalu di-"install" ke HP.
+- **Bentuk:** PWA statis (HTML + CSS + JS tanpa backend), di-host di **GitHub Pages**, lalu di-"install" ke HP.
 - **Offline:** Service Worker *cache-first* untuk semua aset + data; `manifest.webmanifest` agar bisa diinstall; tanpa CDN eksternal saat runtime (semua dibundle lokal).
+- **GitHub Pages:** semua path relatif (app jalan di sub-path `https://<user>.github.io/survivalcheck/`), `start_url` & `scope` manifest = `./`, service worker didaftarkan relatif; deploy otomatis via GitHub Actions (`.github/workflows/pages.yml`) dari branch `main`. Catatan: Pages untuk repo **private** butuh paket GitHub berbayar — kalau repo private di akun gratis, repo perlu dijadikan public.
 - **Penyimpanan:** `localStorage` (dibungkus try/catch) untuk profil rumah tangga dan status checklist. Tidak ada data yang dikirim ke server.
 - **Stack:** Vanilla JS + modul ES (atau Preact kecil kalau perlu). Tanpa framework berat supaya ringan dan mudah di-cache.
 - **Bahasa:** Bahasa Indonesia (utama) + English. Teks di file i18n JSON.
@@ -61,14 +72,34 @@
 
 ### Alur pengguna
 
-1. **Profil rumah tangga** → jumlah dewasa, anak, bayi, lansia, hewan (anjing/kucing), kebutuhan khusus (obat rutin, alat medis), jenis hunian, risiko bencana dominan (gempa, banjir, erupsi, tsunami, konflik/pemadaman).
+1. **Profil rumah tangga** → jumlah dewasa, anak, bayi, lansia, hewan (anjing/kucing), kebutuhan khusus (obat rutin, alat medis), jenis hunian (rumah tapak / apartemen / kos), provinsi (opsional, untuk saran risiko lokal), dan **skenario yang ingin disiapkan** (multi-pilih, lihat §2.1).
 2. **Target durasi** → 3 / 7 / 14 / 30 hari / custom.
 3. **Checklist inventaris** → per kategori; user isi *jumlah yang dimiliki* (mis. "air: 24 L", "beras: 10 kg") atau centang ya/tidak untuk item non-kuantitas.
 4. **Hasil:**
    - Tier kesiapan + skor (0–100).
    - **"Saat ini kamu bisa bertahan ± X hari"** → dihitung dari sumber daya kritis yang paling cepat habis (bottleneck).
-   - Daftar kekurangan, diurutkan dari prioritas tertinggi: item, jumlah yang kurang, alasan, **tempat beli**, perkiraan harga.
+   - Daftar kekurangan, diurutkan dari prioritas tertinggi: item, jumlah yang kurang, alasan, **tempat beli di Indonesia** + alternatif murah/DIY (tanpa harga).
    - Tombol cetak / simpan daftar belanja (print CSS, tanpa internet).
+
+### 2.1 Modul skenario (semua skenario)
+
+Paket **inti** (air, pangan, obat, sanitasi, penerangan, komunikasi, dokumen, tas evakuasi) selalu dihitung. Tiap skenario yang dipilih user menambah item & bisa mengubah pengali kebutuhan:
+
+| Skenario | Rujukan utama | Contoh item / aturan tambahan |
+|---|---|---|
+| Gempa bumi | BNPB, BMKG | Pengikat lemari/rak, sepatu kokoh di dekat tempat tidur, helm, peluit, linggis kecil |
+| Tsunami | BMKG, BNPB | Rute & titik evakuasi ke tempat tinggi, tas evakuasi siap 24 jam, tanpa bergantung kendaraan |
+| Banjir & longsor | BNPB, BPBD | Kantong kedap air (dry bag), pelampung/ban, boot karet, terpal, penjernih air ekstra |
+| Erupsi gunung api | Badan Geologi (PVMBG), MAGMA Indonesia | Masker N95 per orang, kacamata pelindung, penutup tangki/talang air |
+| Kebakaran hutan & kabut asap | BNPB, KLHK, Kemenkes | Masker N95, air purifier/filter DIY, obat saluran napas |
+| Kekeringan / El Niño | BMKG | Air × pengali lebih tinggi, wadah penampungan air |
+| Cuaca ekstrem / angin kencang | BMKG | Terpal, tali, lakban, perlengkapan pengaman atap |
+| Pemadaman listrik panjang | (pelengkap: panduan Swedia/Jerman) | Power bank, baterai, lampu solar, kompor non-listrik + bahan bakar, uang tunai lebih banyak |
+| Pandemi / wabah | Kemenkes, WHO | Masker, hand sanitizer, termometer, oksimeter, stok obat > 30 hari |
+| Konflik / kerusuhan / perang | (pelengkap: MSB Swedia, DSB Norwegia, GOV.UK) | Target durasi minimal 7–14 hari, rencana tetap di rumah vs evakuasi, uang tunai, radio |
+| Insiden nuklir / radiologi | BAPETEN (rujukan resmi), pelengkap panduan Nordik | Plakban & plastik untuk menyegel ruangan, stok tinggal di dalam ruangan; tablet kalium iodida **hanya sesuai instruksi otoritas** (tidak dianjurkan konsumsi mandiri) |
+
+Aturan: kalau beberapa skenario dipilih, item digabung (tidak dobel) dan pengali diambil yang **tertinggi**. Durasi minimum tier bisa naik untuk skenario tertentu (mis. konflik).
 
 ### Model perhitungan (draft, difinalkan agent S2)
 
@@ -109,14 +140,15 @@ R0 Konteks 53 negara ┐
 R1 Asia-Pasifik      ├─▶ S1 Master checklist ─┐
 R2 Eropa Utara       │   S2 Rumus & tier ─────┼─▶ E1 Kerangka PWA ─┐
 R3 Eropa Barat + UE  │   S3 Tempat beli ──────┤   E2 Engine hitung ├─▶ Q1 QA ─▶ PM: integrasi
-R4 Amerika + Intl    ┘   D1 UX & copy ────────┘   E3 Hasil & belanja┘           & laporan akhir
+R4 Amerika + Intl    │   D1 UX & copy ────────┘   E3 Hasil & belanja┘           & laporan akhir
+R5 Indonesia ★       ┘
 ```
 
 **PM agent** aktif dari awal sampai akhir: menetapkan kontrak data (skema JSON di §4), membagikan tugas, mereview output tiap fase, menyelesaikan konflik antar sumber, dan menggabungkan semuanya.
 
 ---
 
-### Fase 1 — Riset (5 agent paralel)
+### Fase 1 — Riset (6 agent paralel)
 
 Semua agent riset mengeluarkan file `research/<id>.md` + `research/<id>.json` dengan format yang sama (lihat §4.1). **Aturan:** hanya sumber resmi pemerintah/lembaga resmi (Palang Merah/Bulan Sabit Merah boleh sebagai sumber kedua); setiap angka wajib punya URL + tanggal akses; tandai kalau panduan sudah diperbarui (mis. 3 hari → 7 hari).
 
@@ -127,6 +159,9 @@ Semua agent riset mengeluarkan file `research/<id>.md` + `research/<id>.json` de
 | **R2** | Eropa Utara & Baltik | Swedia (MSB), Norwegia (DSB), Finlandia, Denmark, Estonia, Latvia, Lituania, Polandia | Sama |
 | **R3** | Eropa Barat/Tengah + UE | Inggris (GOV.UK Prepare), Jerman (BBK), Belanda, Swiss, Prancis, Belgia, EU Preparedness Union Strategy | Sama |
 | **R4** | Amerika + standar internasional | AS (FEMA/CDC), Kanada, IFRC, WHO, Sphere, WFP (standar air & kalori) | Sama + standar teknis (L/hari, kkal/hari, sanitasi) |
+| **R5 ★** | **Indonesia (prioritas)** | BNPB (Tas Siaga Bencana, buku saku), BMKG (gempa, tsunami, cuaca, kekeringan), Badan Geologi/PVMBG (erupsi), Kemenkes (P3K, wabah, kabut asap), BAPETEN (nuklir/radiologi), PMI, Basarnas, contoh BPBD. Juga: peta risiko bencana per provinsi (InaRISK), nomor darurat (112, 110, 113, 118/119, 115) | Ringkasan per lembaga + per skenario, `research/r5-indonesia.json`, daftar risiko dominan per provinsi |
+
+R1 tidak lagi meneliti Indonesia (sudah dipegang R5).
 
 **Acceptance criteria:** tiap negara minimal berisi target durasi, kebutuhan air/orang/hari, daftar item kit, kebutuhan khusus, URL resmi. Kalau angka tidak ada di sumber, tulis "tidak disebutkan" — jangan diisi tebakan.
 
@@ -138,7 +173,7 @@ Semua agent riset mengeluarkan file `research/<id>.md` + `research/<id>.json` de
 |---|---|---|---|
 | **S1** | **Master checklist** — gabungkan semua riset jadi satu daftar item, kelompokkan per kategori (§1), tentukan prioritas (kritis / penting / tambahan), tentukan nilai konsensus + sumbernya, catat perbedaan antar negara | `research/*` | `data/items.json` (skema §4.2), `docs/sources.md` |
 | **S2** | **Model hitung & tier** — finalkan bobot orang setara, kebutuhan per orang/hari tiap item kuantitatif, tambahan untuk hewan/bayi/lansia/iklim panas, rumus "hari bertahan" (bottleneck), skor 0–100, aturan gating tier | `research/*`, draft S1 | `data/rules.json`, `docs/scoring.md` + 10 contoh kasus (input → output yang diharapkan) untuk unit test |
-| **S3** | **Tempat beli & harga** — untuk tiap item: jenis toko (minimarket, supermarket, apotek, toko outdoor, toko bangunan, e-commerce), contoh di Indonesia (mis. Indomaret/Alfamart, apotek K-24/Kimia Farma, Ace/Mitra10, toko outdoor, marketplace), perkiraan rentang harga, alternatif DIY/murah | `data/items.json` (draft) | `data/sources-to-buy.json` |
+| **S3** | **Tempat beli di Indonesia (tanpa harga)** — untuk tiap item: jenis toko (minimarket, supermarket/hypermarket, pasar tradisional, apotek, toko alat kesehatan, toko bangunan/hardware, toko elektronik, toko outdoor/camping, toko perlengkapan bayi, petshop, marketplace online) + contoh jaringan yang umum ada (mis. Indomaret/Alfamart, apotek K-24/Kimia Farma, Ace/Mitra10, toko outdoor, marketplace); alternatif DIY/murah; yang bisa didapat gratis/resmi (mis. salinan dokumen di Dukcapil/kelurahan, info jalur evakuasi di BPBD). Item yang **sudah ada di rumah** ditandai supaya user tidak membeli yang tidak perlu. **Tidak mencantumkan harga.** | `data/items.json` (draft) | `data/sources-to-buy.json` |
 | **D1** | **UX & copy** — wireframe teks per layar, nada bahasa (tenang, tidak menakut-nakuti), copy ID + EN, aksesibilitas (kontras, ukuran tap, bisa dipakai satu tangan), disclaimer ("bukan pengganti instruksi otoritas setempat") | §2 dokumen ini | `docs/ux-flow.md`, `i18n/id.json`, `i18n/en.json` |
 
 **Acceptance criteria:** setiap item di `items.json` punya id unik, kategori, prioritas, rumus kuantitas (atau boolean), dan ≥ 1 sumber. `rules.json` bisa menghasilkan output yang sama dengan 10 contoh kasus S2.
@@ -149,9 +184,9 @@ Semua agent riset mengeluarkan file `research/<id>.md` + `research/<id>.json` de
 
 | ID | Tugas | Output |
 |---|---|---|
-| **E1** | **Kerangka PWA offline** — struktur folder, `index.html`, `manifest.webmanifest`, service worker (precache semua aset + `data/*.json` + `i18n/*`), versi cache, switch bahasa, penyimpanan lokal (try/catch), icon | App bisa dibuka, diinstall, dan jalan tanpa internet |
+| **E1** | **Kerangka PWA offline + deploy GitHub Pages** — struktur folder, `index.html`, `manifest.webmanifest`, service worker (precache semua aset + `data/*.json` + `i18n/*`), versi cache, switch bahasa, penyimpanan lokal (try/catch), icon; semua path relatif agar jalan di sub-path `/survivalcheck/`; workflow `.github/workflows/pages.yml` (deploy dari `main`) | App bisa dibuka, diinstall, dan jalan tanpa internet di URL GitHub Pages |
 | **E2** | **Engine perhitungan + form input** — form profil rumah tangga & durasi, form inventaris per kategori (generate otomatis dari `items.json`), engine yang membaca `rules.json` → skor, tier, hari bertahan, daftar kekurangan; unit test pakai 10 kasus S2 | `src/engine.js`, `src/forms.js`, `tests/` |
-| **E3** | **Halaman hasil & daftar belanja** — tampilan tier (badge + progress per kategori), "bisa bertahan ± X hari" + item bottleneck, daftar kekurangan berurut prioritas + jumlah + tempat beli + harga, cetak/print CSS, export teks (copy ke clipboard / unduh .txt) | `src/results.js`, `styles/print.css` |
+| **E3** | **Halaman hasil & daftar belanja** — tampilan tier (badge + progress per kategori), "bisa bertahan ± X hari" + item bottleneck, daftar kekurangan berurut prioritas + jumlah + tempat beli (tanpa harga), dikelompokkan per jenis toko supaya praktis saat belanja, cetak/print CSS, export teks (copy ke clipboard / unduh .txt) | `src/results.js`, `styles/print.css` |
 
 ---
 
@@ -159,7 +194,7 @@ Semua agent riset mengeluarkan file `research/<id>.md` + `research/<id>.json` de
 
 | ID | Tugas |
 |---|---|
-| **Q1** | Uji offline (mode pesawat di Playwright), uji install PWA, uji layar HP 360px, audit aksesibilitas dasar, cek silang 20 angka acak di `items.json` dengan sumber aslinya, uji edge case (0 orang, 1 bayi saja, 20 orang, durasi 90 hari, input kosong/negatif). Output: `docs/qa-report.md` + daftar bug ke PM. |
+| **Q1** | Uji offline (mode pesawat di Playwright) **di URL GitHub Pages yang sebenarnya**, uji install PWA, uji kombinasi skenario (mis. gempa + tsunami + listrik padam), uji layar HP 360px, audit aksesibilitas dasar, cek silang 20 angka acak di `items.json` dengan sumber aslinya, uji edge case (0 orang, 1 bayi saja, 20 orang, durasi 90 hari, input kosong/negatif). Output: `docs/qa-report.md` + daftar bug ke PM. |
 
 ---
 
@@ -227,10 +262,16 @@ Item boolean (mis. "radio baterai") memakai `"type": "boolean"` dan `"per_househ
 
 ---
 
-## 5. Pertanyaan Terbuka (untuk user, sebelum eksekusi)
+## 5. Status Keputusan
 
-1. **Lokalisasi "beli di mana":** fokus Indonesia saja, atau dibuat generik + contoh Indonesia?
-2. **Skenario:** bencana alam saja, atau termasuk konflik/perang, pemadaman listrik panjang, dan pandemi (seperti panduan Swedia/Norwegia)?
-3. **Harga:** perlu perkiraan harga (Rupiah) atau cukup tempat belinya saja? (harga cepat basi)
-4. **Hosting:** GitHub Pages dari repo ini, atau cukup file statis yang bisa dibuka lokal?
-5. **Bahasa:** Indonesia + English cukup, atau perlu bahasa lain?
+Semua pertanyaan terbuka sudah dijawab (lihat tabel "Keputusan yang sudah dikunci" di atas). Sisa yang perlu dicek saat eksekusi:
+
+- **Visibilitas repo:** pastikan repo public (atau akun punya paket yang mendukung Pages untuk repo private) sebelum E1 mengaktifkan GitHub Pages.
+- **Branch deploy:** usulan deploy dari `main` setelah PM merge; selama pengembangan kerja di branch fitur.
+
+## 6. Urutan Eksekusi (saat diizinkan)
+
+1. PM kick-off → jalankan R0–R5 paralel.
+2. PM review riset → jalankan S1, S2, S3, D1 paralel.
+3. PM kunci kontrak data (`items.json`, `rules.json`, `sources-to-buy.json`, i18n) → jalankan E1, E2, E3 paralel.
+4. Q1 menguji → PM perbaiki/merge → aktifkan GitHub Pages → laporan akhir.
