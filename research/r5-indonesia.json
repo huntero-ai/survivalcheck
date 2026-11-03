@@ -1,0 +1,26 @@
+[
+  {
+    "type": "research_status",
+    "country": "Indonesia",
+    "status": "failed_web_access",
+    "accessed": "2026-11-03",
+    "note": "WebFetch blocked by session network policy (getaddrinfo ENOTFOUND) for bnpb.go.id, www.bnpb.go.id, bpbd.jogjaprov.go.id, indonesiabaik.id, luk.tsipil.ugm.ac.id; curl blocked with proxy CONNECT 403. WebSearch works but yields only unverified summaries. No data recorded. Re-run after allowing domains listed in r5-indonesia.md section 2.",
+    "errors": [
+      {"tool": "WebFetch", "url": "https://bnpb.go.id/uploads/24/buku-data-bencana/6-buku-saku-cetakan-4-2019.pdf", "error": "getaddrinfo ENOTFOUND bnpb.go.id"},
+      {"tool": "WebFetch", "url": "https://www.bnpb.go.id/storage/app/media/uploads/migration/pubs/478.pdf", "error": "getaddrinfo ENOTFOUND www.bnpb.go.id"},
+      {"tool": "WebFetch", "url": "https://bpbd.jogjaprov.go.id/berita/siap-hadapi-darurat-mulai-dengan-tas-siaga-bencana-", "error": "getaddrinfo ENOTFOUND bpbd.jogjaprov.go.id"},
+      {"tool": "WebFetch", "url": "https://indonesiabaik.id/infografis/siap-hadapi-bencana-dengan-tas-siaga-bencana", "error": "getaddrinfo ENOTFOUND indonesiabaik.id"},
+      {"tool": "WebFetch", "url": "https://luk.tsipil.ugm.ac.id/artikel/2017BNPB-BukuSakuTanggapTangkasTangguhBencana.pdf", "error": "getaddrinfo ENOTFOUND luk.tsipil.ugm.ac.id"},
+      {"tool": "curl", "url": "https://bnpb.go.id/ (and sma.kemdikbud.go.id, www.bnpb.go.id)", "error": "CONNECT tunnel failed, response 403"}
+    ],
+    "unverified_leads": [
+      "https://bnpb.go.id/uploads/24/buku-data-bencana/6-buku-saku-cetakan-4-2019.pdf",
+      "https://www.bnpb.go.id/storage/app/media/uploads/migration/pubs/478.pdf",
+      "https://bnpb.go.id/buku/buku-saku-bencana",
+      "https://sma.kemdikbud.go.id/data/files/buku/Buku_Saku_Siaga_Bencana_bnpb_2019.pdf",
+      "https://bpbd.jogjaprov.go.id/berita/siap-hadapi-darurat-mulai-dengan-tas-siaga-bencana-"
+    ]
+  },
+  {"type": "province_risks", "data": []},
+  {"type": "emergency_numbers", "data": []}
+]

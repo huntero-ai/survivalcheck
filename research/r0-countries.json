@@ -1,0 +1,18 @@
+[
+  {"country": "European Union", "agency": "European Commission (Preparedness Union Strategy)", "url": null, "target_days_min": 3, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
+  {"country": "Japan", "agency": "tidak terverifikasi", "url": null, "target_days_min": 3, "target_days_recommended": 7, "accessed": "2026-11-03", "verified": false},
+  {"country": "United Kingdom", "agency": "tidak terverifikasi", "url": null, "target_days_min": 3, "target_days_recommended": 7, "accessed": "2026-11-03", "verified": false},
+  {"country": "Sweden", "agency": "tidak terverifikasi", "url": null, "target_days_min": 7, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
+  {"country": "Norway", "agency": "tidak terverifikasi", "url": null, "target_days_min": 7, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
+  {"country": "Germany", "agency": "tidak terverifikasi", "url": null, "target_days_min": null, "target_days_recommended": 10, "accessed": "2026-11-03", "verified": false},
+  {"country": "Poland", "agency": "tidak terverifikasi", "url": null, "target_days_min": 3, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
+  {"country": "Netherlands", "agency": "tidak terverifikasi", "url": null, "target_days_min": 3, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
+  {"country": "Luxembourg", "agency": "tidak terverifikasi", "url": null, "target_days_min": 3, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
+  {"country": "Czech Republic", "agency": "Ministry of the Interior (menurut cuplikan)", "url": null, "target_days_min": 3, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
+  {"country": "Canada", "agency": "tidak terverifikasi", "url": null, "target_days_min": 3, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
+  {"country": "Finland", "agency": "tidak terverifikasi", "url": null, "target_days_min": null, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
+  {"country": "Denmark", "agency": "tidak terverifikasi", "url": null, "target_days_min": 3, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
+  {"country": "Latvia", "agency": "tidak terverifikasi", "url": null, "target_days_min": 3, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
+  {"country": "Romania", "agency": "tidak terverifikasi", "url": null, "target_days_min": null, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false},
+  {"country": "India", "agency": "National Disaster Management Authority (menurut cuplikan)", "url": null, "target_days_min": null, "target_days_recommended": null, "accessed": "2026-11-03", "verified": false}
+]
