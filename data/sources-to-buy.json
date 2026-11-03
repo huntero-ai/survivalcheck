@@ -1,0 +1,2557 @@
+{
+ "version": "1.0.0",
+ "store_types": [
+  {
+   "id": "minimarket",
+   "label": {
+    "id": "Minimarket",
+    "en": "Minimarket"
+   }
+  },
+  {
+   "id": "supermarket",
+   "label": {
+    "id": "Supermarket",
+    "en": "Supermarket"
+   }
+  },
+  {
+   "id": "traditional_market",
+   "label": {
+    "id": "Pasar tradisional",
+    "en": "Traditional market"
+   }
+  },
+  {
+   "id": "pharmacy",
+   "label": {
+    "id": "Apotek",
+    "en": "Pharmacy"
+   }
+  },
+  {
+   "id": "medical_supply",
+   "label": {
+    "id": "Toko alat kesehatan",
+    "en": "Medical supply store"
+   }
+  },
+  {
+   "id": "hardware",
+   "label": {
+    "id": "Toko bangunan",
+    "en": "Hardware store"
+   }
+  },
+  {
+   "id": "electronics",
+   "label": {
+    "id": "Toko elektronik",
+    "en": "Electronics store"
+   }
+  },
+  {
+   "id": "outdoor",
+   "label": {
+    "id": "Toko outdoor atau camping",
+    "en": "Outdoor or camping store"
+   }
+  },
+  {
+   "id": "baby_store",
+   "label": {
+    "id": "Toko perlengkapan bayi",
+    "en": "Baby supplies store"
+   }
+  },
+  {
+   "id": "pet_shop",
+   "label": {
+    "id": "Petshop",
+    "en": "Pet shop"
+   }
+  },
+  {
+   "id": "online_marketplace",
+   "label": {
+    "id": "Marketplace online",
+    "en": "Online marketplace"
+   }
+  },
+  {
+   "id": "free_official",
+   "label": {
+    "id": "Gratis atau sumber resmi",
+    "en": "Free or official source"
+   }
+  }
+ ],
+ "items": {
+  "water_drinking": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": {
+    "id": "Isi wadah bersih di rumah dari sumber air aman (galon isi ulang, air matang).",
+    "en": "Fill clean containers at home from a safe source (refill gallon, boiled water)."
+   },
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Pilih kemasan tertutup rapat; cek tanggal kedaluwarsa di label.",
+    "en": "Choose tightly sealed packs; check the expiry date on the label."
+   }
+  },
+  "water_hygiene": {
+   "stores": [],
+   "examples": [],
+   "diy": {
+    "id": "Tampung air dari keran/sumur ke ember bertutup untuk cuci tangan dan kebersihan.",
+    "en": "Store tap/well water in lidded buckets for handwashing and hygiene."
+   },
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "water_container": {
+   "stores": [
+    "hardware",
+    "supermarket",
+    "traditional_market"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": {
+    "id": "Ember atau jeriken bekas pakai pangan yang bersih dan bertutup.",
+    "en": "A clean, lidded bucket or jerrycan previously used for food."
+   },
+   "free_official": {
+    "id": "Wadah/ember air disarankan BNPB.",
+    "en": "Water containers/buckets are recommended by BNPB.",
+    "source": "BNPB, Panduan Tas Siaga Bencana (bnpb.go.id)"
+   },
+   "often_at_home": true,
+   "buy_tip": {
+    "id": "Pakai wadah khusus air minum yang bisa ditutup rapat.",
+    "en": "Use a tightly closable container meant for drinking water."
+   }
+  },
+  "water_treatment_chemical": {
+   "stores": [
+    "pharmacy",
+    "supermarket",
+    "outdoor"
+   ],
+   "examples": [
+    "Kimia Farma",
+    "K-24",
+    "Guardian",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": null,
+   "free_official": {
+    "id": "Panduan penjernihan air dari Kemenkes/WHO.",
+    "en": "Water treatment guidance from Kemenkes/WHO.",
+    "source": "Kemenkes RI; WHO Technical Note 9"
+   },
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Cek kadar dan petunjuk pemakaian di label; jangan menakar dari perkiraan.",
+    "en": "Check concentration and dosing instructions on the label; do not guess the dose."
+   }
+  },
+  "water_filter": {
+   "stores": [
+    "outdoor",
+    "online_marketplace",
+    "electronics"
+   ],
+   "examples": [
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Cek di label atau petunjuk apakah filter menahan bakteri/virus, dan masa pakainya.",
+    "en": "Check the label or manual for what the filter removes (bacteria/viruses) and its service life."
+   }
+  },
+  "water_flocculant": {
+   "stores": [
+    "traditional_market",
+    "hardware",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Cek petunjuk dosis di label; air tetap harus didesinfeksi setelahnya.",
+    "en": "Check dosing on the label; the water still needs disinfecting afterwards."
+   }
+  },
+  "water_collection_tank": {
+   "stores": [
+    "hardware",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": {
+    "id": "Tampung air hujan dari talang ke tong/ember bertutup (tandon sederhana).",
+    "en": "Collect rain from gutters into a lidded drum/bucket (simple tank)."
+   },
+   "free_official": {
+    "id": "Tandon air hujan disebut dalam panduan BNPB.",
+    "en": "Rainwater storage is mentioned in BNPB guidance.",
+    "source": "BNPB, Panduan Tas Siaga Bencana (bnpb.go.id)"
+   },
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "water_pet_dog": {
+   "stores": [],
+   "examples": [],
+   "diy": {
+    "id": "Pakai wadah air bersih yang sudah ada di rumah.",
+    "en": "Use a clean water bowl you already have."
+   },
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "water_pet_cat": {
+   "stores": [],
+   "examples": [],
+   "diy": {
+    "id": "Pakai wadah air bersih yang sudah ada di rumah.",
+    "en": "Use a clean water bowl you already have."
+   },
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "food_kcal_total": {
+   "stores": [],
+   "examples": [],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "food_no_cook_share": {
+   "stores": [],
+   "examples": [],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "food_rice": {
+   "stores": [
+    "traditional_market",
+    "supermarket",
+    "minimarket"
+   ],
+   "examples": [
+    "Superindo",
+    "Hypermart",
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": {
+    "id": "Simpan di wadah kedap udara; cek tanggal kedaluwarsa di kemasan.",
+    "en": "Keep in an airtight container; check the expiry date on the pack."
+   }
+  },
+  "food_instant_noodle": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Pilih yang kemasannya utuh dan tahan simpan; cek tanggal kedaluwarsa.",
+    "en": "Pick intact, shelf-stable packs; check the expiry date."
+   }
+  },
+  "food_biscuit": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Pilih yang kemasannya utuh dan tahan simpan; cek tanggal kedaluwarsa.",
+    "en": "Pick intact, shelf-stable packs; check the expiry date."
+   }
+  },
+  "food_canned_fish": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Pilih yang kemasannya utuh dan tahan simpan; cek tanggal kedaluwarsa.",
+    "en": "Pick intact, shelf-stable packs; check the expiry date."
+   }
+  },
+  "food_canned_meat": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Pilih yang kemasannya utuh dan tahan simpan; cek tanggal kedaluwarsa.",
+    "en": "Pick intact, shelf-stable packs; check the expiry date."
+   }
+  },
+  "food_abon": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Pilih yang kemasannya utuh dan tahan simpan; cek tanggal kedaluwarsa.",
+    "en": "Pick intact, shelf-stable packs; check the expiry date."
+   }
+  },
+  "food_nuts": {
+   "stores": [
+    "traditional_market",
+    "supermarket",
+    "minimarket"
+   ],
+   "examples": [
+    "Superindo",
+    "Hypermart",
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "food_sugar": {
+   "stores": [
+    "traditional_market",
+    "supermarket",
+    "minimarket"
+   ],
+   "examples": [
+    "Superindo",
+    "Hypermart",
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "food_honey": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Pilih yang kemasannya utuh dan tahan simpan; cek tanggal kedaluwarsa.",
+    "en": "Pick intact, shelf-stable packs; check the expiry date."
+   }
+  },
+  "food_chocolate": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Pilih yang kemasannya utuh dan tahan simpan; cek tanggal kedaluwarsa.",
+    "en": "Pick intact, shelf-stable packs; check the expiry date."
+   }
+  },
+  "food_uht_milk": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Pilih yang kemasannya utuh dan tahan simpan; cek tanggal kedaluwarsa.",
+    "en": "Pick intact, shelf-stable packs; check the expiry date."
+   }
+  },
+  "food_condensed_milk": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Pilih yang kemasannya utuh dan tahan simpan; cek tanggal kedaluwarsa.",
+    "en": "Pick intact, shelf-stable packs; check the expiry date."
+   }
+  },
+  "food_milk_powder": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Pilih yang kemasannya utuh dan tahan simpan; cek tanggal kedaluwarsa.",
+    "en": "Pick intact, shelf-stable packs; check the expiry date."
+   }
+  },
+  "food_oatmeal": {
+   "stores": [
+    "traditional_market",
+    "supermarket",
+    "minimarket"
+   ],
+   "examples": [
+    "Superindo",
+    "Hypermart",
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "food_dates": {
+   "stores": [
+    "traditional_market",
+    "supermarket",
+    "minimarket"
+   ],
+   "examples": [
+    "Superindo",
+    "Hypermart",
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "food_dried_fruit": {
+   "stores": [
+    "traditional_market",
+    "supermarket",
+    "minimarket"
+   ],
+   "examples": [
+    "Superindo",
+    "Hypermart",
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "food_ready_meal": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Pilih yang kemasannya utuh dan tahan simpan; cek tanggal kedaluwarsa.",
+    "en": "Pick intact, shelf-stable packs; check the expiry date."
+   }
+  },
+  "stove_portable": {
+   "stores": [
+    "outdoor",
+    "electronics",
+    "hardware",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Ace",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Pakai di tempat berventilasi, jangan di dalam tenda/ruang tertutup.",
+    "en": "Use in a ventilated place, never inside a tent or closed room."
+   }
+  },
+  "gas_canister": {
+   "stores": [
+    "outdoor",
+    "minimarket",
+    "supermarket",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Alfamart",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Pastikan jenis tabung cocok dengan kompor (cek label).",
+    "en": "Make sure the canister type fits the stove (check the label)."
+   }
+  },
+  "lpg_usage": {
+   "stores": [
+    "minimarket",
+    "traditional_market"
+   ],
+   "examples": [],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": {
+    "id": "Beli dari agen/pangkalan resmi; ini pemakaian harian, bukan barang tambahan.",
+    "en": "Buy from an official agent/outlet; this is daily use, not an extra item."
+   }
+  },
+  "cookware": {
+   "stores": [],
+   "examples": [],
+   "diy": {
+    "id": "Panci dan peralatan masak yang sudah ada di rumah.",
+    "en": "Pots and utensils you already own."
+   },
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "meds_personal": {
+   "stores": [
+    "pharmacy"
+   ],
+   "examples": [
+    "Kimia Farma",
+    "K-24",
+    "Guardian"
+   ],
+   "diy": null,
+   "free_official": {
+    "id": "Obat resep: konsultasi ke dokter/faskes (Puskesmas, klinik); tebus di apotek dengan resep.",
+    "en": "Prescription meds: consult a doctor/health facility (Puskesmas, clinic); fill at a pharmacy with a prescription.",
+    "source": "Kemenkes RI; SATUSEHAT"
+   },
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Tanyakan ke dokter tentang persediaan cadangan; jangan membeli obat keras tanpa resep.",
+    "en": "Ask your doctor about a reserve supply; do not buy prescription-only drugs without a prescription."
+   }
+  },
+  "med_antipyretic": {
+   "stores": [
+    "pharmacy",
+    "minimarket"
+   ],
+   "examples": [
+    "Kimia Farma",
+    "K-24",
+    "Guardian",
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Tanyakan apoteker obat yang cocok; ikuti aturan pakai di label.",
+    "en": "Ask the pharmacist what suits you; follow the label directions."
+   }
+  },
+  "bandage_antiseptic": {
+   "stores": [
+    "pharmacy",
+    "medical_supply",
+    "minimarket"
+   ],
+   "examples": [
+    "Kimia Farma",
+    "K-24",
+    "Guardian",
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "adhesive_plaster": {
+   "stores": [
+    "pharmacy",
+    "minimarket"
+   ],
+   "examples": [
+    "Kimia Farma",
+    "K-24",
+    "Guardian",
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "mask_basic": {
+   "stores": [
+    "pharmacy",
+    "minimarket",
+    "medical_supply"
+   ],
+   "examples": [
+    "Kimia Farma",
+    "K-24",
+    "Guardian",
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "mask_n95": {
+   "stores": [
+    "pharmacy",
+    "medical_supply",
+    "hardware",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Kimia Farma",
+    "Mitra10",
+    "Tokopedia"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Cek label standar masker (N95/KN95 atau setara) dan ukuran yang pas di wajah.",
+    "en": "Check the mask standard on the label (N95/KN95 or equivalent) and a snug fit."
+   }
+  },
+  "first_aid_kit": {
+   "stores": [
+    "pharmacy",
+    "medical_supply",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Kimia Farma",
+    "K-24",
+    "Guardian",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": {
+    "id": "Rakit sendiri dari isi daftar P3K di wadah bertutup.",
+    "en": "Assemble your own from the first-aid list in a closed container."
+   },
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "med_minyak_angin": {
+   "stores": [
+    "minimarket",
+    "pharmacy"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Kimia Farma",
+    "K-24",
+    "Guardian"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "thermometer": {
+   "stores": [
+    "pharmacy",
+    "medical_supply",
+    "electronics"
+   ],
+   "examples": [
+    "Kimia Farma",
+    "K-24",
+    "Guardian"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "med_ors_antidiarrheal": {
+   "stores": [
+    "pharmacy",
+    "minimarket"
+   ],
+   "examples": [
+    "Kimia Farma",
+    "K-24",
+    "Guardian",
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": {
+    "id": "Oralit tersedia di Puskesmas; obat diare lain tanyakan ke apoteker/dokter.",
+    "en": "ORS is available at Puskesmas; ask a pharmacist/doctor about other diarrhoea medicines.",
+    "source": "Kemenkes RI"
+   },
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Ikuti petunjuk di label; jika diare berat atau lama, ke faskes.",
+    "en": "Follow the label; for severe or prolonged diarrhoea go to a health facility."
+   }
+  },
+  "firstaid_scissors_tweezers": {
+   "stores": [
+    "pharmacy",
+    "medical_supply"
+   ],
+   "examples": [
+    "Kimia Farma",
+    "K-24",
+    "Guardian"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "gloves_disposable": {
+   "stores": [
+    "pharmacy",
+    "medical_supply",
+    "supermarket"
+   ],
+   "examples": [
+    "Kimia Farma",
+    "K-24",
+    "Guardian",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "toilet_bags": {
+   "stores": [
+    "supermarket",
+    "minimarket",
+    "hardware",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": {
+    "id": "Kantong sampah kuat dipasang di ember/kloset dan diberi penyerap (sekam, serbuk gergaji, kitty litter).",
+    "en": "A strong trash bag in a bucket/toilet bowl with absorbent material (husk, sawdust, litter)."
+   },
+   "free_official": {
+    "id": "Toilet darurat kantong sampah + penyerap, BBK.",
+    "en": "Emergency bag toilet with absorbent, per BBK.",
+    "source": "BBK Jerman (Bundesamt für Bevölkerungsschutz)"
+   },
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "trash_bags": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "toilet_paper": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "wet_wipes": {
+   "stores": [
+    "minimarket",
+    "supermarket",
+    "baby_store"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "hand_sanitizer": {
+   "stores": [
+    "minimarket",
+    "pharmacy"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Kimia Farma",
+    "K-24",
+    "Guardian"
+   ],
+   "diy": {
+    "id": "Cuci tangan dengan sabun dan air bersih jika tersedia.",
+    "en": "Wash hands with soap and clean water if available."
+   },
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Cek kadar alkohol di label.",
+    "en": "Check the alcohol content on the label."
+   }
+  },
+  "soap": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "toiletries": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "menstrual_products": {
+   "stores": [
+    "minimarket",
+    "supermarket",
+    "pharmacy"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Kimia Farma",
+    "K-24",
+    "Guardian"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "adult_diapers": {
+   "stores": [
+    "pharmacy",
+    "medical_supply",
+    "supermarket"
+   ],
+   "examples": [
+    "Kimia Farma",
+    "K-24",
+    "Guardian",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "disinfectant_surface": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Cek petunjuk pengenceran di label; jangan campur pemutih dengan produk lain.",
+    "en": "Check dilution on the label; never mix bleach with other products."
+   }
+  },
+  "toilet_bucket": {
+   "stores": [
+    "hardware",
+    "supermarket"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10"
+   ],
+   "diy": {
+    "id": "Ember bertutup yang sudah ada di rumah, dilapisi kantong sampah.",
+    "en": "A lidded bucket you already have, lined with a trash bag."
+   },
+   "free_official": {
+    "id": "Toilet ember + kantong, BBK.",
+    "en": "Bucket toilet with bag, per BBK.",
+    "source": "BBK Jerman"
+   },
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "flashlight": {
+   "stores": [
+    "minimarket",
+    "hardware",
+    "electronics"
+   ],
+   "examples": [
+    "Alfamart",
+    "Ace"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "flashlight_bedside": {
+   "stores": [
+    "hardware",
+    "electronics",
+    "minimarket"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "headlamp": {
+   "stores": [
+    "outdoor",
+    "hardware",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Ace",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "lantern_led": {
+   "stores": [
+    "outdoor",
+    "hardware",
+    "electronics",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Ace",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "candles_backup": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": {
+    "id": "Hanya cadangan; jauhkan dari bahan mudah terbakar dan jangan ditinggal menyala.",
+    "en": "Backup only; keep away from flammables and never leave burning."
+   }
+  },
+  "power_bank": {
+   "stores": [
+    "electronics",
+    "minimarket",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": {
+    "id": "Cek kapasitas di label dan isi penuh secara berkala.",
+    "en": "Check capacity on the label and recharge it periodically."
+   }
+  },
+  "spare_batteries": {
+   "stores": [
+    "minimarket",
+    "supermarket",
+    "electronics"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Cek tipe baterai sesuai perangkat dan tanggal kedaluwarsa.",
+    "en": "Match the battery type to your devices and check the expiry date."
+   }
+  },
+  "power_station": {
+   "stores": [
+    "electronics",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Cek kapasitas (Wh) dan daya keluaran di label; cocokkan dengan perangkat di kalkulator.",
+    "en": "Check capacity (Wh) and output on the label; match to your devices in the calculator."
+   }
+  },
+  "solar_panel": {
+   "stores": [
+    "electronics",
+    "outdoor",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Cek spesifikasi di label dan kecocokan konektor dengan power bank/station.",
+    "en": "Check the label specs and connector compatibility with your power bank/station."
+   }
+  },
+  "generator": {
+   "stores": [
+    "hardware",
+    "electronics",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Jangan dipakai di dalam ruangan (risiko karbon monoksida); baca petunjuk keselamatan.",
+    "en": "Never run indoors (carbon monoxide risk); read the safety manual."
+   }
+  },
+  "rechargeable_flashlight": {
+   "stores": [
+    "hardware",
+    "electronics",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "phone_charger_cable": {
+   "stores": [
+    "electronics",
+    "minimarket",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "radio_portable": {
+   "stores": [
+    "electronics",
+    "outdoor",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Pastikan bisa menangkap siaran lokal dan dapat berdaya baterai.",
+    "en": "Make sure it receives local broadcasts and can run on batteries."
+   }
+  },
+  "whistle": {
+   "stores": [
+    "outdoor",
+    "minimarket",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "emergency_numbers_printed": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": {
+    "id": "Tulis atau cetak sendiri nomor penting, simpan di tas dan dompet.",
+    "en": "Write or print important numbers yourself; keep in bag and wallet."
+   },
+   "free_official": {
+    "id": "Nomor darurat resmi (mis. 112) dan kontak BPBD setempat.",
+    "en": "Official emergency numbers (e.g. 112) and local BPBD contacts.",
+    "source": "BNPB; Kemenkominfo"
+   },
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "warning_app_installed": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": null,
+   "free_official": {
+    "id": "Pasang aplikasi resmi Info BMKG; pantau MAGMA Indonesia untuk gunung api.",
+    "en": "Install the official Info BMKG app; follow MAGMA Indonesia for volcanoes.",
+    "source": "BMKG; PVMBG (MAGMA Indonesia)"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "map_paper_local": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": {
+    "id": "Cetak peta area dan jalur evakuasi sendiri.",
+    "en": "Print your own area and evacuation route map."
+   },
+   "free_official": {
+    "id": "Peta jalur evakuasi dan titik kumpul dari BPBD setempat dan InaRISK.",
+    "en": "Evacuation routes and assembly points from local BPBD and InaRISK.",
+    "source": "BNPB (InaRISK); BPBD"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "doc_copy_ktp": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": {
+    "id": "Fotokopi sendiri dokumen yang dimiliki, lalu simpan di plastik kedap air.",
+    "en": "Photocopy documents you own and store them in a waterproof bag."
+   },
+   "free_official": {
+    "id": "Minta salinan resmi ke kelurahan/kecamatan atau Dukcapil setempat; fotokopi lalu simpan di plastik kedap air.",
+    "en": "Request official copies from the local kelurahan/kecamatan or Dukcapil office; photocopy and keep in a waterproof bag.",
+    "source": "Dukcapil Kemendagri / kelurahan setempat"
+   },
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "doc_copy_kk": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": {
+    "id": "Fotokopi sendiri dokumen yang dimiliki, lalu simpan di plastik kedap air.",
+    "en": "Photocopy documents you own and store them in a waterproof bag."
+   },
+   "free_official": {
+    "id": "Minta salinan resmi ke kelurahan/kecamatan atau Dukcapil setempat; fotokopi lalu simpan di plastik kedap air.",
+    "en": "Request official copies from the local kelurahan/kecamatan or Dukcapil office; photocopy and keep in a waterproof bag.",
+    "source": "Dukcapil Kemendagri / kelurahan setempat"
+   },
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "doc_copy_property": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": {
+    "id": "Fotokopi sendiri dokumen yang dimiliki, lalu simpan di plastik kedap air.",
+    "en": "Photocopy documents you own and store them in a waterproof bag."
+   },
+   "free_official": {
+    "id": "Minta salinan ke penerbit dokumen (bank, asuransi, kantor pertanahan) bila perlu; salinan kependudukan lewat Dukcapil/kelurahan.",
+    "en": "Ask the issuer (bank, insurer, land office) for copies if needed; civil-registry copies via Dukcapil/kelurahan.",
+    "source": "Dukcapil / penerbit dokumen"
+   },
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "doc_copy_bank": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": {
+    "id": "Fotokopi sendiri dokumen yang dimiliki, lalu simpan di plastik kedap air.",
+    "en": "Photocopy documents you own and store them in a waterproof bag."
+   },
+   "free_official": {
+    "id": "Minta salinan ke penerbit dokumen (bank, asuransi, kantor pertanahan) bila perlu; salinan kependudukan lewat Dukcapil/kelurahan.",
+    "en": "Ask the issuer (bank, insurer, land office) for copies if needed; civil-registry copies via Dukcapil/kelurahan.",
+    "source": "Dukcapil / penerbit dokumen"
+   },
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "doc_waterproof_bag": {
+   "stores": [
+    "minimarket",
+    "supermarket",
+    "outdoor",
+    "hardware"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Ace"
+   ],
+   "diy": {
+    "id": "Plastik klip atau kantong plastik kedap air yang sudah ada.",
+    "en": "Zip bags or waterproof plastic bags you already have."
+   },
+   "free_official": {
+    "id": "Plastik/tas kedap air untuk dokumen disarankan BNPB.",
+    "en": "Waterproof bags for documents are recommended by BNPB.",
+    "source": "BNPB, Panduan Tas Siaga Bencana (bnpb.go.id)"
+   },
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "cash_days": {
+   "stores": [],
+   "examples": [],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "doc_medical_records": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": null,
+   "free_official": {
+    "id": "Minta ringkasan rekam medis ke faskes; data juga di aplikasi SATUSEHAT.",
+    "en": "Ask your health facility for a medical summary; data is also in the SATUSEHAT app.",
+    "source": "Kemenkes RI (SATUSEHAT)"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "spare_keys": {
+   "stores": [
+    "hardware"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10"
+   ],
+   "diy": {
+    "id": "Duplikat kunci di tukang kunci terdekat.",
+    "en": "Have duplicates cut at a nearby locksmith."
+   },
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "payment_card_pin": {
+   "stores": [],
+   "examples": [],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "doc_insurance_copy": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": {
+    "id": "Fotokopi sendiri dokumen yang dimiliki, lalu simpan di plastik kedap air.",
+    "en": "Photocopy documents you own and store them in a waterproof bag."
+   },
+   "free_official": {
+    "id": "Minta salinan ke penerbit dokumen (bank, asuransi, kantor pertanahan) bila perlu; salinan kependudukan lewat Dukcapil/kelurahan.",
+    "en": "Ask the issuer (bank, insurer, land office) for copies if needed; civil-registry copies via Dukcapil/kelurahan.",
+    "source": "Dukcapil / penerbit dokumen"
+   },
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "doc_digital_backup": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": {
+    "id": "Foto/pindai dokumen lalu simpan terenkripsi di penyimpanan awan dan ponsel.",
+    "en": "Scan/photograph documents and store them encrypted in the cloud and on your phone."
+   },
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "clothes_change": {
+   "stores": [
+    "supermarket",
+    "traditional_market",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Superindo",
+    "Hypermart",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": {
+    "id": "Pakai pakaian yang sudah ada di rumah.",
+    "en": "Use clothes you already own."
+   },
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "blanket_thin": {
+   "stores": [
+    "supermarket",
+    "traditional_market",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Superindo",
+    "Hypermart",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": {
+    "id": "Pakai selimut atau kain yang sudah ada di rumah.",
+    "en": "Use a blanket or cloth you already own."
+   },
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "raincoat": {
+   "stores": [
+    "minimarket",
+    "supermarket",
+    "outdoor"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Ace"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "sturdy_shoes": {
+   "stores": [
+    "supermarket",
+    "outdoor",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": {
+    "id": "Sepatu tertutup yang sudah ada di rumah.",
+    "en": "Closed shoes you already own."
+   },
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "emergency_blanket_foil": {
+   "stores": [
+    "outdoor",
+    "pharmacy",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Kimia Farma",
+    "K-24",
+    "Guardian",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "rubber_boots": {
+   "stores": [
+    "hardware",
+    "traditional_market",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "protective_clothing_ash": {
+   "stores": [
+    "hardware",
+    "outdoor",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": {
+    "id": "Baju lengan panjang dan celana panjang yang menutup kulit.",
+    "en": "Long sleeves and long trousers covering the skin."
+   },
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "goggles_protective": {
+   "stores": [
+    "hardware",
+    "outdoor",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "head_protection": {
+   "stores": [
+    "hardware",
+    "outdoor",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Pilih helm/pelindung kepala yang berlabel standar keselamatan.",
+    "en": "Choose a helmet/head protection with a safety-standard label."
+   }
+  },
+  "tools_eating_utensils": {
+   "stores": [],
+   "examples": [],
+   "diy": {
+    "id": "Sendok, garpu, piring, dan gelas yang sudah ada di rumah.",
+    "en": "Spoons, forks, plates and cups you already have."
+   },
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "gloves_work": {
+   "stores": [
+    "hardware",
+    "supermarket"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "can_opener": {
+   "stores": [
+    "supermarket",
+    "hardware",
+    "minimarket"
+   ],
+   "examples": [
+    "Superindo",
+    "Hypermart",
+    "Ace",
+    "Mitra10"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "multitool_knife": {
+   "stores": [
+    "outdoor",
+    "hardware",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "duct_tape": {
+   "stores": [
+    "hardware",
+    "supermarket",
+    "minimarket"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "matches_lighter": {
+   "stores": [
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "utility_shutoff_tools": {
+   "stores": [
+    "hardware"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10"
+   ],
+   "diy": null,
+   "free_official": {
+    "id": "Cara mematikan listrik/gas/air: tanyakan penyedia layanan (PLN, Pertamina/agen LPG, PDAM).",
+    "en": "How to shut off power/gas/water: ask the provider (PLN, LPG agent, PDAM).",
+    "source": "PLN; PDAM; agen LPG resmi"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "fire_extinguisher": {
+   "stores": [
+    "hardware",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": {
+    "id": "Pelatihan pemakaian APAR dari pemadam kebakaran setempat.",
+    "en": "Extinguisher training from your local fire department.",
+    "source": "Dinas Pemadam Kebakaran setempat"
+   },
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Cek label jenis dan masa berlaku isi tabung.",
+    "en": "Check the type and expiry on the label."
+   }
+  },
+  "furniture_straps": {
+   "stores": [
+    "hardware",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "walking_stick": {
+   "stores": [
+    "outdoor",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": {
+    "id": "Tongkat atau gagang sapu kuat yang sudah ada.",
+    "en": "A sturdy stick or broom handle you already have."
+   },
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "waterproof_plastic_bags": {
+   "stores": [
+    "minimarket",
+    "supermarket",
+    "hardware"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Ace",
+    "Mitra10"
+   ],
+   "diy": null,
+   "free_official": {
+    "id": "Kantong plastik kedap air untuk dokumen dan barang, BNPB.",
+    "en": "Waterproof plastic bags for documents and items, per BNPB.",
+    "source": "BNPB, Panduan Tas Siaga Bencana (bnpb.go.id)"
+   },
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "tarpaulin_rope": {
+   "stores": [
+    "hardware",
+    "outdoor",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "plastic_sheet_seal": {
+   "stores": [
+    "hardware"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "co_detector": {
+   "stores": [
+    "hardware",
+    "electronics",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Ace",
+    "Mitra10",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Cek label standar dan masa pakai sensor.",
+    "en": "Check the standard on the label and the sensor life."
+   }
+  },
+  "haze_indoor_air": {
+   "stores": [
+    "electronics",
+    "online_marketplace",
+    "hardware"
+   ],
+   "examples": [
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": {
+    "id": "Tutup celah pintu/jendela dan kurangi aktivitas dalam ruangan yang menimbulkan debu.",
+    "en": "Seal door/window gaps and reduce indoor dust-generating activity."
+   },
+   "free_official": {
+    "id": "Pantau kualitas udara lewat Info BMKG.",
+    "en": "Monitor air quality via Info BMKG.",
+    "source": "BMKG"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "gobag_main": {
+   "stores": [
+    "outdoor",
+    "supermarket",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": {
+    "id": "Tas ransel yang sudah ada di rumah.",
+    "en": "A backpack you already own."
+   },
+   "free_official": {
+    "id": "Panduan isi Tas Siaga Bencana, BNPB.",
+    "en": "Go-bag contents guide, BNPB.",
+    "source": "BNPB, Panduan Tas Siaga Bencana (bnpb.go.id)"
+   },
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "gobag_child": {
+   "stores": [
+    "outdoor",
+    "supermarket",
+    "baby_store",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": {
+    "id": "Tas anak yang sudah ada di rumah.",
+    "en": "A child's bag you already own."
+   },
+   "free_official": {
+    "id": "Panduan Tas Siaga Bencana, BNPB.",
+    "en": "Go-bag guide, BNPB.",
+    "source": "BNPB, Panduan Tas Siaga Bencana (bnpb.go.id)"
+   },
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "gobag_small_extra": {
+   "stores": [
+    "outdoor",
+    "supermarket",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": {
+    "id": "Tas kecil atau pouch yang sudah ada.",
+    "en": "A small bag or pouch you already own."
+   },
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "vehicle_tank_half": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Isi bahan bakar di SPBU sebelum tangki di bawah setengah.",
+    "en": "Refuel at a petrol station before the tank drops below half."
+   }
+  },
+  "infant_formula": {
+   "stores": [
+    "supermarket",
+    "baby_store",
+    "pharmacy",
+    "minimarket"
+   ],
+   "examples": [
+    "Superindo",
+    "Hypermart",
+    "Kimia Farma",
+    "K-24",
+    "Guardian"
+   ],
+   "diy": null,
+   "free_official": {
+    "id": "Konsultasi tenaga kesehatan/Posyandu soal pemberian susu bayi.",
+    "en": "Consult a health worker/Posyandu on infant feeding.",
+    "source": "Kemenkes RI; Posyandu"
+   },
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Cek usia yang sesuai dan tanggal kedaluwarsa di label.",
+    "en": "Check the suitable age and the expiry date on the label."
+   }
+  },
+  "infant_mpasi": {
+   "stores": [
+    "supermarket",
+    "baby_store",
+    "minimarket",
+    "traditional_market"
+   ],
+   "examples": [
+    "Superindo",
+    "Hypermart",
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": {
+    "id": "Panduan MPASI dari Posyandu/Puskesmas.",
+    "en": "Complementary-feeding guidance from Posyandu/Puskesmas.",
+    "source": "Kemenkes RI; Posyandu"
+   },
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Cek usia yang sesuai dan tanggal kedaluwarsa di label.",
+    "en": "Check the suitable age and expiry date on the label."
+   }
+  },
+  "infant_diapers": {
+   "stores": [
+    "minimarket",
+    "supermarket",
+    "baby_store"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "infant_wipes": {
+   "stores": [
+    "minimarket",
+    "supermarket",
+    "baby_store"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart",
+    "Superindo",
+    "Hypermart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "infant_bottle": {
+   "stores": [
+    "baby_store",
+    "supermarket",
+    "pharmacy"
+   ],
+   "examples": [
+    "Superindo",
+    "Hypermart",
+    "Kimia Farma",
+    "K-24",
+    "Guardian"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "infant_breastfeeding_support": {
+   "stores": [],
+   "examples": [],
+   "diy": null,
+   "free_official": {
+    "id": "Konsultasi menyusui ke bidan, Puskesmas, atau Posyandu.",
+    "en": "Breastfeeding support from a midwife, Puskesmas or Posyandu.",
+    "source": "Kemenkes RI"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "elderly_meds": {
+   "stores": [
+    "pharmacy"
+   ],
+   "examples": [
+    "Kimia Farma",
+    "K-24",
+    "Guardian"
+   ],
+   "diy": null,
+   "free_official": {
+    "id": "Obat resep lewat dokter/faskes; tebus dengan resep di apotek.",
+    "en": "Prescription meds via doctor/health facility; fill with a prescription at a pharmacy.",
+    "source": "Kemenkes RI; SATUSEHAT"
+   },
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Tanyakan dokter soal cadangan obat; jangan membeli obat keras tanpa resep.",
+    "en": "Ask your doctor about reserve supply; do not buy prescription-only drugs without a prescription."
+   }
+  },
+  "elderly_aids": {
+   "stores": [
+    "medical_supply",
+    "pharmacy",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Kimia Farma",
+    "K-24",
+    "Guardian",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "pet_food": {
+   "stores": [
+    "pet_shop",
+    "supermarket",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Superindo",
+    "Hypermart",
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Cek tanggal kedaluwarsa di kemasan.",
+    "en": "Check the expiry date on the pack."
+   }
+  },
+  "pet_carrier_leash": {
+   "stores": [
+    "pet_shop",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "pet_id_photo": {
+   "stores": [],
+   "examples": [],
+   "diy": {
+    "id": "Foto hewan dan data kontak pemilik di ponsel; cetak satu lembar.",
+    "en": "Photo of the pet and owner contact details on your phone; print one copy."
+   },
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "pet_meds": {
+   "stores": [
+    "pet_shop",
+    "pharmacy"
+   ],
+   "examples": [],
+   "diy": null,
+   "free_official": {
+    "id": "Obat hewan lewat dokter hewan.",
+    "en": "Pet medicine via a veterinarian.",
+    "source": "Dokter hewan setempat"
+   },
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Tanyakan dokter hewan; jangan memberi obat manusia tanpa saran.",
+    "en": "Ask a vet; do not give human medicine without advice."
+   }
+  },
+  "pet_waste_bags": {
+   "stores": [
+    "pet_shop",
+    "minimarket",
+    "supermarket"
+   ],
+   "examples": [
+    "Indomaret",
+    "Alfamart"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "preg_supplies": {
+   "stores": [
+    "pharmacy",
+    "baby_store"
+   ],
+   "examples": [
+    "Kimia Farma",
+    "K-24",
+    "Guardian"
+   ],
+   "diy": null,
+   "free_official": {
+    "id": "Pemeriksaan dan buku KIA di Puskesmas/bidan.",
+    "en": "Check-ups and the KIA book at Puskesmas/midwife.",
+    "source": "Kemenkes RI"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "medical_device_backup_power": {
+   "stores": [
+    "electronics",
+    "medical_supply",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": {
+    "id": "Konsultasi penyedia alat/faskes soal cadangan daya; cek daya alat di label.",
+    "en": "Consult the device supplier/health facility on backup power; check device power on the label.",
+    "source": "Faskes setempat"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "family_emergency_plan": {
+   "stores": [],
+   "examples": [],
+   "diy": {
+    "id": "Tulis rencana keluarga di kertas; gunakan templat gratis.",
+    "en": "Write the family plan on paper; use a free template."
+   },
+   "free_official": {
+    "id": "Panduan rencana keluarga dari BNPB.",
+    "en": "Family plan guidance from BNPB.",
+    "source": "BNPB, Panduan Tas Siaga Bencana (bnpb.go.id)"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "evacuation_routes_agreed": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": null,
+   "free_official": {
+    "id": "Lihat jalur evakuasi dan titik kumpul resmi di BPBD setempat dan InaRISK.",
+    "en": "See official evacuation routes and assembly points at local BPBD and InaRISK.",
+    "source": "BNPB (InaRISK); BPBD"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "meeting_point_outside": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": {
+    "id": "Sepakati titik kumpul bersama keluarga.",
+    "en": "Agree on a meeting point with family."
+   },
+   "free_official": {
+    "id": "Titik kumpul resmi: tanya BPBD/kelurahan.",
+    "en": "Official assembly points: ask BPBD/kelurahan.",
+    "source": "BPBD; kelurahan setempat"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "roles_assigned": {
+   "stores": [],
+   "examples": [],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "bag_check_6months": {
+   "stores": [],
+   "examples": [],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "bag_location_known": {
+   "stores": [],
+   "examples": [],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "water_reserve_rainy_season": {
+   "stores": [],
+   "examples": [],
+   "diy": {
+    "id": "Isi wadah air yang sudah ada sebelum musim kering/hujan.",
+    "en": "Fill containers you already have before the dry/rainy season."
+   },
+   "free_official": null,
+   "often_at_home": true,
+   "buy_tip": null
+  },
+  "drop_cover_hold": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": null,
+   "free_official": {
+    "id": "Panduan Lindung Diri (Drop, Cover, Hold) dari BNPB/BMKG.",
+    "en": "Drop, Cover, Hold guidance from BNPB/BMKG.",
+    "source": "BNPB; BMKG"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "drill_simulation": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": null,
+   "free_official": {
+    "id": "Ikuti simulasi/latihan bencana lewat BPBD, sekolah, atau kelurahan.",
+    "en": "Join drills through BPBD, schools or kelurahan.",
+    "source": "BNPB; BPBD"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "calm_breathing": {
+   "stores": [],
+   "examples": [],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "child_follows_who": {
+   "stores": [],
+   "examples": [],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "no_reentry_aftershock": {
+   "stores": [],
+   "examples": [],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "flood_signs_knowledge": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": null,
+   "free_official": {
+    "id": "Info peringatan dini cuaca/banjir dari Info BMKG dan BPBD.",
+    "en": "Weather/flood early-warning info from Info BMKG and BPBD.",
+    "source": "BMKG; BPBD"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "utility_shutoff_known": {
+   "stores": [],
+   "examples": [],
+   "diy": null,
+   "free_official": {
+    "id": "Tanyakan cara mematikan listrik/gas/air ke PLN, agen LPG, atau PDAM.",
+    "en": "Ask PLN, the LPG agent or PDAM how to shut off power/gas/water.",
+    "source": "PLN; PDAM; agen LPG resmi"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "tsunami_evacuation_plan": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": null,
+   "free_official": {
+    "id": "Jalur evakuasi tsunami dari BPBD dan InaRISK; peringatan dari Info BMKG.",
+    "en": "Tsunami evacuation routes from BPBD and InaRISK; warnings from Info BMKG.",
+    "source": "BNPB (InaRISK); BPBD; BMKG"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "eruption_safety_knowledge": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": null,
+   "free_official": {
+    "id": "Status gunung api dan imbauan dari MAGMA Indonesia (PVMBG).",
+    "en": "Volcano status and advisories from MAGMA Indonesia (PVMBG).",
+    "source": "PVMBG (MAGMA Indonesia)"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "storm_safety_knowledge": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": null,
+   "free_official": {
+    "id": "Peringatan cuaca ekstrem dari Info BMKG.",
+    "en": "Extreme-weather warnings from Info BMKG.",
+    "source": "BMKG"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "water_safety_knowledge": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": null,
+   "free_official": {
+    "id": "Panduan air aman dari Kemenkes/WHO.",
+    "en": "Safe water guidance from Kemenkes/WHO.",
+    "source": "Kemenkes RI; WHO"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "first_aid_knowledge": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": null,
+   "free_official": {
+    "id": "Pelatihan P3K dari PMI setempat atau Puskesmas.",
+    "en": "First-aid training from local PMI or Puskesmas.",
+    "source": "PMI; Kemenkes RI"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "pandemic_isolation_plan": {
+   "stores": [],
+   "examples": [],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "conflict_stay_or_leave_plan": {
+   "stores": [],
+   "examples": [],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "nuclear_shelter_knowledge": {
+   "stores": [
+    "free_official"
+   ],
+   "examples": [],
+   "diy": null,
+   "free_official": {
+    "id": "Ikuti arahan resmi BNPB/BAPETEN saat ada kejadian.",
+    "en": "Follow official BNPB/BAPETEN guidance during an event.",
+    "source": "BNPB; BAPETEN"
+   },
+   "often_at_home": false,
+   "buy_tip": null
+  },
+  "fridge_food_safety_knowledge": {
+   "stores": [],
+   "examples": [],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": null
+  }
+ }
+}
