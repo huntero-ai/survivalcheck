@@ -1,0 +1,365 @@
+{
+ "version": "1.0.0",
+ "generated": "2026-11-03",
+ "source": "ID-BNPB-2026",
+ "source_note": "BNPB, 'Keluarga Siaga Bencana: Panduan Anti Panik Saat Gempa, Banjir & Krisis Darurat', Cetakan Pertama 2026. Disalin dari PDF asli oleh PM 2026-11-03 (D-027).",
+ "scale": [
+  {
+   "value": 0,
+   "label": {
+    "id": "Belum ada",
+    "en": "Not yet"
+   }
+  },
+  {
+   "value": 1,
+   "label": {
+    "id": "Ada tetapi belum lengkap",
+    "en": "Partly in place"
+   }
+  },
+  {
+   "value": 2,
+   "label": {
+    "id": "Lengkap dan pernah dilatih",
+    "en": "Complete and practised"
+   }
+  }
+ ],
+ "groups": [
+  {
+   "id": "logistik",
+   "label": {
+    "id": "Logistik",
+    "en": "Logistics"
+   }
+  },
+  {
+   "id": "prosedur",
+   "label": {
+    "id": "Prosedur",
+    "en": "Procedures"
+   }
+  },
+  {
+   "id": "mental",
+   "label": {
+    "id": "Mental",
+    "en": "Mindset"
+   }
+  }
+ ],
+ "max_score": 36,
+ "family_bands": [
+  {
+   "id": "rawan",
+   "min": 0,
+   "max": 12,
+   "label": {
+    "id": "Rawan",
+    "en": "Vulnerable"
+   }
+  },
+  {
+   "id": "cukup_siaga",
+   "min": 13,
+   "max": 24,
+   "label": {
+    "id": "Cukup Siaga",
+    "en": "Fairly prepared"
+   }
+  },
+  {
+   "id": "siap",
+   "min": 25,
+   "max": 36,
+   "label": {
+    "id": "Siap",
+    "en": "Ready"
+   }
+  }
+ ],
+ "bag_bands": {
+  "basis": "persen item checklist tas BNPB (28 item) yang 'Ada'",
+  "bands": [
+   {
+    "id": "siap",
+    "rule": ">80",
+    "label": {
+     "id": "SIAP",
+     "en": "READY"
+    }
+   },
+   {
+    "id": "perlu_dilengkapi",
+    "rule": "50-80 (batas 50 dan tepat 80 masuk sini)",
+    "label": {
+     "id": "PERLU DILENGKAPI",
+     "en": "NEEDS COMPLETING"
+    }
+   },
+   {
+    "id": "belum_siap",
+    "rule": "<50",
+    "label": {
+     "id": "BELUM SIAP",
+     "en": "NOT READY"
+    }
+   }
+  ],
+  "note": "Item bayi/lansia keluar dari penyebut bila tidak relevan (D-026): checklist 4, 27, 28."
+ },
+ "tier_gating": {
+  "tier2_min_score": 13,
+  "tier4_min_score": 25,
+  "decision": "D-027"
+ },
+ "note_scenario_specific": "Indikator 6, 10, 11, 16, 17 spesifik banjir/gempa tetap dihitung agar skala 36 setara BNPB; D1 memberi penjelasan kontekstual.",
+ "indicators": [
+  {
+   "id": "ind_01",
+   "no": 1,
+   "group": "logistik",
+   "label": {
+    "id": "Punya tas siaga 72 jam",
+    "en": "Has a 72-hour go-bag"
+   },
+   "scenario_specific": null,
+   "related_items": [
+    "gobag_main"
+   ]
+  },
+  {
+   "id": "ind_02",
+   "no": 2,
+   "group": "logistik",
+   "label": {
+    "id": "Tas diperiksa minimal 6 bulan sekali",
+    "en": "Go-bag checked at least every 6 months"
+   },
+   "scenario_specific": null,
+   "related_items": [
+    "bag_check_6months"
+   ]
+  },
+  {
+   "id": "ind_03",
+   "no": 3,
+   "group": "logistik",
+   "label": {
+    "id": "Semua anggota tahu lokasi tas",
+    "en": "Everyone knows where the go-bag is"
+   },
+   "scenario_specific": null,
+   "related_items": [
+    "gobag_main",
+    "bag_location_known"
+   ]
+  },
+  {
+   "id": "ind_04",
+   "no": 4,
+   "group": "logistik",
+   "label": {
+    "id": "Dokumen penting disimpan dalam plastik tahan air",
+    "en": "Important documents kept in waterproof plastic"
+   },
+   "scenario_specific": null,
+   "related_items": [
+    "doc_copy_ktp",
+    "doc_copy_kk",
+    "doc_copy_property",
+    "doc_copy_bank",
+    "doc_waterproof_bag"
+   ]
+  },
+  {
+   "id": "ind_05",
+   "no": 5,
+   "group": "logistik",
+   "label": {
+    "id": "Senter tersedia di kamar tidur",
+    "en": "A flashlight in the bedroom"
+   },
+   "scenario_specific": null,
+   "related_items": [
+    "flashlight_bedside",
+    "sturdy_shoes"
+   ]
+  },
+  {
+   "id": "ind_06",
+   "no": 6,
+   "group": "logistik",
+   "label": {
+    "id": "Cadangan air bersih saat musim hujan",
+    "en": "Clean-water reserve in the rainy season"
+   },
+   "scenario_specific": "flood_landslide",
+   "related_items": [
+    "water_container",
+    "water_reserve_rainy_season"
+   ]
+  },
+  {
+   "id": "ind_07",
+   "no": 7,
+   "group": "logistik",
+   "label": {
+    "id": "Obat pribadi selalu ada di tas",
+    "en": "Personal medication always in the bag"
+   },
+   "scenario_specific": null,
+   "related_items": [
+    "meds_personal"
+   ]
+  },
+  {
+   "id": "ind_08",
+   "no": 8,
+   "group": "prosedur",
+   "label": {
+    "id": "Jalur evakuasi disepakati bersama",
+    "en": "Evacuation routes agreed together"
+   },
+   "scenario_specific": null,
+   "related_items": [
+    "family_emergency_plan",
+    "evacuation_routes_agreed"
+   ]
+  },
+  {
+   "id": "ind_09",
+   "no": 9,
+   "group": "prosedur",
+   "label": {
+    "id": "Titik kumpul di luar rumah disepakati",
+    "en": "Meeting point outside the home agreed"
+   },
+   "scenario_specific": null,
+   "related_items": [
+    "family_emergency_plan",
+    "meeting_point_outside"
+   ]
+  },
+  {
+   "id": "ind_10",
+   "no": 10,
+   "group": "prosedur",
+   "label": {
+    "id": "Semua tahu Drop-Cover-Hold On",
+    "en": "Everyone knows Drop-Cover-Hold On"
+   },
+   "scenario_specific": "earthquake",
+   "related_items": [
+    "drop_cover_hold"
+   ]
+  },
+  {
+   "id": "ind_11",
+   "no": 11,
+   "group": "prosedur",
+   "label": {
+    "id": "Pernah melakukan simulasi gempa",
+    "en": "Has practised an earthquake drill"
+   },
+   "scenario_specific": "earthquake",
+   "related_items": [
+    "drill_simulation"
+   ]
+  },
+  {
+   "id": "ind_12",
+   "no": 12,
+   "group": "prosedur",
+   "label": {
+    "id": "Tahu siapa yang mengambil tas",
+    "en": "Knows who takes the go-bag"
+   },
+   "scenario_specific": null,
+   "related_items": [
+    "family_emergency_plan",
+    "roles_assigned"
+   ]
+  },
+  {
+   "id": "ind_13",
+   "no": 13,
+   "group": "prosedur",
+   "label": {
+    "id": "Tahu siapa yang membantu anak/lansia",
+    "en": "Knows who helps children/elderly"
+   },
+   "scenario_specific": null,
+   "related_items": [
+    "family_emergency_plan",
+    "roles_assigned"
+   ]
+  },
+  {
+   "id": "ind_14",
+   "no": 14,
+   "group": "mental",
+   "label": {
+    "id": "Latihan napas anti-panik",
+    "en": "Anti-panic breathing practice"
+   },
+   "scenario_specific": null,
+   "related_items": [
+    "calm_breathing"
+   ]
+  },
+  {
+   "id": "ind_15",
+   "no": 15,
+   "group": "mental",
+   "label": {
+    "id": "Anak tahu harus mengikuti siapa",
+    "en": "Children know whom to follow"
+   },
+   "scenario_specific": null,
+   "related_items": [
+    "child_follows_who"
+   ]
+  },
+  {
+   "id": "ind_16",
+   "no": 16,
+   "group": "mental",
+   "label": {
+    "id": "Tidak masuk rumah saat gempa susulan",
+    "en": "Does not re-enter the house during aftershocks"
+   },
+   "scenario_specific": "earthquake",
+   "related_items": [
+    "no_reentry_aftershock"
+   ]
+  },
+  {
+   "id": "ind_17",
+   "no": 17,
+   "group": "mental",
+   "label": {
+    "id": "Tahu tanda awal banjir dan kapan harus mengungsi",
+    "en": "Knows early flood signs and when to evacuate"
+   },
+   "scenario_specific": "flood_landslide",
+   "related_items": [
+    "flood_signs_knowledge"
+   ]
+  },
+  {
+   "id": "ind_18",
+   "no": 18,
+   "group": "mental",
+   "label": {
+    "id": "Nomor darurat tercetak",
+    "en": "Emergency numbers printed"
+   },
+   "scenario_specific": null,
+   "related_items": [
+    "emergency_numbers_printed"
+   ]
+  }
+ ]
+}

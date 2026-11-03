@@ -1,0 +1,5103 @@
+{
+ "version": "1.0.0",
+ "generated": "2026-11-03",
+ "_schema": {
+  "applies_if": "daftar; item berlaku bila profil memenuhi salah satu (any-of). [] = selalu",
+  "scenarios": "[] = inti (selalu dihitung); selain itu item hanya muncul bila salah satu skenario dipilih",
+  "per_person": "jumlah per orang sekali (bukan per hari); qty_mode per_household",
+  "per_animal_day": "jumlah per hewan per hari",
+  "gating": "true bila min_tier_gating terisi; gating_group alt_power_any = cukup salah satu item grup",
+  "evidence": "DIBACA | CUPLIKAN (D-P2); item CUPLIKAN wajib dicek Q1",
+  "bnpb_checklist": "nomor 1-28 checklist tas BNPB 2026 (SUMMARY 4.3); bnpb_indicators = nomor indikator keluarga 1-18",
+  "kcal_per_unit": "null + todo R5b = diisi agent R5b, jangan menebak",
+  "sources": "ID di docs/sources.md"
+ },
+ "categories": [
+  {
+   "id": "water",
+   "label": {
+    "id": "Air",
+    "en": "Water"
+   }
+  },
+  {
+   "id": "food",
+   "label": {
+    "id": "Pangan & memasak",
+    "en": "Food & cooking"
+   }
+  },
+  {
+   "id": "meds_firstaid",
+   "label": {
+    "id": "Obat & P3K",
+    "en": "Medicine & first aid"
+   }
+  },
+  {
+   "id": "sanitation",
+   "label": {
+    "id": "Sanitasi & kebersihan",
+    "en": "Sanitation & hygiene"
+   }
+  },
+  {
+   "id": "lighting",
+   "label": {
+    "id": "Penerangan",
+    "en": "Lighting"
+   }
+  },
+  {
+   "id": "power",
+   "label": {
+    "id": "Daya listrik",
+    "en": "Electric power"
+   }
+  },
+  {
+   "id": "communication",
+   "label": {
+    "id": "Komunikasi & informasi",
+    "en": "Communication & information"
+   }
+  },
+  {
+   "id": "docs_cash",
+   "label": {
+    "id": "Dokumen & uang tunai",
+    "en": "Documents & cash"
+   }
+  },
+  {
+   "id": "clothing_warmth",
+   "label": {
+    "id": "Pakaian & perlindungan",
+    "en": "Clothing & protection"
+   }
+  },
+  {
+   "id": "tools",
+   "label": {
+    "id": "Alat & perkakas",
+    "en": "Tools & equipment"
+   }
+  },
+  {
+   "id": "gobag",
+   "label": {
+    "id": "Tas siaga & evakuasi",
+    "en": "Go-bag & evacuation"
+   }
+  },
+  {
+   "id": "special_needs",
+   "label": {
+    "id": "Kebutuhan khusus",
+    "en": "Special needs"
+   }
+  },
+  {
+   "id": "plan_knowledge",
+   "label": {
+    "id": "Rencana & pengetahuan",
+    "en": "Plan & knowledge"
+   }
+  }
+ ],
+ "scenarios": [
+  {
+   "id": "earthquake",
+   "label": {
+    "id": "Gempa bumi",
+    "en": "Earthquake"
+   }
+  },
+  {
+   "id": "tsunami",
+   "label": {
+    "id": "Tsunami",
+    "en": "Tsunami"
+   }
+  },
+  {
+   "id": "flood_landslide",
+   "label": {
+    "id": "Banjir & longsor",
+    "en": "Flood & landslide"
+   }
+  },
+  {
+   "id": "eruption",
+   "label": {
+    "id": "Erupsi gunung api",
+    "en": "Volcanic eruption"
+   }
+  },
+  {
+   "id": "haze",
+   "label": {
+    "id": "Kabut asap & karhutla",
+    "en": "Haze & wildfire smoke"
+   }
+  },
+  {
+   "id": "drought",
+   "label": {
+    "id": "Kekeringan / El Nino",
+    "en": "Drought / El Nino"
+   }
+  },
+  {
+   "id": "extreme_weather",
+   "label": {
+    "id": "Cuaca ekstrem & angin kencang",
+    "en": "Extreme weather & strong wind"
+   }
+  },
+  {
+   "id": "power_outage",
+   "label": {
+    "id": "Listrik padam panjang",
+    "en": "Prolonged power outage"
+   }
+  },
+  {
+   "id": "pandemic",
+   "label": {
+    "id": "Pandemi / wabah",
+    "en": "Pandemic / outbreak"
+   }
+  },
+  {
+   "id": "conflict",
+   "label": {
+    "id": "Konflik / kerusuhan / perang",
+    "en": "Conflict / unrest / war"
+   }
+  },
+  {
+   "id": "nuclear",
+   "label": {
+    "id": "Insiden nuklir / radiologi",
+    "en": "Nuclear / radiological incident"
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "water_drinking",
+   "category": "water",
+   "priority": "critical",
+   "qty_mode": "per_person_day",
+   "unit": "L",
+   "per_person_day": 3,
+   "per_household": null,
+   "modifiers": {
+    "scenario:drought": {
+     "per_person_day": 4,
+     "rule": "highest scenario multiplier wins",
+     "source": "LV-MOD-2024"
+    },
+    "decision": "D-004,D-006"
+   },
+   "gating": true,
+   "min_tier_gating": 2,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 1,
+   "label": {
+    "id": "Air minum dan masak",
+    "en": "Drinking and cooking water"
+   },
+   "why": {
+    "id": "3 L per orang per hari untuk semua usia (konsensus JP, SE, DK, EE, PL, NL, UK; WHO 2,5-3 L). Minimum BNPB 2 L. Dipakai 3 L karena iklim tropis dan air untuk formula bayi (D-004).",
+    "en": "3 L per person per day for all ages (consensus of JP, SE, DK, EE, PL, NL, UK; WHO 2.5-3 L). BNPB minimum is 2 L. 3 L is used because of the tropical climate and water for infant formula (D-004)."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "JP-BOUSAI-2026",
+    "SE-MCF-2024",
+    "DK-BRS",
+    "EE-OLEVALMIS",
+    "PL-MSWIA-2025",
+    "NL-DENKVOORUIT",
+    "UK-BEREADY-2026",
+    "INT-WHO-TN9",
+    "NZ-AKL-WATER",
+    "TW-MND"
+   ],
+   "evidence": "DIBACA",
+   "reference_values": {
+    "bnpb_minimum_per_person_day": 2,
+    "note": "BNPB checklist item 1 states 2 L/person/day for the bag"
+   }
+  },
+  {
+   "id": "water_hygiene",
+   "category": "water",
+   "priority": "important",
+   "qty_mode": "per_person_day",
+   "unit": "L",
+   "per_person_day": 2,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Air untuk kebersihan (saran)",
+    "en": "Water for hygiene (recommended)"
+   },
+   "why": {
+    "id": "Tambahan 2 L per orang per hari untuk cuci tangan dan sikat gigi (saran IFRC). Kebutuhan penuh dipenuhi lewat ember atau tandon plus penjernihan. Tidak menahan tier (D-005).",
+    "en": "An extra 2 L per person per day for handwashing and teeth (IFRC advice). Full needs are met with buckets or a tank plus treatment. It does not hold back tiers (D-005)."
+   },
+   "sources": [
+    "INT-IFRC-PAPE",
+    "LV-MOD-2024",
+    "ID-KEMENKES-2014",
+    "INT-WHO-TN9"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-005"
+  },
+  {
+   "id": "water_container",
+   "category": "water",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Ember atau jeriken air bertutup",
+    "en": "Lidded bucket or jerrycan for water"
+   },
+   "why": {
+    "id": "Wadah bersih untuk menampung dan menyimpan air; BNPB menyarankan mengisi ember atau wadah besar saat siaga banjir.",
+    "en": "Clean containers to collect and store water; BNPB advises filling buckets or large containers during flood alerts."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "NL-DENKVOORUIT",
+    "SE-MCF-2024",
+    "NZ-GETREADY"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    6
+   ]
+  },
+  {
+   "id": "water_treatment_chemical",
+   "category": "water",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {
+    "bleach_5_9pct_drops_per_litre": 2,
+    "bleach_cloudy_drops_per_litre": 4,
+    "contact_minutes": 30,
+    "label_rule": "cek kadar/petunjuk di label; jangan menampilkan dosis aquatab/kaporit Kemenkes (D-020)"
+   },
+   "gating": true,
+   "min_tier_gating": 4,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Bahan penjernih/desinfeksi air (pemutih, tablet, yodium)",
+    "en": "Water disinfection supplies (bleach, tablets, iodine)"
+   },
+   "why": {
+    "id": "Untuk air yang diragukan: pemutih 5-9% 2 tetes/L (4 bila keruh), tunggu 30 menit; tablet dan yodium ikuti label. Ragu atau kadar tidak diketahui: rebus. Tidak menghilangkan kimia atau logam berat.",
+    "en": "For doubtful water: 5-9% bleach 2 drops/L (4 if cloudy), wait 30 minutes; tablets and iodine follow the label. If unsure or concentration unknown, boil. Does not remove chemicals or heavy metals."
+   },
+   "sources": [
+    "US-CDC-WATER-ABOUT",
+    "US-EPA-2026",
+    "INT-WHO-HWT",
+    "ID-KEMENKES-2014"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-019,D-020,D-022"
+  },
+  {
+   "id": "water_filter",
+   "category": "water",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Filter air portabel",
+    "en": "Portable water filter"
+   },
+   "why": {
+    "id": "Latvia mencantumkan filter air dan tablet disinfeksi sebagai pelengkap penjernihan. Filter tidak menggantikan desinfeksi bila kualitas filter tidak diketahui.",
+    "en": "Latvia lists a water filter and disinfection tablets as treatment aids. A filter does not replace disinfection when its rating is unknown."
+   },
+   "sources": [
+    "LV-MOD-2024",
+    "PH-OSG-2024"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "water_flocculant",
+   "category": "water",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "flood_landslide"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tawas atau PAC untuk air keruh",
+    "en": "Alum or PAC for turbid water"
+   },
+   "why": {
+    "id": "Pra-olah air keruh sebelum desinfeksi: tawas 1/2 sdt per 20 L atau PAC 1 sachet per 20 L, endapkan 10-20 menit (Kemenkes). Praktik khas Indonesia (D-021).",
+    "en": "Pre-treat turbid water before disinfection: alum 1/2 tsp per 20 L or PAC 1 sachet per 20 L, settle 10-20 minutes (Ministry of Health). An Indonesia-specific practice (D-021)."
+   },
+   "sources": [
+    "ID-KEMENKES-2014"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-021"
+  },
+  {
+   "id": "water_collection_tank",
+   "category": "water",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "drought"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Wadah/tandon penampung air hujan",
+    "en": "Rainwater collection tank or large container"
+   },
+   "why": {
+    "id": "BNPB menyarankan tandon air di pekarangan untuk menampung air hujan saat kekeringan. Tidak ada pengali resmi untuk ukuran.",
+    "en": "BNPB advises a yard tank to collect rainwater during drought. There is no official size multiplier."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "ID-BMKG-KEMARAU"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "water_pet_dog",
+   "category": "water",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "L",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {
+    "min_days": 5
+   },
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [
+    "has_pet_dog"
+   ],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Air minum untuk anjing",
+    "en": "Drinking water for dogs"
+   },
+   "why": {
+    "id": "Sekitar 4 L per anjing per hari (Kanada, cuplikan; perlu verifikasi QA). Durasi mengikuti target, minimal 5 hari (D-016).",
+    "en": "About 4 L per dog per day (Canada, snippet only; QA to verify). Duration follows the target, minimum 5 days (D-016)."
+   },
+   "sources": [
+    "CA-PS-KIT",
+    "ID-BNPB-BS2020"
+   ],
+   "evidence": "CUPLIKAN",
+   "per_animal_day": 4,
+   "verify": "Q1",
+   "decision": "D-016"
+  },
+  {
+   "id": "water_pet_cat",
+   "category": "water",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "L",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {
+    "min_days": 5
+   },
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [
+    "has_pet_cat"
+   ],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Air minum untuk kucing",
+    "en": "Drinking water for cats"
+   },
+   "why": {
+    "id": "Sekitar 1 L per kucing per hari (Kanada, cuplikan; perlu verifikasi QA). Durasi mengikuti target, minimal 5 hari (D-016).",
+    "en": "About 1 L per cat per day (Canada, snippet only; QA to verify). Duration follows the target, minimum 5 days (D-016)."
+   },
+   "sources": [
+    "CA-PS-KIT",
+    "ID-BNPB-BS2020"
+   ],
+   "evidence": "CUPLIKAN",
+   "per_animal_day": 1,
+   "verify": "Q1",
+   "decision": "D-016"
+  },
+  {
+   "id": "food_kcal_total",
+   "category": "food",
+   "priority": "critical",
+   "qty_mode": "derived",
+   "unit": "kkal",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {
+    "kcal_per_person_day_by_group": {
+     "toddler_1_4": 1430,
+     "child_5_12": 2000,
+     "adult_13_59": 2230,
+     "elderly_60plus": 1890,
+     "infant_under_1": null
+    },
+    "pregnant_extra": 285,
+    "lactating_extra": 500,
+    "cold_adjust_kcal_per_5C_below_20C": 100,
+    "scenario:pandemic": {
+     "min_days": 14
+    },
+    "scenario:conflict": {
+     "min_days": 7
+    }
+   },
+   "gating": true,
+   "min_tier_gating": 2,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Total energi pangan (semua jenis)",
+    "en": "Total food energy (all food types)"
+   },
+   "why": {
+    "id": "Kebutuhan kkal per kelompok usia (FNNE): balita 1.430, anak 5-12 2.000, dewasa 2.230, lansia 1.890; hamil +285, menyusui +500. Bayi <1 tahun tidak dihitung kkal (lihat item bayi). Total stok dari semua jenis pangan di bawah.",
+    "en": "Energy need per age group (FNNE): toddler 1,430, child 5-12 2,000, adult 2,230, elderly 1,890; pregnant +285, lactating +500. Infants under 1 are not counted in kcal (see infant items). Stock totals come from the food types below."
+   },
+   "sources": [
+    "INT-FNNE",
+    "INT-SPHERE-FSN",
+    "INT-WHO-MATERNAL",
+    "ID-BNPB-2026"
+   ],
+   "evidence": "DIBACA",
+   "aggregates": [
+    "food_rice",
+    "food_instant_noodle",
+    "food_biscuit",
+    "food_canned_fish",
+    "food_canned_meat",
+    "food_abon",
+    "food_nuts",
+    "food_sugar",
+    "food_honey",
+    "food_chocolate",
+    "food_uht_milk",
+    "food_condensed_milk",
+    "food_milk_powder",
+    "food_oatmeal",
+    "food_dates",
+    "food_dried_fruit",
+    "food_ready_meal"
+   ],
+   "decision": "D-008,D-009,D-034"
+  },
+  {
+   "id": "food_no_cook_share",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "%",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {
+    "target_share_pct": 50
+   },
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Porsi pangan siap santap tanpa masak",
+    "en": "Share of ready-to-eat (no-cook) food"
+   },
+   "why": {
+    "id": "Anjuran: minimal 50% stok bisa dimakan tanpa memasak, karena listrik atau gas bisa padam. Tidak menahan tier (D-011).",
+    "en": "Advice: at least 50% of stock should be edible without cooking, because power or gas may fail. It does not hold back tiers (D-011)."
+   },
+   "sources": [
+    "EE-OLEVALMIS",
+    "CH-BWL-2025",
+    "FR-SGDSN-2025",
+    "ID-BNPB-2026"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-011"
+  },
+  {
+   "id": "food_rice",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "kg",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Beras",
+    "en": "Rice"
+   },
+   "why": {
+    "id": "Pangan pokok tahan lama; JP dan SG mencantumkan beras sebagai stok utama. Butuh air dan api untuk memasak.",
+    "en": "A long-lasting staple; JP and SG list rice as core stock. Needs water and heat to cook."
+   },
+   "sources": [
+    "JP-MAFF",
+    "SG-SCDF-2026",
+    "ID-BNPB-BS2020"
+   ],
+   "evidence": "DIBACA",
+   "counts_toward": "food_kcal_total",
+   "kcal_per_unit": null,
+   "todo": "R5b",
+   "unit_note": "satuan dan kkal per satuan ditetapkan R5b (TKPI/label gizi); jangan diisi tebakan (G-02)"
+  },
+  {
+   "id": "food_instant_noodle",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "bungkus",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Mi instan",
+    "en": "Instant noodles"
+   },
+   "why": {
+    "id": "BNPB 'Versi Hemat' menyebut air kemasan plus mi instan; juga masuk daftar camilan tahan lama BNPB 2020.",
+    "en": "BNPB's 'budget version' names bottled water plus instant noodles; also on BNPB's 2020 long-life snack list."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020",
+    "ID-BPBD-DIY",
+    "JP-MAFF"
+   ],
+   "evidence": "DIBACA",
+   "counts_toward": "food_kcal_total",
+   "kcal_per_unit": null,
+   "todo": "R5b",
+   "unit_note": "satuan dan kkal per satuan ditetapkan R5b (TKPI/label gizi); jangan diisi tebakan (G-02)"
+  },
+  {
+   "id": "food_biscuit",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "bungkus",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 3,
+   "label": {
+    "id": "Biskuit energi",
+    "en": "Energy biscuits"
+   },
+   "why": {
+    "id": "Siap makan tanpa masak; masuk checklist tas BNPB.",
+    "en": "Ready to eat without cooking; on the BNPB bag checklist."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020",
+    "ID-BPBD-DIY",
+    "BE-NCCN-2026"
+   ],
+   "evidence": "DIBACA",
+   "counts_toward": "food_kcal_total",
+   "kcal_per_unit": null,
+   "todo": "R5b",
+   "unit_note": "satuan dan kkal per satuan ditetapkan R5b (TKPI/label gizi); jangan diisi tebakan (G-02)"
+  },
+  {
+   "id": "food_canned_fish",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "kaleng",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Ikan kaleng",
+    "en": "Canned fish"
+   },
+   "why": {
+    "id": "Protein tahan lama dan siap makan; JP merinci kaleng daging/ikan.",
+    "en": "Long-life, ready-to-eat protein; JP itemizes canned meat/fish."
+   },
+   "sources": [
+    "JP-MAFF",
+    "SG-SCDF-2026",
+    "FR-SGDSN-2025",
+    "NL-DENKVOORUIT"
+   ],
+   "evidence": "DIBACA",
+   "counts_toward": "food_kcal_total",
+   "kcal_per_unit": null,
+   "todo": "R5b",
+   "unit_note": "satuan dan kkal per satuan ditetapkan R5b (TKPI/label gizi); jangan diisi tebakan (G-02)"
+  },
+  {
+   "id": "food_canned_meat",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "kaleng",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Daging kaleng",
+    "en": "Canned meat"
+   },
+   "why": {
+    "id": "Protein tahan lama dan siap makan; JP merinci kaleng daging/ikan.",
+    "en": "Long-life, ready-to-eat protein; JP itemizes canned meat/fish."
+   },
+   "sources": [
+    "JP-MAFF",
+    "SG-SCDF-2026",
+    "FR-SGDSN-2025",
+    "NL-DENKVOORUIT"
+   ],
+   "evidence": "DIBACA",
+   "counts_toward": "food_kcal_total",
+   "kcal_per_unit": null,
+   "todo": "R5b",
+   "unit_note": "satuan dan kkal per satuan ditetapkan R5b (TKPI/label gizi); jangan diisi tebakan (G-02)"
+  },
+  {
+   "id": "food_abon",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "bungkus",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Abon",
+    "en": "Dried shredded meat (abon)"
+   },
+   "why": {
+    "id": "BNPB Buku Saku menyebut abon sebagai makanan ringan tahan lama untuk tas siaga.",
+    "en": "The BNPB pocket book names abon as a long-life snack for the go-bag."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "ID-BPBD-DIY"
+   ],
+   "evidence": "DIBACA",
+   "counts_toward": "food_kcal_total",
+   "kcal_per_unit": null,
+   "todo": "R5b",
+   "unit_note": "satuan dan kkal per satuan ditetapkan R5b (TKPI/label gizi); jangan diisi tebakan (G-02)"
+  },
+  {
+   "id": "food_nuts",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "bungkus",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Kacang-kacangan",
+    "en": "Nuts"
+   },
+   "why": {
+    "id": "Padat energi dan tahan lama tanpa pendingin; disebut NL, DE, dan UK.",
+    "en": "Energy-dense and shelf-stable without refrigeration; named by NL, DE and UK."
+   },
+   "sources": [
+    "NL-DENKVOORUIT",
+    "DE-BBK-2025",
+    "UK-BEREADY-2026",
+    "DE-BLE"
+   ],
+   "evidence": "DIBACA",
+   "counts_toward": "food_kcal_total",
+   "kcal_per_unit": null,
+   "todo": "R5b",
+   "unit_note": "satuan dan kkal per satuan ditetapkan R5b (TKPI/label gizi); jangan diisi tebakan (G-02)"
+  },
+  {
+   "id": "food_sugar",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "kg",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Gula",
+    "en": "Sugar"
+   },
+   "why": {
+    "id": "Sumber energi cepat; masuk kategori 'sesuai selera' di tabel BLE dan daftar pangan Swiss.",
+    "en": "A quick energy source; in the 'to taste' group of the BLE table and the Swiss food list."
+   },
+   "sources": [
+    "DE-BLE",
+    "CH-BWL-2025"
+   ],
+   "evidence": "DIBACA",
+   "counts_toward": "food_kcal_total",
+   "kcal_per_unit": null,
+   "todo": "R5b",
+   "unit_note": "satuan dan kkal per satuan ditetapkan R5b (TKPI/label gizi); jangan diisi tebakan (G-02)"
+  },
+  {
+   "id": "food_honey",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "botol",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Madu",
+    "en": "Honey"
+   },
+   "why": {
+    "id": "Sumber energi tahan lama; masuk kategori 'sesuai selera' di tabel BLE (hanya satu sumber).",
+    "en": "A long-lasting energy source; in the 'to taste' group of the BLE table (single source)."
+   },
+   "sources": [
+    "DE-BLE"
+   ],
+   "evidence": "DIBACA",
+   "counts_toward": "food_kcal_total",
+   "kcal_per_unit": null,
+   "todo": "R5b",
+   "unit_note": "satuan dan kkal per satuan ditetapkan R5b (TKPI/label gizi); jangan diisi tebakan (G-02)"
+  },
+  {
+   "id": "food_chocolate",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "batang",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Cokelat",
+    "en": "Chocolate"
+   },
+   "why": {
+    "id": "BNPB menyebut cokelat dalam camilan tahan lama; padat energi.",
+    "en": "BNPB names chocolate among long-life snacks; energy-dense."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "DE-BLE",
+    "CH-BWL-2025",
+    "TW-MND"
+   ],
+   "evidence": "DIBACA",
+   "counts_toward": "food_kcal_total",
+   "kcal_per_unit": null,
+   "todo": "R5b",
+   "unit_note": "satuan dan kkal per satuan ditetapkan R5b (TKPI/label gizi); jangan diisi tebakan (G-02)"
+  },
+  {
+   "id": "food_uht_milk",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "kotak",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Susu UHT",
+    "en": "UHT milk"
+   },
+   "why": {
+    "id": "Susu UHT tahan suhu ruang (BLE: susu UHT); Swiss mencantumkan minuman susu untuk stok 7 hari.",
+    "en": "UHT milk keeps at room temperature (BLE: UHT milk); Switzerland lists milk drinks for a 7-day stock."
+   },
+   "sources": [
+    "DE-BLE",
+    "CH-BWL-2025",
+    "SE-MCF-2024"
+   ],
+   "evidence": "DIBACA",
+   "counts_toward": "food_kcal_total",
+   "kcal_per_unit": null,
+   "todo": "R5b",
+   "unit_note": "satuan dan kkal per satuan ditetapkan R5b (TKPI/label gizi); jangan diisi tebakan (G-02)"
+  },
+  {
+   "id": "food_condensed_milk",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "kaleng",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Susu kental manis",
+    "en": "Sweetened condensed milk"
+   },
+   "why": {
+    "id": "Produk susu tahan lama; padanan lokal produk susu BLE dan susu awet Swedia. Kandungan gizi menunggu R5b.",
+    "en": "A shelf-stable dairy product; the local counterpart of BLE dairy and Swedish long-life milk. Nutrition data awaits R5b."
+   },
+   "sources": [
+    "DE-BLE",
+    "SE-MCF-2024"
+   ],
+   "evidence": "DIBACA",
+   "counts_toward": "food_kcal_total",
+   "kcal_per_unit": null,
+   "todo": "R5b",
+   "unit_note": "satuan dan kkal per satuan ditetapkan R5b (TKPI/label gizi); jangan diisi tebakan (G-02)"
+  },
+  {
+   "id": "food_milk_powder",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "kg",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Susu bubuk",
+    "en": "Milk powder"
+   },
+   "why": {
+    "id": "Swedia mencantumkan susu bubuk dalam daftar pangan; butuh air bersih.",
+    "en": "Sweden lists milk powder in its food list; needs clean water."
+   },
+   "sources": [
+    "SE-MCF-2024",
+    "DE-BLE"
+   ],
+   "evidence": "DIBACA",
+   "counts_toward": "food_kcal_total",
+   "kcal_per_unit": null,
+   "todo": "R5b",
+   "unit_note": "satuan dan kkal per satuan ditetapkan R5b (TKPI/label gizi); jangan diisi tebakan (G-02)"
+  },
+  {
+   "id": "food_oatmeal",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "kg",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Oatmeal / sereal",
+    "en": "Oatmeal / cereal"
+   },
+   "why": {
+    "id": "Serealia adalah kelompok terbesar di tabel BLE (0,33 kg/orang/hari); Swedia mencantumkan sereal.",
+    "en": "Cereals are the largest group in the BLE table (0.33 kg/person/day); Sweden lists cereals."
+   },
+   "sources": [
+    "SE-MCF-2024",
+    "DE-BLE"
+   ],
+   "evidence": "DIBACA",
+   "counts_toward": "food_kcal_total",
+   "kcal_per_unit": null,
+   "todo": "R5b",
+   "unit_note": "satuan dan kkal per satuan ditetapkan R5b (TKPI/label gizi); jangan diisi tebakan (G-02)"
+  },
+  {
+   "id": "food_dates",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "kg",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Kurma",
+    "en": "Dates"
+   },
+   "why": {
+    "id": "Padanan buah kering (NL, BLE): padat energi, tanpa masak. Tidak ada sumber resmi yang menyebut kurma secara khusus.",
+    "en": "A dried-fruit counterpart (NL, BLE): energy-dense, no cooking. No official source names dates specifically."
+   },
+   "sources": [
+    "NL-DENKVOORUIT",
+    "DE-BLE"
+   ],
+   "evidence": "DIBACA",
+   "counts_toward": "food_kcal_total",
+   "kcal_per_unit": null,
+   "todo": "R5b",
+   "unit_note": "satuan dan kkal per satuan ditetapkan R5b (TKPI/label gizi); jangan diisi tebakan (G-02)"
+  },
+  {
+   "id": "food_dried_fruit",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "bungkus",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Buah kering",
+    "en": "Dried fruit"
+   },
+   "why": {
+    "id": "Disebut NL dan BBK sebagai pangan tahan lama tanpa masak.",
+    "en": "Named by NL and BBK as long-life, no-cook food."
+   },
+   "sources": [
+    "NL-DENKVOORUIT",
+    "UK-BEREADY-2026",
+    "DE-BBK-2025",
+    "DE-BLE"
+   ],
+   "evidence": "DIBACA",
+   "counts_toward": "food_kcal_total",
+   "kcal_per_unit": null,
+   "todo": "R5b",
+   "unit_note": "satuan dan kkal per satuan ditetapkan R5b (TKPI/label gizi); jangan diisi tebakan (G-02)"
+  },
+  {
+   "id": "food_ready_meal",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "kemasan",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 2,
+   "label": {
+    "id": "Makanan siap saji tahan lama",
+    "en": "Long-life ready meals"
+   },
+   "why": {
+    "id": "Isi wajib tas siaga BNPB: makanan siap saji tahan lama (nasi/lauk kemasan, retort).",
+    "en": "BNPB go-bag essential: long-life ready meals (packaged rice/side dishes, retort)."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "JP-MAFF",
+    "SG-SCDF-2026",
+    "PH-OSG-2024"
+   ],
+   "evidence": "DIBACA",
+   "counts_toward": "food_kcal_total",
+   "kcal_per_unit": null,
+   "todo": "R5b",
+   "unit_note": "satuan dan kkal per satuan ditetapkan R5b (TKPI/label gizi); jangan diisi tebakan (G-02)"
+  },
+  {
+   "id": "stove_portable",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 4,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Kompor portabel (gas kaleng/kemping)",
+    "en": "Portable stove (canister/camping)"
+   },
+   "why": {
+    "id": "Memasak tanpa listrik: kompor gas kaleng (JP), kompor kemping (SE, NO, EE, CH, KR). Dipakai juga saat gas rumah habis.",
+    "en": "Cooking without mains power: canister stove (JP), camping stove (SE, NO, EE, CH, KR). Also useful when household gas runs out."
+   },
+   "sources": [
+    "JP-MAFF",
+    "SE-MCF-2024",
+    "EE-OLEVALMIS",
+    "CH-BWL-2025",
+    "KR-MOIS",
+    "DE-BBK-2025"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-024"
+  },
+  {
+   "id": "gas_canister",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "per_person_day",
+   "unit": "tabung",
+   "per_person_day": 0.8571,
+   "per_household": null,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 4,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tabung gas kaleng untuk kompor portabel",
+    "en": "Gas canisters for the portable stove"
+   },
+   "why": {
+    "id": "Sekitar 6 tabung per orang per minggu (MAFF). Hanya untuk kompor portabel; konsumsi LPG rumah diisi pengguna.",
+    "en": "About 6 canisters per person per week (MAFF). For portable stoves only; household LPG use is entered by the user."
+   },
+   "sources": [
+    "JP-MAFF",
+    "KR-MOIS"
+   ],
+   "evidence": "DIBACA",
+   "per_person_week": 6,
+   "decision": "D-024"
+  },
+  {
+   "id": "lpg_usage",
+   "category": "food",
+   "priority": "extra",
+   "qty_mode": "user_usage_per_day",
+   "unit": "kg",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Gas LPG rumah (pemakaian harian)",
+    "en": "Household LPG (daily use)"
+   },
+   "why": {
+    "id": "Jumlah LPG per hari diisi pengguna; tidak ada angka resmi per rumah tangga (D-024, G-11).",
+    "en": "Daily LPG use is entered by the user; there is no official household figure (D-024, G-11)."
+   },
+   "sources": [
+    "JP-MAFF"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-024"
+  },
+  {
+   "id": "cookware",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Panci/ketel dan alat masak sederhana",
+    "en": "Pot/kettle and basic cookware"
+   },
+   "why": {
+    "id": "Panci dan ketel untuk merebus air dan memasak (JP, KR, CH).",
+    "en": "A pot and kettle for boiling water and cooking (JP, KR, CH)."
+   },
+   "sources": [
+    "JP-MAFF",
+    "KR-MOIS",
+    "LV-MOD-2024"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "meds_personal",
+   "category": "meds_firstaid",
+   "priority": "critical",
+   "qty_mode": "derived",
+   "unit": "hari stok",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {
+    "min_days": 7,
+    "min_days_tier4": 14,
+    "scenario:pandemic": {
+     "min_days": 30
+    },
+    "floor": "max(target_days,7)"
+   },
+   "gating": true,
+   "min_tier_gating": 2,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [
+    "has_meds"
+   ],
+   "bnpb_checklist": 13,
+   "label": {
+    "id": "Obat pribadi / obat rutin",
+    "en": "Personal / regular medication"
+   },
+   "why": {
+    "id": "Stok minimal 7 hari atau sebesar target, bila lebih besar; 14 hari mulai tier 4; 30 hari untuk skenario pandemi. Isi ulang resep butuh waktu: konsultasikan ke dokter atau fasilitas kesehatan.",
+    "en": "Stock of at least 7 days or the target, whichever is larger; 14 days from tier 4; 30 days for the pandemic scenario. Prescription refills take time: consult your doctor or health facility."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "NO-DSB",
+    "JP-TOKYO-2025",
+    "AU-QLD-KIT",
+    "US-CDC-PREG-CHECKLIST",
+    "SE-MCF-MEDS",
+    "DE-BBK-2025",
+    "US-CDC-MEDS"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    7
+   ],
+   "decision": "D-014"
+  },
+  {
+   "id": "med_antipyretic",
+   "category": "meds_firstaid",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "strip",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 14,
+   "label": {
+    "id": "Obat penurun panas",
+    "en": "Fever reducer"
+   },
+   "why": {
+    "id": "Masuk checklist tas BNPB; juga obat umum di kotak obat rumah (BBK).",
+    "en": "On the BNPB bag checklist; also a standard item in the home medicine cabinet (BBK)."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "DE-BBK-2025"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "bandage_antiseptic",
+   "category": "meds_firstaid",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 15,
+   "label": {
+    "id": "Perban dan antiseptik",
+    "en": "Bandage and antiseptic"
+   },
+   "why": {
+    "id": "Perawatan luka dasar; masuk checklist tas BNPB.",
+    "en": "Basic wound care; on the BNPB bag checklist."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "JP-TOKYO-2025",
+    "AU-QLD-KIT"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "adhesive_plaster",
+   "category": "meds_firstaid",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "kotak",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 16,
+   "label": {
+    "id": "Plester luka",
+    "en": "Adhesive plasters"
+   },
+   "why": {
+    "id": "Luka kecil sering terjadi saat evakuasi; masuk checklist tas BNPB.",
+    "en": "Minor wounds are common during evacuation; on the BNPB bag checklist."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "JP-TOKYO-2025",
+    "TW-MND"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "mask_basic",
+   "category": "meds_firstaid",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 11,
+   "label": {
+    "id": "Masker",
+    "en": "Face masks"
+   },
+   "why": {
+    "id": "Menyaring udara kotor atau tercemar; masuk checklist tas BNPB. Jumlah per hari tidak disebutkan: diisi pengguna.",
+    "en": "Filters dirty or polluted air; on the BNPB bag checklist. No per-day amount is stated: entered by the user."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020",
+    "TW-MND"
+   ],
+   "evidence": "DIBACA",
+   "qty_note": "jumlah tidak disebutkan sumber; hitung per orang minimal 1 set",
+   "per_person": 1
+  },
+  {
+   "id": "mask_n95",
+   "category": "meds_firstaid",
+   "priority": "important",
+   "qty_mode": "user_usage_per_day",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [
+    "haze",
+    "eruption",
+    "pandemic"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Masker N95",
+    "en": "N95 respirator"
+   },
+   "why": {
+    "id": "Kemenkes: saat kabut asap pakai N95 rapat tanpa celah. Juga dipakai untuk abu vulkanik dan pandemi (FFP2: DE, CH). Jumlah per hari tidak disebutkan: diisi pengguna (D-035).",
+    "en": "Ministry of Health: in haze use a tight-fitting N95 with no gaps. Also used for volcanic ash and pandemics (FFP2: DE, CH). No per-day amount is stated: entered by the user (D-035)."
+   },
+   "sources": [
+    "ID-KEMENKES-ASAP-N95",
+    "ID-KEMENKES-ASAP",
+    "DE-BBK-2025",
+    "SG-SCDF-2026"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-035,D-034"
+  },
+  {
+   "id": "first_aid_kit",
+   "category": "meds_firstaid",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Kotak P3K",
+    "en": "First aid kit"
+   },
+   "why": {
+    "id": "Alat yang harus ada di setiap tempat (BMKG); isi mengikuti inti BNPB ditambah pelengkap BBK (D-015). Daftar P3K Kemenkes/PMI tidak ditemukan.",
+    "en": "Equipment every place should have (BMKG); contents follow the BNPB core plus BBK extras (D-015). No Ministry of Health/PMI list was found."
+   },
+   "sources": [
+    "ID-BMKG-MITIGASI",
+    "ID-BNPB-BS2020",
+    "ID-BPBD-DIY",
+    "DE-BBK-2025",
+    "UK-BEREADY-2026",
+    "NO-DSB"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-015"
+  },
+  {
+   "id": "med_minyak_angin",
+   "category": "meds_firstaid",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "botol",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "bag",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Minyak angin",
+    "en": "Medicated oil (minyak angin)"
+   },
+   "why": {
+    "id": "Tercantum di isi wajib tas siaga BNPB 2026, tidak ada di checklist bonus.",
+    "en": "Listed in the mandatory contents of the BNPB 2026 go-bag, not in the bonus checklist."
+   },
+   "sources": [
+    "ID-BNPB-2026"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "thermometer",
+   "category": "meds_firstaid",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Termometer",
+    "en": "Thermometer"
+   },
+   "why": {
+    "id": "Bagian kotak obat rumah (BBK, CH) dan perlengkapan pandemi (D-034).",
+    "en": "Part of the home medicine cabinet (BBK, CH) and pandemic supplies (D-034)."
+   },
+   "sources": [
+    "DE-BBK-2025",
+    "CH-BWL-2025",
+    "TW-MND"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-015,D-034"
+  },
+  {
+   "id": "med_ors_antidiarrheal",
+   "category": "meds_firstaid",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Obat diare dan larutan elektrolit/oralit",
+    "en": "Anti-diarrhoea medicine and oral rehydration salts"
+   },
+   "why": {
+    "id": "Pelengkap BBK pada kotak obat rumah; diare lazim terjadi saat sanitasi terganggu.",
+    "en": "A BBK addition to the home medicine cabinet; diarrhoea is common when sanitation is disrupted."
+   },
+   "sources": [
+    "DE-BBK-2025",
+    "PL-MSWIA-2025",
+    "EE-OLEVALMIS"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-015"
+  },
+  {
+   "id": "firstaid_scissors_tweezers",
+   "category": "meds_firstaid",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Gunting dan pinset P3K",
+    "en": "First-aid scissors and tweezers"
+   },
+   "why": {
+    "id": "Pelengkap BBK dan JP pada kotak P3K.",
+    "en": "A BBK and JP addition to the first aid kit."
+   },
+   "sources": [
+    "DE-BBK-2025",
+    "JP-TOKYO-2025",
+    "KR-MOIS"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-015"
+  },
+  {
+   "id": "gloves_disposable",
+   "category": "meds_firstaid",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "kotak",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Sarung tangan sekali pakai",
+    "en": "Disposable gloves"
+   },
+   "why": {
+    "id": "Dalam daftar Queensland dan DE untuk kebersihan dan perawatan luka.",
+    "en": "In the Queensland and DE lists for hygiene and wound care."
+   },
+   "sources": [
+    "AU-QLD-KIT",
+    "DE-BBK-2025"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "toilet_bags",
+   "category": "sanitation",
+   "priority": "critical",
+   "qty_mode": "per_person_day",
+   "unit": "kantong",
+   "per_person_day": 5,
+   "per_household": null,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 2,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Kantong toilet darurat",
+    "en": "Emergency toilet bags"
+   },
+   "why": {
+    "id": "5 kantong per orang per hari (Tokyo, Kabinet Jepang). Alternatif DIY: kantong sampah tebal di kloset plus penyerap (BBK) dihitung setara (D-012).",
+    "en": "5 bags per person per day (Tokyo, Japan Cabinet Office). DIY alternative: strong rubbish bags in the toilet plus absorbent (BBK) counts as equivalent (D-012)."
+   },
+   "sources": [
+    "JP-TOKYO-TOILET-2025",
+    "JP-CAO-TOILET-2022",
+    "JP-TOKYO-2025",
+    "DE-BBK-2025"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-012"
+  },
+  {
+   "id": "trash_bags",
+   "category": "sanitation",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "gulung",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Kantong sampah kuat",
+    "en": "Strong rubbish bags"
+   },
+   "why": {
+    "id": "Dipakai juga sebagai toilet darurat dan untuk sampah; masuk daftar DE, JP, TW.",
+    "en": "Also used as an emergency toilet and for waste; on the DE, JP, TW lists."
+   },
+   "sources": [
+    "DE-BBK-2025",
+    "JP-TOKYO-2025",
+    "TW-MND",
+    "PL-MSWIA-2025"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "toilet_paper",
+   "category": "sanitation",
+   "priority": "important",
+   "qty_mode": "per_person_day",
+   "unit": "rol",
+   "per_person_day": 0.1429,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tisu toilet",
+    "en": "Toilet paper"
+   },
+   "why": {
+    "id": "Sekitar 1 rol per orang per minggu (Tokyo). Non-gating (D-013).",
+    "en": "About 1 roll per person per week (Tokyo). Non-gating (D-013)."
+   },
+   "sources": [
+    "JP-TOKYO-2025",
+    "UK-BEREADY-2026",
+    "PL-MSWIA-2025"
+   ],
+   "evidence": "DIBACA",
+   "per_person_week": 1,
+   "decision": "D-013"
+  },
+  {
+   "id": "wet_wipes",
+   "category": "sanitation",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "pak",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tisu basah",
+    "en": "Wet wipes"
+   },
+   "why": {
+    "id": "Kebersihan tanpa air; disebut hampir semua panduan (UK, SE, FI, PL, NL).",
+    "en": "Hygiene without water; named in nearly all guides (UK, SE, FI, PL, NL)."
+   },
+   "sources": [
+    "UK-BEREADY-2026",
+    "SE-MCF-2024",
+    "FI-SUOMI",
+    "NL-DENKVOORUIT",
+    "US-CDC-INFANT-CHECKLIST"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "hand_sanitizer",
+   "category": "sanitation",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "botol",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 17,
+   "label": {
+    "id": "Hand sanitizer",
+    "en": "Hand sanitizer"
+   },
+   "why": {
+    "id": "Cuci tangan tanpa air; masuk checklist tas BNPB dan perlengkapan pandemi.",
+    "en": "Handwashing without water; on the BNPB bag checklist and in pandemic supplies."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020",
+    "FI-SUOMI",
+    "SE-MCF-2024"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "soap",
+   "category": "sanitation",
+   "priority": "important",
+   "qty_mode": "per_person_day",
+   "unit": "g",
+   "per_person_day": 8.33,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Sabun",
+    "en": "Soap"
+   },
+   "why": {
+    "id": "Sekitar 250 g per orang per bulan (Sphere, cuplikan). Non-gating (D-013).",
+    "en": "About 250 g per person per month (Sphere, snippet). Non-gating (D-013)."
+   },
+   "sources": [
+    "INT-SPHERE",
+    "ID-BNPB-BS2020"
+   ],
+   "evidence": "CUPLIKAN",
+   "per_person_month": 250,
+   "verify": "Q1",
+   "decision": "D-013"
+  },
+  {
+   "id": "toiletries",
+   "category": "sanitation",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Perlengkapan mandi (sikat gigi, odol, sisir)",
+    "en": "Toiletries (toothbrush, toothpaste, comb)"
+   },
+   "why": {
+    "id": "BNPB 2020 mencantumkan sabun, sikat gigi dan odol, sisir.",
+    "en": "BNPB 2020 lists soap, toothbrush and toothpaste, comb."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "ID-BPBD-DIY",
+    "DE-BBK-2025"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "menstrual_products",
+   "category": "sanitation",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "pak",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Pembalut/produk menstruasi",
+    "en": "Menstrual products"
+   },
+   "why": {
+    "id": "Disebut SE, DE, DK, NO; hanya bagi yang membutuhkan.",
+    "en": "Named by SE, DE, DK, NO; only for those who need them."
+   },
+   "sources": [
+    "SE-MCF-2024",
+    "DE-BBK-2025",
+    "DK-BRS",
+    "NO-DSB"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "adult_diapers",
+   "category": "sanitation",
+   "priority": "important",
+   "qty_mode": "user_usage_per_day",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [
+    "has_elderly"
+   ],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Popok dewasa",
+    "en": "Adult diapers"
+   },
+   "why": {
+    "id": "BNPB menyebut popok dewasa bila perlu untuk lansia. Jumlah per hari diisi pengguna.",
+    "en": "BNPB names adult diapers where needed for the elderly. Daily amount is entered by the user."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "SE-MCF-2024"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "disinfectant_surface",
+   "category": "sanitation",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "botol",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "flood_landslide",
+    "pandemic"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Disinfektan permukaan",
+    "en": "Surface disinfectant"
+   },
+   "why": {
+    "id": "BNPB: pasca-banjir perlu sarung tangan, boots, dan disinfektan; juga untuk pandemi dan pengungsian.",
+    "en": "BNPB: after floods you need gloves, boots and disinfectant; also for pandemics and shelters."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "DE-BBK-2025",
+    "ID-KEMENKES-WABAH"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "toilet_bucket",
+   "category": "sanitation",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Ember bertutup untuk toilet darurat",
+    "en": "Lidded bucket for an emergency toilet"
+   },
+   "why": {
+    "id": "Selandia Baru menyarankan ember plastik besar plus tisu toilet; BBK menyebut toilet kemping.",
+    "en": "New Zealand advises a large plastic bucket plus toilet paper; BBK mentions camping toilets."
+   },
+   "sources": [
+    "NZ-GETREADY",
+    "DE-BBK-2025",
+    "NL-DENKVOORUIT"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "flashlight",
+   "category": "lighting",
+   "priority": "critical",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 2,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 6,
+   "label": {
+    "id": "Senter",
+    "en": "Flashlight"
+   },
+   "why": {
+    "id": "Penerangan utama: senter, bukan lilin (BNPB 2026). Masuk checklist tas BNPB dan semua panduan.",
+    "en": "Main lighting: a flashlight, not candles (BNPB 2026). On the BNPB bag checklist and in all guides."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BMKG-MITIGASI",
+    "UK-BEREADY-2026",
+    "DE-BBK-2025"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-025"
+  },
+  {
+   "id": "flashlight_bedside",
+   "category": "lighting",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Senter kecil di kamar tidur",
+    "en": "Small flashlight at the bedside"
+   },
+   "why": {
+    "id": "Indikator BNPB no. 5: senter di kamar tidur, karena gempa sering terjadi malam hari.",
+    "en": "BNPB indicator 5: a flashlight in the bedroom, because earthquakes often strike at night."
+   },
+   "sources": [
+    "ID-BNPB-2026"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    5
+   ],
+   "decision": "D-025"
+  },
+  {
+   "id": "headlamp",
+   "category": "lighting",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Headlamp",
+    "en": "Headlamp"
+   },
+   "why": {
+    "id": "Menyisakan kedua tangan bebas saat evakuasi; BNPB 2020, BPBD DIY, TW, NO.",
+    "en": "Leaves both hands free during evacuation; BNPB 2020, BPBD DIY, TW, NO."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "ID-BPBD-DIY",
+    "TW-MND",
+    "NO-DSB"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "lantern_led",
+   "category": "lighting",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Lentera/lampu LED jinjing",
+    "en": "Portable LED lantern"
+   },
+   "why": {
+    "id": "Menerangi satu ruangan; JP menyarankan lentera di ruang keluarga, dapur, toilet.",
+    "en": "Lights a room; JP advises a lantern in the living room, kitchen and toilet."
+   },
+   "sources": [
+    "JP-TOKYO-2025",
+    "TW-MND"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "candles_backup",
+   "category": "lighting",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "pak",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Lilin dan korek (cadangan saja)",
+    "en": "Candles and matches (backup only)"
+   },
+   "why": {
+    "id": "Hanya cadangan: BNPB 2026 menyebut 'senter, bukan lilin'. Risiko kebakaran dan gas bocor; jangan dipakai saat gempa susulan.",
+    "en": "Backup only: BNPB 2026 says 'a flashlight, not candles'. Fire and gas-leak risk; do not use after earthquakes."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "ID-BNPB-2026",
+    "DE-BBK-2025"
+   ],
+   "evidence": "DIBACA",
+   "warning": true,
+   "decision": "D-025"
+  },
+  {
+   "id": "power_bank",
+   "category": "power",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 3,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 8,
+   "label": {
+    "id": "Power bank",
+    "en": "Power bank"
+   },
+   "why": {
+    "id": "Isi daya HP untuk informasi dan kontak; masuk checklist tas BNPB. Kapasitas dihitung modul daya (S4).",
+    "en": "Charges the phone for information and contact; on the BNPB bag checklist. Capacity is computed by the power module (S4)."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BPBD-DIY",
+    "UK-BEREADY-2026",
+    "DE-BBK-2025",
+    "FI-SUOMI"
+   ],
+   "evidence": "DIBACA",
+   "power_formula": "data/power.json (S4)",
+   "decision": "D-045"
+  },
+  {
+   "id": "spare_batteries",
+   "category": "power",
+   "priority": "critical",
+   "qty_mode": "per_household",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 2,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 7,
+   "label": {
+    "id": "Baterai cadangan",
+    "en": "Spare batteries"
+   },
+   "why": {
+    "id": "Baterai untuk senter dan radio; masuk checklist tas BNPB. AU: baterai untuk minimal 3 hari.",
+    "en": "Batteries for flashlight and radio; on the BNPB bag checklist. AU: batteries for at least 3 days."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "AU-QLD-KIT",
+    "UK-BEREADY-2026",
+    "NL-DENKVOORUIT"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "power_station",
+   "category": "power",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 5,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Power station (baterai besar + inverter)",
+    "en": "Power station (large battery + inverter)"
+   },
+   "why": {
+    "id": "Daya alternatif untuk listrik padam panjang atau alat medis (D-045). Padanan sumber: panel surya portabel atau generator (EE). Kapasitas Wh dari data/power.json (S4).",
+    "en": "Alternative power for long outages or medical devices (D-045). Source counterpart: portable solar panel or generator (EE). Wh capacity from data/power.json (S4)."
+   },
+   "sources": [
+    "EE-OLEVALMIS",
+    "DE-BBK-STROMAUSFALL"
+   ],
+   "evidence": "DIBACA",
+   "gating_group": "alt_power_any",
+   "power_formula": "data/power.json (S4)",
+   "todo": "R6/S4",
+   "decision": "D-045"
+  },
+  {
+   "id": "solar_panel",
+   "category": "power",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 5,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Panel surya portabel",
+    "en": "Portable solar panel"
+   },
+   "why": {
+    "id": "Isi ulang HP dan power bank saat listrik padam lama; EE dan DE menyebut radio/charger surya.",
+    "en": "Recharges phones and power banks in long outages; EE and DE name solar radios/chargers."
+   },
+   "sources": [
+    "EE-OLEVALMIS",
+    "DE-BBK-2025"
+   ],
+   "evidence": "DIBACA",
+   "gating_group": "alt_power_any",
+   "power_formula": "data/power.json (S4)",
+   "decision": "D-036,D-045"
+  },
+  {
+   "id": "generator",
+   "category": "power",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 5,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Generator (genset)",
+    "en": "Generator"
+   },
+   "why": {
+    "id": "Opsi daya cadangan (EE). PERINGATAN: jangan di dalam ruangan (CO), min. 6,1 m dari rumah (FEMA, cuplikan), jangan sambung ke instalasi rumah tanpa teknisi.",
+    "en": "A backup power option (EE). WARNING: never indoors (CO), at least 6.1 m from the house (FEMA, snippet), do not connect to house wiring without an electrician."
+   },
+   "sources": [
+    "EE-OLEVALMIS",
+    "US-FEMA-POWER",
+    "DK-BRS"
+   ],
+   "evidence": "DIBACA",
+   "gating_group": "alt_power_any",
+   "warning": true,
+   "decision": "D-045"
+  },
+  {
+   "id": "rechargeable_flashlight",
+   "category": "power",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [
+    "power_outage"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Senter/lampu isi ulang (engkol/surya/USB)",
+    "en": "Rechargeable flashlight/lamp (crank/solar/USB)"
+   },
+   "why": {
+    "id": "Padanan 'lampu solar' (D-036): senter baterai/engkol/surya dalam panduan NO, DE, EE. Tidak butuh baterai sekali pakai.",
+    "en": "Counterpart of the 'solar lamp' (D-036): battery/crank/solar flashlights in NO, DE, EE guides. No disposable batteries needed."
+   },
+   "sources": [
+    "NO-DSB",
+    "DE-BBK-2025",
+    "EE-OLEVALMIS"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-036"
+  },
+  {
+   "id": "phone_charger_cable",
+   "category": "power",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Kabel dan charger HP",
+    "en": "Phone cable and charger"
+   },
+   "why": {
+    "id": "HP dipakai untuk info resmi dan kontak; Queensland, Prancis, Kanada mencantumkan charger.",
+    "en": "The phone is used for official info and contact; Queensland, France and Canada list chargers."
+   },
+   "sources": [
+    "AU-QLD-KIT",
+    "FR-SGDSN-2025",
+    "CA-PS-KIT"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "radio_portable",
+   "category": "communication",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 3,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 9,
+   "label": {
+    "id": "Radio portabel (baterai/engkol/surya)",
+    "en": "Portable radio (battery/crank/solar)"
+   },
+   "why": {
+    "id": "Info resmi saat jaringan seluler atau internet mati; masuk checklist tas BNPB dan hampir semua panduan negara.",
+    "en": "Official information when mobile or internet networks are down; on the BNPB bag checklist and in nearly every country guide."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BMKG-MITIGASI",
+    "SE-MCF-2024",
+    "DE-BBK-2025",
+    "UK-BEREADY-2026",
+    "NO-DSB"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "whistle",
+   "category": "communication",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 10,
+   "label": {
+    "id": "Peluit",
+    "en": "Whistle"
+   },
+   "why": {
+    "id": "Meminta pertolongan saat terjebak; masuk checklist tas BNPB. 1 per orang.",
+    "en": "Calls for help when trapped; on the BNPB bag checklist. One per person."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020",
+    "NL-DENKVOORUIT",
+    "BE-NCCN-2026"
+   ],
+   "evidence": "DIBACA",
+   "qty_note": "1 per orang (tidak per hari)",
+   "per_person": 1
+  },
+  {
+   "id": "emergency_numbers_printed",
+   "category": "communication",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "lembar",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 3,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 22,
+   "label": {
+    "id": "Nomor penting/darurat tercetak",
+    "en": "Printed important/emergency numbers"
+   },
+   "why": {
+    "id": "BNPB: simpan juga dalam bentuk cetak, bukan hanya di ponsel. Indikator BNPB no. 18.",
+    "en": "BNPB: keep a printed copy, not only on the phone. BNPB indicator 18."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BMKG-MITIGASI",
+    "UK-BEREADY-2026",
+    "DE-BBK-2025",
+    "NO-DSB"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    18
+   ]
+  },
+  {
+   "id": "warning_app_installed",
+   "category": "communication",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "aplikasi",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Aplikasi info resmi terpasang (Info BMKG, InaRISK, MAGMA, SATUSEHAT)",
+    "en": "Official info apps installed (Info BMKG, InaRISK, MAGMA, SATUSEHAT)"
+   },
+   "why": {
+    "id": "Buku Saku BNPB mendaftar aplikasi resmi; DE menyarankan aplikasi peringatan (NINA). Kemenkes: darurat medis 119 lewat SATUSEHAT Mobile.",
+    "en": "The BNPB pocket book lists official apps; DE advises a warning app (NINA). Ministry of Health: 119 medical emergency via SATUSEHAT Mobile."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "DE-BBK-2025",
+    "ID-KEMENKES-119",
+    "ID-BMKG-BUKUSAKU"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "map_paper_local",
+   "category": "communication",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "lembar",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Peta lokal/jalur evakuasi tercetak",
+    "en": "Printed local map/evacuation routes"
+   },
+   "why": {
+    "id": "Peta atau rute evakuasi tercetak bila ponsel mati (TW, FEMA; cuplikan). Jalur resmi: BPBD dan InaRISK.",
+    "en": "A printed map or evacuation routes if the phone dies (TW, FEMA; snippets). Official routes: BPBD and InaRISK."
+   },
+   "sources": [
+    "TW-MND",
+    "US-FEMA-KIT",
+    "ID-BNPB-BS2020"
+   ],
+   "evidence": "CUPLIKAN"
+  },
+  {
+   "id": "doc_copy_ktp",
+   "category": "docs_cash",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 3,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 18,
+   "label": {
+    "id": "Fotokopi KTP",
+    "en": "Photocopy of ID card (KTP)"
+   },
+   "why": {
+    "id": "Identitas diri; masuk checklist tas BNPB, disimpan dalam plastik tahan air.",
+    "en": "Proof of identity; on the BNPB bag checklist, kept in waterproof plastic."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020",
+    "ID-BPBD-DIY",
+    "UK-BEREADY-2026",
+    "DE-BBK-2025"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    4
+   ]
+  },
+  {
+   "id": "doc_copy_kk",
+   "category": "docs_cash",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 3,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 19,
+   "label": {
+    "id": "Fotokopi Kartu Keluarga (KK)",
+    "en": "Photocopy of Family Card (KK)"
+   },
+   "why": {
+    "id": "Bukti keluarga untuk bantuan dan pencarian anggota; masuk checklist tas BNPB.",
+    "en": "Proof of family for aid and family tracing; on the BNPB bag checklist."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020",
+    "ID-BPBD-DIY",
+    "UK-BEREADY-2026",
+    "DE-BBK-2025"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    4
+   ]
+  },
+  {
+   "id": "doc_copy_property",
+   "category": "docs_cash",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 3,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 20,
+   "label": {
+    "id": "Salinan sertifikat/dokumen rumah",
+    "en": "Copy of house certificate/documents"
+   },
+   "why": {
+    "id": "Bukti kepemilikan; masuk checklist tas BNPB. BNPB 2020 juga mencantumkan surat tanah, surat kendaraan, ijazah, akta kelahiran.",
+    "en": "Proof of ownership; on the BNPB bag checklist. BNPB 2020 also lists land deeds, vehicle papers, diplomas, birth certificates."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020",
+    "ID-BPBD-DIY",
+    "UK-BEREADY-2026",
+    "DE-BBK-2025"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    4
+   ]
+  },
+  {
+   "id": "doc_copy_bank",
+   "category": "docs_cash",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 3,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 21,
+   "label": {
+    "id": "Salinan buku tabungan",
+    "en": "Copy of bank book"
+   },
+   "why": {
+    "id": "Akses ke dana bila kartu hilang; masuk checklist tas BNPB.",
+    "en": "Access to funds if cards are lost; on the BNPB bag checklist."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020",
+    "ID-BPBD-DIY",
+    "UK-BEREADY-2026",
+    "DE-BBK-2025"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    4
+   ]
+  },
+  {
+   "id": "doc_waterproof_bag",
+   "category": "docs_cash",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 3,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Plastik/tas kedap air untuk dokumen",
+    "en": "Waterproof plastic/bag for documents"
+   },
+   "why": {
+    "id": "Padanan 'dry bag' (D-036): BNPB menyimpan dokumen dalam plastik tahan air; Buku Saku: tas tahan air. Indikator BNPB no. 4.",
+    "en": "Counterpart of the 'dry bag' (D-036): BNPB stores documents in waterproof plastic; the pocket book says waterproof bag. BNPB indicator 4."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020",
+    "SG-SCDF-2026",
+    "NL-DENKVOORUIT"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    4
+   ],
+   "decision": "D-036"
+  },
+  {
+   "id": "cash_days",
+   "category": "docs_cash",
+   "priority": "important",
+   "qty_mode": "derived",
+   "unit": "hari belanja",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {
+    "tier2_days": 3,
+    "tier3_plus_days": 7,
+    "scenario:conflict": {
+     "days": 7
+    },
+    "scenario:power_outage": {
+     "days": 7
+    },
+    "denomination": "pecahan kecil"
+   },
+   "gating": true,
+   "min_tier_gating": 3,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 26,
+   "label": {
+    "id": "Uang tunai (dalam hari belanja pokok)",
+    "en": "Cash (in days of basic shopping)"
+   },
+   "why": {
+    "id": "Tunai pecahan kecil untuk ATM/jaringan mati. Dinyatakan dalam hari belanja, tanpa nominal: 3 hari (tier 2), 7 hari (tier 3 ke atas, konflik, listrik padam). Masuk checklist tas BNPB.",
+    "en": "Small-denomination cash for ATM/network outages. Expressed in shopping days, with no amount: 3 days (tier 2), 7 days (tier 3 and up, conflict, power outage). On the BNPB bag checklist."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020",
+    "EE-OLEVALMIS",
+    "LV-MOD-2024",
+    "CH-BWL-2025",
+    "NL-DENKVOORUIT",
+    "DE-BBK-STROMAUSFALL"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-017"
+  },
+  {
+   "id": "doc_medical_records",
+   "category": "docs_cash",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "lembar",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "bag",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Catatan medis dan golongan darah",
+    "en": "Medical notes and blood type"
+   },
+   "why": {
+    "id": "Cetakan 2020 BNPB menyediakan halaman identitas pemilik, golongan darah dan catatan medis; UK menyarankan salinan resep.",
+    "en": "The 2020 BNPB print has a page for owner identity, blood type and medical notes; UK advises prescription copies."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "UK-BEREADY-2026",
+    "NZ-GETREADY"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "spare_keys",
+   "category": "docs_cash",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Kunci rumah/kendaraan cadangan",
+    "en": "Spare house/vehicle keys"
+   },
+   "why": {
+    "id": "Disebut NL, FR, CA.",
+    "en": "Named by NL, FR, CA."
+   },
+   "sources": [
+    "NL-DENKVOORUIT",
+    "FR-SGDSN-2025",
+    "CA-PS-KIT"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "payment_card_pin",
+   "category": "docs_cash",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "kartu",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "power_outage",
+    "conflict"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Kartu pembayaran fisik dan PIN",
+    "en": "Physical payment card and PIN"
+   },
+   "why": {
+    "id": "DK, NO, SE menyarankan kartu fisik dan PIN diingat bila pembayaran digital terganggu.",
+    "en": "DK, NO, SE advise a physical card and a remembered PIN if digital payment is disrupted."
+   },
+   "sources": [
+    "DK-BRS",
+    "NO-DSB",
+    "SE-MCF-2024"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "doc_insurance_copy",
+   "category": "docs_cash",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Salinan polis asuransi dan kontrak penting",
+    "en": "Copies of insurance policies and key contracts"
+   },
+   "why": {
+    "id": "SG, KR, DE, LV mencantumkan polis dan kontrak dalam map dokumen.",
+    "en": "SG, KR, DE, LV list policies and contracts in the document folder."
+   },
+   "sources": [
+    "SG-SCDF-2026",
+    "KR-MOIS",
+    "DE-BBK-2025",
+    "LV-MOD-2024"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "doc_digital_backup",
+   "category": "docs_cash",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Cadangan dokumen digital (USB/scan)",
+    "en": "Digital document backup (USB/scan)"
+   },
+   "why": {
+    "id": "Queensland dan Latvia: salinan dokumen dalam bentuk digital/USB selain kertas.",
+    "en": "Queensland and Latvia: digital/USB copies of documents in addition to paper."
+   },
+   "sources": [
+    "AU-QLD-KIT",
+    "LV-MOD-2024"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "clothes_change",
+   "category": "clothing_warmth",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "bag",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 23,
+   "label": {
+    "id": "Pakaian ganti",
+    "en": "Change of clothes"
+   },
+   "why": {
+    "id": "Pakaian untuk sekitar 3 hari (pakaian dalam, celana panjang, jaket, handuk); masuk checklist tas BNPB.",
+    "en": "Clothing for about 3 days (underwear, long trousers, jacket, towel); on the BNPB bag checklist."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020",
+    "ID-BPBD-DIY",
+    "UK-BEREADY-2026"
+   ],
+   "evidence": "DIBACA",
+   "qty_note": "1 set per orang untuk 3 hari; per orang, bukan per hari",
+   "per_person": 1
+  },
+  {
+   "id": "blanket_thin",
+   "category": "clothing_warmth",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 24,
+   "label": {
+    "id": "Selimut tipis",
+    "en": "Light blanket"
+   },
+   "why": {
+    "id": "Kehangatan dan privasi di pengungsian; masuk checklist tas BNPB.",
+    "en": "Warmth and privacy in shelters; on the BNPB bag checklist."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020",
+    "UK-BEREADY-2026",
+    "PL-MSWIA-2025"
+   ],
+   "evidence": "DIBACA",
+   "qty_note": "1 per orang",
+   "per_person": 1
+  },
+  {
+   "id": "raincoat",
+   "category": "clothing_warmth",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "bag",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 25,
+   "label": {
+    "id": "Jas hujan",
+    "en": "Raincoat"
+   },
+   "why": {
+    "id": "Perlindungan saat evakuasi di luar; masuk checklist tas BNPB.",
+    "en": "Protection when evacuating outdoors; on the BNPB bag checklist."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020",
+    "DE-BBK-2025",
+    "TW-MND"
+   ],
+   "evidence": "DIBACA",
+   "qty_note": "1 per orang",
+   "per_person": 1
+  },
+  {
+   "id": "sturdy_shoes",
+   "category": "clothing_warmth",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "pasang",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Sepatu/alas kaki kokoh dekat tempat tidur",
+    "en": "Sturdy shoes near the bed"
+   },
+   "why": {
+    "id": "BNPB: alas kaki dekat tempat tidur karena gempa sering terjadi malam hari; DE dan NZ memasukkan sepatu kokoh di tas.",
+    "en": "BNPB: footwear next to the bed because earthquakes often strike at night; DE and NZ put sturdy shoes in the bag."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "DE-BBK-2025",
+    "NZ-GETREADY",
+    "TW-MND"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    5
+   ],
+   "qty_note": "1 pasang per orang",
+   "per_person": 1
+  },
+  {
+   "id": "emergency_blanket_foil",
+   "category": "clothing_warmth",
+   "priority": "extra",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "bag",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Selimut darurat (foil/poncho)",
+    "en": "Emergency foil blanket / poncho"
+   },
+   "why": {
+    "id": "Prancis menyebut survival blanket; Filipina memasukkan ponco termal.",
+    "en": "France names a survival blanket; the Philippines includes a thermal poncho."
+   },
+   "sources": [
+    "FR-SGDSN-2025",
+    "PH-OSG-2024"
+   ],
+   "evidence": "DIBACA",
+   "qty_note": "1 per orang",
+   "per_person": 1
+  },
+  {
+   "id": "rubber_boots",
+   "category": "clothing_warmth",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "pasang",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "flood_landslide"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Sepatu bot/pelindung kaki",
+    "en": "Rubber boots / foot protection"
+   },
+   "why": {
+    "id": "Kemenkes: sepatu pelindung bila terpaksa ke daerah banjir (cegah leptospirosis); BNPB: boots pasca-banjir.",
+    "en": "Ministry of Health: protective shoes if you must enter flooded areas (prevents leptospirosis); BNPB: boots after floods."
+   },
+   "sources": [
+    "ID-KEMENKES-BANJIR",
+    "ID-BNPB-BS2020"
+   ],
+   "evidence": "DIBACA",
+   "qty_note": "1 pasang per orang",
+   "per_person": 1
+  },
+  {
+   "id": "protective_clothing_ash",
+   "category": "clothing_warmth",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "eruption"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Baju lengan panjang, celana panjang, topi (abu vulkanik)",
+    "en": "Long sleeves, long trousers, hat (volcanic ash)"
+   },
+   "why": {
+    "id": "BNPB: saat hujan abu pakai baju lengan panjang, celana panjang, topi; lindungi kulit dan mata.",
+    "en": "BNPB: during ashfall wear long sleeves, long trousers and a hat; protect skin and eyes."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "ID-PVMBG-ESDM"
+   ],
+   "evidence": "DIBACA",
+   "qty_note": "1 set per orang",
+   "per_person": 1
+  },
+  {
+   "id": "goggles_protective",
+   "category": "clothing_warmth",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "eruption"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Kacamata pelindung (abu vulkanik)",
+    "en": "Protective goggles (volcanic ash)"
+   },
+   "why": {
+    "id": "PVMBG: kacamata pelindung melindungi mata dari partikel abu. Jangan memakai lensa kontak.",
+    "en": "PVMBG: protective glasses shield eyes from ash particles. Do not wear contact lenses."
+   },
+   "sources": [
+    "ID-PVMBG-ESDM",
+    "ID-BNPB-BS2020"
+   ],
+   "evidence": "DIBACA",
+   "qty_note": "1 per orang",
+   "per_person": 1
+  },
+  {
+   "id": "head_protection",
+   "category": "clothing_warmth",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "earthquake"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Helm atau bantal pelindung kepala",
+    "en": "Helmet or pillow for head protection"
+   },
+   "why": {
+    "id": "Lindungi kepala dari reruntuhan saat gempa; BNPB: helm atau bantal. DE menyebut helm pelindung.",
+    "en": "Protect the head from falling debris in earthquakes; BNPB: helmet or pillow. DE names a protective helmet."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "DE-BBK-2025"
+   ],
+   "evidence": "DIBACA",
+   "qty_note": "1 per orang",
+   "per_person": 1
+  },
+  {
+   "id": "tools_eating_utensils",
+   "category": "tools",
+   "priority": "extra",
+   "qty_mode": "per_household",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "bag",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 5,
+   "label": {
+    "id": "Sendok dan alat makan sederhana",
+    "en": "Basic spoon and eating utensils"
+   },
+   "why": {
+    "id": "Masuk checklist bonus tas BNPB; bisa memakai yang sudah ada di rumah.",
+    "en": "On the BNPB bonus bag checklist; household items can be reused."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "LV-MOD-2024"
+   ],
+   "evidence": "DIBACA",
+   "qty_note": "1 set per orang",
+   "per_person": 1
+  },
+  {
+   "id": "gloves_work",
+   "category": "tools",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "pasang",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": 12,
+   "label": {
+    "id": "Sarung tangan kerja",
+    "en": "Work gloves"
+   },
+   "why": {
+    "id": "Melindungi tangan dari pecahan dan puing; masuk checklist tas BNPB.",
+    "en": "Protect hands from glass and debris; on the BNPB bag checklist."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "AU-QLD-KIT",
+    "TW-MND"
+   ],
+   "evidence": "DIBACA",
+   "qty_note": "1 pasang per orang",
+   "per_person": 1
+  },
+  {
+   "id": "can_opener",
+   "category": "tools",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Pembuka kaleng manual",
+    "en": "Manual can opener"
+   },
+   "why": {
+    "id": "Disebut NL, CA, FR, BE, US untuk pangan kaleng.",
+    "en": "Named by NL, CA, FR, BE, US for canned food."
+   },
+   "sources": [
+    "NL-DENKVOORUIT",
+    "FR-SGDSN-2025",
+    "BE-NCCN-2026",
+    "CA-PS-KIT"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "multitool_knife",
+   "category": "tools",
+   "priority": "extra",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Pisau lipat/multitool",
+    "en": "Pocket knife / multitool"
+   },
+   "why": {
+    "id": "FR, LV, IFRC mencantumkan multitool atau pisau serbaguna.",
+    "en": "FR, LV, IFRC list a multitool or utility knife."
+   },
+   "sources": [
+    "FR-SGDSN-2025",
+    "LV-MOD-2024",
+    "INT-IFRC-PAPE"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "duct_tape",
+   "category": "tools",
+   "priority": "extra",
+   "qty_mode": "per_household",
+   "unit": "gulung",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Lakban",
+    "en": "Duct tape"
+   },
+   "why": {
+    "id": "Dipakai memperbaiki dan menyegel (FI, EE, PL, IFRC).",
+    "en": "Used for repairs and sealing (FI, EE, PL, IFRC)."
+   },
+   "sources": [
+    "FI-SUOMI",
+    "EE-OLEVALMIS",
+    "PL-MSWIA-2025",
+    "INT-IFRC-PAPE"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "matches_lighter",
+   "category": "tools",
+   "priority": "extra",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Korek api/pemantik",
+    "en": "Matches / lighter"
+   },
+   "why": {
+    "id": "BNPB 2020 mencantumkan korek api; keselamatan: jangan menyalakan api bila tercium gas.",
+    "en": "BNPB 2020 lists matches; safety: do not light a flame if gas is smelled."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "NL-DENKVOORUIT",
+    "DE-BBK-2025"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "utility_shutoff_tools",
+   "category": "tools",
+   "priority": "extra",
+   "qty_mode": "per_household",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Perkakas mematikan utilitas (kunci pas/tang)",
+    "en": "Tools to shut off utilities (wrench/pliers)"
+   },
+   "why": {
+    "id": "BNPB: tahu lokasi mematikan air, gas, listrik; AU dan US mencantumkan kunci pas/tang.",
+    "en": "BNPB: know where to shut off water, gas, power; AU and US list wrench/pliers."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "AU-QLD-KIT",
+    "US-FEMA-KIT"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "fire_extinguisher",
+   "category": "tools",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "earthquake"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Alat pemadam api ringan (APAR)",
+    "en": "Fire extinguisher"
+   },
+   "why": {
+    "id": "BNPB: alat pemadam kebakaran di rumah untuk risiko kebakaran pasca-gempa; FI dan DE juga menyarankan.",
+    "en": "BNPB: a home fire extinguisher for post-earthquake fire risk; FI and DE also advise it."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BMKG-MITIGASI",
+    "FI-SUOMI",
+    "DE-BBK-2025"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "furniture_straps",
+   "category": "tools",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "earthquake"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Pengikat/pengaman perabot",
+    "en": "Furniture straps / anchors"
+   },
+   "why": {
+    "id": "BMKG dan BNPB: lemari dan rak dipaku atau diikat ke dinding, barang berat di bawah.",
+    "en": "BMKG and BNPB: nail or strap cabinets and shelves to walls, heavy items low."
+   },
+   "sources": [
+    "ID-BMKG-MITIGASI",
+    "ID-BNPB-2026",
+    "JP-TOKYO-2025"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "walking_stick",
+   "category": "tools",
+   "priority": "extra",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "flood_landslide"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tongkat untuk cek pijakan",
+    "en": "Stick to test footing"
+   },
+   "why": {
+    "id": "BNPB banjir: tongkat untuk mengecek pijakan saat melewati air.",
+    "en": "BNPB floods: a stick to test footing when wading through water."
+   },
+   "sources": [
+    "ID-BNPB-BS2020"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "waterproof_plastic_bags",
+   "category": "tools",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "pak",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [
+    "flood_landslide"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Plastik/kantong kedap air untuk perlengkapan",
+    "en": "Waterproof plastic bags for gear"
+   },
+   "why": {
+    "id": "Padanan 'dry bag' (D-036): kantong plastik/zip untuk menjaga ponsel dan barang tetap kering (JP, BNPB).",
+    "en": "Counterpart of the 'dry bag' (D-036): plastic/zip bags to keep phones and gear dry (JP, BNPB)."
+   },
+   "sources": [
+    "JP-TOKYO-2025",
+    "ID-BNPB-2026",
+    "TW-MND"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-036"
+  },
+  {
+   "id": "tarpaulin_rope",
+   "category": "tools",
+   "priority": "extra",
+   "qty_mode": "per_household",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "extreme_weather"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Terpal dan tali",
+    "en": "Tarpaulin and rope"
+   },
+   "why": {
+    "id": "Menutup kebocoran atau kerusakan sementara saat cuaca ekstrem (AU, cuplikan).",
+    "en": "Temporarily covers leaks or damage in extreme weather (AU, snippet)."
+   },
+   "sources": [
+    "AU-NEMA-STORM",
+    "AU-QLD-KIT"
+   ],
+   "evidence": "CUPLIKAN",
+   "verify": "Q1"
+  },
+  {
+   "id": "plastic_sheet_seal",
+   "category": "tools",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "nuclear"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Plastik lembaran dan lakban untuk menyegel ruangan",
+    "en": "Plastic sheeting and tape to seal a room"
+   },
+   "why": {
+    "id": "Nuklir/radiologi: tutup jendela dan ventilasi, tinggal di dalam min. 24 jam (CDC, FI, PL). KI hanya atas instruksi otoritas (D-023).",
+    "en": "Nuclear/radiological: seal windows and vents, stay inside at least 24 hours (CDC, FI, PL). KI only on authority instruction (D-023)."
+   },
+   "sources": [
+    "FI-SUOMI",
+    "PL-MSWIA-2025",
+    "US-CDC-RADIATION",
+    "EE-OLEVALMIS"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-033"
+  },
+  {
+   "id": "co_detector",
+   "category": "tools",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "power_outage"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Detektor CO",
+    "en": "Carbon monoxide detector"
+   },
+   "why": {
+    "id": "DE menyebut detektor CO; DK melarang grill/genset di dalam ruangan karena CO.",
+    "en": "DE names a CO detector; DK forbids grills/generators indoors because of CO."
+   },
+   "sources": [
+    "DE-BBK-2025",
+    "DK-BRS"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "haze_indoor_air",
+   "category": "tools",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "unit",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "haze"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "AC atau filtrasi udara dalam ruangan",
+    "en": "Air conditioning or indoor air filtration"
+   },
+   "why": {
+    "id": "Padanan 'air purifier' (D-036): BNPB dan Kemenkes menyarankan tetap di dalam rumah, tutup akses asap, gunakan AC atau filtrasi udara.",
+    "en": "Counterpart of the 'air purifier' (D-036): BNPB and the Ministry of Health advise staying indoors, closing smoke entry points, and using AC or air filtration."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "ID-KEMENKES-ASAP",
+    "ID-KEMENKES-ASAP-N95"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-036,D-035"
+  },
+  {
+   "id": "gobag_main",
+   "category": "gobag",
+   "priority": "critical",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 2,
+   "location": "bag",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tas siaga bencana 72 jam",
+    "en": "72-hour go-bag"
+   },
+   "why": {
+    "id": "Tas tahan air, bisa diambil dalam 10 detik, di dekat pintu keluar, tidak terkunci, dicek tiap 6 bulan. 1 tas utama keluarga plus 1 tas kecil; rumah bertingkat: di lantai atas (BNPB). DE: satu tas per orang.",
+    "en": "Waterproof, grabbed within 10 seconds, near the exit, unlocked, checked every 6 months. One main family bag plus one small bag; multi-storey homes: upper floor (BNPB). DE: one bag per person."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020",
+    "ID-BMKG-BUKUSAKU",
+    "ID-BMKG-EDUKASI",
+    "ID-BPBD-DIY",
+    "DE-BBK-2025"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    1,
+    3
+   ],
+   "decision": "D-031"
+  },
+  {
+   "id": "gobag_child",
+   "category": "gobag",
+   "priority": "important",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "bag",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tas anak (camilan favorit, boneka kecil, senter kecil)",
+    "en": "Child's bag (favourite snack, small toy, small flashlight)"
+   },
+   "why": {
+    "id": "BNPB: tas anak dengan camilan favorit, boneka kecil, senter kecil, masker, botol minum; libatkan anak. FR dan BE: buku, permainan, benda penenang.",
+    "en": "BNPB: a child's bag with favourite snack, small toy, small flashlight, mask, bottle; involve the child. FR and BE: books, games, comfort objects."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "FR-SGDSN-2025",
+    "BE-NCCN-2026"
+   ],
+   "evidence": "DIBACA",
+   "profile_hint": "has_child",
+   "note": "Tidak ada kode applies_if untuk anak 5-12; ditampilkan sebagai saran bila profil punya anak."
+  },
+  {
+   "id": "gobag_small_extra",
+   "category": "gobag",
+   "priority": "extra",
+   "qty_mode": "per_household",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "bag",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tas kecil tambahan",
+    "en": "Additional small bag"
+   },
+   "why": {
+    "id": "BNPB: 1 tas utama keluarga ditambah 1 tas kecil; ambil dalam 10 detik, jangan terlalu berat.",
+    "en": "BNPB: one main family bag plus one small bag; grab in 10 seconds, not too heavy."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "TW-MND"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "vehicle_tank_half",
+   "category": "gobag",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "tangki",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "conflict",
+    "power_outage"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tangki kendaraan minimal setengah penuh",
+    "en": "Vehicle tank at least half full"
+   },
+   "why": {
+    "id": "EE dan CH menyarankan tangki minimal setengah penuh agar bisa pergi bila perlu; relevan untuk konflik dan listrik padam.",
+    "en": "EE and CH advise a tank at least half full so you can leave if needed; relevant for conflict and power outages."
+   },
+   "sources": [
+    "EE-OLEVALMIS",
+    "CH-BWL-2025"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "infant_formula",
+   "category": "special_needs",
+   "priority": "critical",
+   "qty_mode": "user_usage_per_day",
+   "unit": "porsi/botol",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 2,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [
+    "has_infant"
+   ],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Susu formula bayi (siap minum lebih baik)",
+    "en": "Infant formula (ready-to-feed preferred)"
+   },
+   "why": {
+    "id": "Jumlah per hari diisi pengguna (tidak ada angka resmi). CDC dan UK: formula siap minum lebih baik daripada bubuk bila air tidak aman. Gating bila ada bayi (D-010).",
+    "en": "Daily amount entered by the user (no official figure). CDC and UK: ready-to-feed is better than powder when water is unsafe. Gating when an infant is present (D-010)."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "US-CDC-INFANT-PREP",
+    "US-CDC-INFANT-CHECKLIST",
+    "UK-BEREADY-2026",
+    "DK-BRS"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-010"
+  },
+  {
+   "id": "infant_mpasi",
+   "category": "special_needs",
+   "priority": "critical",
+   "qty_mode": "user_usage_per_day",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 2,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [
+    "has_infant",
+    "has_toddler"
+   ],
+   "bnpb_checklist": 4,
+   "label": {
+    "id": "Susu/MPASI (makanan bayi dan balita)",
+    "en": "Milk / complementary food (infant and toddler)"
+   },
+   "why": {
+    "id": "Masuk checklist tas BNPB bila ada balita. Jumlah per hari diisi pengguna (D-010).",
+    "en": "On the BNPB bag checklist when a toddler is present. Daily amount entered by the user (D-010)."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "US-CDC-INFANT-CHECKLIST",
+    "FR-SGDSN-2025",
+    "DK-BRS"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-010"
+  },
+  {
+   "id": "infant_diapers",
+   "category": "special_needs",
+   "priority": "critical",
+   "qty_mode": "user_usage_per_day",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 2,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [
+    "has_infant",
+    "has_toddler"
+   ],
+   "bnpb_checklist": 27,
+   "label": {
+    "id": "Popok dan perlengkapan bayi",
+    "en": "Diapers and baby supplies"
+   },
+   "why": {
+    "id": "BNPB: perlengkapan bayi. CDC: minimal 1 pak besar popok; jumlah per hari diisi pengguna (D-010).",
+    "en": "BNPB: baby supplies. CDC: at least 1 large pack of diapers; daily amount entered by the user (D-010)."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "US-CDC-INFANT-CHECKLIST",
+    "UK-BEREADY-2026",
+    "AU-QLD-KIT"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-010"
+  },
+  {
+   "id": "infant_wipes",
+   "category": "special_needs",
+   "priority": "important",
+   "qty_mode": "user_usage_per_day",
+   "unit": "pak",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [
+    "has_infant"
+   ],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tisu basah bayi",
+    "en": "Baby wipes"
+   },
+   "why": {
+    "id": "CDC: minimal 2 pak tisu basah; cek ulang tiap bulan. Jumlah per hari diisi pengguna.",
+    "en": "CDC: at least 2 packs of wipes; recheck monthly. Daily amount entered by the user."
+   },
+   "sources": [
+    "US-CDC-INFANT-CHECKLIST",
+    "UK-BEREADY-2026"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-010"
+  },
+  {
+   "id": "infant_bottle",
+   "category": "special_needs",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "buah",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [
+    "has_infant"
+   ],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Botol bayi dan perlengkapan sterilisasi sederhana",
+    "en": "Baby bottles and simple sterilising supplies"
+   },
+   "why": {
+    "id": "Queensland mencantumkan botol; CDC menekankan kebersihan peralatan makan bayi.",
+    "en": "Queensland lists bottles; CDC stresses clean infant feeding equipment."
+   },
+   "sources": [
+    "AU-QLD-KIT",
+    "US-CDC-INFANT-PREP"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "infant_breastfeeding_support",
+   "category": "special_needs",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [
+    "has_infant"
+   ],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Dukungan menyusui (ASI)",
+    "en": "Breastfeeding support"
+   },
+   "why": {
+    "id": "CDC: menyusui adalah cara paling aman memberi makan bayi saat darurat; ibu perlu air dan pangan cukup (tambahan +500 kkal).",
+    "en": "CDC: breastfeeding is the safest way to feed infants in emergencies; mothers need enough water and food (extra +500 kcal)."
+   },
+   "sources": [
+    "US-CDC-INFANT-PREP",
+    "INT-WHO-MATERNAL"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-009,D-010"
+  },
+  {
+   "id": "elderly_meds",
+   "category": "special_needs",
+   "priority": "critical",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 2,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [
+    "has_elderly"
+   ],
+   "bnpb_checklist": 28,
+   "label": {
+    "id": "Obat lansia",
+    "en": "Medication for the elderly"
+   },
+   "why": {
+    "id": "BNPB: obat rutin lansia masuk tas siaga. Ikuti aturan stok obat rutin (D-014).",
+    "en": "BNPB: the elderly's regular medication goes in the go-bag. Follow the regular-medication stock rule (D-014)."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "US-CDC-PREG-CHECKLIST"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-014"
+  },
+  {
+   "id": "elderly_aids",
+   "category": "special_needs",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [
+    "has_elderly"
+   ],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Kacamata cadangan dan baterai alat bantu dengar",
+    "en": "Spare glasses and hearing-aid batteries"
+   },
+   "why": {
+    "id": "BNPB menyebut kacamata cadangan untuk lansia; AU dan FR menambahkan baterai alat bantu dengar.",
+    "en": "BNPB names spare glasses for the elderly; AU and FR add hearing-aid batteries."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "AU-QLD-KIT",
+    "FR-SGDSN-2025"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "pet_food",
+   "category": "special_needs",
+   "priority": "important",
+   "qty_mode": "user_usage_per_day",
+   "unit": "g",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {
+    "min_days": 5
+   },
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [
+    "has_pet_dog",
+    "has_pet_cat"
+   ],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Pakan hewan peliharaan",
+    "en": "Pet food"
+   },
+   "why": {
+    "id": "Durasi mengikuti target, minimal 5 hari (BNPB 3-5, JP, AU; CDC 14). Gram per hari tidak disebutkan: diisi pengguna (D-016).",
+    "en": "Duration follows the target, minimum 5 days (BNPB 3-5, JP, AU; CDC 14). Grams per day not stated: entered by the user (D-016)."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "JP-ENV-PET",
+    "AU-QLD-PETS",
+    "US-CDC-PETS",
+    "US-FEMA-PETS"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-016"
+  },
+  {
+   "id": "pet_carrier_leash",
+   "category": "special_needs",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [
+    "has_pet_dog",
+    "has_pet_cat"
+   ],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Kandang/carrier, tali, kalung",
+    "en": "Carrier, leash, collar"
+   },
+   "why": {
+    "id": "BNPB: kalung dan tali, kandang atau carrier, selimut, kantung sekali pakai.",
+    "en": "BNPB: collar and leash, cage or carrier, blanket, disposable bags."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "BE-NCCN-2026"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "pet_id_photo",
+   "category": "special_needs",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "bag",
+   "scenarios": [],
+   "applies_if": [
+    "has_pet_dog",
+    "has_pet_cat"
+   ],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Identitas dan foto hewan",
+    "en": "Pet ID and photo"
+   },
+   "why": {
+    "id": "BNPB: fotokopi identitas hewan, tag atau microchip, foto hewan untuk pencarian.",
+    "en": "BNPB: copy of pet ID, tag or microchip, a photo of the animal for finding it."
+   },
+   "sources": [
+    "ID-BNPB-BS2020"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "pet_meds",
+   "category": "special_needs",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [
+    "has_pet_dog",
+    "has_pet_cat"
+   ],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Obat hewan dan P3K hewan",
+    "en": "Pet medication and pet first aid"
+   },
+   "why": {
+    "id": "BNPB: kotak P3K cadangan hewan. CDC dan FEMA: obat hewan untuk 14 hari / minimal 1 minggu.",
+    "en": "BNPB: a spare pet first aid kit. CDC and FEMA: pet medication for 14 days / at least a week."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "US-CDC-PETS",
+    "US-FEMA-PETS"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "pet_waste_bags",
+   "category": "special_needs",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "gulung",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [
+    "has_pet_dog",
+    "has_pet_cat"
+   ],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Kantung kotoran dan sabun pembersih hewan",
+    "en": "Waste bags and cleaning soap for pets"
+   },
+   "why": {
+    "id": "BNPB: kantung sekali pakai dan sabun pembersih untuk hewan.",
+    "en": "BNPB: disposable bags and cleaning soap for animals."
+   },
+   "sources": [
+    "ID-BNPB-BS2020"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "preg_supplies",
+   "category": "special_needs",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "set",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "both",
+   "scenarios": [],
+   "applies_if": [
+    "has_pregnant"
+   ],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Perlengkapan ibu hamil (vitamin, pembalut, pakaian)",
+    "en": "Pregnancy supplies (vitamins, pads, clothing)"
+   },
+   "why": {
+    "id": "CDC: vitamin prenatal, pembalut, pakaian hamil; BNPB: ibu hamil diprioritaskan saat evakuasi.",
+    "en": "CDC: prenatal vitamins, sanitary pads, maternity clothes; BNPB: pregnant women are prioritised in evacuation."
+   },
+   "sources": [
+    "US-CDC-PREG-CHECKLIST",
+    "ID-BNPB-2026"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "medical_device_backup_power",
+   "category": "special_needs",
+   "priority": "critical",
+   "qty_mode": "derived",
+   "unit": "Wh",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 2,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [
+    "has_electric_medical"
+   ],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Daya cadangan untuk alat medis listrik (oksigen, CPAP, dsb.)",
+    "en": "Backup power for electric medical devices (oxygen, CPAP, etc.)"
+   },
+   "why": {
+    "id": "Alat bantu dan alat medis listrik butuh baterai atau daya cadangan (BBK; FEMA: oksigen cadangan). Wh dihitung modul daya S4 dari watt perangkat. Tanyakan faskes soal rencana darurat.",
+    "en": "Assistive and electric medical devices need batteries or backup power (BBK; FEMA: backup oxygen). Wh is computed by the S4 power module from device watts. Ask your health facility about an emergency plan."
+   },
+   "sources": [
+    "DE-BBK-2025",
+    "US-FEMA-DISAB",
+    "CA-PS-KIT"
+   ],
+   "evidence": "DIBACA",
+   "power_formula": "data/power.json (S4)",
+   "todo": "S4",
+   "decision": "D-045"
+  },
+  {
+   "id": "family_emergency_plan",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 4,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Rencana darurat keluarga tertulis",
+    "en": "Written family emergency plan"
+   },
+   "why": {
+    "id": "BNPB: rencana darurat keluarga 7 butir (ancaman, titik kumpul, kontak, rute, lokasi mematikan utilitas, titik aman, anggota rentan). UK dan CH punya templat.",
+    "en": "BNPB: a 7-point family emergency plan (threats, meeting point, contacts, routes, utility shutoffs, safe spots, vulnerable members). UK and CH have templates."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "UK-BEREADY-2026",
+    "CH-BWL-2025"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    8,
+    9,
+    12,
+    13
+   ]
+  },
+  {
+   "id": "evacuation_routes_agreed",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Jalur evakuasi disepakati bersama",
+    "en": "Agreed evacuation routes"
+   },
+   "why": {
+    "id": "Indikator BNPB no. 8. Cek jalur resmi lewat BPBD dan InaRISK.",
+    "en": "BNPB indicator 8. Check official routes via BPBD and InaRISK."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    8
+   ]
+  },
+  {
+   "id": "meeting_point_outside",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Titik kumpul di luar rumah (utama dan cadangan)",
+    "en": "Meeting point outside the home (main and backup)"
+   },
+   "why": {
+    "id": "Indikator BNPB no. 9. BNPB menyarankan titik kumpul utama dan cadangan.",
+    "en": "BNPB indicator 9. BNPB advises a main and a backup meeting point."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020",
+    "UK-BEREADY-2026"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    9
+   ]
+  },
+  {
+   "id": "roles_assigned",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Pembagian peran: siapa ambil tas, siapa bantu anak/lansia",
+    "en": "Assigned roles: who takes the bag, who helps children/elderly"
+   },
+   "why": {
+    "id": "Indikator BNPB no. 12 dan 13. Pembagian peran ditempel di dekat pintu.",
+    "en": "BNPB indicators 12 and 13. Roles posted near the door."
+   },
+   "sources": [
+    "ID-BNPB-2026"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    12,
+    13
+   ]
+  },
+  {
+   "id": "bag_check_6months",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Cek isi tas siaga tiap 6 bulan",
+    "en": "Check go-bag contents every 6 months"
+   },
+   "why": {
+    "id": "Indikator BNPB no. 2. Ganti air isi sendiri tiap 6 bulan (CDC); ganti makanan dan obat kedaluwarsa (D-040).",
+    "en": "BNPB indicator 2. Replace self-filled water every 6 months (CDC); swap expired food and medicine (D-040)."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "US-CDC-WATER",
+    "UK-BEREADY-2026",
+    "TW-MND"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    2
+   ]
+  },
+  {
+   "id": "bag_location_known",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Semua anggota keluarga tahu lokasi tas",
+    "en": "Everyone knows where the go-bag is"
+   },
+   "why": {
+    "id": "Indikator BNPB no. 3. Tas dekat pintu keluar, tidak terkunci, bisa diambil dalam 10 detik.",
+    "en": "BNPB indicator 3. The bag is near the exit, unlocked, and can be grabbed in 10 seconds."
+   },
+   "sources": [
+    "ID-BNPB-2026"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    3
+   ]
+  },
+  {
+   "id": "water_reserve_rainy_season",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Cadangan air bersih saat musim hujan",
+    "en": "Clean-water reserve in the rainy season"
+   },
+   "why": {
+    "id": "Indikator BNPB no. 6. Isi ember atau wadah besar saat tahap siaga banjir.",
+    "en": "BNPB indicator 6. Fill buckets or large containers during flood alerts."
+   },
+   "sources": [
+    "ID-BNPB-2026"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    6
+   ]
+  },
+  {
+   "id": "drop_cover_hold",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "earthquake"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Semua tahu Drop-Cover-Hold On",
+    "en": "Everyone knows Drop-Cover-Hold On"
+   },
+   "why": {
+    "id": "Indikator BNPB no. 10. Saat gempa jangan berlari; lindungi kepala dan berlindung.",
+    "en": "BNPB indicator 10. During an earthquake do not run; protect your head and take cover."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BMKG-MITIGASI",
+    "ID-BNPB-BS2020"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    10
+   ]
+  },
+  {
+   "id": "drill_simulation",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Simulasi bencana minimal 2 kali setahun",
+    "en": "Disaster drill at least twice a year"
+   },
+   "why": {
+    "id": "Indikator BNPB no. 11 (simulasi gempa). BNPB: simulasi minimal 2 kali setahun (D-040).",
+    "en": "BNPB indicator 11 (earthquake drill). BNPB: drills at least twice a year (D-040)."
+   },
+   "sources": [
+    "ID-BNPB-2026"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    11
+   ],
+   "decision": "D-040"
+  },
+  {
+   "id": "calm_breathing",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Latihan napas anti-panik",
+    "en": "Anti-panic breathing practice"
+   },
+   "why": {
+    "id": "Indikator BNPB no. 14. Teknik napas 4-4-4 diulang 4 kali untuk mengendalikan panik.",
+    "en": "BNPB indicator 14. A 4-4-4 breathing pattern repeated 4 times to control panic."
+   },
+   "sources": [
+    "ID-BNPB-2026"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    14
+   ]
+  },
+  {
+   "id": "child_follows_who",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Anak tahu harus mengikuti siapa",
+    "en": "Children know whom to follow"
+   },
+   "why": {
+    "id": "Indikator BNPB no. 15. Libatkan anak dalam persiapan.",
+    "en": "BNPB indicator 15. Involve children in preparation."
+   },
+   "sources": [
+    "ID-BNPB-2026"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    15
+   ],
+   "profile_hint": "has_child"
+  },
+  {
+   "id": "no_reentry_aftershock",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "earthquake"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tidak masuk rumah saat gempa susulan",
+    "en": "Do not re-enter the house during aftershocks"
+   },
+   "why": {
+    "id": "Indikator BNPB no. 16. Tunggu sampai dinyatakan aman.",
+    "en": "BNPB indicator 16. Wait until declared safe."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    16
+   ]
+  },
+  {
+   "id": "flood_signs_knowledge",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "flood_landslide"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tahu tanda awal banjir dan kapan mengungsi",
+    "en": "Know early flood signs and when to evacuate"
+   },
+   "why": {
+    "id": "Indikator BNPB no. 17. Mengungsi sebelum air selutut (arus 30 cm sudah berbahaya). Matikan listrik utama dan lepas regulator LPG.",
+    "en": "BNPB indicator 17. Evacuate before water reaches knee height (a 30 cm current is dangerous). Turn off main power and remove the LPG regulator."
+   },
+   "sources": [
+    "ID-BNPB-2026",
+    "ID-BNPB-BS2020"
+   ],
+   "evidence": "DIBACA",
+   "bnpb_indicators": [
+    17
+   ]
+  },
+  {
+   "id": "utility_shutoff_known",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tahu lokasi mematikan air, gas, listrik",
+    "en": "Know where to shut off water, gas, power"
+   },
+   "why": {
+    "id": "Bagian rencana darurat keluarga BNPB; mencegah kebakaran dan korsleting.",
+    "en": "Part of the BNPB family emergency plan; prevents fires and short circuits."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "AU-QLD-KIT"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "tsunami_evacuation_plan",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "tsunami"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Rute dan titik evakuasi ke tempat tinggi (jalan kaki)",
+    "en": "Evacuation route and high ground (on foot)"
+   },
+   "why": {
+    "id": "Gempa kuat atau lama di pantai = peringatan dini: segera menjauh dari pantai ke tempat tinggi, jangan menunggu sirene. Tsunami bisa datang beberapa kali. Rumus 20-20-20 hanya catatan dan tidak berlaku di semua wilayah (D-037).",
+    "en": "A strong or long earthquake at the coast is the warning: move away from the shore to high ground at once, do not wait for a siren. Tsunamis can arrive several times. The 20-20-20 rule is a note only and does not apply everywhere (D-037)."
+   },
+   "sources": [
+    "ID-BMKG-EVAKUASI",
+    "ID-BMKG-BUKUSAKU",
+    "ID-BNPB-BS2020",
+    "ID-BMKG-BAUBAU"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-037"
+  },
+  {
+   "id": "eruption_safety_knowledge",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "eruption"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tahu level status gunung api dan perlindungan dari abu",
+    "en": "Know volcano alert levels and ash protection"
+   },
+   "why": {
+    "id": "Level I Normal sampai IV Awas (MAGMA Indonesia, PVMBG). Saat hujan abu: masker, kacamata pelindung, tanpa lensa kontak, bersihkan abu dari atap, waspada lahar.",
+    "en": "Level I Normal to IV Awas (MAGMA Indonesia, PVMBG). In ashfall: mask, protective goggles, no contact lenses, clear ash from roofs, watch for lahars."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "ID-PVMBG-ESDM"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "storm_safety_knowledge",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "extreme_weather"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tahu langkah aman cuaca ekstrem",
+    "en": "Know safe steps in extreme weather"
+   },
+   "why": {
+    "id": "BNPB: masukkan barang lepas, kunci jendela, matikan listrik, jauhi pohon dan reklame, posisi aman saat petir. Peringatan dini puting beliung sulit diprediksi.",
+    "en": "BNPB: bring loose items in, lock windows, switch off power, stay away from trees and billboards, safe posture in lightning. Tornado-like winds are hard to forecast."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "ID-BMKG-MITIGASI"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "water_safety_knowledge",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tahu cara menjernihkan dan mendesinfeksi air",
+    "en": "Know how to clear and disinfect water"
+   },
+   "why": {
+    "id": "Rebus 1 menit (3 menit di atas 1.000 m dpl); pemutih ikuti label; ragu: rebus. Pra-olah air keruh dengan tawas/PAC. Tidak menghilangkan kimia atau radiasi.",
+    "en": "Boil 1 minute (3 minutes above 1,000 m); follow the bleach label; if unsure, boil. Pre-treat cloudy water with alum/PAC. Does not remove chemicals or radiation."
+   },
+   "sources": [
+    "US-EPA-2026",
+    "US-CDC-WATER-ABOUT",
+    "ID-KEMENKES-2014",
+    "INT-WHO-HWT"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-018,D-019"
+  },
+  {
+   "id": "first_aid_knowledge",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 5,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Kemampuan P3K dasar",
+    "en": "Basic first aid skills"
+   },
+   "why": {
+    "id": "BMKG: belajar P3K; Queensland: manual P3K di kotak. Dibutuhkan untuk tier 5.",
+    "en": "BMKG: learn first aid; Queensland: a first aid manual in the kit. Required for tier 5."
+   },
+   "sources": [
+    "ID-BMKG-MITIGASI",
+    "AU-QLD-KIT"
+   ],
+   "evidence": "DIBACA"
+  },
+  {
+   "id": "pandemic_isolation_plan",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "pandemic"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Rencana isolasi mandiri dan telemedis",
+    "en": "Home isolation and telemedicine plan"
+   },
+   "why": {
+    "id": "Kemenkes/BNPB: cuci tangan, masker, jarak 1 m, isolasi diri dan telemedis bila bergejala. Stok air dan pangan minimal 14 hari, obat 30 hari (D-034).",
+    "en": "Ministry of Health/BNPB: handwashing, masks, 1 m distance, self-isolation and telemedicine if symptomatic. Water and food stock at least 14 days, medication 30 days (D-034)."
+   },
+   "sources": [
+    "ID-BNPB-BS2020",
+    "ID-KEMENKES-WABAH",
+    "US-CDC-PREG-CHECKLIST"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-034"
+  },
+  {
+   "id": "conflict_stay_or_leave_plan",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "conflict"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Rencana tetap di rumah atau pergi; waspada disinformasi",
+    "en": "Plan to stay or leave; beware disinformation"
+   },
+   "why": {
+    "id": "Rujukan internasional (belum ada panduan stok warga Indonesia): SE, NO, EE, PL, LV menyarankan stok 7 hari, radio, tunai 1 minggu, rencana tetap atau pergi, dan memeriksa sumber resmi.",
+    "en": "International references (no Indonesian household stock guide yet): SE, NO, EE, PL, LV advise a 7-day stock, a radio, one week of cash, a stay-or-leave plan, and checking official sources."
+   },
+   "sources": [
+    "SE-MCF-2024",
+    "NO-DSB",
+    "EE-OLEVALMIS",
+    "PL-MSWIA-2025",
+    "LV-MOD-2024"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-032"
+  },
+  {
+   "id": "nuclear_shelter_knowledge",
+   "category": "plan_knowledge",
+   "priority": "important",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "nuclear"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tahu cara berlindung di dalam ruangan (nuklir/radiologi)",
+    "en": "Know how to shelter indoors (nuclear/radiological)"
+   },
+   "why": {
+    "id": "Masuk ke dalam, tutup jendela dan ventilasi, matikan AC, lepas pakaian luar, tetap min. 24 jam dan pantau info resmi. Tablet kalium iodida hanya atas instruksi otoritas; jangan diminum sendiri (D-023). Rujukan internasional, panduan BAPETEN belum terbaca.",
+    "en": "Go inside, close windows and vents, turn off AC, remove outer clothing, stay at least 24 hours and monitor official info. Potassium iodide tablets only on authority instruction; do not self-medicate (D-023). International references; BAPETEN guidance not yet read."
+   },
+   "sources": [
+    "US-CDC-RADIATION",
+    "UK-BEREADY-2026",
+    "FI-SUOMI",
+    "PL-MSWIA-2025",
+    "ID-BAPETEN-2017"
+   ],
+   "evidence": "DIBACA",
+   "decision": "D-023,D-033"
+  },
+  {
+   "id": "fridge_food_safety_knowledge",
+   "category": "plan_knowledge",
+   "priority": "extra",
+   "qty_mode": "boolean",
+   "unit": "-",
+   "per_person_day": null,
+   "per_household": 1,
+   "modifiers": {},
+   "gating": false,
+   "min_tier_gating": null,
+   "location": "home",
+   "scenarios": [
+    "power_outage"
+   ],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Tahu batas aman makanan di kulkas saat listrik padam",
+    "en": "Know food-safety limits in the fridge during outages"
+   },
+   "why": {
+    "id": "Kulkas tertutup aman sekitar 4 jam, freezer penuh sekitar 48 jam (FEMA, cuplikan). Buka sesedikit mungkin.",
+    "en": "A closed fridge is safe for about 4 hours, a full freezer about 48 hours (FEMA, snippet). Open as little as possible."
+   },
+   "sources": [
+    "US-FEMA-POWER"
+   ],
+   "evidence": "CUPLIKAN",
+   "verify": "Q1"
+  }
+ ]
+}
