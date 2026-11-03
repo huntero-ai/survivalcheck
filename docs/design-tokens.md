@@ -116,3 +116,17 @@ Ukuran sentuh:
 ## 8. Ikon
 
 SVG inline (tanpa font ikon/CDN), stroke 2 px, 24 px dalam target 44 px. Ikon dekoratif `aria-hidden="true"`; ikon tanpa teks wajib `aria-label` dari i18n (`a11y.*`).
+
+## 9. Pola komponen yang memakai token
+
+| Komponen | Token | Catatan aksesibilitas |
+|---|---|---|
+| Lencana tier | `--tier-N-fg/bg/accent`, `--r-sm` | Selalu: ikon + "Tier N" + nama. Tidak pernah warna saja. |
+| Tangga tier 5 segmen | `--tier-N-accent`, segmen kosong `--c-border` | `role="img"` dengan label "N dari 5 segmen terisi". |
+| Chip status (`✓ Cukup`, `△ Kurang`, `— Belum diisi`) | `--c-ok-*`, `--c-warn-*`, `--c-surface-2` | Ikon + teks. Kurang memakai warna **warn**, bukan danger. |
+| Kartu peringatan keselamatan (CO, kabel genset) | `--c-danger-*` | Ikon `⚠` + judul tebal. Satu-satunya tempat merah bersama error input. |
+| Catatan sumber / rujukan internasional | `--c-info-*` | Teks "Rujukan internasional" ada di dalam kartu. |
+| Stepper angka | `--c-border`, `--c-primary`, `--touch-min` | Tombol 44×44 px, nilai di tengah memakai `--fs-h2`. |
+| Tombol utama | `--c-primary`, `--c-on-primary`, tinggi 48 px | Fokus tampak jelas dengan `--c-focus`. |
+
+Catatan: seluruh rasio kontras tabel §1 dan §2 diperiksa ulang oleh D1 pada 2026-11-03 dengan rumus WCAG 2.1 dan sesuai angka di atas.
