@@ -1,26 +1,1278 @@
 [
-  {
-    "type": "research_status",
-    "country": "Indonesia",
-    "status": "failed_web_access",
-    "accessed": "2026-11-03",
-    "note": "WebFetch blocked by session network policy (getaddrinfo ENOTFOUND) for bnpb.go.id, www.bnpb.go.id, bpbd.jogjaprov.go.id, indonesiabaik.id, luk.tsipil.ugm.ac.id; curl blocked with proxy CONNECT 403. WebSearch works but yields only unverified summaries. No data recorded. Re-run after allowing domains listed in r5-indonesia.md section 2.",
-    "errors": [
-      {"tool": "WebFetch", "url": "https://bnpb.go.id/uploads/24/buku-data-bencana/6-buku-saku-cetakan-4-2019.pdf", "error": "getaddrinfo ENOTFOUND bnpb.go.id"},
-      {"tool": "WebFetch", "url": "https://www.bnpb.go.id/storage/app/media/uploads/migration/pubs/478.pdf", "error": "getaddrinfo ENOTFOUND www.bnpb.go.id"},
-      {"tool": "WebFetch", "url": "https://bpbd.jogjaprov.go.id/berita/siap-hadapi-darurat-mulai-dengan-tas-siaga-bencana-", "error": "getaddrinfo ENOTFOUND bpbd.jogjaprov.go.id"},
-      {"tool": "WebFetch", "url": "https://indonesiabaik.id/infografis/siap-hadapi-bencana-dengan-tas-siaga-bencana", "error": "getaddrinfo ENOTFOUND indonesiabaik.id"},
-      {"tool": "WebFetch", "url": "https://luk.tsipil.ugm.ac.id/artikel/2017BNPB-BukuSakuTanggapTangkasTangguhBencana.pdf", "error": "getaddrinfo ENOTFOUND luk.tsipil.ugm.ac.id"},
-      {"tool": "curl", "url": "https://bnpb.go.id/ (and sma.kemdikbud.go.id, www.bnpb.go.id)", "error": "CONNECT tunnel failed, response 403"}
-    ],
-    "unverified_leads": [
-      "https://bnpb.go.id/uploads/24/buku-data-bencana/6-buku-saku-cetakan-4-2019.pdf",
-      "https://www.bnpb.go.id/storage/app/media/uploads/migration/pubs/478.pdf",
-      "https://bnpb.go.id/buku/buku-saku-bencana",
-      "https://sma.kemdikbud.go.id/data/files/buku/Buku_Saku_Siaga_Bencana_bnpb_2019.pdf",
-      "https://bpbd.jogjaprov.go.id/berita/siap-hadapi-darurat-mulai-dengan-tas-siaga-bencana-"
-    ]
+ {
+  "country": "Indonesia",
+  "agency": "BNPB (Pusat Data, Informasi dan Komunikasi Kebencanaan) - buku 'Keluarga Siaga Bencana: Panduan Anti Panik Saat Gempa, Banjir & Krisis Darurat' (Agus Wibowo, Direktur Sistem PB)",
+  "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "2026 (Cetakan Pertama 2026; metadata PDF 2026-05-11)",
+  "evidence": "DIBACA",
+  "target_days": {
+   "min": 3,
+   "recommended": 3
   },
-  {"type": "province_risks", "data": []},
-  {"type": "emergency_numbers", "data": []}
+  "target_note": "'Tas Siaga 72 Jam'; 'keluarga harus bertahan sendiri selama 24-72 jam pertama'; tas siaga untuk 'keadaan darurat selama 3x24 jam'. Tidak ada rekomendasi stok rumah >3 hari.",
+  "water_l_per_person_day": 2,
+  "water_note": "'Air minum (minimal 2 liter/orang/hari)' di Isi Wajib Tas Siaga dan Checklist Bonus 1.",
+  "food_note": "Makanan siap saji tahan lama, biskuit energi, makanan bayi/susu/MPASI jika ada balita, sendok & alat makan sederhana. Versi hemat: air kemasan + mie instan. Tidak ada angka kkal/kg.",
+  "items": [
+   {
+    "name": "air minum",
+    "qty": "min. 2 L/orang/hari",
+    "note": "isi wajib tas siaga 72 jam",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "makanan siap saji tahan lama",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "biskuit energi",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "makanan bayi / susu / MPASI",
+    "qty": "tidak disebutkan",
+    "note": "jika ada balita",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "sendok & alat makan sederhana",
+    "qty": "tidak disebutkan",
+    "note": "checklist Bonus 1",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "senter + baterai cadangan",
+    "qty": "tidak disebutkan",
+    "note": "juga 'senter kecil di kamar'; 'gunakan senter, bukan lilin'",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "power bank",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "radio portable",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "peluit",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "masker",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "sarung tangan",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "obat pribadi",
+    "qty": "tidak disebutkan",
+    "note": "harus selalu ada dalam tas siaga (indikator evaluasi no.7)",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "obat penurun panas",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "perban & antiseptik",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "plester luka",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "minyak angin",
+    "qty": "tidak disebutkan",
+    "note": "ada di Isi Wajib, tidak ada di checklist Bonus",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "hand sanitizer",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "fotokopi KTP, KK, sertifikat/dokumen rumah, salinan buku tabungan",
+    "qty": "1 set",
+    "note": "simpan dalam plastik tahan air",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "nomor penting/darurat tercetak",
+    "qty": "1",
+    "note": "'simpan juga dalam bentuk cetak, bukan hanya di ponsel'",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "pakaian ganti",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "selimut tipis",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "jas hujan",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "uang tunai secukupnya",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "sepatu/alas kaki dekat tempat tidur",
+    "qty": "1/orang (tersirat)",
+    "note": "'karena gempa sering terjadi malam hari'",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "cadangan air bersih (ember/wadah besar)",
+    "qty": "tidak disebutkan",
+    "note": "diisi saat tahap siaga banjir; indikator 'cadangan air bersih saat musim hujan'",
+    "url": "https://perpustakaan.bnpb.go.id/inlislite/uploaded_files/temporary/DigitalCollection/OThjMzRiZDFlMDU2OWYzNzQ5ZjliYWI0Nzg3ODkxMTQxNTE0NDIzNg==.pdf",
+    "evidence": "DIBACA"
+   }
+  ],
+  "special_needs": [
+   "infant (susu/MPASI, perlengkapan bayi)",
+   "child (tas anak: camilan favorit, boneka kecil, senter kecil, masker, botol minum; libatkan anak)",
+   "elderly (obat rutin, kacamata cadangan, popok dewasa jika perlu, nomor keluarga besar; didampingi khusus)",
+   "medication (obat pribadi)",
+   "disability & pregnant (evakuasi diprioritaskan)"
+  ],
+  "scenario_items": {
+   "gempa": [
+    "Drop-Cover-Hold On; jangan lari saat guncangan",
+    "titik aman di dalam rumah (bawah meja kokoh / sudut tanpa jendela) + titik kumpul luar rumah (utama & cadangan)",
+    "alas kaki & senter dekat tempat tidur",
+    "jika tanda likuefaksi/longsor/api/gas/bangunan runtuh: evakuasi horizontal segera",
+    "cek potensi likuefaksi via InaRISK, DKMS, Info BMKG",
+    "matikan listrik & gas jika aman"
+   ],
+   "tsunami": [
+    "10 menit emas setelah gempa untuk ke tempat tinggi; jangan tunda demi barang",
+    "jika air laut surut/gemuruh: evakuasi tanpa menunggu instruksi resmi"
+   ],
+   "banjir": [
+    "tanda: hujan deras >1-2 jam, sungai meluap, peringatan BMKG/BPBD",
+    "dokumen dalam plastik kedap air",
+    "isi air bersih di ember/wadah besar",
+    "matikan listrik utama; lepas regulator LPG",
+    "mengungsi sebelum air selutut (arus 30 cm sudah berbahaya)",
+    "jika bertahan: pindah ke lantai atas, logistik di tempat tinggi, minum air dimasak mendidih",
+    "pasca: sarung tangan & sepatu boots, disinfektan, buang makanan terendam, pantau demam/diare/luka 3-7 hari"
+   ],
+   "listrik_padam": [
+    "kumpulkan keluarga",
+    "senter, bukan lilin",
+    "cek info resmi via radio/ponsel",
+    "jangan sebar info belum jelas"
+   ]
+  },
+  "unique_points": [
+   "Checklist tas siaga dengan skor: >80% SIAP, 50-80% PERLU DILENGKAPI, <50% BELUM SIAP",
+   "Evaluasi kesiapan keluarga 18 indikator skor 0-2 (0-12 Rawan, 13-24 Cukup Siaga, 25-36 Siap)",
+   "Tas siaga harus bisa diambil dalam 10 detik, dekat pintu keluar, tidak terkunci, diperiksa minimal 6 bulan sekali",
+   "1 tas utama keluarga + 1 tas kecil tambahan; rumah bertingkat: tas di lantai atas",
+   "Tas Siaga Versi Hemat: air kemasan, mie instan, senter sederhana, map plastik dokumen, obat yang sudah ada di rumah",
+   "Pembagian peran keluarga ditempel di dekat pintu",
+   "Teknik napas 4-4-4 x4 untuk kendalikan panik; Psychological First Aid sederhana",
+   "Simulasi minimal 2 kali setahun"
+  ]
+ },
+ {
+  "country": "Indonesia",
+  "agency": "BNPB - Buku Saku 'Tanggap Tangkas Tangguh Menghadapi Bencana' (cetakan ke-4 Maret 2019; cetakan ke-5 2020 menambah bab Pandemi COVID-19)",
+  "url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+  "url_alt": [
+   "https://www.bnpb.go.id/storage/app/media/uploads/24/buku-data-bencana/6-buku-saku-cetakan-4-2019.pdf",
+   "https://www.bnpb.go.id/buku/buku-saku-bencana",
+   "https://www.bnpb.go.id/buku/buku-saku-tanggap-tangkas-tangguh-cetakan-kelima-2020",
+   "https://www.bnpb.go.id/storage/app/media/uploads/migration/pubs/478.pdf"
+  ],
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "2020 (cetakan ke-5; PDF dibuat 2020-11-26). Isi Tas Siaga sama dengan cetakan ke-4 (2019). Edisi 2012 (pubs/478.pdf) tidak memuat daftar isi tas.",
+  "evidence": "DIBACA",
+  "target_days": {
+   "min": 3,
+   "recommended": 3
+  },
+  "target_note": "'Contoh Kebutuhan Dasar Tas Siaga Bencana Untuk 3 Hari'; 'Membuat persiapan untuk hidup mandiri selama sekurangnya tiga hari, misalnya persiapan tas siaga bencana, penyediaan makanan dan air minum' (bab Banjir).",
+  "water_l_per_person_day": null,
+  "water_note": "Tidak ada angka liter. 'Air minum setidaknya bisa mendukung kebutuhan selama kurang lebih 3 hari'.",
+  "food_note": "Makanan ringan tahan lama seperti mie instan, biskuit, abon, coklat. Tidak ada angka kkal/kg.",
+  "items": [
+   {
+    "name": "surat-surat penting (surat tanah, surat kendaraan, ijazah, akte kelahiran, dsb.)",
+    "qty": "tidak disebutkan",
+    "note": "tas tahan air (waterproof)",
+    "url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "pakaian untuk 3 hari (pakaian dalam, celana panjang, jaket, selimut, handuk, jas hujan)",
+    "qty": "3 hari",
+    "note": "",
+    "url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "makanan ringan tahan lama (mie instan, biskuit, abon, coklat)",
+    "qty": "~3 hari",
+    "note": "",
+    "url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "air minum / air mineral",
+    "qty": "~3 hari",
+    "note": "tanpa angka liter",
+    "url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "kotak obat/P3K (obat pribadi & obat umum)",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "alat bantu penerangan (senter, headlamp, korek api, lilin)",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "uang tunai secukupnya",
+    "qty": "untuk perbekalan ~3 hari",
+    "note": "",
+    "url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "radio/ponsel + baterai/charger/powerbank",
+    "qty": "tidak disebutkan",
+    "note": "untuk memantau informasi bencana",
+    "url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "peluit",
+    "qty": "1",
+    "note": "meminta pertolongan",
+    "url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "masker",
+    "qty": "tidak disebutkan",
+    "note": "menyaring udara kotor/tercemar",
+    "url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "perlengkapan mandi (sabun, sikat gigi+odol, sisir, cotton bud)",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA"
+   }
+  ],
+  "special_needs": [
+   "disability (bab Mitigasi untuk Penyandang Disabilitas)",
+   "pets (tas darurat hewan)",
+   "vulnerable: anak, lansia, ibu hamil, disabilitas diidentifikasi dalam rencana keluarga"
+  ],
+  "pet_kit": {
+   "items": [
+    "kalung & tali",
+    "kotak P3K cadangan, fotokopi identitas hewan",
+    "makanan kaleng dan air (untuk 3-5 hari)",
+    "kantung sekali pakai, sabun pembersih",
+    "kandang/carrier hewan kecil",
+    "selimut/kain"
+   ],
+   "other": [
+    "kalung & tag identitas (microchip)",
+    "simpan foto hewan",
+    "ketahui lokasi penitipan hewan (beberapa pengungsian tidak menerima hewan)",
+    "stiker 'peringatan hewan peliharaan' di jendela"
+   ],
+   "url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+   "evidence": "DIBACA"
+  },
+  "scenario_items": {
+   "gempa": [
+    "latihan merunduk/lindungi kepala/berpegangan",
+    "siapkan alat pemadam kebakaran, alat keselamatan standar, persediaan obat-obatan",
+    "lindungi kepala dengan bantal atau helm",
+    "matikan kompor & cabut peralatan listrik"
+   ],
+   "tsunami": [
+    "kenali tanda: gempa lama & kuat, air laut surut, gemuruh",
+    "evakuasi berjalan kaki, hindari jembatan; jika macet tinggalkan kendaraan",
+    "tsunami bisa datang sampai lima kali; jangan kembali sebelum dinyatakan aman"
+   ],
+   "erupsi": [
+    "siapkan masker dan kacamata pelindung untuk debu vulkanik",
+    "logistik: makanan siap saji, senter & baterai cadangan, uang tunai cukup, obat khusus sesuai pemakai",
+    "jangan pakai lensa kontak; masker/kain basah; baju lengan panjang, celana panjang, topi",
+    "bersihkan atap dari abu (beratnya bisa merobohkan atap)",
+    "pahami status Level I-IV dan KRB I-III; pantau vsi.esdm.go.id / aplikasi MAGMA"
+   ],
+   "banjir": [
+    "hidup mandiri sekurangnya 3 hari (tas siaga, makanan, air minum)",
+    "tahu cara mematikan air, listrik, gas",
+    "dokumentasikan harta (foto) & simpan dokumen di tempat aman",
+    "pertimbangkan asuransi banjir",
+    "siapkan penampungan air bersih",
+    "gunakan tongkat untuk cek pijakan saat berjalan di air"
+   ],
+   "longsor": [
+    "evakuasi menjauhi suara gemuruh / sirine peringatan longsor",
+    "waspada longsor susulan bila hujan",
+    "(edisi 2012) tanda: retakan vertikal tebing, air tanah muncul tiba-tiba, air sumur dekat tebing keruh, longsoran batu kecil"
+   ],
+   "cuaca_ekstrem": [
+    "puting beliung: bawa barang masuk, kunci pintu/jendela, matikan listrik",
+    "petir: membungkuk, duduk, peluk lutut; jangan tiarap",
+    "jangan berlindung di bawah pohon besar/papan reklame"
+   ],
+   "kekeringan": [
+    "tandon air di pekarangan untuk tampung air hujan",
+    "gunakan air dengan bijak; atur jadwal penggunaan air",
+    "lapor & minta bantuan air bersih ke pihak berwenang"
+   ],
+   "karhutla_asap": [
+    "tetap di dalam rumah, tutup akses udara berasap",
+    "nyalakan AC/filtrasi udara",
+    "masker; N95 untuk perlindungan lebih baik",
+    "cukupi air putih, buah, makanan bergizi",
+    "penderita jantung/paru segera ke dokter",
+    "kualitas udara PM10: Baik 0-50, Sedang 50-150, Tidak Sehat 150-250, Sangat Tidak Sehat 250-350, Berbahaya >350"
+   ],
+   "pandemi": [
+    "(cetakan 2020) cuci tangan dengan sabun + siapkan hand sanitizer",
+    "jaga jarak minimal 1 meter",
+    "masker di tempat umum",
+    "etika batuk/bersin",
+    "isolasi diri & konsultasi telemedis bila bergejala",
+    "disinfeksi permukaan yang sering disentuh"
+   ],
+   "kerusuhan_konflik": [
+    "(edisi 2012) hindari kerumunan demo",
+    "laporkan kerusuhan/kekerasan ke Kepolisian",
+    "(edisi 2012, Teroris) laporkan perilaku mencurigakan ke pihak berwenang"
+   ],
+   "nuklir_radiologi": [
+    "tidak ada panduan khusus warga; hanya klasifikasi B3 Kelas 7 Radioaktif dan rujukan PP 58/2015"
+   ]
+  },
+  "unique_points": [
+   "Tas Siaga Bencana (TSB) = tas tahan air; tujuan bertahan hidup saat bantuan belum datang & memudahkan evakuasi",
+   "Rencana darurat keluarga 7 butir: analisis ancaman, titik kumpul, nomor kontak, rute evakuasi, lokasi mematikan air/gas/listrik, titik aman, anggota rentan",
+   "26 April = Hari Kesiapsiagaan Bencana",
+   "Halaman identitas pemilik + golongan darah + catatan medis (cetakan 2020)",
+   "Daftar aplikasi: inaRISK, MAGMA Indonesia, Info BMKG, dll.",
+   "Peringatan dini puting beliung sulit diprediksi (skala lokal)"
+  ]
+ },
+ {
+  "country": "Indonesia",
+  "agency": "BMKG (Badan Meteorologi, Klimatologi, dan Geofisika)",
+  "url": "https://www.bmkg.go.id/gempabumi/mitigasi/antisipasi-gempabumi",
+  "url_alt": [
+   "https://www.bmkg.go.id/gempabumi/mitigasi/edukasi-gempabumi-tsunami",
+   "https://content.bmkg.go.id/wp-content/uploads/BMKG_Buku-Saku-Gempabumi-dan-Tsunami.pdf",
+   "https://www.bmkg.go.id/berita/daerah/bmkg-soroti-kerentanan-pesisir-baubau-dorong-mitigasi-gempa-bumi-hingga-banjir-rob",
+   "https://www.bmkg.go.id/siaran-pers/bmkg-evakuasi-ke-tempat-aman-bukan-eksodus",
+   "https://www.bmkg.go.id/berita/kesiapsiagaan-hadapi-kemarau-bmkg-ajak-pemerintah-daerah-perkuat-antisipasi-kekeringan"
+  ],
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "halaman Antisipasi Gempa: tidak disebutkan; Buku Saku Gempabumi & Tsunami: 2020 (PDF dibuat 2020-10-19); berita Baubau 2026-06-25; berita kemarau 2026-06-05",
+  "evidence": "DIBACA",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "target_note": "Halaman BMKG tidak menyebut durasi. Deskripsi video 'Gerakan Sadar Tas Siaga Bencana' di halaman Edukasi menyebut tas untuk bertahan 'selama 72 jam pertama setelah terjadi bencana'.",
+  "water_l_per_person_day": null,
+  "water_note": "tidak disebutkan (hanya 'makanan suplemen dan air' / 'air mineral').",
+  "food_note": "'Makanan suplemen' (tanpa jumlah).",
+  "items": [
+   {
+    "name": "kotak P3K",
+    "qty": "1",
+    "note": "'Alat yang harus ada di setiap tempat'",
+    "url": "https://www.bmkg.go.id/gempabumi/mitigasi/antisipasi-gempabumi",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "senter/lampu baterai",
+    "qty": "1",
+    "note": "",
+    "url": "https://www.bmkg.go.id/gempabumi/mitigasi/antisipasi-gempabumi",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "radio",
+    "qty": "1",
+    "note": "",
+    "url": "https://www.bmkg.go.id/gempabumi/mitigasi/antisipasi-gempabumi",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "makanan suplemen dan air",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://www.bmkg.go.id/gempabumi/mitigasi/antisipasi-gempabumi",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "tas siaga bencana",
+    "qty": "1",
+    "note": "Buku Saku BMKG hal. 'Perlengkapan yang wajib dimiliki di rumah Anda' (dibaca dari gambar halaman)",
+    "url": "https://content.bmkg.go.id/wp-content/uploads/BMKG_Buku-Saku-Gempabumi-dan-Tsunami.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "pengikat perabot (lemari/kabinet dipaku/diikat ke dinding)",
+    "qty": "tidak disebutkan",
+    "note": "barang berat di bagian bawah",
+    "url": "https://www.bmkg.go.id/gempabumi/mitigasi/antisipasi-gempabumi",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "catatan nomor telepon penting",
+    "qty": "1",
+    "note": "",
+    "url": "https://www.bmkg.go.id/gempabumi/mitigasi/antisipasi-gempabumi",
+    "evidence": "DIBACA"
+   }
+  ],
+  "special_needs": [
+   "disability (BMKG/JICA booklet siaga gempa & tsunami untuk penyandang disabilitas, termasuk netra; 2025)"
+  ],
+  "scenario_items": {
+   "gempa": [
+    "perabot ditempel/diikat ke dinding",
+    "bahan mudah terbakar di wadah tidak mudah pecah",
+    "belajar P3K & pakai alat pemadam kebakaran",
+    "setelah gempa: cek kebakaran, kebocoran gas, korsleting, pipa air; jangan masuk bangunan rusak"
+   ],
+   "tsunami": [
+    "Evakuasi mandiri: gempa kuat yang dirasakan di pantai = peringatan dini tsunami (Kepala BMKG, 2021)",
+    "Rumus '20-20-20' (disampaikan BMKG Baubau 2026): guncangan >20 detik, ~20 menit sebelum tsunami lokal, evakuasi ke ketinggian min. 20 m dpl",
+    "3 Langkah Tanggap Tsunami: Tanggap Gempa - Tanggap Peringatan (status AWAS/SIAGA = warga harus evakuasi; WASPADA = jauhi pantai & tepi sungai) - Tanggap Evakuasi (ikuti jalur/rambu; jika tak tahu lokasi aman, lari sejauh mungkin dari pantai/ke tempat tinggi)"
+   ],
+   "kekeringan": [
+    "Musim kemarau 2026 diprediksi lebih kering dari normal; El Nino 2026 (indeks ENSO +1,0 akhir Mei 2026); durasi kemarau 3-7 bulan tergantung wilayah. Imbauan ditujukan ke pemda; tidak ada angka stok air rumah tangga."
+   ],
+   "cuaca_ekstrem": [
+    "Peringatan dini cuaca/curah hujan/siklon/gelombang tinggi/rob/kekeringan tersedia di bmkg.go.id; Contact Center 196 (dibaca di header situs)"
+   ]
+  },
+  "unique_points": [
+   "BMKG adalah institusi berwenang info gempa & peringatan tsunami (InaTEWS)",
+   "Pastikan informasi hanya dari kanal resmi BMKG yang terverifikasi",
+   "Contact Center BMKG 196 / (021) 196"
+  ]
+ },
+ {
+  "country": "Indonesia",
+  "agency": "Badan Geologi - PVMBG (Kementerian ESDM), MAGMA Indonesia",
+  "url": "https://esdm.go.id/id/media-center/arsip-berita/gunung-ibu-erupsi-warga-diminta-waspadai-hujan-abu",
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "2025-08-04 (berita Gunung Ibu)",
+  "evidence": "DIBACA",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "water_l_per_person_day": null,
+  "food_note": "tidak disebutkan",
+  "items": [
+   {
+    "name": "masker (pelindung hidung dan mulut)",
+    "qty": "1/orang (tersirat)",
+    "note": "saat hujan abu, bila beraktivitas di luar rumah",
+    "url": "https://esdm.go.id/id/media-center/arsip-berita/gunung-ibu-erupsi-warga-diminta-waspadai-hujan-abu",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "kacamata pelindung",
+    "qty": "1/orang (tersirat)",
+    "note": "melindungi mata dari partikel abu vulkanik",
+    "url": "https://esdm.go.id/id/media-center/arsip-berita/gunung-ibu-erupsi-warga-diminta-waspadai-hujan-abu",
+    "evidence": "DIBACA"
+   }
+  ],
+  "special_needs": [],
+  "scenario_items": {
+   "erupsi": [
+    "patuhi radius bahaya dari kawah sesuai rekomendasi PVMBG",
+    "jangan sebarkan hoaks; ikuti arahan pemda dan PVMBG / Pos Pengamatan",
+    "pantau MAGMA Indonesia (aplikasi Android, vsi.esdm.go.id, magma.esdm.go.id)"
+   ],
+   "gerakan_tanah": [
+    "[CUPLIKAN] PVMBG menerbitkan peta prakiraan wilayah potensi gerakan tanah bulanan di vsi.esdm.go.id; halaman spesifik belum dibaca"
+   ]
+  },
+  "unique_points": [
+   "Status gunung api Level I Normal - II Waspada - III Siaga - IV Awas (dirinci di Buku Saku BNPB)"
+  ],
+  "access_note": "magma.esdm.go.id: koneksi di-reset saat diunduh; vsi.esdm.go.id terjangkau tetapi halaman gerakan tanah tidak dibaca."
+ },
+ {
+  "country": "Indonesia",
+  "agency": "Kementerian Kesehatan RI",
+  "url": "https://kemkes.go.id/id/kebutuhan-air-bersih-pada-musim-banjir",
+  "url_alt": [
+   "https://kemkes.go.id/id/antisipasi-penyakit-menular-saat-banjir",
+   "https://kemkes.go.id/id/menkes-pakai-masker-dan-pantau-kualitas-udara-untuk-cegah-dampak-asap-karhutla",
+   "https://www.kemkes.go.id/id/kemenkes-perkuat-perlindungan-kesehatan-warga-terdampak-kabut-asap-di-palangka-raya",
+   "https://kemkes.go.id/id/kemenkes-ajak-warga-terdampak-banjir-waspadai-risiko-wabah-di-pengungsian",
+   "https://kemkes.go.id/id/akses-darurat-medis-119-kini-bisa-melalui-satusehat-mobile"
+  ],
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "air bersih: 2014-01-13; penyakit menular banjir: 2012-04-07; kabut asap: 2026-08-21 & 2026-10-23; wabah pengungsian: 2025-12-17",
+  "evidence": "DIBACA",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "water_l_per_person_day": 5,
+  "water_note": "Kebutuhan minimal masak, makan, minum saat pengungsian: 5 L/orang/hari pada hari pertama, 20 L/orang/hari hari kedua dst. (Dirjen P2PL, 2014). Ini standar pengungsian, bukan stok rumah tangga.",
+  "food_note": "tidak disebutkan",
+  "items": [
+   {
+    "name": "tawas (aluminium sulfat)",
+    "qty": "1/2 sendok teh per 20 L air",
+    "note": "aduk 5 menit, endapkan 10-20 menit",
+    "url": "https://kemkes.go.id/id/kebutuhan-air-bersih-pada-musim-banjir",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "PAC (Poly Aluminium Chloride)",
+    "qty": "1 sachet per 20 L",
+    "note": "diamkan 10-20 menit",
+    "url": "https://kemkes.go.id/id/kebutuhan-air-bersih-pada-musim-banjir",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "penjernih air K-116",
+    "qty": "1 sendok makan per 200 L (2-3 sdm bila sangat keruh)",
+    "note": "",
+    "url": "https://kemkes.go.id/id/kebutuhan-air-bersih-pada-musim-banjir",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "kaporit",
+    "qty": "teks sumber: '14.4 mg kaporit (1 sendok teh peres=3 gram) untuk 20 liter air' (teks sumber rancu, perlu klarifikasi)",
+    "note": "desinfeksi",
+    "url": "https://kemkes.go.id/id/kebutuhan-air-bersih-pada-musim-banjir",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "tablet desinfektan aquatab 8,5 mg",
+    "qty": "1 tablet per 20 L air bersih",
+    "note": "",
+    "url": "https://kemkes.go.id/id/kebutuhan-air-bersih-pada-musim-banjir",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "tincture iodine 7%",
+    "qty": "2 tetes per 1 L air",
+    "note": "aduk, diamkan 30 menit sebelum diminum",
+    "url": "https://kemkes.go.id/id/kebutuhan-air-bersih-pada-musim-banjir",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "masker N95",
+    "qty": "1+/orang (tersirat)",
+    "note": "kabut asap: pakai dengan benar tanpa celah atas/bawah/samping",
+    "url": "https://www.kemkes.go.id/id/kemenkes-perkuat-perlindungan-kesehatan-warga-terdampak-kabut-asap-di-palangka-raya",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "sepatu pelindung",
+    "qty": "tidak disebutkan",
+    "note": "bila terpaksa ke daerah banjir (cegah leptospirosis)",
+    "url": "https://kemkes.go.id/id/antisipasi-penyakit-menular-saat-banjir",
+    "evidence": "DIBACA"
+   }
+  ],
+  "special_needs": [
+   "infant/toddler, pregnant, elderly: kurangi aktivitas luar saat kabut asap",
+   "asma/penyakit paru/jantung: kelompok rentan asap"
+  ],
+  "scenario_items": {
+   "banjir": [
+    "waspadai 7 penyakit: diare, DBD, leptospirosis, ISPA, penyakit kulit, saluran cerna lain, perburukan penyakit kronik",
+    "cuci tangan dengan sabun; rebus air minum hingga mendidih setiap hari",
+    "3M (mengubur, menguras, menutup) untuk DBD",
+    "hindari bermain air banjir terutama bila ada luka"
+   ],
+   "karhutla_asap": [
+    "kurangi aktivitas luar rumah saat kualitas udara buruk",
+    "N95 jika harus keluar",
+    "pantau indeks kualitas udara via aplikasi resmi",
+    "ke puskesmas bila sesak napas, batuk menetap, nyeri dada, iritasi mata berat",
+    "sebagian besar ISPA bisa dirawat di rumah dengan istirahat & minum cukup"
+   ],
+   "pandemi_wabah": [
+    "di pengungsian: etika batuk, masker, kebersihan tangan; segera lapor gejala",
+    "imunisasi rutin & kejar tetap berjalan (risiko KLB PD3I: campak, pertusis)",
+    "[CUPLIKAN] Sep 2026: imbauan masker bagi yang bergejala flu (Influenza A(H3N2) subclade K) - sumber media, rilis resmi belum dibaca"
+   ]
+  },
+  "unique_points": [
+   "Darurat medis 119 (SPGDT) bisa diakses lewat aplikasi SATUSEHAT Mobile (2024)",
+   "Halo Kemenkes 1500-567"
+  ],
+  "gaps": [
+   "Daftar isi kotak P3K rumah tangga resmi Kemenkes: tidak ditemukan pada halaman yang dibaca"
+  ]
+ },
+ {
+  "country": "Indonesia",
+  "agency": "BAPETEN (Badan Pengawas Tenaga Nuklir); BRIN",
+  "url": "https://www.bapeten.go.id/dokumen/document-item/unduh?filename=2017_Pedoman_perencanaan_kesiapsiagaan_dan_penanggulangan_kedaruratan_reaktor_nuklir.pdf",
+  "url_alt": [
+   "https://bapeten.go.id/berita/gladi-lapang-nasional-penanggulangan-kedaruratan-nuklir-134826?lang=id"
+  ],
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "2017 (pedoman, belum dibaca)",
+  "evidence": "CUPLIKAN",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "water_l_per_person_day": null,
+  "food_note": "tidak disebutkan",
+  "items": [],
+  "special_needs": [],
+  "scenario_items": {
+   "nuklir_radiologi": [
+    "[CUPLIKAN] Pedoman BAPETEN 2017 tentang perencanaan kesiapsiagaan & penanggulangan kedaruratan reaktor nuklir menyebut tindakan protektif luar tapak: berlindung (sheltering), evakuasi, dan distribusi tablet KI oleh/atas arahan otoritas; ambang dosis tiroid disebut 50 mSv dalam 7 hari (dari ringkasan WebSearch, PDF tidak terbaca)",
+    "[CUPLIKAN] Gladi Lapang Nasional 2016 di Puspiptek Serpong: tablet KI dibagikan ke pekerja fasilitas dalam simulasi",
+    "Panduan BAPETEN/BRIN untuk warga umum tentang stok rumah tangga atau konsumsi mandiri KI: tidak ditemukan"
+   ]
+  },
+  "unique_points": [
+   "Sikap resmi KI yang terbaca: KI adalah tindakan protektif yang didistribusikan dalam kerangka penanggulangan kedaruratan reaktor, bukan untuk konsumsi mandiri (berdasarkan cuplikan; perlu verifikasi)"
+  ],
+  "access_note": "bapeten.go.id & www.bapeten.go.id membalas HTTP 403 (situs asal) untuk semua halaman/PDF; BRIN tidak memberi hasil relevan di WebSearch."
+ },
+ {
+  "country": "Indonesia",
+  "agency": "BPBD Daerah Istimewa Yogyakarta",
+  "url": "https://bpbd.jogjaprov.go.id/berita/siap-hadapi-darurat-mulai-dengan-tas-siaga-bencana-",
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "2024-09-20",
+  "evidence": "DIBACA",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "water_l_per_person_day": null,
+  "food_note": "mi instan, air mineral, biskuit, abon atau makanan/minuman tahan lama lain (bersumber Buku Saku BNPB)",
+  "items": [
+   {
+    "name": "dokumen penting (ijazah, sertifikat tanah, surat kendaraan)",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://bpbd.jogjaprov.go.id/berita/siap-hadapi-darurat-mulai-dengan-tas-siaga-bencana-",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "kotak P3K + obat pribadi & obat umum",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://bpbd.jogjaprov.go.id/berita/siap-hadapi-darurat-mulai-dengan-tas-siaga-bencana-",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "makanan ringan & minuman tahan lama",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://bpbd.jogjaprov.go.id/berita/siap-hadapi-darurat-mulai-dengan-tas-siaga-bencana-",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "senter, headlamp, korek api, lilin",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://bpbd.jogjaprov.go.id/berita/siap-hadapi-darurat-mulai-dengan-tas-siaga-bencana-",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "peluit",
+    "qty": "1",
+    "note": "",
+    "url": "https://bpbd.jogjaprov.go.id/berita/siap-hadapi-darurat-mulai-dengan-tas-siaga-bencana-",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "perlengkapan mandi",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://bpbd.jogjaprov.go.id/berita/siap-hadapi-darurat-mulai-dengan-tas-siaga-bencana-",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "ponsel + powerbank",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://bpbd.jogjaprov.go.id/berita/siap-hadapi-darurat-mulai-dengan-tas-siaga-bencana-",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "pakaian ganti (baju, celana, jaket)",
+    "qty": "tidak disebutkan",
+    "note": "",
+    "url": "https://bpbd.jogjaprov.go.id/berita/siap-hadapi-darurat-mulai-dengan-tas-siaga-bencana-",
+    "evidence": "DIBACA"
+   }
+  ],
+  "special_needs": [],
+  "scenario_items": {},
+  "unique_points": [
+   "Menyatakan tas disiapkan 'untuk setiap anggota keluarga', bahan tahan air",
+   "Pusdalops BPBD DIY (0274) 555585, WA (0274) 555584"
+  ],
+  "other_bpbd": {
+   "BPBD DKI Jakarta": "bpbd.jakarta.go.id terjangkau tetapi halaman tas siaga tidak ditemukan; [CUPLIKAN] media (koran-jakarta, 2026-02-04) mengutip BPBD DKI soal 'tas siaga 3 hari' - bukan sumber resmi",
+   "BPBD Jawa Barat": "bpbd.jabarprov.go.id membalas HTTP 403"
+  }
+ },
+ {
+  "country": "Indonesia",
+  "agency": "PMI (Palang Merah Indonesia) - sumber sekunder",
+  "source_tier": "secondary",
+  "url": "https://pmi.or.id/",
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "tidak disebutkan",
+  "evidence": "tidak ada",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "water_l_per_person_day": null,
+  "food_note": "tidak disebutkan",
+  "items": [],
+  "special_needs": [],
+  "scenario_items": {},
+  "unique_points": [
+   "Situs pmi.or.id dirender JavaScript; tidak ada panduan tas siaga/P3K PMI yang berhasil dibaca atau ditemukan di WebSearch"
+  ]
+ },
+ {
+  "country": "Indonesia",
+  "agency": "Kemhan / Kemenko Polkam (konflik, darurat sipil)",
+  "url": "https://jdih.kemenkeu.go.id/fulltext/1959/23TAHUN1959PERPPU.htm",
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "1959 (Perppu 23/1959)",
+  "evidence": "CUPLIKAN",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "water_l_per_person_day": null,
+  "food_note": "tidak disebutkan",
+  "items": [],
+  "special_needs": [],
+  "scenario_items": {
+   "konflik": [
+    "Panduan praktis resmi untuk warga sipil (stok, berlindung) dari Kemhan/Kemenko Polkam: tidak ditemukan",
+    "[CUPLIKAN] Dasar hukum keadaan bahaya: Perppu 23/1959 (darurat sipil / darurat militer / keadaan perang)",
+    "Panduan perilaku yang ada hanya dari BNPB (Kerusuhan Sosial, Teroris; edisi 2012)"
+   ]
+  },
+  "unique_points": []
+ },
+ {
+  "type": "province_risks",
+  "source": "BNPB, Buku Indeks Risiko Bencana Indonesia (IRBI) Tahun 2024 (PDF dibuat 2025-05-02); 'dominant_hazards' = bencana paling banyak terjadi menurut DIBI 2024 seperti dikutip di profil provinsi; 'hazards_exposed' = daftar 'ANCAMAN BENCANA' di profil provinsi",
+  "accessed": "2026-11-03",
+  "evidence": "DIBACA",
+  "note": "IRBI 2025 ada di https://inarisk.bnpb.go.id/IRBI-2025 tetapi berupa flipbook Flash, tidak terbaca.",
+  "data": [
+   {
+    "province": "Aceh",
+    "dominant_hazards": "banjir, cuaca ekstrem, karhutla",
+    "hazards_exposed": "gempa bumi, tsunami, gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem & abrasi, karhutla",
+    "irbi_2024": 144.29,
+    "risk_class_2024": "tinggi",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Sumatera Utara",
+    "dominant_hazards": "banjir, cuaca ekstrem, karhutla",
+    "hazards_exposed": "gempa bumi, tsunami, gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem & abrasi, karhutla",
+    "irbi_2024": 139.84,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Sumatera Barat",
+    "dominant_hazards": "banjir, tanah longsor, karhutla",
+    "hazards_exposed": "gempa bumi, tsunami, gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem & abrasi, karhutla",
+    "irbi_2024": 142.55,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Riau",
+    "dominant_hazards": "banjir, gelombang pasang & abrasi, karhutla",
+    "hazards_exposed": "gempa bumi, tsunami, gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem & abrasi, karhutla",
+    "irbi_2024": 137.69,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Jambi",
+    "dominant_hazards": "banjir, karhutla",
+    "hazards_exposed": "gempa bumi, gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem & abrasi, karhutla",
+    "irbi_2024": 138.02,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Sumatera Selatan",
+    "dominant_hazards": "banjir, cuaca ekstrem, karhutla",
+    "hazards_exposed": "gempa bumi, tsunami, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem/abrasi, karhutla",
+    "irbi_2024": 131.05,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Bengkulu",
+    "dominant_hazards": "banjir, cuaca ekstrem, karhutla",
+    "hazards_exposed": "gempa bumi, tsunami, gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem & abrasi, karhutla",
+    "irbi_2024": 144.08,
+    "risk_class_2024": "tinggi",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Lampung",
+    "dominant_hazards": "banjir, cuaca ekstrem, kekeringan",
+    "hazards_exposed": "gempa bumi, tsunami, letusan gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem/abrasi, karhutla",
+    "irbi_2024": 130.1,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Kepulauan Bangka Belitung",
+    "dominant_hazards": "banjir, cuaca ekstrem, karhutla",
+    "hazards_exposed": "gempa bumi, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem & abrasi, karhutla",
+    "irbi_2024": 143.42,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Kepulauan Riau",
+    "dominant_hazards": "banjir, cuaca ekstrem, karhutla",
+    "hazards_exposed": "tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem & abrasi, karhutla",
+    "irbi_2024": 109.24,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "DKI Jakarta",
+    "dominant_hazards": "banjir, cuaca ekstrem",
+    "hazards_exposed": "gempa bumi, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem/abrasi",
+    "irbi_2024": 59.29,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Jawa Barat",
+    "dominant_hazards": "banjir, tanah longsor, cuaca ekstrem",
+    "hazards_exposed": "gempa bumi, tsunami, letusan gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, karhutla, gelombang ekstrem/abrasi",
+    "irbi_2024": 114.15,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Jawa Tengah",
+    "dominant_hazards": "banjir, tanah longsor, cuaca ekstrem",
+    "hazards_exposed": "gempa bumi, tsunami, letusan gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem/abrasi, karhutla",
+    "irbi_2024": 99.61,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "DI Yogyakarta",
+    "dominant_hazards": "cuaca ekstrem, kekeringan",
+    "hazards_exposed": "gempa bumi, letusan gunung api, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem, tsunami",
+    "irbi_2024": 102.83,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Jawa Timur",
+    "dominant_hazards": "banjir, cuaca ekstrem, tanah longsor, karhutla",
+    "hazards_exposed": "gempa bumi, letusan gunung api, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem, tsunami",
+    "irbi_2024": 113.7,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Banten",
+    "dominant_hazards": "banjir",
+    "hazards_exposed": "gempa bumi, tsunami, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem/abrasi, karhutla",
+    "irbi_2024": 128.64,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Bali",
+    "dominant_hazards": "tanah longsor, banjir, gempa bumi",
+    "hazards_exposed": "gempa bumi, tsunami, letusan gunung api, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem",
+    "irbi_2024": 111.28,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Nusa Tenggara Barat",
+    "dominant_hazards": "gempa bumi, tsunami, banjir, tanah longsor",
+    "hazards_exposed": "gempa bumi, tsunami, letusan gunung api, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem",
+    "irbi_2024": 113.64,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Nusa Tenggara Timur",
+    "dominant_hazards": "banjir, gempa bumi, tsunami, tanah longsor",
+    "hazards_exposed": "gempa bumi, tsunami, gunung api, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem",
+    "irbi_2024": 131.85,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Kalimantan Barat",
+    "dominant_hazards": "banjir, tanah longsor, karhutla, angin puting beliung",
+    "hazards_exposed": "gempa bumi, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem",
+    "irbi_2024": 131.66,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Kalimantan Tengah",
+    "dominant_hazards": "banjir, tanah longsor",
+    "hazards_exposed": "gempa bumi, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem",
+    "irbi_2024": 117.48,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Kalimantan Selatan",
+    "dominant_hazards": "banjir, cuaca ekstrem, karhutla",
+    "hazards_exposed": "gempa bumi, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem, tsunami",
+    "irbi_2024": 122.11,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Kalimantan Timur",
+    "dominant_hazards": "banjir, karhutla, cuaca ekstrem, tanah longsor",
+    "hazards_exposed": "gempa bumi, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem",
+    "irbi_2024": 136.11,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Kalimantan Utara",
+    "dominant_hazards": "banjir, cuaca ekstrem, tanah longsor, karhutla",
+    "hazards_exposed": "tsunami, banjir, tanah longsor, karhutla, kekeringan, gelombang ekstrem & abrasi, cuaca ekstrem",
+    "irbi_2024": 131.84,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Sulawesi Utara",
+    "dominant_hazards": "banjir, cuaca ekstrem",
+    "hazards_exposed": "gempa bumi, letusan gunung api, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem, tsunami",
+    "irbi_2024": 125.91,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Sulawesi Tengah",
+    "dominant_hazards": "banjir",
+    "hazards_exposed": "gempa bumi, tsunami, banjir, banjir bandang, tanah longsor, karhutla, kekeringan, gelombang ekstrem, abrasi",
+    "irbi_2024": 137.25,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Sulawesi Selatan",
+    "dominant_hazards": "banjir, cuaca ekstrem",
+    "hazards_exposed": "gempa bumi, banjir, cuaca ekstrem, tsunami, banjir bandang, tanah longsor, karhutla, kekeringan, gelombang ekstrem & abrasi",
+    "irbi_2024": 140.76,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Sulawesi Tenggara",
+    "dominant_hazards": "banjir, cuaca ekstrem",
+    "hazards_exposed": "gempa bumi, tsunami, banjir, cuaca ekstrem, tanah longsor, karhutla, kekeringan, gelombang ekstrem",
+    "irbi_2024": 151.77,
+    "risk_class_2024": "tinggi",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Gorontalo",
+    "dominant_hazards": "banjir",
+    "hazards_exposed": "gempa bumi, tsunami, banjir, tanah longsor, karhutla, kekeringan, gelombang ekstrem & abrasi",
+    "irbi_2024": 116.02,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Sulawesi Barat",
+    "dominant_hazards": "banjir",
+    "hazards_exposed": "gempa bumi, tsunami, banjir, tanah longsor, karhutla, kekeringan, gelombang ekstrem & abrasi",
+    "irbi_2024": 155.69,
+    "risk_class_2024": "tinggi",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Maluku",
+    "dominant_hazards": "banjir, cuaca ekstrem",
+    "hazards_exposed": "gempa bumi, tsunami, banjir, tanah longsor, karhutla, kekeringan, gelombang ekstrem & abrasi",
+    "irbi_2024": 161.5,
+    "risk_class_2024": "tinggi",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Maluku Utara",
+    "dominant_hazards": "banjir, cuaca ekstrem, gempa bumi",
+    "hazards_exposed": "gempa bumi, tsunami, banjir, letusan gunung api, tanah longsor, karhutla, kekeringan, gelombang ekstrem & abrasi, cuaca ekstrem",
+    "irbi_2024": 145.09,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Papua",
+    "dominant_hazards": "banjir, gelombang pasang & abrasi",
+    "hazards_exposed": "gempa bumi, tsunami, banjir, tanah longsor, kekeringan, cuaca ekstrem, karhutla, gelombang ekstrem/abrasi",
+    "irbi_2024": 137.43,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Papua Barat",
+    "dominant_hazards": "banjir, tanah longsor, gelombang pasang & abrasi",
+    "hazards_exposed": "gempa bumi, tsunami, banjir, tanah longsor, kekeringan, cuaca ekstrem, karhutla, gelombang ekstrem/abrasi",
+    "irbi_2024": 145.76,
+    "risk_class_2024": "tinggi",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Papua Selatan",
+    "dominant_hazards": "banjir, gelombang pasang & abrasi",
+    "hazards_exposed": "abrasi, cuaca ekstrem, banjir, gempa bumi, longsor, tsunami, karhutla, gelombang ekstrem, kekeringan",
+    "irbi_2024": 138.2,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Papua Tengah",
+    "dominant_hazards": "banjir",
+    "hazards_exposed": "banjir, banjir bandang, gelombang ekstrem & abrasi, gempa bumi, likuefaksi, karhutla, kekeringan, longsor, tsunami",
+    "irbi_2024": 116.49,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Papua Pegunungan",
+    "dominant_hazards": "tanah longsor",
+    "hazards_exposed": "banjir, karhutla, banjir bandang, cuaca ekstrem, gempa bumi, kekeringan, tanah longsor",
+    "irbi_2024": 102.05,
+    "risk_class_2024": "sedang",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   },
+   {
+    "province": "Papua Barat Daya",
+    "dominant_hazards": "banjir",
+    "hazards_exposed": "banjir, karhutla, banjir bandang, cuaca ekstrem, gempa bumi, kekeringan, tanah longsor",
+    "irbi_2024": 148.44,
+    "risk_class_2024": "tinggi",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+   }
+  ]
+ },
+ {
+  "type": "emergency_numbers",
+  "accessed": "2026-11-03",
+  "data": [
+   {
+    "number": "112",
+    "service": "Layanan Nomor Tunggal Panggilan Darurat (kebakaran, kerusuhan, kecelakaan, bencana alam, kesehatan, gangguan keamanan); diselenggarakan pemkab/pemkot (DKI: pemprov), jadi ketersediaan bergantung daerah",
+    "source_url": "https://jdih.komdigi.go.id/produk_hukum/view/id/539/t/peraturan+menteri+komunikasi+dan+informatika+nomor+10+tahun+2016+tanggal+15+juli+2016",
+    "evidence": "DIBACA",
+    "year": "2016 (Permenkominfo 10/2016)"
+   },
+   {
+    "number": "110",
+    "service": "Polisi",
+    "source_url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA",
+    "year": "2020"
+   },
+   {
+    "number": "113",
+    "service": "Pemadam Kebakaran",
+    "source_url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA",
+    "year": "2020"
+   },
+   {
+    "number": "115",
+    "service": "SAR / Basarnas (juga WhatsApp Rescue 115 di situs Basarnas)",
+    "source_url": "https://basarnas.go.id/",
+    "evidence": "DIBACA",
+    "year": "2026"
+   },
+   {
+    "number": "118 atau 119",
+    "service": "Ambulans",
+    "source_url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA",
+    "year": "2020"
+   },
+   {
+    "number": "119",
+    "service": "Darurat medis SPGDT Kemenkes (juga via aplikasi SATUSEHAT Mobile)",
+    "source_url": "https://kemkes.go.id/id/akses-darurat-medis-119-kini-bisa-melalui-satusehat-mobile",
+    "evidence": "DIBACA",
+    "year": "2024"
+   },
+   {
+    "number": "117",
+    "service": "Call Center BNPB / Pusdalops 24 jam",
+    "source_url": "https://www.bnpb.go.id/buku/buku-saku-tanggap-tangkas-tangguh-cetakan-kelima-2020",
+    "evidence": "DIBACA",
+    "year": "2020/2026 (header situs BNPB)"
+   },
+   {
+    "number": "+62 812 1237 575 / 021-29827666",
+    "service": "Pusdalops BNPB",
+    "source_url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA",
+    "year": "2020"
+   },
+   {
+    "number": "123",
+    "service": "PLN",
+    "source_url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA",
+    "year": "2020"
+   },
+   {
+    "number": "108",
+    "service": "Penerangan (informasi)",
+    "source_url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA",
+    "year": "2020"
+   },
+   {
+    "number": "1500-567",
+    "service": "Halo Kemenkes (hotline, non-darurat)",
+    "source_url": "https://kemkes.go.id/id/menkes-pakai-masker-dan-pantau-kualitas-udara-untuk-cegah-dampak-asap-karhutla",
+    "evidence": "DIBACA",
+    "year": "2026"
+   },
+   {
+    "number": "196 / (021) 196",
+    "service": "Contact Center BMKG",
+    "source_url": "https://www.bmkg.go.id/gempabumi/mitigasi/antisipasi-gempabumi",
+    "evidence": "DIBACA",
+    "year": "2026"
+   },
+   {
+    "number": "021-4250767 / 021-4227875",
+    "service": "Sentra Informasi Keracunan (SIKer)",
+    "source_url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA",
+    "year": "2020"
+   },
+   {
+    "number": "021-4207051",
+    "service": "Palang Merah Indonesia (PMI)",
+    "source_url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA",
+    "year": "2020"
+   },
+   {
+    "number": "022-7272606",
+    "service": "PVMBG",
+    "source_url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/Buku%20Saku%20Bencana%20BNPB.pdf",
+    "evidence": "DIBACA",
+    "year": "2020"
+   }
+  ]
+ }
 ]
