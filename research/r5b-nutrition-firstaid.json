@@ -1,0 +1,765 @@
+{
+ "akg_2019": [
+  {
+   "kelompok": "bayi",
+   "umur": "0–5 bulan",
+   "jk": "L+P",
+   "kkal": 550,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "bayi",
+   "umur": "6–11 bulan",
+   "jk": "L+P",
+   "kkal": 800,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "anak",
+   "umur": "1–3 tahun",
+   "jk": "L+P",
+   "kkal": 1350,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "anak",
+   "umur": "4–6 tahun",
+   "jk": "L+P",
+   "kkal": 1400,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "anak",
+   "umur": "7–9 tahun",
+   "jk": "L+P",
+   "kkal": 1650,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "anak",
+   "umur": "10–12 tahun",
+   "jk": "L",
+   "kkal": 2000,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "anak",
+   "umur": "13–15 tahun",
+   "jk": "L",
+   "kkal": 2400,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "remaja/dewasa",
+   "umur": "16–18 tahun",
+   "jk": "L",
+   "kkal": 2650,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "dewasa",
+   "umur": "19–29 tahun",
+   "jk": "L",
+   "kkal": 2650,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "dewasa",
+   "umur": "30–49 tahun",
+   "jk": "L",
+   "kkal": 2550,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "dewasa",
+   "umur": "50–64 tahun",
+   "jk": "L",
+   "kkal": 2150,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "lansia",
+   "umur": "65–80 tahun",
+   "jk": "L",
+   "kkal": 1800,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "lansia",
+   "umur": "80+ tahun",
+   "jk": "L",
+   "kkal": 1600,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "anak",
+   "umur": "10–12 tahun",
+   "jk": "P",
+   "kkal": 1900,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "anak",
+   "umur": "13–15 tahun",
+   "jk": "P",
+   "kkal": 2050,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "remaja/dewasa",
+   "umur": "16–18 tahun",
+   "jk": "P",
+   "kkal": 2100,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "dewasa",
+   "umur": "19–29 tahun",
+   "jk": "P",
+   "kkal": 2250,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "dewasa",
+   "umur": "30–49 tahun",
+   "jk": "P",
+   "kkal": 2150,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "dewasa",
+   "umur": "50–64 tahun",
+   "jk": "P",
+   "kkal": 1800,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "lansia",
+   "umur": "65–80 tahun",
+   "jk": "P",
+   "kkal": 1550,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "lansia",
+   "umur": "80+ tahun",
+   "jk": "P",
+   "kkal": 1400,
+   "source": "Permenkes 28/2019 Lampiran I Tabel 1",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "kelompok": "hamil",
+   "umur": "Trimester 1",
+   "jk": "P",
+   "kkal_tambahan": 180,
+   "evidence": "[DIBACA]",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "source": "Lampiran I Tabel 1"
+  },
+  {
+   "kelompok": "hamil",
+   "umur": "Trimester 2",
+   "jk": "P",
+   "kkal_tambahan": 300,
+   "evidence": "[DIBACA]",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "source": "Lampiran I Tabel 1"
+  },
+  {
+   "kelompok": "hamil",
+   "umur": "Trimester 3",
+   "jk": "P",
+   "kkal_tambahan": 300,
+   "evidence": "[DIBACA]",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "source": "Lampiran I Tabel 1"
+  },
+  {
+   "kelompok": "menyusui",
+   "umur": "6 bulan pertama",
+   "jk": "P",
+   "kkal_tambahan": 330,
+   "evidence": "[DIBACA]",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "source": "Lampiran I Tabel 1"
+  },
+  {
+   "kelompok": "menyusui",
+   "umur": "6 bulan kedua",
+   "jk": "P",
+   "kkal_tambahan": 400,
+   "evidence": "[DIBACA]",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "source": "Lampiran I Tabel 1"
+  },
+  {
+   "kelompok": "rata-rata nasional",
+   "umur": "semua",
+   "jk": "L+P",
+   "kkal": 2100,
+   "evidence": "[DIBACA]",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "source": "Pasal (rata-rata AKE masyarakat Indonesia 2100 kkal/orang/hari pada tingkat konsumsi)"
+  },
+  {
+   "kelompok": "darurat bencana (aturan khusus AKG)",
+   "note": "AKE dewasa rata-rata untuk perencanaan; hamil +300; menyusui +500; lansia = dewasa; bayi 700–750; balita 1200 kkal/orang/hari; tambah 10% bahan untuk tak terduga/rusak",
+   "evidence": "[DIBACA]",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2019permenkes028.pdf",
+   "source": "Lampiran II (bagian gizi dalam situasi darurat)"
+  }
+ ],
+ "food_kcal": [
+  {
+   "id_suggest": "food_rice",
+   "name_id": "Beras giling, mentah",
+   "name_en": "Milled rice, raw",
+   "kcal_per_100g": 359,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode AR0001",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]",
+   "note": "per 100 g mentah; nasi matang jauh lebih rendah",
+   "alt": {
+    "beras merah mentah": 360,
+    "beras tumbuk mentah": 354
+   }
+  },
+  {
+   "id_suggest": "food_instant_noodle",
+   "name_id": "Mi instan goreng, kering, berbumbu",
+   "name_en": "Instant noodles, dry w/ seasoning",
+   "kcal_per_100g": 470,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode AP0306",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]",
+   "note": "kering+bumbu; sama utk Indomie/Supermi goreng (AP0288/AP0290)"
+  },
+  {
+   "id_suggest": "food_biscuit",
+   "name_id": "Biskuit",
+   "name_en": "Biscuit",
+   "kcal_per_100g": 458,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode AP0029",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]",
+   "alt": {
+    "biskuit marie": 406,
+    "crackers": 453
+   }
+  },
+  {
+   "id_suggest": "food_bread_dry",
+   "name_id": "Roti kering",
+   "name_en": "Dry bread/rusk",
+   "kcal_per_100g": 427,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode AP0336",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]",
+   "note": "tambahan di luar daftar id; bagelen 375 (AP0116)"
+  },
+  {
+   "id_suggest": "food_canned_fish",
+   "name_id": "Sarden makarel saus tomat (abc)",
+   "name_en": "Canned sardine/mackerel in tomato sauce",
+   "kcal_per_100g": 140,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode GP1344",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]",
+   "note": "TKPI juga memuat 'Sarden dalam kaleng, gaga' 77 kkal (GP1346) — tampak outlier; beda merek/saus. Utamakan label.",
+   "alt": {
+    "gaga": 77,
+    "kornet ikan": 172
+   }
+  },
+  {
+   "id_suggest": "food_canned_meat",
+   "name_id": "Daging sapi kornet",
+   "name_en": "Corned beef",
+   "kcal_per_100g": 289,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode FP0015",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "id_suggest": "food_abon",
+   "name_id": "Abon sapi",
+   "name_en": "Beef floss (abon)",
+   "kcal_per_100g": 404,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode FP0011",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]",
+   "note": "rentang: abon sapi asli 100% 358 (FP0012); abon ayam 359 (FP0089); abon ikan 182 (GP0054)",
+   "alt": {
+    "abon sapi asli 100%": 358,
+    "abon ayam": 359,
+    "abon ikan": 182
+   }
+  },
+  {
+   "id_suggest": "food_nuts",
+   "name_id": "Kacang tanah, goreng",
+   "name_en": "Peanuts, fried",
+   "kcal_per_100g": 564,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode CP0012",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]",
+   "alt": {
+    "tanah panggang kulit": 592,
+    "mete panggang": 609,
+    "tanah mentah (BDD 70%)": 555
+   }
+  },
+  {
+   "id_suggest": "food_sugar",
+   "name_id": "Gula putih",
+   "name_en": "White sugar",
+   "kcal_per_100g": 394,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode MP0007",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "id_suggest": "food_honey",
+   "name_id": "Madu",
+   "name_en": "Honey",
+   "kcal_per_100g": 294,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode MP0010",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "id_suggest": "food_chocolate",
+   "name_id": "Coklat susu, batang",
+   "name_en": "Milk chocolate bar",
+   "kcal_per_100g": 565,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode MP0003",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]",
+   "alt": {
+    "coklat manis batang": 527,
+    "coklat pahit batang": 615
+   }
+  },
+  {
+   "id_suggest": "food_uht_milk",
+   "name_id": "Susu cair kemasan/susu UHT",
+   "name_en": "UHT milk",
+   "kcal_per_100g": 60,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode JP0056",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]"
+  },
+  {
+   "id_suggest": "food_condensed_milk",
+   "name_id": "Susu kental manis",
+   "name_en": "Sweetened condensed milk",
+   "kcal_per_100g": 343,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode JP0007",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]",
+   "note": "kental tak manis (evaporasi) 138 (JP0008)"
+  },
+  {
+   "id_suggest": "food_milk_powder",
+   "name_id": "Susu bubuk (whole)",
+   "name_en": "Milk powder, whole",
+   "kcal_per_100g": 513,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode JP0006",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]",
+   "alt": {
+    "susu sapi instan bubuk": 495,
+    "skim bubuk": 359
+   }
+  },
+  {
+   "id_suggest": "food_oatmeal",
+   "name_id": "Sereal (oatmeal/havermout)",
+   "name_en": "Oatmeal/rolled oats",
+   "kcal_per_100g": 398,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode AP0350",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]",
+   "alt": {
+    "oat dalam kaleng": 362
+   }
+  },
+  {
+   "id_suggest": "food_dates",
+   "name_id": "Kurma",
+   "name_en": "Dates",
+   "kcal_per_100g": null,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode ER0145",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]",
+   "note": "TKPI 'Kurma' = 128 kkal/100 g (BDD 95%) — tampak kurma segar, jauh di bawah kurma kering umum; TIDAK dipakai. Baca label 'Informasi Nilai Gizi' kemasan."
+  },
+  {
+   "id_suggest": "food_dried_fruit",
+   "name_id": "Kismis",
+   "name_en": "Raisins",
+   "kcal_per_100g": 343,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode EP0024",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]",
+   "note": "proksi buah kering; nenas manisan kering 351 (EP0027)",
+   "alt": {
+    "nenas manisan kering": 351
+   }
+  },
+  {
+   "id_suggest": "food_ready_meal",
+   "name_id": "Makanan siap saji (tidak ada entri generik)",
+   "name_en": "Ready meal",
+   "kcal_per_100g": null,
+   "unit_g": null,
+   "unit_note": "berat kemasan tidak bersumber; baca label 'Informasi Nilai Gizi'",
+   "source": "TKPI via panganku.org (Kemenkes Pokja DKPI), kode -",
+   "url": "https://panganku.org/id-ID/view (POST haha=<kode>)",
+   "evidence": "[DIBACA]",
+   "note": "TKPI tidak punya entri generik 'makanan siap saji kaleng/retort'. Proksi: bubur instan 267 (AP0199, ketidakjelasan basis kering/seduh), nasi goreng 240 (AP0447, matang). Saran: baca label.",
+   "alt": {
+    "bubur instan": 267,
+    "nasi goreng": 240
+   }
+  }
+ ],
+ "first_aid_kit": [
+  {
+   "item": "Kasa steril terbungkus",
+   "qty_A": 20,
+   "qty_B": 40,
+   "qty_C": 40,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Perban lebar 5 cm",
+   "qty_A": 2,
+   "qty_B": 4,
+   "qty_C": 6,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Perban lebar 10 cm",
+   "qty_A": 2,
+   "qty_B": 4,
+   "qty_C": 6,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Plester lebar 1,25 cm",
+   "qty_A": 2,
+   "qty_B": 4,
+   "qty_C": 6,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Plester cepat",
+   "qty_A": 10,
+   "qty_B": 15,
+   "qty_C": 20,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Kapas 25 g",
+   "qty_A": 1,
+   "qty_B": 2,
+   "qty_C": 3,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Kain segitiga/mitela",
+   "qty_A": 2,
+   "qty_B": 4,
+   "qty_C": 6,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Gunting",
+   "qty_A": 1,
+   "qty_B": 1,
+   "qty_C": 1,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Peniti",
+   "qty_A": 12,
+   "qty_B": 12,
+   "qty_C": 12,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Sarung tangan sekali pakai (pasangan)",
+   "qty_A": "2 / 2 (teks PDF terpecah jadi 2 baris, ambigu)",
+   "qty_B": "3 / 4",
+   "qty_C": "4 / 6",
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Masker",
+   "qty_A": 1,
+   "qty_B": 1,
+   "qty_C": 1,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Pinset",
+   "qty_A": 1,
+   "qty_B": 1,
+   "qty_C": 1,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Lampu senter",
+   "qty_A": 1,
+   "qty_B": 1,
+   "qty_C": 1,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Gelas cuci mata",
+   "qty_A": 1,
+   "qty_B": 2,
+   "qty_C": 3,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Kantong plastik bersih",
+   "qty_A": 1,
+   "qty_B": 1,
+   "qty_C": 1,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Aquades (100 ml larutan saline)",
+   "qty_A": 1,
+   "qty_B": 1,
+   "qty_C": 1,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Povidon iodin 60 ml",
+   "qty_A": 1,
+   "qty_B": 1,
+   "qty_C": 1,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Alkohol 70%",
+   "qty_A": 1,
+   "qty_B": 1,
+   "qty_C": 1,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Buku panduan P3K",
+   "qty_A": 1,
+   "qty_B": 1,
+   "qty_C": 1,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "Buku catatan + daftar isi kotak",
+   "qty_A": 1,
+   "qty_B": 1,
+   "qty_C": 1,
+   "source": "Permenaker PER.15/MEN/VIII/2008 Lampiran II (untuk TEMPAT KERJA; Kotak A=≤25 pekerja)",
+   "url": "https://www.its.ac.id/burb/wp-content/uploads/sites/106/2023/07/PER_15_08-P3K.pdf",
+   "evidence": "[DIBACA] (salinan ITS; cocok dgn salinan Better Work)"
+  },
+  {
+   "item": "CATATAN",
+   "note": "Daftar Kemenkes/PMI khusus rumah tangga TIDAK ditemukan (yankes.kemkes.go.id PDF 502; pmi.or.id tak ditemukan lewat pencarian). Permenaker = pelengkap, bukan standar rumah. Aturan Permenaker: kotak tak boleh berisi obat selain keperluan P3K. Sumber sekunder (Alodokter, Halodoc, bukan resmi) menyebut tambahan: termometer, obat demam/diare, oralit — [CUPLIKAN]",
+   "evidence": "[CUPLIKAN]"
+  }
+ ],
+ "bpbd_contacts": [
+  {
+   "scope": "nasional",
+   "name": "BNPB call center",
+   "phone": "117",
+   "source": "Detik mengutip IG resmi BNPB",
+   "url": "https://news.detik.com/berita/d-8234991/daftar-nomor-darurat-bencana-di-aceh-sumut-hingga-sumbar-resmi-dari-bnpb",
+   "evidence": "[CUPLIKAN]",
+   "note": "sekunder (media); verifikasi di bnpb.go.id"
+  },
+  {
+   "scope": "nasional",
+   "name": "Basarnas",
+   "phone": "115",
+   "source": "idem",
+   "url": "https://news.detik.com/berita/d-8234991/daftar-nomor-darurat-bencana-di-aceh-sumut-hingga-sumbar-resmi-dari-bnpb",
+   "evidence": "[CUPLIKAN]"
+  },
+  {
+   "scope": "Aceh",
+   "name": "BPBD Aceh",
+   "phone": "(0651) 34783",
+   "source": "idem",
+   "url": "https://news.detik.com/berita/d-8234991/daftar-nomor-darurat-bencana-di-aceh-sumut-hingga-sumbar-resmi-dari-bnpb",
+   "evidence": "[DIBACA] halaman media; sumber asal IG BNPB"
+  },
+  {
+   "scope": "Sumatera Utara",
+   "name": "BPBD Sumut",
+   "phone": "0811-6221-733",
+   "source": "idem",
+   "url": "https://news.detik.com/berita/d-8234991/daftar-nomor-darurat-bencana-di-aceh-sumut-hingga-sumbar-resmi-dari-bnpb",
+   "evidence": "[DIBACA] halaman media"
+  },
+  {
+   "scope": "Sumatera Barat",
+   "name": "BPBD Sumbar",
+   "phone": "(0751) 890721",
+   "source": "idem",
+   "url": "https://news.detik.com/berita/d-8234991/daftar-nomor-darurat-bencana-di-aceh-sumut-hingga-sumbar-resmi-dari-bnpb",
+   "evidence": "[DIBACA] halaman media"
+  },
+  {
+   "scope": "Kepulauan Riau",
+   "name": "BPBD Kepri",
+   "phone": "(0771) 315977",
+   "source": "surat resmi Pemprov Kepri",
+   "url": "https://ppid.kepriprov.go.id/resources/informasi_publik/38/Surat_DIP_N_DIK.pdf",
+   "evidence": "[CUPLIKAN] hanya dari ringkasan pencarian, PDF tak dibuka"
+  },
+  {
+   "scope": "31 provinsi lain",
+   "note": "TIDAK ditemukan dari sumber resmi; jangan karang. Verifikasi per situs BPBD provinsi / bnpb.go.id sebelum rilis.",
+   "evidence": "-"
+  }
+ ],
+ "recommendations": [
+  "D-008 balita 1–4 (1.430): AKG 1–3 th=1.350, 4–6 th=1.400 → rerata 1–4 ≈1.360. Default 1.430 ~5% di atas AKG; aman, boleh dibulatkan 1.400. Catatan: Lampiran II AKG (darurat) pakai balita 1.200.",
+  "D-008 anak 5–12 (2.000): AKG 5–6=1.400, 7–9=1.650, 10–12=2.000 (L)/1.900 (P) → rerata tertimbang ≈1.700. 2.000 = +18% di atas AKG (setara pria 10–12 th). Saran: tampilkan 1.700 sebagai nilai AKG; 2.000 hanya bila pilih konservatif/FNNE; putuskan sendiri.",
+  "D-008 dewasa 13–59 (2.230): rerata tertimbang L ≈2.485, P ≈2.090, gabungan ≈2.290 (hitungan PM dari tabel). 2.230 dalam ±3% → pertahankan. Opsi: pecah per jenis kelamin (L 19–49 th 2.550–2.650; P 2.150–2.250).",
+  "D-008 lansia ≥60 (1.890): AKG 60–64 L2.150/P1.800; 65–80 L1.800/P1.550; 80+ L1.600/P1.400 → rerata 60–80 ≈1.750 (L≈1.890, P≈1.610). 1.890 = nilai pria; ok sebagai konservatif, atau 1.750.",
+  "Bayi: AKG 0–5 bln 550, 6–11 bln 800 (ASI/MPASI); darurat AKG: 700–750. Tidak ada default D-008 untuk bayi <1 → pakai 800 atau 'ASI/formula, bukan hitungan kkal makanan'.",
+  "Hamil: +180 (T1), +300 (T2,T3). Menyusui: +330 (0–6 bln), +400 (7–12 bln). Aturan darurat AKG: hamil +300, menyusui +500 (lebih besar). Saran: hamil +300 (cover semua trimester), menyusui +500 (sumber resmi darurat) atau +400.",
+  "Rata-rata nasional 2.100 kkal (Pasal AKG) = tingkat makro; bukan untuk individu — selaras dgn catatan D-008.",
+  "AKG darurat: tambah 10% bahan untuk tak terduga/kerusakan → pertimbangkan buffer 10% di kalkulator.",
+  "Kkal pangan: gunakan TKPI hanya sebagai nilai bawaan 'per 100 g'; berat kemasan = null (tidak bersumber). UI: 'Baca label Informasi Nilai Gizi pada kemasan'.",
+  "Peringatan data: Kurma TKPI 128 kkal (segar?) → jangan pakai; sarden gaga 77 vs abc 140 beda jauh; ready meal tak ada entri generik; TKPI via panganku.org (data DKPI Kemenkes, hak cipta/ketentuan pakai belum dicek — periksa Disclaimer sebelum redistribusi). Catatan: TKPI 2017 PDF resmi (repository.kemkes.go.id/book/777) tak diunduh.",
+  "P3K: tidak ada daftar rumah tangga resmi Kemenkes/PMI yang ditemukan. D-015 (inti BNPB + BBK) tetap; Permenaker 15/2008 bisa jadi pelengkap (kasa steril, perban, plester, kain segitiga, gunting, peniti, sarung tangan, masker, pinset, senter, saline, povidon iodin, alkohol 70%) — dgn catatan bahwa itu standar tempat kerja.",
+  "G-12: hanya 5 kontak provinsi (media/sekunder) + 117; sisa belum ada. Rekomendasi: tampilkan 117 (BNPB) & 115 (Basarnas), tautan BPBD per provinsi, tunda tabel 34 BPBD sampai verifikasi."
+ ],
+ "meta": {
+  "date": "2026-11-03",
+  "agent": "R5b",
+  "note": "WebFetch DNS gagal; curl via proxy. Tidak commit."
+ }
+}
