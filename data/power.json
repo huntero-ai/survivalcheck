@@ -1,0 +1,599 @@
+{
+ "meta": {
+  "module": "power",
+  "version": "0.1.0",
+  "date": "2026-11-03",
+  "decision": "D-045",
+  "note": "Tanpa harga, tanpa merek. Angka evidence=ASUMSI harus dilabeli di UI sebagai perkiraan; user wajib cek label perangkat."
+ },
+ "devices": [
+  {
+   "id": "phone_charging",
+   "label": {
+    "id": "Mengisi daya HP",
+    "en": "Phone charging"
+   },
+   "typical_w": 10,
+   "surge_w": 10,
+   "default_hours_per_day": 2,
+   "duty_cycle": 1.0,
+   "category": "communication",
+   "medical": false,
+   "power_hungry": false,
+   "source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (BBK PiB-19 hlm.32: baterai HP rata-rata 2113 mAh @5 V ≈ 10,6 Wh/pengisian)",
+   "evidence": "DIBACA (kapasitas baterai); watt charger = ASUMSI",
+   "note": "10 W = placeholder charger; 2 jam ≈ 20 Wh ≥ 1 pengisian penuh (10,6 Wh) + rugi.",
+   "typical_w_source": "label perangkat — user wajib cek"
+  },
+  {
+   "id": "led_lamp",
+   "label": {
+    "id": "Lampu LED",
+    "en": "LED lamp"
+   },
+   "typical_w": 9,
+   "surge_w": 9,
+   "default_hours_per_day": 6,
+   "duty_cycle": 1.0,
+   "category": "lighting",
+   "medical": false,
+   "power_hungry": false,
+   "source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (hlm.32: LED/12 V rata-rata 9 W; lampu hemat energi 5–22 W, umum 12 W)",
+   "evidence": "DIBACA",
+   "note": "Per lampu.",
+   "typical_w_source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (hlm.32: LED/12 V rata-rata 9 W; lampu hemat energi 5–22 W, umum 12 W)"
+  },
+  {
+   "id": "router",
+   "label": {
+    "id": "Router / modem",
+    "en": "Router / modem"
+   },
+   "typical_w": 7.6,
+   "surge_w": 7.6,
+   "default_hours_per_day": 12,
+   "duty_cycle": 1.0,
+   "category": "communication",
+   "medical": false,
+   "power_hungry": false,
+   "source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (hlm.33: router rata-rata 7,6 W)",
+   "evidence": "DIBACA",
+   "note": "Jam default 12 = ASUMSI. Jaringan seluler/ISP bisa ikut padam; BBK hlm.~20 menyebut.",
+   "typical_w_source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (hlm.33: router rata-rata 7,6 W)"
+  },
+  {
+   "id": "radio",
+   "label": {
+    "id": "Radio",
+    "en": "Radio"
+   },
+   "typical_w": 14,
+   "surge_w": 14,
+   "default_hours_per_day": 4,
+   "duty_cycle": 1.0,
+   "category": "communication",
+   "medical": false,
+   "power_hungry": false,
+   "source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (hlm.32: radio rata-rata 14 W; BBK hitung 16 jam/hari)",
+   "evidence": "DIBACA (watt); jam 4 = ASUMSI",
+   "note": "Radio baterai/engkol jauh lebih hemat; cek label.",
+   "typical_w_source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (hlm.32: radio rata-rata 14 W; BBK hitung 16 jam/hari)"
+  },
+  {
+   "id": "fan",
+   "label": {
+    "id": "Kipas angin",
+    "en": "Fan"
+   },
+   "typical_w": 40,
+   "surge_w": 120,
+   "default_hours_per_day": 8,
+   "duty_cycle": 1.0,
+   "category": "comfort",
+   "medical": false,
+   "power_hungry": false,
+   "source": "label perangkat — user wajib cek",
+   "evidence": "ASUMSI",
+   "note": "Tidak ada sumber resmi terbaca. Surge motor 3x = ASUMSI.",
+   "typical_w_source": "label perangkat — user wajib cek"
+  },
+  {
+   "id": "laptop",
+   "label": {
+    "id": "Laptop",
+    "en": "Laptop"
+   },
+   "typical_w": 17.6,
+   "surge_w": 60,
+   "default_hours_per_day": 2,
+   "duty_cycle": 1.0,
+   "category": "communication",
+   "medical": false,
+   "power_hungry": false,
+   "source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (hlm.33: notebook 17,6 W mode hemat)",
+   "evidence": "DIBACA (17,6 W mode hemat); surge = ASUMSI",
+   "note": "Beban penuh/charger bisa 45–90 W; cek label.",
+   "typical_w_source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (hlm.33: notebook 17,6 W mode hemat)"
+  },
+  {
+   "id": "water_pump",
+   "label": {
+    "id": "Pompa air",
+    "en": "Water pump"
+   },
+   "typical_w": 250,
+   "surge_w": 750,
+   "default_hours_per_day": 1,
+   "duty_cycle": 1.0,
+   "category": "water",
+   "medical": false,
+   "power_hungry": true,
+   "source": "label perangkat — user wajib cek",
+   "evidence": "ASUMSI",
+   "note": "Motor; surge 3x = ASUMSI.",
+   "typical_w_source": "label perangkat — user wajib cek"
+  },
+  {
+   "id": "fridge",
+   "label": {
+    "id": "Kulkas rumah tangga",
+    "en": "Household fridge"
+   },
+   "typical_w": 100,
+   "surge_w": 700,
+   "default_hours_per_day": 24,
+   "duty_cycle": 0.225,
+   "category": "food_cold",
+   "medical": false,
+   "power_hungry": true,
+   "source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (hlm.29-30: contoh kulkas 100 W → inverter ≥ 700 W (7x); rata-rata 0,54 kWh/hari, rentang 0,34–0,77)",
+   "evidence": "DIBACA",
+   "note": "duty 0,225 = 540 Wh / (100 W × 24 jam). Boros; CDC: kulkas aman ±4 jam tanpa listrik bila pintu tertutup.",
+   "typical_w_source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (hlm.29-30: contoh kulkas 100 W → inverter ≥ 700 W (7x); rata-rata 0,54 kWh/hari, rentang 0,34–0,77)"
+  },
+  {
+   "id": "breastmilk_med_fridge",
+   "label": {
+    "id": "Kulkas kecil ASI / obat",
+    "en": "Small fridge (breast milk / medicine)"
+   },
+   "typical_w": 50,
+   "surge_w": 350,
+   "default_hours_per_day": 24,
+   "duty_cycle": 0.5,
+   "category": "food_cold",
+   "medical": true,
+   "power_hungry": false,
+   "source": "label perangkat — user wajib cek",
+   "evidence": "ASUMSI",
+   "note": "Placeholder; surge 7x mengikuti rasio BBK untuk kulkas = ASUMSI. Cek label.",
+   "typical_w_source": "label perangkat — user wajib cek"
+  },
+  {
+   "id": "cpap",
+   "label": {
+    "id": "CPAP",
+    "en": "CPAP"
+   },
+   "typical_w": 60,
+   "surge_w": 60,
+   "default_hours_per_day": 8,
+   "duty_cycle": 1.0,
+   "category": "medical",
+   "medical": true,
+   "power_hungry": false,
+   "source": "label perangkat — user wajib cek (rentang sekunder 30–60 W + humidifier; BUKAN sumber resmi)",
+   "evidence": "ASUMSI (dari ringkasan WebSearch sumber komersial)",
+   "note": "60 W = konservatif (dengan humidifier panas). Cek label.",
+   "typical_w_source": "label perangkat — user wajib cek"
+  },
+  {
+   "id": "oxygen_concentrator",
+   "label": {
+    "id": "Konsentrator oksigen",
+    "en": "Oxygen concentrator"
+   },
+   "typical_w": 500,
+   "surge_w": 1000,
+   "default_hours_per_day": 24,
+   "duty_cycle": 1.0,
+   "category": "medical",
+   "medical": true,
+   "power_hungry": true,
+   "source": "label perangkat — user wajib cek (rentang sekunder 300–600 W; BUKAN sumber resmi)",
+   "evidence": "ASUMSI (sumber komersial)",
+   "note": "Sangat boros; power station rumah sulit menopang berhari-hari. Surge 2x = ASUMSI. Tanya penyedia alat soal cadangan (tabung).",
+   "typical_w_source": "label perangkat — user wajib cek"
+  },
+  {
+   "id": "nebulizer",
+   "label": {
+    "id": "Nebulizer",
+    "en": "Nebulizer"
+   },
+   "typical_w": 60,
+   "surge_w": 60,
+   "default_hours_per_day": 0.5,
+   "duty_cycle": 1.0,
+   "category": "medical",
+   "medical": true,
+   "power_hungry": false,
+   "source": "label perangkat — user wajib cek",
+   "evidence": "ASUMSI",
+   "note": "Placeholder; ada tipe baterai. Cek label.",
+   "typical_w_source": "label perangkat — user wajib cek"
+  },
+  {
+   "id": "tv",
+   "label": {
+    "id": "TV",
+    "en": "TV"
+   },
+   "typical_w": 100,
+   "surge_w": 100,
+   "default_hours_per_day": 3,
+   "duty_cycle": 1.0,
+   "category": "comfort",
+   "medical": false,
+   "power_hungry": false,
+   "source": "label perangkat — user wajib cek",
+   "evidence": "ASUMSI",
+   "note": "Nilai kasar; bukan prioritas.",
+   "typical_w_source": "label perangkat — user wajib cek"
+  },
+  {
+   "id": "rice_cooker",
+   "label": {
+    "id": "Penanak nasi",
+    "en": "Rice cooker"
+   },
+   "typical_w": 600,
+   "surge_w": 600,
+   "default_hours_per_day": 0.75,
+   "duty_cycle": 1.0,
+   "category": "comfort",
+   "medical": false,
+   "power_hungry": true,
+   "source": "label perangkat — user wajib cek",
+   "evidence": "ASUMSI",
+   "note": "BOROS (resistif). Lebih hemat pakai kompor non-listrik; BBK: Wasserkocher 2340 W contoh beban puncak.",
+   "typical_w_source": "label perangkat — user wajib cek"
+  }
+ ],
+ "constants": {
+  "inverter_efficiency": {
+   "value": 0.9,
+   "source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (hlm.35-41: ηWR = 0,9)",
+   "evidence": "DIBACA"
+  },
+  "usable_capacity_factor": {
+   "value": 0.8,
+   "source": "ASUMSI (tidak ada angka resmi terbaca); tampilkan sebagai asumsi",
+   "evidence": "ASUMSI"
+  },
+  "power_bank_nominal_v": {
+   "value": 3.7,
+   "source": "Konvensi sel Li-ion (diminta spesifikasi S4); tanpa sumber resmi",
+   "evidence": "ASUMSI"
+  },
+  "power_bank_conversion_efficiency": {
+   "value": 0.7,
+   "source": "ASUMSI (konversi 3,7 V→5 V + rugi); cek spesifikasi",
+   "evidence": "ASUMSI"
+  },
+  "reserve_margin": {
+   "value": 1.2,
+   "source": "ASUMSI cadangan 20%",
+   "evidence": "ASUMSI"
+  },
+  "output_margin": {
+   "value": 1.25,
+   "source": "ASUMSI",
+   "evidence": "ASUMSI"
+  },
+  "solar_peak_sun_hours_indonesia": {
+   "value": 4.0,
+   "source": "ASUMSI konservatif. Rujukan sekunder (bukan resmi, CUPLIKAN): rata-rata iradiasi Indonesia ≈ 4,75 kWh/m²/hari (jurnal UNRAM); Global Solar Atlas per lokasi 4,2–5,3. Peak sun hours ≈ kWh/m²/hari (inferensi).",
+   "evidence": "ASUMSI/CUPLIKAN",
+   "range_reference": [
+    4.2,
+    5.3
+   ]
+  },
+  "solar_derate": {
+   "value": 0.75,
+   "source": "ASUMSI (rugi suhu, kabel, pengontrol, bayangan, awan). BBK PiB-19 membahas faktor koreksi tetapi angka tidak dipakai.",
+   "evidence": "ASUMSI"
+  },
+  "genset_default_load_factor": {
+   "value": 0.5,
+   "source": "ASUMSI",
+   "evidence": "ASUMSI"
+  },
+  "phone_battery_wh_reference": {
+   "value": 10.6,
+   "source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (2113 mAh × 5 V)",
+   "evidence": "DIBACA"
+  }
+ },
+ "formulas": [
+  {
+   "id": "wh_per_day",
+   "desc": "Energi harian dari perangkat terpilih. Perangkat AC dibagi efisiensi inverter bila dihitung dari sisi baterai.",
+   "pseudo": "wh_day = Σ(typical_w_user × hours_user × duty_cycle)   # sisi beban\nbattery_wh_day = wh_day / inverter_efficiency   # bila semua beban AC"
+  },
+  {
+   "id": "wh_total",
+   "desc": "Energi total N hari.",
+   "pseudo": "wh_total = wh_day × days"
+  },
+  {
+   "id": "recommended_capacity_wh",
+   "desc": "Kapasitas nominal power station yang disarankan.",
+   "pseudo": "rec_wh = wh_total / (inverter_efficiency × usable_capacity_factor) × reserve_margin\nround up ke 10 Wh"
+  },
+  {
+   "id": "min_output",
+   "desc": "Daya keluaran minimum. Continuous = jumlah watt yang menyala bersamaan; puncak = continuous + lonjakan terbesar.",
+   "pseudo": "cont_w = Σ typical_w (hanya perangkat bersamaan)\npeak_w = cont_w + max(surge_w − typical_w)\nmin_continuous_w = ceil(cont_w × output_margin)\nmin_surge_w = ceil(peak_w)\nrekomendasi = max(min_continuous_w, min_surge_w)"
+  },
+  {
+   "id": "stored_wh",
+   "desc": "Energi tersimpan yang bisa dipakai dari inventaris.",
+   "pseudo": "pb_wh = Σ(mAh/1000 × power_bank_nominal_v × qty) × power_bank_conversion_efficiency\nps_wh = Σ(station_wh × usable_capacity_factor × inverter_efficiency)   # keluaran AC\n  (jika hanya pakai USB/DC: tanpa inverter_efficiency)\ngen_wh = genset_w × genset_run_hours × genset_default_load_factor   # run_hours = jam BBM yang dimiliki user\nstored_wh = pb_wh + ps_wh + gen_wh"
+  },
+  {
+   "id": "solar_wh_day",
+   "desc": "Energi harian dari panel surya.",
+   "pseudo": "solar_wh_day = Wp × solar_peak_sun_hours_indonesia × solar_derate"
+  },
+  {
+   "id": "days_power",
+   "desc": "Hari daya dari inventaris.",
+   "pseudo": "net = wh_day − solar_wh_day\nif net <= 0: days_power = 'mandiri' (tampilkan 'selama cuaca cerah'; untuk gating pakai cap = days_target, bukan tak hingga)\nelse: days_power = stored_wh / net"
+  },
+  {
+   "id": "days_power_medical",
+   "desc": "Hari daya khusus alat medis (prioritas pasokan ke alat medis).",
+   "pseudo": "wh_day_med = Σ wh_day dari perangkat medical=true\nif wh_day_med == 0: n/a\nelse: net_med = max(wh_day_med − solar_wh_day, 0); days_power_medical = net_med==0 ? 'mandiri' : stored_wh / net_med"
+  },
+  {
+   "id": "survival_gating",
+   "desc": "Bila ada perangkat medical=true terpilih, days_power_medical ikut sebagai salah satu faktor 'hari bertahan' (bottleneck, pola S2). Tanpa alat medis, listrik tidak ikut menentukan hari bertahan (hanya saran).",
+   "pseudo": "if any(medical): survival_days = min(survival_days_other, floor(days_power_medical))   # 'mandiri' → ikut days_target\nflag = days_power_medical < days_target → peringatan keras + saran hubungi dokter/penyedia alat"
+  }
+ ],
+ "safety_messages": [
+  {
+   "key": "co_outdoors",
+   "id": "Genset, mesin berbahan bakar bensin, kompor, dan arang/grill tidak boleh dipakai di dalam rumah, garasi, atau ruang semi-tertutup, walau pintu/jendela dibuka. Letakkan genset di luar, jauh dari jendela, pintu, dan ventilasi (CDC: lebih dari 20 kaki ≈ 6 m).",
+   "en": "Never run a generator, gasoline engine, camp stove, or charcoal grill inside a home, garage, or partly enclosed space, even with doors or windows open. Keep a generator outdoors, well away from windows, doors, and vents (CDC: more than 20 ft ≈ 6 m).",
+   "source": "CDC https://www.cdc.gov/carbon-monoxide/about/index.html ; https://www.cdc.gov/natural-disasters/response/what-to-do-protect-yourself-during-a-power-outage.html ; BBK stromausfall-vorsorge-selbsthilfe.pdf (Stromerzeuger nicht in Innenräumen)",
+   "evidence": "DIBACA"
+  },
+  {
+   "key": "co_detector",
+   "id": "Pasang detektor CO berbaterai (atau baterai cadangan) dekat area tidur, terutama bila memakai genset atau bahan bakar saat listrik padam.",
+   "en": "Use a battery-powered or battery-backup CO detector near sleeping areas, especially when using a generator or fuel during an outage.",
+   "source": "CDC https://www.cdc.gov/carbon-monoxide/about/index.html ; BBK Ratgeber (CO-Melder)",
+   "evidence": "DIBACA (CDC); CUPLIKAN (BBK)"
+  },
+  {
+   "key": "no_backfeed",
+   "id": "Jangan menyambung genset ke stopkontak atau instalasi rumah tanpa pemisah/changeover yang dipasang instalatir resmi. Arus balik ke jaringan PLN membahayakan petugas.",
+   "en": "Do not connect a generator to a wall outlet or the home wiring without a proper changeover installed by a licensed electrician. Back-feed into the grid endangers utility workers.",
+   "source": "CUPLIKAN sekunder: pemberitaan insiden Singosari yang mengutip PLN (jatimtimes.com 2025-07-09) — bukan halaman resmi PLN; BBK menyarankan konsultasi fachbetrieb untuk pasokan darurat. PERLU diganti sumber resmi PLN bila ditemukan.",
+   "evidence": "CUPLIKAN (sumber sekunder)",
+   "needs_review": true
+  },
+  {
+   "key": "battery_storage",
+   "id": "Simpan power station/power bank di tempat kering dan sejuk, jauh dari panas dan genangan air; ikuti petunjuk produsen. Suhu tinggi mempercepat pengosongan sendiri baterai.",
+   "en": "Store power stations and power banks in a dry, cool place away from heat and standing water; follow the manufacturer's instructions. Higher temperatures speed up battery self-discharge.",
+   "source": "BBK PiB-19 (Selbstentladung naik dengan suhu) [DIBACA, parsial]; 'kering' dari Ready.gov (generator dry) [CUPLIKAN]; selebihnya petunjuk produsen. Tidak ada panduan resmi khusus penyimpanan baterai terbaca.",
+   "evidence": "DIBACA parsial",
+   "needs_review": true
+  },
+  {
+   "key": "no_candles",
+   "id": "Pakai senter/lampu baterai, bukan lilin atau lampu minyak, untuk mengurangi risiko kebakaran.",
+   "en": "Use flashlights or battery lanterns instead of candles or fuel lamps to reduce fire risk.",
+   "source": "CDC what-to-do-protect-yourself-during-a-power-outage; BNPB 2026 'senter, bukan lilin' (research/r5-indonesia)",
+   "evidence": "DIBACA"
+  },
+  {
+   "key": "fridge_food",
+   "id": "Jaga pintu kulkas/freezer tetap tertutup. Kulkas menjaga makanan aman ±4 jam; freezer penuh ±48 jam, setengah penuh ±24 jam. Buang makanan mudah rusak setelah 4 jam tanpa listrik.",
+   "en": "Keep fridge and freezer doors closed. A fridge keeps food safe about 4 hours; a full freezer about 48 hours, half-full about 24 hours. Discard perishable food after 4 hours without power.",
+   "source": "CDC https://www.cdc.gov/natural-disasters/psa-toolkit/discarding-food-after-a-power-outage.html ; FDA power outages key tips",
+   "evidence": "DIBACA"
+  },
+  {
+   "key": "fridge_meds",
+   "id": "Obat yang harus dingin: bila listrik padam sehari atau lebih, buang kecuali label bilang lain. Bila nyawa bergantung pada obat itu dan sudah suhu ruang, pakai hanya sampai ada pengganti. Tanyakan dokter/apoteker (termasuk untuk insulin dan label produsen).",
+   "en": "Refrigerated medicine: if power is out a day or more, discard unless the label says otherwise. If a life depends on it and it has warmed, use it only until a replacement is available. Ask your doctor or pharmacist (including for insulin and the manufacturer's label).",
+   "source": "CDC what-to-do-protect-yourself-during-a-power-outage (Medication safety)",
+   "evidence": "DIBACA"
+  },
+  {
+   "key": "medical_plan",
+   "id": "Bila memakai alat medis listrik (CPAP, konsentrator oksigen, nebulizer, kulkas obat): bicarakan rencana cadangan dengan dokter dan penyedia alat sebelum listrik padam, termasuk kapan harus ke faskes. Di beberapa negara ada daftar pelanggan prioritas di penyedia listrik; untuk Indonesia belum ada sumber resmi terbaca — jangan menjanjikan layanan PLN tertentu.",
+   "en": "If you use electricity-dependent medical equipment (CPAP, oxygen concentrator, nebulizer, medicine fridge): agree a backup plan with your doctor and equipment provider before an outage, including when to go to a health facility. Some countries have priority customer registers with the electricity network; for Indonesia no official source was read — do not promise any specific PLN service.",
+   "source": "Ready.gov power-outages [CUPLIKAN hasil pencarian; halaman 403]; UK network operators PSR (UKPN/SSEN) [CUPLIKAN]; BBK PiB-19 hlm.~21 (alat medis rumah gagal saat padam) [DIBACA]",
+   "evidence": "CUPLIKAN",
+   "needs_review": true
+  },
+  {
+   "key": "medical_label",
+   "id": "Watt alat medis berbeda antar model. Baca label/manual alat Anda dan isi angka itu; angka aplikasi hanya perkiraan.",
+   "en": "Medical device wattage varies by model. Read your device's label or manual and enter that figure; the app's number is only an estimate.",
+   "source": "Kebijakan S4 (tidak ada sumber resmi untuk watt)",
+   "evidence": "KEBIJAKAN"
+  }
+ ],
+ "test_cases": [
+  {
+   "id": "tc1",
+   "title": "1 orang: HP + lampu LED, 3 hari",
+   "input": {
+    "devices": {
+     "phone_charging": {
+      "qty": 1,
+      "hours": 2
+     },
+     "led_lamp": {
+      "qty": 1,
+      "hours": 6
+     }
+    },
+    "days": 3
+   },
+   "intermediate": {
+    "wh_day": 74.0,
+    "wh_total": 222.0,
+    "concurrent_w": 19,
+    "peak_w": 19
+   },
+   "expected": {
+    "recommended_capacity_wh": 370,
+    "min_continuous_w": 24,
+    "min_surge_w": 19
+   }
+  },
+  {
+   "id": "tc2",
+   "title": "Keluarga: HP×4 + router + kipas, 7 hari",
+   "input": {
+    "devices": {
+     "phone_charging": {
+      "qty": 4,
+      "hours": 2
+     },
+     "router": {
+      "qty": 1,
+      "hours": 12
+     },
+     "fan": {
+      "qty": 1,
+      "hours": 8
+     }
+    },
+    "days": 7
+   },
+   "intermediate": {
+    "wh_day": 491.2,
+    "wh_total": 3438.4,
+    "concurrent_w": 87.6,
+    "peak_w": 167.6
+   },
+   "expected": {
+    "recommended_capacity_wh": 5740,
+    "min_continuous_w": 110,
+    "min_surge_w": 168
+   }
+  },
+  {
+   "id": "tc3",
+   "title": "CPAP 8 jam/malam × 7 hari",
+   "input": {
+    "devices": {
+     "cpap": {
+      "qty": 1,
+      "hours": 8
+     }
+    },
+    "days": 7
+   },
+   "intermediate": {
+    "wh_day": 480.0,
+    "wh_total": 3360.0,
+    "concurrent_w": 60,
+    "peak_w": 60,
+    "stored_wh": 720.0
+   },
+   "expected": {
+    "recommended_capacity_wh": 5600,
+    "min_continuous_w": 75,
+    "min_surge_w": 60,
+    "days_power_medical": 1.5,
+    "gating": "medical=true → survival_days dibatasi floor(1,5)=1 hari < target 7 → peringatan keras"
+   },
+   "inventory": {
+    "power_station_wh": 1000
+   }
+  },
+  {
+   "id": "tc4",
+   "title": "Konsentrator oksigen 24 jam, 1 hari",
+   "input": {
+    "devices": {
+     "oxygen_concentrator": {
+      "qty": 1,
+      "hours": 24
+     }
+    },
+    "days": 1
+   },
+   "intermediate": {
+    "wh_day": 12000.0,
+    "wh_total": 12000.0,
+    "concurrent_w": 500,
+    "peak_w": 1000,
+    "stored_wh": 720.0
+   },
+   "expected": {
+    "recommended_capacity_wh": 20000,
+    "min_continuous_w": 625,
+    "min_surge_w": 1000,
+    "note": "12000 Wh/hari → rekomendasi 20000 Wh: tidak realistis untuk power station rumah; UI wajib tampilkan saran hubungi dokter/penyedia alat (safety medical_plan).",
+    "days_power_medical": 0.06
+   },
+   "inventory": {
+    "power_station_wh": 1000
+   }
+  },
+  {
+   "id": "tc5",
+   "title": "Panel surya 100 Wp",
+   "input": {
+    "solar_wp": 100,
+    "loads": {
+     "tc1_wh_day": 74,
+     "cpap_wh_day": 480
+    }
+   },
+   "intermediate": {
+    "solar_wh_day": 300.0
+   },
+   "expected": {
+    "solar_wh_day": 300.0,
+    "vs_tc1_load_74": "mandiri (300 ≥ 74), surplus 226 Wh/hari",
+    "vs_cpap_480": "tidak mandiri; defisit 180 Wh/hari; stored 720 Wh (station 1000 Wh) → 720/180 = 4 hari",
+    "days_power_medical_with_station_1000wh": 4.0
+   }
+  },
+  {
+   "id": "tc6",
+   "title": "Power bank 20.000 mAh × 2, beban HP 20 Wh/hari",
+   "input": {
+    "power_banks": [
+     {
+      "mah": 20000,
+      "qty": 2
+     }
+    ],
+    "load_wh_day": 20
+   },
+   "intermediate": {
+    "nominal_wh": 148.0,
+    "usable_wh": 103.6
+   },
+   "expected": {
+    "nominal_wh": 148.0,
+    "usable_wh": 103.6,
+    "days_power": 5.18,
+    "phone_charges_full": 9.8
+   }
+  }
+ ]
+}

@@ -1,0 +1,389 @@
+[
+ {
+  "country": "Germany",
+  "agency": "BBK - Autarke Notstromversorgung der Bevölkerung (Fachinformation PiB-19)",
+  "url": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf",
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "2024-11 (metadata PDF)",
+  "evidence": "DIBACA",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "target_note": "tidak disebutkan (untuk modul daya)",
+  "water_l_per_person_day": null,
+  "food_note": "",
+  "items": [
+   {
+    "name": "phone battery",
+    "qty": "2113 mAh @5V",
+    "note": "≈10,6 Wh",
+    "url": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf",
+    "evidence": "DIBACA"
+   },
+   {
+    "name": "inverter efficiency",
+    "qty": "0.9",
+    "note": "",
+    "url": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf",
+    "evidence": "DIBACA"
+   }
+  ],
+  "special_needs": [
+   "medical_devices",
+   "refrigerated_medicine"
+  ],
+  "unique_points": [
+   "Rata-rata: lampu hemat energi 5–22 W (12 W), LED 12 V 9 W, radio 14 W, router 7,6 W, notebook 17,6 W mode hemat, telepon rumah 2 W, HP 2113 mAh @5 V, kulkas 0,34–0,77 kWh/hari (0,54), Wasserkocher 2340 W",
+   "Inverter ηWR = 0,9; kulkas 100 W → inverter ≥ 700 W (arus awal ~7x)",
+   "Saat listrik padam alat medis rumah gagal; perawatan di rumah terdampak (hlm.~21)"
+  ]
+ },
+ {
+  "country": "Germany",
+  "agency": "BBK - Stromausfall: Vorsorge und Selbsthilfe (Stand 2026)",
+  "url": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/Buergerinformationen/stromausfall-vorsorge-selbsthilfe.pdf",
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "2026 (Stand: 2026)",
+  "evidence": "DIBACA (bagian Stromerzeuger)",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "target_note": "tidak disebutkan (untuk modul daya)",
+  "water_l_per_person_day": null,
+  "food_note": "",
+  "items": [],
+  "special_needs": [
+   "medical_devices",
+   "refrigerated_medicine"
+  ],
+  "unique_points": [
+   "Stromerzeuger tidak boleh di Innenräume (bahaya sesak/gas buang); tempat berventilasi baik dan kering",
+   "Konsultasi Fachbetrieb untuk pasokan darurat; sistem baterai + inverter sebagai alternatif non-genset"
+  ]
+ },
+ {
+  "country": "United States",
+  "agency": "CDC - What to Do to Protect Yourself During a Power Outage",
+  "url": "https://www.cdc.gov/natural-disasters/response/what-to-do-protect-yourself-during-a-power-outage.html",
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "2026-08-26 (halaman)",
+  "evidence": "DIBACA",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "target_note": "tidak disebutkan (untuk modul daya)",
+  "water_l_per_person_day": null,
+  "food_note": "",
+  "items": [],
+  "special_needs": [
+   "medical_devices",
+   "refrigerated_medicine"
+  ],
+  "unique_points": [
+   "Generator jangan di dalam rumah/basement/garasi atau <20 kaki (≈6 m) dari jendela/pintu/ventilasi; detektor CO berbaterai",
+   "Kulkas ±4 jam; freezer penuh 48 jam, setengah 24 jam",
+   "Obat dingin: bila padam ≥1 hari, buang kecuali label berkata lain; bila nyawa bergantung dan sudah hangat, pakai sampai ada pengganti",
+   "Senter, bukan lilin"
+  ]
+ },
+ {
+  "country": "United States",
+  "agency": "CDC - Carbon Monoxide Poisoning Basics",
+  "url": "https://www.cdc.gov/carbon-monoxide/about/index.html",
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "tidak tercatat",
+  "evidence": "DIBACA",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "target_note": "tidak disebutkan (untuk modul daya)",
+  "water_l_per_person_day": null,
+  "food_note": "",
+  "items": [],
+  "special_needs": [
+   "medical_devices",
+   "refrigerated_medicine"
+  ],
+  "unique_points": [
+   "Generator >20 kaki dari jendela/pintu/ventilasi; jangan arang/kompor kemping di dalam"
+  ]
+ },
+ {
+  "country": "United States",
+  "agency": "CDC - Discarding Food After a Power Outage",
+  "url": "https://www.cdc.gov/natural-disasters/psa-toolkit/discarding-food-after-a-power-outage.html",
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "tidak tercatat",
+  "evidence": "DIBACA",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "target_note": "tidak disebutkan (untuk modul daya)",
+  "water_l_per_person_day": null,
+  "food_note": "",
+  "items": [],
+  "special_needs": [
+   "medical_devices",
+   "refrigerated_medicine"
+  ],
+  "unique_points": [
+   "Kulkas 4 jam; freezer 48/24 jam"
+  ]
+ },
+ {
+  "country": "United States",
+  "agency": "FDA - Food and Water Safety During Power Outages and Floods",
+  "url": "https://www.fda.gov/food/buy-store-serve-safe-food/food-and-water-safety-during-power-outages-and-floods",
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "tidak tercatat",
+  "evidence": "DIBACA (diunduh; hanya dipakai konfirmasi 4 jam/48 jam)",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "target_note": "tidak disebutkan (untuk modul daya)",
+  "water_l_per_person_day": null,
+  "food_note": "",
+  "items": [],
+  "special_needs": [
+   "medical_devices",
+   "refrigerated_medicine"
+  ],
+  "unique_points": [
+   "Konsisten dengan CDC"
+  ]
+ },
+ {
+  "country": "United States",
+  "agency": "Ready.gov / FEMA - Power Outages",
+  "url": "https://www.ready.gov/power-outages",
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "halaman memuat catatan sedang diperbarui",
+  "evidence": "CUPLIKAN (curl 403 Access Denied; tidak dicoba akal)",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "target_note": "tidak disebutkan (untuk modul daya)",
+  "water_l_per_person_day": null,
+  "food_note": "",
+  "items": [],
+  "special_needs": [
+   "medical_devices",
+   "refrigerated_medicine"
+  ],
+  "unique_points": [
+   "Rencanakan dengan penyedia medis untuk alat listrik & obat dingin; generator hanya di luar, jauh dari jendela, kering; detektor CO berbaterai"
+  ]
+ },
+ {
+  "country": "United States",
+  "agency": "DOE energy.gov - Estimating Appliance and Home Electronic Energy Use",
+  "url": "https://www.energy.gov/energysaver/articles/estimating-appliance-and-home-electronic-energy-use",
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "tidak tercatat",
+  "evidence": "DIBACA (halaman 5 KB tanpa tabel watt; URL asli 404 lewat curl, fetch via redirect hanya memberi kerangka)",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "target_note": "tidak disebutkan (untuk modul daya)",
+  "water_l_per_person_day": null,
+  "food_note": "",
+  "items": [],
+  "special_needs": [
+   "medical_devices",
+   "refrigerated_medicine"
+  ],
+  "unique_points": [
+   "Tidak memuat watt CPAP/konsentrator/kipas: tidak dipakai sebagai sumber angka"
+  ]
+ },
+ {
+  "country": "United Kingdom",
+  "agency": "Jaringan listrik UK (UKPN, SSEN, SP Energy Networks) - Priority Services Register",
+  "url": "https://ukpowernetworks.co.uk/power-cut/priority-services/about-the-priority-services-register",
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "tidak tercatat",
+  "evidence": "CUPLIKAN (hasil WebSearch; bukan GOV.UK)",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "target_note": "tidak disebutkan (untuk modul daya)",
+  "water_l_per_person_day": null,
+  "food_note": "",
+  "items": [],
+  "special_needs": [
+   "medical_devices",
+   "refrigerated_medicine"
+  ],
+  "unique_points": [
+   "Pengguna alat medis listrik dapat daftar gratis; saran baterai cadangan ≥3 jam (SP Energy Networks)"
+  ]
+ },
+ {
+  "country": "Indonesia",
+  "agency": "PLN (via pemberitaan insiden Singosari, jatimtimes.com 2025-07-09)",
+  "url": "https://jatimtimes.com/amp/baca/341199/20250709/133300/privacy",
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "2025-07-09",
+  "evidence": "CUPLIKAN (sekunder; tidak diunduh)",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "target_note": "tidak disebutkan (untuk modul daya)",
+  "water_l_per_person_day": null,
+  "food_note": "",
+  "items": [],
+  "special_needs": [
+   "medical_devices",
+   "refrigerated_medicine"
+  ],
+  "unique_points": [
+   "Genset dinyalakan tanpa memutus sambungan PLN → arus balik berbahaya bagi petugas; instalasi rumah tanggung jawab pelanggan; pakai instalatir terdaftar",
+   "Panduan teknis resmi PLN tentang changeover/ATS: TIDAK DITEMUKAN"
+  ]
+ },
+ {
+  "country": "Indonesia",
+  "agency": "Rujukan surya: Univ. Mataram (JEITech) / ESDM",
+  "url": "https://journal.unram.ac.id/index.php/jeitech/article/view/4133",
+  "accessed": "2026-11-03",
+  "last_updated_by_source": "tidak tercatat",
+  "evidence": "CUPLIKAN (sekunder, hasil WebSearch)",
+  "target_days": {
+   "min": null,
+   "recommended": null
+  },
+  "target_note": "tidak disebutkan (untuk modul daya)",
+  "water_l_per_person_day": null,
+  "food_note": "",
+  "items": [],
+  "special_needs": [
+   "medical_devices",
+   "refrigerated_medicine"
+  ],
+  "unique_points": [
+   "Rata-rata iradiasi Indonesia ≈4,75 kWh/m²/hari; Global Solar Atlas lokasi 4,2–5,3; angka resmi ESDM/BMKG nasional tidak ditemukan → modul pakai 4,0 (asumsi konservatif)"
+  ]
+ },
+ {
+  "type": "device_watts",
+  "data": [
+   {
+    "id": "phone_charging",
+    "typical_w": 10,
+    "surge_w": 10,
+    "typical_w_source": "label perangkat — user wajib cek",
+    "evidence": "DIBACA (kapasitas baterai); watt charger = ASUMSI"
+   },
+   {
+    "id": "led_lamp",
+    "typical_w": 9,
+    "surge_w": 9,
+    "typical_w_source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (hlm.32: LED/12 V rata-rata 9 W; lampu hemat energi 5–22 W, umum 12 W)",
+    "evidence": "DIBACA"
+   },
+   {
+    "id": "router",
+    "typical_w": 7.6,
+    "surge_w": 7.6,
+    "typical_w_source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (hlm.33: router rata-rata 7,6 W)",
+    "evidence": "DIBACA"
+   },
+   {
+    "id": "radio",
+    "typical_w": 14,
+    "surge_w": 14,
+    "typical_w_source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (hlm.32: radio rata-rata 14 W; BBK hitung 16 jam/hari)",
+    "evidence": "DIBACA (watt); jam 4 = ASUMSI"
+   },
+   {
+    "id": "fan",
+    "typical_w": 40,
+    "surge_w": 120,
+    "typical_w_source": "label perangkat — user wajib cek",
+    "evidence": "ASUMSI"
+   },
+   {
+    "id": "laptop",
+    "typical_w": 17.6,
+    "surge_w": 60,
+    "typical_w_source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (hlm.33: notebook 17,6 W mode hemat)",
+    "evidence": "DIBACA (17,6 W mode hemat); surge = ASUMSI"
+   },
+   {
+    "id": "water_pump",
+    "typical_w": 250,
+    "surge_w": 750,
+    "typical_w_source": "label perangkat — user wajib cek",
+    "evidence": "ASUMSI"
+   },
+   {
+    "id": "fridge",
+    "typical_w": 100,
+    "surge_w": 700,
+    "typical_w_source": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/PiB/PiB-19-autarke-notstromversorgung-bevoelkerung.pdf (hlm.29-30: contoh kulkas 100 W → inverter ≥ 700 W (7x); rata-rata 0,54 kWh/hari, rentang 0,34–0,77)",
+    "evidence": "DIBACA"
+   },
+   {
+    "id": "breastmilk_med_fridge",
+    "typical_w": 50,
+    "surge_w": 350,
+    "typical_w_source": "label perangkat — user wajib cek",
+    "evidence": "ASUMSI"
+   },
+   {
+    "id": "cpap",
+    "typical_w": 60,
+    "surge_w": 60,
+    "typical_w_source": "label perangkat — user wajib cek",
+    "evidence": "ASUMSI (dari ringkasan WebSearch sumber komersial)"
+   },
+   {
+    "id": "oxygen_concentrator",
+    "typical_w": 500,
+    "surge_w": 1000,
+    "typical_w_source": "label perangkat — user wajib cek",
+    "evidence": "ASUMSI (sumber komersial)"
+   },
+   {
+    "id": "nebulizer",
+    "typical_w": 60,
+    "surge_w": 60,
+    "typical_w_source": "label perangkat — user wajib cek",
+    "evidence": "ASUMSI"
+   },
+   {
+    "id": "tv",
+    "typical_w": 100,
+    "surge_w": 100,
+    "typical_w_source": "label perangkat — user wajib cek",
+    "evidence": "ASUMSI"
+   },
+   {
+    "id": "rice_cooker",
+    "typical_w": 600,
+    "surge_w": 600,
+    "typical_w_source": "label perangkat — user wajib cek",
+    "evidence": "ASUMSI"
+   }
+  ]
+ },
+ {
+  "type": "not_found",
+  "data": [
+   "MSB (Swedia) khusus listrik padam & alat medis: tidak diakses",
+   "Be Ready/GOV.UK power cut: halaman tidak terambil (hanya jaringan UK via cuplikan)",
+   "Kemenkes/BNPB panduan alat medis listrik: tidak ditemukan",
+   "ESDM/Energy Star tabel watt perangkat: tidak terbaca; watt oksigen/CPAP/kipas/pompa = ASUMSI dengan label user wajib cek"
+  ]
+ }
+]
