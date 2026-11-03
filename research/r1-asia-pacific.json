@@ -1,0 +1,1480 @@
+[
+  {
+    "type": "research_status",
+    "id": "R1",
+    "status": "partial_web_access",
+    "accessed": "2026-11-03",
+    "note": "WebFetch diblokir kebijakan jaringan sesi (getaddrinfo ENOTFOUND) untuk semua domain yang dicoba; curl via proxy: CONNECT 403. WebSearch berfungsi: semua angka berasal dari snippet/ringkasan hasil WebSearch yang dibatasi ke domain resmi (allowed_domains), BUKAN dari pembacaan halaman langsung. Wajib diverifikasi ulang setelah domain diizinkan.",
+    "errors": [
+      {
+        "tool": "WebFetch",
+        "url": "https://www.kantei.go.jp/jp/headline/bousai/sonae.html",
+        "error": "getaddrinfo ENOTFOUND www.kantei.go.jp"
+      },
+      {
+        "tool": "WebFetch",
+        "url": "https://www.maff.go.jp/j/zyukyu/foodstock/",
+        "error": "getaddrinfo ENOTFOUND www.maff.go.jp"
+      },
+      {
+        "tool": "WebFetch",
+        "url": "https://www.bousai.metro.tokyo.lg.jp/",
+        "error": "getaddrinfo ENOTFOUND www.bousai.metro.tokyo.lg.jp"
+      },
+      {
+        "tool": "WebFetch",
+        "url": "https://getready.govt.nz/en/prepared/household/",
+        "error": "getaddrinfo ENOTFOUND getready.govt.nz"
+      },
+      {
+        "tool": "WebFetch",
+        "url": "https://www.bousai.go.jp/kyoiku/hokenkyousai/pdf/sonae_r6.pdf",
+        "error": "getaddrinfo ENOTFOUND www.bousai.go.jp"
+      },
+      {
+        "tool": "WebFetch",
+        "url": "https://en.wikipedia.org/wiki/Emergency_management",
+        "error": "getaddrinfo ENOTFOUND en.wikipedia.org (kontrol)"
+      },
+      {
+        "tool": "curl",
+        "url": "https://www.gov.sg/ , https://www.bousai.go.jp/",
+        "error": "CONNECT tunnel failed, response 403"
+      }
+    ],
+    "domains_to_allow": [
+      "www.bousai.go.jp",
+      "www.kantei.go.jp",
+      "www.maff.go.jp",
+      "www.bousai.metro.tokyo.lg.jp",
+      "www.koho.metro.tokyo.lg.jp",
+      "www.env.go.jp",
+      "www.kokuminhogo.go.jp",
+      "www.jma.go.jp",
+      "safekorea.go.kr",
+      "old.safekorea.go.kr",
+      "m.safekorea.go.kr",
+      "prepare.mnd.gov.tw",
+      "www.nfa.gov.tw",
+      "www.scdf.gov.sg",
+      "pia.gov.ph",
+      "ocd.gov.ph",
+      "www.nema.gov.au",
+      "www.getready.qld.gov.au",
+      "www.redcross.org.au",
+      "getready.govt.nz",
+      "www.civildefence.govt.nz"
+    ]
+  },
+  {
+    "id": "JP",
+    "country": "Japan",
+    "agency": "防災庁 (Disaster Management Agency, dibentuk 2026-11-02 dari Cabinet Office 内閣府 防災担当); 首相官邸; Tokyo Metropolitan Government (東京防災); 農林水産省 (MAFF); 環境省 (pets); 内閣官房 (国民保護)",
+    "url": "https://www.bousai.go.jp/common2026/pdf/Urgent_Request_for_Stronger_Pre_Disaster_Preparedness_Public.pdf",
+    "secondary_urls": [
+      "https://www.kantei.go.jp/jp/headline/bousai/sonae.html",
+      "https://www.maff.go.jp/j/pr/aff/2603/spe1_01.html",
+      "https://www.bousai.metro.tokyo.lg.jp/kitaku_portal/1000048/1027880/1027885.html",
+      "https://www.bousai.go.jp/taisaku/hinanjo/pdf/2204hinanjo_toilet_guideline.pdf"
+    ],
+    "accessed": "2026-11-03",
+    "last_updated_by_source": "2026-11-02 (Seruan darurat Menteri Penanggulangan Bencana 細野豪志, 防総政第4号); MAFF 'Kateibichiku no Iroha' 2026-03; Pamflet Tokyo R7(2025)-11; Pedoman toilet CAO direvisi 2022-04 & 2024-12-13; buku Tokyo Bousai edisi 2023",
+    "verification": "search_snippet_only",
+    "target_days": {
+      "min": 3,
+      "recommended": 7,
+      "note": "Min. 3 hari, sebaiknya 1 minggu (CAO/防災庁 2026, 首相官邸, MAFF). Tokyo: tujuan stok = mampu hidup tanpa bantuan min. 1 minggu. MAFF: sesuaikan dgn hazard map, mis. 2 minggu. Abu Fuji: CAO 2025 menganjurkan >1 minggu bila mungkin (letusan Hōei berlangsung 2 minggu). Makanan khusus (alergi, MPASI, diet ginjal): min. 2 minggu.",
+      "urls": [
+        "https://www.bousai.go.jp/common2026/pdf/Urgent_Request_for_Stronger_Pre_Disaster_Preparedness_Public.pdf",
+        "https://www.kantei.go.jp/jp/headline/bousai/sonae.html",
+        "https://www.maff.go.jp/j/pr/aff/2603/spe1_01.html",
+        "https://www.bousai.metro.tokyo.lg.jp/kitaku_portal/1000048/1027880/1027885.html",
+        "https://www.bousai.go.jp/kazan/shiryo/pdf/honbun.pdf",
+        "https://www.maff.go.jp/kinki/syouhi/mn/iken/attach/pdf/01nendo-1.pdf"
+      ]
+    },
+    "water_l_per_person_day": 3,
+    "water_note": "3 L/orang/hari (minum + masak) — 首相官邸, 防災庁 2026, MAFF, Tokyo. Air untuk flush toilet (生活用水) terpisah: isi jeriken/bak mandi. Contoh MAFF 2 dewasa 1 minggu: 2L×6 botol×4 dus (=48 L). Contoh Tokyo 2018 keluarga 4 orang (3 hari): 2L×18 botol.",
+    "water_urls": [
+      "https://www.kantei.go.jp/jp/headline/bousai/sonae.html",
+      "https://www.bousai.go.jp/common2026/pdf/Urgent_Request_for_Stronger_Pre_Disaster_Preparedness_Public.pdf",
+      "https://www.maff.go.jp/j/pr/aff/2603/spe1_01.html",
+      "https://www.bousai.metro.tokyo.lg.jp/_res/common/bichiku/pamph_r7_11.pdf",
+      "https://www.koho.metro.tokyo.lg.jp/2018/11/10.html"
+    ],
+    "food_note": "Rolling stock (ローリングストック): beli sedikit lebih banyak makanan sehari-hari, konsumsi yang lama dulu, isi ulang. Kombinasi makanan pokok (karbohidrat) + lauk (protein). Beras 1 porsi ≈75 g (0,5 gō); 1 kantong 2 kg ≈27 porsi. Contoh MAFF 2 dewasa/1 minggu: beras 2 kg×2, makanan retort/kaleng 18 + saus pasta 6, gas kaleng 12. 首相官邸: alpha-rice, biskuit, cokelat batang, kanpan untuk 3 hari. Angka kkal: tidak disebutkan oleh MAFF.",
+    "food_urls": [
+      "https://www.maff.go.jp/j/pr/aff/2603/spe1_01.html",
+      "https://www.maff.go.jp/j/zyukyu/foodstock/chapter01.html",
+      "https://www.maff.go.jp/j/zyukyu/foodstock/chapter07.html",
+      "https://www.kantei.go.jp/jp/headline/bousai/sonae.html",
+      "https://www.maff.go.jp/j/zyukyu/foodstock/attach/pdf/guidebook-14.pdf"
+    ],
+    "sanitation": {
+      "portable_toilet_per_person_day": 5,
+      "note": "Rumus Tokyo: 5 kantong/hari × 3 hari × jumlah anggota (keluarga 4 = 60) dan dianjurkan stok 1 minggu (=35/orang). Angka 5x/hari berasal dari pedoman toilet pengungsian CAO (rata-rata 5 kali buang air/hari, ~300 ml/kali). Contoh daftar Tokyo lama (2018, 4 orang): toilet sederhana 30 kali pakai, tisu toilet 12 rol — tidak konsisten dengan rumus 5x/hari.",
+      "urls": [
+        "https://www.koho.metro.tokyo.lg.jp/2025/09/01-1.html",
+        "https://www.bousai.go.jp/taisaku/hinanjo/pdf/2204hinanjo_toilet_guideline.pdf",
+        "https://www.bousai.go.jp/taisaku/hinanjo/pdf/hinanjo_guideline_kaitei241213.pdf",
+        "https://www.koho.metro.tokyo.lg.jp/2018/11/10.html"
+      ]
+    },
+    "items": [
+      {
+        "name": "Air minum",
+        "qty": "3 L/orang/hari; min. 3 hari, ideal 7 hari",
+        "note": "Air flush toilet disimpan terpisah (jeriken, bak mandi)",
+        "url": "https://www.kantei.go.jp/jp/headline/bousai/sonae.html"
+      },
+      {
+        "name": "Makanan darurat + makanan harian (rolling stock)",
+        "qty": "min. 3 hari, ideal 1 minggu",
+        "note": "Pokok + lauk; alpha-rice, kaleng, retort, biskuit, cokelat",
+        "url": "https://www.maff.go.jp/j/pr/aff/2603/spe1_01.html"
+      },
+      {
+        "name": "Beras",
+        "qty": "2 kg×2 kantong untuk 2 dewasa/1 minggu",
+        "note": "1 porsi ≈75 g; 2 kg ≈27 porsi (butuh air & panas)",
+        "url": "https://www.maff.go.jp/j/pr/aff/2603/spe1_01.html"
+      },
+      {
+        "name": "Makanan retort/kaleng",
+        "qty": "18 bungkus + 6 saus pasta untuk 2 dewasa/1 minggu",
+        "note": "Contoh MAFF",
+        "url": "https://www.maff.go.jp/j/pr/aff/2603/spe1_01.html"
+      },
+      {
+        "name": "Kompor gas portabel (カセットコンロ) + tabung gas",
+        "qty": "~6 tabung/orang/minggu",
+        "note": "Masa pakai tabung ~7 th, kompor ~10 th",
+        "url": "https://www.maff.go.jp/j/zyukyu/foodstock/chapter07.html"
+      },
+      {
+        "name": "Toilet portabel/kantong toilet (携帯トイレ)",
+        "qty": "5/orang/hari",
+        "note": "Tokyo: 5×3 hari×anggota; anjuran stok 1 minggu",
+        "url": "https://www.koho.metro.tokyo.lg.jp/2025/09/01-1.html"
+      },
+      {
+        "name": "Tisu toilet, tisu basah, kantong sampah",
+        "qty": "tidak disebutkan (contoh Tokyo 2018: tisu toilet 12 rol/4 orang)",
+        "note": "",
+        "url": "https://www.koho.metro.tokyo.lg.jp/2018/11/10.html"
+      },
+      {
+        "name": "Senter, radio portabel, baterai cadangan, pengisi daya HP",
+        "qty": "1+/rumah tangga",
+        "note": "Bagian tas evakuasi (非常用持ち出し袋)",
+        "url": "https://www.kantei.go.jp/jp/content/000182715.pdf"
+      },
+      {
+        "name": "Barang berharga: buku tabungan, inkan (stempel), uang tunai, kartu asuransi kesehatan",
+        "qty": "—",
+        "note": "Tas evakuasi",
+        "url": "https://www.kantei.go.jp/jp/headline/bousai/sonae.html"
+      },
+      {
+        "name": "P3K: plester, perban, disinfektan, obat rutin",
+        "qty": "—",
+        "note": "Pasien penyakit kronis: bawa kartu RS, catatan nama penyakit & obat",
+        "url": "https://www.bousai.go.jp/kyoiku/hokenkyousai/check.html"
+      },
+      {
+        "name": "Helm / 防災ずきん (tudung pelindung kepala), masker, sarung tangan kerja",
+        "qty": "per orang",
+        "note": "",
+        "url": "https://www.kantei.go.jp/jp/content/000182715.pdf"
+      },
+      {
+        "name": "Pakaian, pakaian dalam, selimut, handuk, jas hujan, sepatu tanpa tali",
+        "qty": "per orang",
+        "note": "",
+        "url": "https://www.kantei.go.jp/jp/content/000182715.pdf"
+      },
+      {
+        "name": "Perlengkapan mandi, penghangat sekali pakai (カイロ)",
+        "qty": "—",
+        "note": "",
+        "url": "https://www.kantei.go.jp/jp/headline/bousai/sonae.html"
+      },
+      {
+        "name": "Lampu kaki otomatis saat listrik padam / senter di samping tempat tidur",
+        "qty": "—",
+        "note": "Terkait 感震ブレーカー",
+        "url": "https://www.bousai.go.jp/jishin/kanshin_breaker.html"
+      },
+      {
+        "name": "Pengikat furnitur (家具の固定)",
+        "qty": "—",
+        "note": "Diminta dalam seruan darurat 2026 dan pedoman Nankai",
+        "url": "https://www.bousai.go.jp/common2026/pdf/Urgent_Request_for_Stronger_Pre_Disaster_Preparedness_Public.pdf"
+      }
+    ],
+    "go_bag": {
+      "note": "非常用持ち出し袋: barang minimum untuk masa awal evakuasi; simpan di dekat pintu, kamar tidur, mobil. Tokyo membedakan tas 'dibawa sehari-hari' (持ち歩き用) dan tas kantor. Disiapkan per jumlah anggota.",
+      "urls": [
+        "https://www.kantei.go.jp/jp/headline/bousai/sonae.html",
+        "https://www.bousai.metro.tokyo.lg.jp/_res/common/2023_bk/tb/tb2023_030_105.pdf"
+      ]
+    },
+    "special_needs": [
+      {
+        "group": "infant",
+        "note": "Susu formula (bubuk/cair), botol, popok; air ekstra untuk menyeduh; MPASI (botol/retort) min. 2 minggu",
+        "urls": [
+          "https://www.kantei.go.jp/jp/headline/bousai/sonae.html",
+          "https://www.maff.go.jp/kinki/syouhi/mn/iken/attach/pdf/01nendo-1.pdf"
+        ]
+      },
+      {
+        "group": "elderly",
+        "note": "Bubur lembut, sup miso instan, makanan yang biasa dimakan; makanan khusus (rendah protein/kalium untuk ginjal) min. 2 minggu",
+        "urls": [
+          "https://www.maff.go.jp/kinki/syouhi/mn/iken/attach/pdf/01nendo-1.pdf"
+        ]
+      },
+      {
+        "group": "allergy",
+        "note": "Makanan bebas alergen min. 2 minggu",
+        "urls": [
+          "https://www.maff.go.jp/j/pr/aff/2603/spe1_01.html"
+        ]
+      },
+      {
+        "group": "medical_device",
+        "note": "Alat medis penopang hidup: siapkan baterai untuk listrik padam; obat yang perlu pendingin: konsultasi",
+        "urls": [
+          "https://www.bousai.go.jp/jishin/kanshin_breaker.html",
+          "https://www.bousai.go.jp/kaigirep/chuobou/jikkoukaigi/18/pdf/shiryo2-2.pdf"
+        ]
+      },
+      {
+        "group": "medication",
+        "note": "Obat rutin di tas evakuasi; catatan penyakit & obat dibawa. Jumlah hari obat: tidak disebutkan",
+        "urls": [
+          "https://www.bousai.go.jp/kyoiku/hokenkyousai/check.html"
+        ]
+      },
+      {
+        "group": "pets",
+        "note": "Makanan & air hewan min. 5 hari, ideal ≥7 hari; diet terapi lebih lama; kandang, catatan vaksin. Revisi pedoman (draft R8/2026) belum final",
+        "urls": [
+          "https://www.env.go.jp/nature/dobutsu/aigo/2_data/pamph/h3009a.html",
+          "https://www.env.go.jp/nature/dobutsu/aigo/2_data/saigai_guide_pet/r07_04/mat02_2.pdf"
+        ]
+      },
+      {
+        "group": "women",
+        "note": "Tokyo: tambahkan kebutuhan khusus perempuan, bayi, lansia, alergi",
+        "urls": [
+          "https://www.bousai.metro.tokyo.lg.jp/_res/common/2023_bk/tb/tb2023_030_105.pdf"
+        ]
+      },
+      {
+        "group": "apartment",
+        "note": "Tokyo: penghuni apartemen siapkan 1 minggu air & makanan di unit karena lift berhenti",
+        "urls": [
+          "https://www.bousai.metro.tokyo.lg.jp/_res/common/2023_bk/tb/tb2023_030_105.pdf"
+        ]
+      }
+    ],
+    "scenario_items": {
+      "earthquake": [
+        {
+          "item": "Pengikat furnitur, cek ketahanan gempa rumah",
+          "url": "https://www.bousai.go.jp/common2026/pdf/Urgent_Request_for_Stronger_Pre_Disaster_Preparedness_Public.pdf"
+        },
+        {
+          "item": "感震ブレーカー (pemutus listrik otomatis saat gempa) + lampu darurat",
+          "url": "https://www.bousai.go.jp/jishin/kanshin_breaker.html"
+        },
+        {
+          "item": "Saat 南海トラフ臨時情報 (巨大地震注意): 1 minggu siaga, bawa tas evakuasi setiap saat, cek ulang stok",
+          "url": "https://www.jma.go.jp/jma/kishou/know/jishin/nteq/bosai.html"
+        }
+      ],
+      "tsunami": [
+        {
+          "item": "Evakuasi segera ke tempat tinggi; cek hazard map & rute evakuasi; tas evakuasi selalu siap (khusus periode Nankai 1 minggu)",
+          "url": "https://www.bousai.go.jp/jishin/nankai/pdf/gaiyou.pdf"
+        }
+      ],
+      "volcano": [
+        {
+          "item": "Masker industri bersertifikat DS2/N95 (darurat: kain)",
+          "url": "https://www.fujisan-kouhai.metro.tokyo.lg.jp/en/preparation_en/"
+        },
+        {
+          "item": "Goggle/kacamata; ganti lensa kontak ke kacamata",
+          "url": "https://www.fujisan-kouhai.metro.tokyo.lg.jp/en/preparation_en/"
+        },
+        {
+          "item": "Helm, baju lengan panjang untuk bersihkan abu; jangan buang abu ke saluran",
+          "url": "https://www.fujisan-kouhai.metro.tokyo.lg.jp/en/preparation_en/"
+        },
+        {
+          "item": "Stok >1 minggu bila mungkin (abu Fuji)",
+          "url": "https://www.bousai.go.jp/kazan/shiryo/pdf/honbun.pdf"
+        }
+      ],
+      "power_outage": [
+        {
+          "item": "Lampu kaki/senter, radio, baterai untuk alat medis",
+          "url": "https://www.bousai.go.jp/jishin/kanshin_breaker.html"
+        },
+        {
+          "item": "Pamflet 停電対策",
+          "url": "https://www.bousai.go.jp/jishin/syuto/denkikasaitaisaku/pdf/teiden_low.pdf"
+        }
+      ],
+      "conflict_missile": [
+        {
+          "item": "J-Alert: masuk bangunan/bawah tanah; jauhi jendela, ruang tanpa jendela; tidak ada daftar stok khusus",
+          "url": "https://www.kokuminhogo.go.jp/kokuminaction/"
+        },
+        {
+          "item": "Bila dekat lokasi jatuh: tutup mulut-hidung, tutup ventilasi, segel ruangan (目張り)",
+          "url": "https://www.kokuminhogo.go.jp/pdf/HinanKoudou_4.pdf"
+        }
+      ],
+      "nuclear": [
+        {
+          "item": "Shelter dalam ruangan (屋内退避) di zona UPZ; tablet iodium stabil (安定ヨウ素剤) didistribusikan pemda — bukan konsumsi mandiri; formulasi jeli untuk <3 th",
+          "url": "https://www.bousai.go.jp/kaigirep/hakusho/r08/honbun/1b_2s_03_02.html"
+        }
+      ],
+      "flood": [
+        {
+          "item": "Tidak ada daftar khusus ditemukan di sumber nasional (gunakan hazard map)",
+          "url": "https://www.bousai.go.jp/common2026/pdf/Urgent_Request_for_Stronger_Pre_Disaster_Preparedness_Public.pdf"
+        }
+      ],
+      "pandemic": [
+        {
+          "item": "Tidak disebutkan di sumber yang ditemukan",
+          "url": "https://www.bousai.go.jp/common2026/pdf/Urgent_Request_for_Stronger_Pre_Disaster_Preparedness_Public.pdf"
+        }
+      ]
+    },
+    "unique_points": [
+      "Rolling stock (ローリングストック) sebagai metode utama",
+      "Toilet portabel 5 kantong/orang/hari — satu-satunya negara dengan angka sanitasi eksplisit",
+      "Gas kaleng ~6 tabung/orang/minggu (MAFF)",
+      "Tokyo Bichiku Navi: kalkulator stok 1 minggu berdasar komposisi keluarga (mirip SurvivalCheck)",
+      "防災庁 (Disaster Management Agency) resmi berdiri 2026-11-02; seruan darurat menteri hari yang sama: min. 3 hari, ideal 1 minggu, air 3 L",
+      "Perusahaan di Tokyo wajib-upaya stok 3 hari utk karyawan: air 9 L, 9 porsi makan, 1 selimut/orang, +10% untuk orang luar",
+      "Peringatan Nankai: 1 minggu siaga khusus + 1 minggu lanjutan"
+    ],
+    "unique_urls": [
+      "https://www.maff.go.jp/j/pr/aff/2603/spe1_01.html",
+      "https://www.koho.metro.tokyo.lg.jp/2025/09/01-1.html",
+      "https://www.maff.go.jp/j/zyukyu/foodstock/chapter07.html",
+      "https://www.bousai.metro.tokyo.lg.jp/kyojyo/1001855/1013810.html",
+      "https://www.kantei.go.jp/jp/105/actions/202611/02hossokushiki.html",
+      "https://www.bousai.go.jp/common2026/pdf/Urgent_Request_for_Stronger_Pre_Disaster_Preparedness_Public.pdf",
+      "https://www.bousai.metro.tokyo.lg.jp/_res/projects/default_project/_page_/001/001/369/202303.pdf",
+      "https://www.jma.go.jp/jma/kishou/know/jishin/nteq/bosai.html"
+    ]
+  },
+  {
+    "id": "KR",
+    "country": "South Korea",
+    "agency": "Ministry of the Interior and Safety (행정안전부, MOIS) — 국민안전24 / 국민재난안전포털 (Safety Korea)",
+    "url": "https://old.safekorea.go.kr/idsiSFK/neo/main_m/set/supplies.html",
+    "secondary_urls": [
+      "https://safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=stateOfEmergency&actsHeaderTitle=%EB%B9%84%EC%83%81%EC%82%AC%ED%83%9C&menuSn=4",
+      "https://www.safekorea.go.kr/idsiSFK/sfk/cs/sfc/securityTrick.do",
+      "https://m.safekorea.go.kr/idsiSFK/neo/main_m/chk/emergencySupplies.html"
+    ],
+    "accessed": "2026-11-03",
+    "last_updated_by_source": "tidak disebutkan (portal bermigrasi ke 'safekorea-kor' / 국민안전24; sebagian halaman lama berumur bertahun-tahun)",
+    "verification": "search_snippet_only",
+    "target_days": {
+      "min": 3,
+      "recommended": 14,
+      "note": "Tas bertahan hidup (생존배낭) 2–3 hari per orang; perlengkapan rumah tangga min. 3 hari (materi edukasi MOIS); portal: bila seluruh wilayah terdampak, harus mandiri min. 3–4 hari. Skenario darurat/perang: siapkan barang untuk evakuasi ≥2 minggu. Halaman 비상대비물자: makanan 30 hari (halaman lain: 15–30 hari per rumah tangga) — angka tidak konsisten antar halaman.",
+      "urls": [
+        "https://safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=stateOfEmergency&actsHeaderTitle=%EB%B9%84%EC%83%81%EC%82%AC%ED%83%9C&menuSn=4",
+        "https://www.safekorea.go.kr/idsiSFK/sfk/cs/sfc/securityTrick.do",
+        "https://old.safekorea.go.kr/idsiSFK/neo/main_m/set/supplies.html",
+        "https://kasem.safekorea.go.kr/ptlCont.do?url=eduDataDtlTtSchVdo&pgParam=V000000520%2F"
+      ]
+    },
+    "water_l_per_person_day": null,
+    "water_note": "Tidak disebutkan (tidak ada L/orang/hari di halaman resmi yang ditemukan). Anjuran: tampung air di bak mandi/ember sebelum terputus; contoh isi tas: air 500 ml.",
+    "water_urls": [
+      "https://old.safekorea.go.kr/idsiSFK/neo/main_m/set/supplies.html",
+      "https://kasem.safekorea.go.kr/ptlCont.do?url=eduDataDtlTtSchVdo&pgParam=V000000520%2F"
+    ],
+    "food_note": "Makanan mudah dimasak & disimpan: beras, ramyeon, tepung, kaleng (30 hari di halaman 비상대비물자). Tas: makanan siap santap tanpa masak. Cek kedaluwarsa berkala. Pemerintah minta tidak menimbun; ada sistem penjatahan saat darurat.",
+    "food_urls": [
+      "https://old.safekorea.go.kr/idsiSFK/neo/main_m/set/supplies.html",
+      "https://m.safekorea.go.kr/idsiSFK/neo/sfk/cs/contents/prevent/SDIJKM5107.html?menuSeq=785",
+      "https://m.safekorea.go.kr/idsiSFK/neo/main_m/chk/emergencySupplies.html"
+    ],
+    "sanitation": {
+      "portable_toilet_per_person_day": null,
+      "note": "Tidak disebutkan. Perlengkapan higiene termasuk dalam kategori 위생용품.",
+      "urls": [
+        "https://kasem.safekorea.go.kr/ptlCont.do?url=eduDataDtlTtSchVdo&pgParam=V000000520%2F"
+      ]
+    },
+    "items": [
+      {
+        "name": "Makanan & air",
+        "qty": "beras, ramyeon, tepung, kaleng — 30 hari (halaman 비상대비물자)",
+        "note": "",
+        "url": "https://old.safekorea.go.kr/idsiSFK/neo/main_m/set/supplies.html"
+      },
+      {
+        "name": "Alat masak: panci camping (코펠), kompor portabel (버너) + gas butana",
+        "qty": "—",
+        "note": "",
+        "url": "https://old.safekorea.go.kr/idsiSFK/neo/main_m/set/supplies.html"
+      },
+      {
+        "name": "Selimut, pakaian dalam",
+        "qty": "—",
+        "note": "",
+        "url": "https://old.safekorea.go.kr/idsiSFK/neo/main_m/set/supplies.html"
+      },
+      {
+        "name": "Radio, senter, lilin, korek/korek api, baterai",
+        "qty": "—",
+        "note": "Baterai radio cadangan",
+        "url": "https://old.safekorea.go.kr/idsiSFK/neo/main_m/set/supplies.html"
+      },
+      {
+        "name": "Obat rumah tangga: disinfektan, analgesik/antipiretik, obat pencernaan, antidiare, salep luka bakar, hemostatik, antiinflamasi, pinset, perban, plester",
+        "qty": "—",
+        "note": "Tambahkan obat utk anak/lansia",
+        "url": "https://old.safekorea.go.kr/idsiSFK/neo/main_m/set/supplies.html"
+      },
+      {
+        "name": "Perlengkapan KBRN: masker gas atau masker, jas plastik/jas hujan, sepatu bot karet, sarung tangan, lakban untuk menyegel jendela/pintu",
+        "qty": "—",
+        "note": "",
+        "url": "https://old.safekorea.go.kr/idsiSFK/neo/main_m/set/supplies.html"
+      },
+      {
+        "name": "Tas bertahan hidup (생존배낭)",
+        "qty": "2–3 hari/orang",
+        "note": "Air, makanan, kebutuhan sehari-hari, obat, radio, senter, perlengkapan KBRN",
+        "url": "https://safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=stateOfEmergency&actsHeaderTitle=%EB%B9%84%EC%83%81%EC%82%AC%ED%83%9C&menuSn=4"
+      },
+      {
+        "name": "Pengisi daya HP, peta",
+        "qty": "—",
+        "note": "",
+        "url": "https://m.safekorea.go.kr/idsiSFK/neo/main_m/chk/emergencySupplies.html"
+      }
+    ],
+    "go_bag": {
+      "note": "생존배낭 per orang, 2–3 hari; dibawa ke shelter 민방위 saat sirene serangan udara.",
+      "urls": [
+        "https://safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=stateOfEmergency&actsHeaderTitle=%EB%B9%84%EC%83%81%EC%82%AC%ED%83%9C&menuSn=4",
+        "https://kasem.safekorea.go.kr/ptlCont.do?url=eduDataDtlTtSchVdo&pgParam=V000000520%2F"
+      ]
+    },
+    "special_needs": [
+      {
+        "group": "pets",
+        "note": "Makanan, air, tali, mangkuk, alas buang air, catatan vaksin & kesehatan, obat, kandang (이동장), kantong kotoran, tanda pengenal + nomor registrasi, foto; daftar shelter yang menerima hewan. Jumlah hari: tidak disebutkan",
+        "urls": [
+          "https://www.safekorea.go.kr/idsiSFK/neo/sfk/cs/contents/prevent/SDIJKM5306.html?menuSeq=130"
+        ]
+      },
+      {
+        "group": "children_elderly",
+        "note": "Tambahkan obat sesuai anak/lansia",
+        "urls": [
+          "https://old.safekorea.go.kr/idsiSFK/neo/main_m/set/supplies.html"
+        ]
+      },
+      {
+        "group": "disability",
+        "note": "Tidak disebutkan di sumber yang ditemukan",
+        "urls": []
+      }
+    ],
+    "scenario_items": {
+      "conflict_war": [
+        {
+          "item": "Saat sirene serangan udara: ambil 생존배낭, ke shelter 민방위 / bawah tanah",
+          "url": "https://safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=stateOfEmergency&actsHeaderTitle=%EB%B9%84%EC%83%81%EC%82%AC%ED%83%9C&menuSn=4"
+        },
+        {
+          "item": "Barang untuk evakuasi ≥2 minggu",
+          "url": "https://safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=stateOfEmergency&actsHeaderTitle=%EB%B9%84%EC%83%81%EC%82%AC%ED%83%9C&menuSn=4"
+        },
+        {
+          "item": "Penjatahan barang pokok; jangan menimbun",
+          "url": "https://m.safekorea.go.kr/idsiSFK/neo/sfk/cs/contents/prevent/SDIJKM5107.html?menuSeq=785"
+        }
+      ],
+      "nuclear": [
+        {
+          "item": "Shelter dalam ~2 minggu; siapkan 2 minggu persediaan",
+          "url": "https://m.safekorea.go.kr/idsiSFK/neo/main_m/set/CBP.html"
+        },
+        {
+          "item": "Segel pintu/jendela dengan selotip/plastik, matikan AC & kipas; bila terkontaminasi, lepas baju & mandi sabun",
+          "url": "https://safekorea.go.kr/safekorea-kor/em/emergency/emergency_er4.html"
+        },
+        {
+          "item": "Iodium (갑상선방호약품) dibagikan otoritas di zona PAZ/UPZ — dosis tidak disebutkan",
+          "url": "http://mepv2.safekorea.go.kr/safety_guide/safeGuide/showDetail_04003_01.html"
+        }
+      ],
+      "chemical": [
+        {
+          "item": "Masker gas/masker, jas plastik, sepatu bot, sarung tangan; gas kimia lebih berat dari udara → naik ke lantai atas",
+          "url": "https://old.safekorea.go.kr/idsiSFK/neo/main_m/set/supplies.html"
+        }
+      ],
+      "earthquake": [
+        {
+          "item": "Daftar khusus tidak ditemukan; gunakan daftar umum",
+          "url": "https://m.safekorea.go.kr/idsiSFK/neo/main_m/chk/emergencySupplies.html"
+        }
+      ],
+      "flood": [
+        {
+          "item": "Tidak ada angka khusus",
+          "url": "https://m.safekorea.go.kr/idsiSFK/neo/main_m/chk/emergencySupplies.html"
+        }
+      ],
+      "power_outage": [
+        {
+          "item": "Senter, lilin, korek",
+          "url": "https://m.safekorea.go.kr/idsiSFK/neo/main_m/chk/emergencySupplies.html"
+        }
+      ],
+      "pandemic": [
+        {
+          "item": "Tidak disebutkan",
+          "url": "https://m.safekorea.go.kr/idsiSFK/neo/main_m/chk/emergencySupplies.html"
+        }
+      ]
+    },
+    "unique_points": [
+      "Fokus kuat pada perang/KBRN (masker gas, segel ruangan)",
+      "Shelter 민방위 terdaftar",
+      "Stok makanan 15–30 hari di halaman 비상대비물자 (lebih panjang dari mayoritas)",
+      "Pemerintah menegaskan penjatahan & larangan menimbun"
+    ],
+    "unique_urls": [
+      "https://old.safekorea.go.kr/idsiSFK/neo/main_m/set/supplies.html",
+      "https://m.safekorea.go.kr/idsiSFK/neo/sfk/cs/contents/prevent/SDIJKM5107.html?menuSeq=785"
+    ]
+  },
+  {
+    "id": "TW",
+    "country": "Taiwan",
+    "agency": "Ministry of National Defense (國防部, All-out Defense Mobilization Agency) — 臺灣全民安全指引 'In Case of Crisis'; National Fire Agency (內政部消防署)",
+    "url": "https://prepare.mnd.gov.tw/emergency-supplies/household-supplies",
+    "secondary_urls": [
+      "https://prepare.mnd.gov.tw/assets/pdf/emergency-supplies.zh-Hant.pdf",
+      "https://prepare.mnd.gov.tw/emergency-supplies/go-bag",
+      "https://prepare.mnd.gov.tw/assets/pdf/manual.en.pdf",
+      "https://www.nfa.gov.tw/cht/index.php?code=list&flag=detail&ids=1468&article_id=18936"
+    ],
+    "accessed": "2026-11-03",
+    "last_updated_by_source": "2025-09-16 (buku panduan baru 《當危機來臨時》 diumumkan MND; versi CN/EN tersebar 2025-11)",
+    "verification": "search_snippet_only",
+    "target_days": {
+      "min": 7,
+      "recommended": 7,
+      "note": "Stok rumah (日常居家儲備): per rumah tangga min. 7 hari. Tas evakuasi (緊急避難包): per orang 1–3 hari. Panduan lama NFA: makanan cukup 3 hari.",
+      "urls": [
+        "https://prepare.mnd.gov.tw/emergency-supplies/household-supplies",
+        "https://prepare.mnd.gov.tw/emergency-supplies/go-bag",
+        "https://www.wuri.taichung.gov.tw/media/799082/%E5%B1%85%E5%AE%B6%E9%98%B2%E7%81%BD%E9%A3%9F%E7%89%A9%E6%89%8B%E5%86%8A.pdf"
+      ]
+    },
+    "water_l_per_person_day": 3,
+    "water_note": "Stok rumah: min. 3 L/orang/hari. Tas evakuasi: 2 botol × 600 ml. NFA (lama): 3 L/orang/hari (minum + masak; ~1 L minum murni); rumus lama tas NFA: 15 ml/kg berat badan/hari.",
+    "water_urls": [
+      "https://prepare.mnd.gov.tw/emergency-supplies/household-supplies",
+      "https://prepare.mnd.gov.tw/assets/pdf/emergency-supplies.zh-Hant.pdf",
+      "https://prepare.mnd.gov.tw/emergency-supplies/go-bag",
+      "https://www.wuri.taichung.gov.tw/media/799082/%E5%B1%85%E5%AE%B6%E9%98%B2%E7%81%BD%E9%A3%9F%E7%89%A9%E6%89%8B%E5%86%8A.pdf",
+      "https://www.nfa.gov.tw/cht/index.php?code=list&flag=detail&ids=1468&article_id=18936"
+    ],
+    "food_note": "Makanan pokok tahan suhu ruang, camilan energi, bumbu dasar; tas: makanan tanpa pemanasan (kaleng, nasi instan, kerupuk beras, biskuit ransum). Cek tiap 6 bulan, makan yang hampir kedaluwarsa dulu, tandai tanggal. Kalori: tidak disebutkan.",
+    "food_urls": [
+      "https://prepare.mnd.gov.tw/assets/pdf/emergency-supplies.zh-Hant.pdf",
+      "https://prepare.mnd.gov.tw/emergency-supplies/go-bag",
+      "https://prepare.mnd.gov.tw/emergency-supplies/household-supplies"
+    ],
+    "sanitation": {
+      "portable_toilet_per_person_day": null,
+      "note": "Tidak disebutkan jumlah; daftar memuat masker, tisu toilet, alkohol & tisu disinfektan.",
+      "urls": [
+        "https://prepare.mnd.gov.tw/assets/pdf/emergency-supplies.zh-Hant.pdf"
+      ]
+    },
+    "items": [
+      {
+        "name": "Air minum (rumah)",
+        "qty": "≥3 L/orang/hari × 7 hari",
+        "note": "",
+        "url": "https://prepare.mnd.gov.tw/emergency-supplies/household-supplies"
+      },
+      {
+        "name": "Makanan pokok tahan suhu ruang, camilan energi, bumbu",
+        "qty": "7 hari",
+        "note": "",
+        "url": "https://prepare.mnd.gov.tw/assets/pdf/emergency-supplies.zh-Hant.pdf"
+      },
+      {
+        "name": "Masker, tisu toilet, alkohol & tisu disinfektan, kotak P3K",
+        "qty": "—",
+        "note": "",
+        "url": "https://prepare.mnd.gov.tw/assets/pdf/emergency-supplies.zh-Hant.pdf"
+      },
+      {
+        "name": "Obat umum & obat resep pribadi",
+        "qty": "—",
+        "note": "",
+        "url": "https://prepare.mnd.gov.tw/assets/pdf/emergency-supplies.zh-Hant.pdf"
+      },
+      {
+        "name": "Senter/headlamp, lampu LED, radio portabel, baterai kering, kabel charger, power bank terisi, generator engkol tangan",
+        "qty": "—",
+        "note": "",
+        "url": "https://prepare.mnd.gov.tw/assets/pdf/emergency-supplies.zh-Hant.pdf"
+      },
+      {
+        "name": "Tas evakuasi (ransel)",
+        "qty": "per orang, 1–3 hari; berat ~15 kg (pria) / ~10 kg (wanita)",
+        "note": "",
+        "url": "https://prepare.mnd.gov.tw/emergency-supplies/go-bag"
+      },
+      {
+        "name": "Air tas evakuasi",
+        "qty": "2 × 600 ml",
+        "note": "",
+        "url": "https://prepare.mnd.gov.tw/emergency-supplies/go-bag"
+      },
+      {
+        "name": "Salinan KTP, kartu asuransi kesehatan, buku tabungan (kertas/digital, kantong zip tahan air)",
+        "qty": "—",
+        "note": "",
+        "url": "https://prepare.mnd.gov.tw/emergency-supplies/go-bag"
+      },
+      {
+        "name": "Peluit, radio portabel, peta evakuasi & kontak (kertas), perlengkapan anti-heatstroke, uang tunai sedikit, baterai",
+        "qty": "—",
+        "note": "",
+        "url": "https://prepare.mnd.gov.tw/emergency-supplies/go-bag"
+      }
+    ],
+    "go_bag": {
+      "note": "緊急避難包 per orang 1–3 hari; cek tiap 6 bulan.",
+      "urls": [
+        "https://prepare.mnd.gov.tw/emergency-supplies/go-bag"
+      ]
+    },
+    "special_needs": [
+      {
+        "group": "infant",
+        "note": "Susu bubuk, popok",
+        "urls": [
+          "https://prepare.mnd.gov.tw/assets/pdf/emergency-supplies.zh-Hant.pdf"
+        ]
+      },
+      {
+        "group": "pets",
+        "note": "Makanan hewan, tali, info kontak pemilik",
+        "urls": [
+          "https://prepare.mnd.gov.tw/assets/pdf/emergency-supplies.zh-Hant.pdf"
+        ]
+      },
+      {
+        "group": "elderly",
+        "note": "Mis. baterai alat bantu dengar",
+        "urls": [
+          "https://prepare.mnd.gov.tw/assets/pdf/emergency-supplies.zh-Hant.pdf"
+        ]
+      },
+      {
+        "group": "medication",
+        "note": "Obat resep pribadi; jumlah hari tidak disebutkan",
+        "urls": [
+          "https://prepare.mnd.gov.tw/assets/pdf/emergency-supplies.zh-Hant.pdf"
+        ]
+      }
+    ],
+    "scenario_items": {
+      "conflict_air_raid": [
+        {
+          "item": "Sirene/SMS serangan udara: ambil tas evakuasi; ke basement atau ruang jauh dari jendela; hindari lift; bawah tanah > atas tanah, dalam > luar",
+          "url": "https://prepare.mnd.gov.tw/emergency-responses"
+        },
+        {
+          "item": "Info lewat radio jika internet/telekom putus",
+          "url": "https://prepare.mnd.gov.tw/assets/pdf/manual.zh-Hant.pdf"
+        }
+      ],
+      "nuclear": [
+        {
+          "item": "Masuk rumah, tutup pintu/jendela, dengarkan TV/radio; tablet iodium hanya sesuai instruksi pemerintah (obat, jangan minum sendiri)",
+          "url": "https://prepare.mnd.gov.tw/emergency-responses"
+        }
+      ],
+      "power_outage_internet": [
+        {
+          "item": "Radio portabel, power bank, generator engkol; pintu gulung listrik, kunci elektronik, lift, pompa air bertekanan & ATM bisa mati",
+          "url": "https://prepare.mnd.gov.tw/assets/pdf/manual.zh-Hant.pdf"
+        }
+      ],
+      "earthquake": [
+        {
+          "item": "Gunakan daftar umum; cek tas tiap 6 bulan",
+          "url": "https://www.nfa.gov.tw/cht/index.php?code=list&flag=detail&ids=1468&article_id=18936"
+        }
+      ],
+      "pandemic": [
+        {
+          "item": "Masker, alkohol/tisu disinfektan (daftar umum); tidak ada daftar khusus",
+          "url": "https://prepare.mnd.gov.tw/assets/pdf/emergency-supplies.zh-Hant.pdf"
+        }
+      ]
+    },
+    "unique_points": [
+      "Panduan sipil diterbitkan Kemhan (konteks ancaman militer) — 2025",
+      "Pemisahan jelas: stok rumah (keluarga, 7 hari) vs tas evakuasi (individu, 1–3 hari)",
+      "Batas berat tas per jenis kelamin (15/10 kg)",
+      "Peringatan bahwa pintu elektrik/ATM/pompa air gagal saat listrik/internet padam",
+      "Bab ketahanan mental & literasi informasi (disinformasi)"
+    ],
+    "unique_urls": [
+      "https://mna.mnd.gov.tw/news/detail/?UserKey=5ff4a769-3425-4252-99b2-9e99a44a463f",
+      "https://prepare.mnd.gov.tw/emergency-supplies/go-bag",
+      "https://prepare.mnd.gov.tw/assets/pdf/manual.zh-Hant.pdf"
+    ]
+  },
+  {
+    "id": "SG",
+    "country": "Singapore",
+    "agency": "Singapore Civil Defence Force (SCDF) — Civil Defence Emergency Handbook 10th ed.; Ready Bag",
+    "url": "https://www.scdf.gov.sg/docs/default-source/comm.---volunteers-(docs)/(2026)-scdf-emergency-handbook-(english).pdf?sfvrsn=1407b4dd_1",
+    "secondary_urls": [
+      "https://www.scdf.gov.sg/home/community-volunteers/community-preparedness/community-programmes/ready-bag",
+      "https://www.scdf.gov.sg/home/community-and-volunteers/fire-emergency-guides/civil-defence-emergency--handbook---interactive-tools"
+    ],
+    "accessed": "2026-11-03",
+    "last_updated_by_source": "2026 (Civil Defence Emergency Handbook edisi ke-10; edisi 9 = 2024, update 2025)",
+    "verification": "search_snippet_only",
+    "target_days": {
+      "min": null,
+      "recommended": 14,
+      "note": "Stok makanan pokok di pantry: 2 minggu (handbook). Durasi Ready Bag: tidak disebutkan.",
+      "urls": [
+        "https://www.scdf.gov.sg/docs/default-source/comm.---volunteers-(docs)/(2026)-scdf-emergency-handbook-(english).pdf?sfvrsn=1407b4dd_1"
+      ]
+    },
+    "water_l_per_person_day": null,
+    "water_note": "Tidak disebutkan. Air & makanan kering = item OPSIONAL Ready Bag. Saat gangguan pasokan air masa perang, titik distribusi didirikan dekat rumah; bawa Ready Bag & wadah sendiri.",
+    "water_urls": [
+      "https://www.scdf.gov.sg/home/community-volunteers/community-preparedness/community-programmes/ready-bag",
+      "https://www.scdf.gov.sg/docs/default-source/comm.---volunteers-(docs)/(2026)-scdf-emergency-handbook-(english).pdf?sfvrsn=1407b4dd_1"
+    ],
+    "food_note": "Simpan makanan tidak mudah basi dalam jumlah wajar; stok 2 minggu bahan pokok (beras, mi kering, makanan kaleng); rotasi rutin. Kalori: tidak disebutkan.",
+    "food_urls": [
+      "https://www.scdf.gov.sg/docs/default-source/comm.---volunteers-(docs)/(2026)-scdf-emergency-handbook-(english).pdf?sfvrsn=1407b4dd_1"
+    ],
+    "sanitation": {
+      "portable_toilet_per_person_day": null,
+      "note": "Tidak disebutkan",
+      "urls": []
+    },
+    "items": [
+      {
+        "name": "Senter (baterai disimpan terpisah) + baterai",
+        "qty": "1",
+        "note": "",
+        "url": "https://www.scdf.gov.sg/docs/default-source/comm.---volunteers-(docs)/(2026)-scdf-emergency-handbook-(english).pdf?sfvrsn=1407b4dd_1"
+      },
+      {
+        "name": "Obat pribadi esensial",
+        "qty": "—",
+        "note": "",
+        "url": "https://www.scdf.gov.sg/home/community-volunteers/community-preparedness/community-programmes/ready-bag"
+      },
+      {
+        "name": "Map tahan air berisi fotokopi dokumen penting",
+        "qty": "1",
+        "note": "",
+        "url": "https://www.scdf.gov.sg/docs/default-source/comm.---volunteers-(docs)/(2026)-scdf-emergency-handbook-(english).pdf?sfvrsn=1407b4dd_1"
+      },
+      {
+        "name": "Kotak P3K",
+        "qty": "1",
+        "note": "",
+        "url": "https://www.scdf.gov.sg/home/community-volunteers/community-preparedness/community-programmes/ready-bag"
+      },
+      {
+        "name": "Perlengkapan anak (susu bubuk dll.)",
+        "qty": "sesuai kebutuhan",
+        "note": "",
+        "url": "https://www.scdf.gov.sg/home/community-volunteers/community-preparedness/community-programmes/ready-bag"
+      },
+      {
+        "name": "Masker N95",
+        "qty": "per orang",
+        "note": "",
+        "url": "https://www.scdf.gov.sg/home/community-volunteers/community-preparedness/community-programmes/ready-bag"
+      },
+      {
+        "name": "Peluit",
+        "qty": "1",
+        "note": "",
+        "url": "https://www.scdf.gov.sg/home/community-volunteers/community-preparedness/community-programmes/ready-bag"
+      },
+      {
+        "name": "Opsional: uang tunai, air kemasan, makanan kering, baju ganti",
+        "qty": "—",
+        "note": "Tas tidak boleh besar/berat",
+        "url": "https://www.scdf.gov.sg/home/community-volunteers/community-preparedness/community-programmes/ready-bag"
+      }
+    ],
+    "go_bag": {
+      "note": "Ready Bag per anggota keluarga; ringkas; cek kedaluwarsa obat, P3K, masker.",
+      "urls": [
+        "https://www.scdf.gov.sg/home/community-volunteers/community-preparedness/community-programmes/ready-bag"
+      ]
+    },
+    "special_needs": [
+      {
+        "group": "infant",
+        "note": "Childcare supplies, susu bubuk",
+        "urls": [
+          "https://www.scdf.gov.sg/home/community-volunteers/community-preparedness/community-programmes/ready-bag"
+        ]
+      },
+      {
+        "group": "medication",
+        "note": "Obat pribadi esensial di Ready Bag",
+        "urls": [
+          "https://www.scdf.gov.sg/home/community-volunteers/community-preparedness/community-programmes/ready-bag"
+        ]
+      },
+      {
+        "group": "elderly/disability/pets",
+        "note": "Tidak disebutkan di sumber yang ditemukan",
+        "urls": []
+      }
+    ],
+    "scenario_items": {
+      "conflict_war": [
+        {
+          "item": "Household/Storey Shelter (HS/SS) sebagai perlindungan utama; rumah tanpa shelter: Improvised Cover at Home (ICAH)",
+          "url": "https://www.scdf.gov.sg/docs/default-source/comm.---volunteers-(docs)/(2026)-scdf-emergency-handbook-(english).pdf?sfvrsn=1407b4dd_1"
+        },
+        {
+          "item": "Gangguan air & penjatahan pangan: ambil di titik distribusi",
+          "url": "https://www.scdf.gov.sg/docs/default-source/comm.---volunteers-(docs)/(2026)-scdf-emergency-handbook-(english).pdf?sfvrsn=1407b4dd_1"
+        }
+      ],
+      "chemical_biological": [
+        {
+          "item": "Bab Biological Threats/Anthrax di handbook (isi tidak terverifikasi)",
+          "url": "https://www.scdf.gov.sg/docs/default-source/comm.---volunteers-(docs)/(2026)-scdf-emergency-handbook-(english).pdf?sfvrsn=1407b4dd_1"
+        }
+      ],
+      "haze_pandemic": [
+        {
+          "item": "Masker N95 di Ready Bag; panduan kabut asap NEA tidak diperiksa",
+          "url": "https://www.scdf.gov.sg/home/community-volunteers/community-preparedness/community-programmes/ready-bag"
+        }
+      ]
+    },
+    "unique_points": [
+      "Shelter rumah tangga (HS) wajib di flat modern — perlindungan perang",
+      "Ready Bag: air & makanan justru opsional (asumsi urban, distribusi cepat)",
+      "Latihan nasional Exercise SG Ready 2026"
+    ],
+    "unique_urls": [
+      "https://www.scdf.gov.sg/docs/default-source/comm.---volunteers-(docs)/(2026)-scdf-emergency-handbook-(english).pdf?sfvrsn=1407b4dd_1",
+      "https://www.scdf.gov.sg/home/community-volunteers/community-preparedness/community-programmes/ready-bag",
+      "https://www.totaldefence.gov.sg/newsroom/fact-sheet--exercise-sg-ready-2026/"
+    ]
+  },
+  {
+    "id": "PH",
+    "country": "Philippines",
+    "agency": "NDRRMC / Office of Civil Defense (OCD) — dikutip via Philippine Information Agency (PIA); DOH & PHIVOLCS untuk erupsi",
+    "url": "https://pia.gov.ph/disaster-information-service/civil-defense-promotes-go-bag-for-emergencies/",
+    "secondary_urls": [
+      "https://pia.gov.ph/news/ocd-ncr-72-hr-self-sufficiency-crucial-survival-measure-after-big-one/",
+      "https://osg.gov.ph/public/documents/procurement/bidding/2023/023-11-220/TOR%20Emergency%20Go%20Bags%20NEP%20FY2024.pdf",
+      "https://pia.gov.ph/news/luzon/calabarzon/ocd-urges-calabarzon-families-to-prepare-go-bags-conserve-water",
+      "https://nnc.gov.ph/luzon-region/be-informed-be-ready-know-how-to-prepare-for-emergencies/"
+    ],
+    "accessed": "2026-11-03",
+    "last_updated_by_source": "tidak ada publikasi nasional OCD tunggal yang ditemukan; artikel PIA OCD-NCR 'Big One' 2025-10-28; daftar Go Bag OCD-NCR ~2023",
+    "verification": "search_snippet_only",
+    "target_days": {
+      "min": 3,
+      "recommended": 3,
+      "note": "Swadaya min. 72 jam 'dan mungkin lebih lama' (OCD-NCR, skenario gempa West Valley Fault M7.2). Standar 72 jam disebut 'direkomendasikan NDRRMC' dalam dokumen pengadaan OSG.",
+      "urls": [
+        "https://pia.gov.ph/news/ocd-ncr-72-hr-self-sufficiency-crucial-survival-measure-after-big-one/",
+        "https://osg.gov.ph/public/documents/procurement/bidding/2023/023-11-220/TOR%20Emergency%20Go%20Bags%20NEP%20FY2024.pdf"
+      ]
+    },
+    "water_l_per_person_day": null,
+    "water_note": "Tidak disebutkan oleh OCD/NDRRMC (hanya 'air kemasan untuk 3 hari' / 'air minum yang cukup'). Halaman LGU memberi angka berbeda (1 galon/hari vs 3 L) — bukan sumber nasional, tidak dipakai.",
+    "water_urls": [
+      "https://pia.gov.ph/disaster-information-service/civil-defense-promotes-go-bag-for-emergencies/",
+      "https://pia.gov.ph/news/ocd-ncr-72-hr-self-sufficiency-crucial-survival-measure-after-big-one/"
+    ],
+    "food_note": "Makanan siap santap untuk 3 hari; OCD menyarankan makanan siap makan, bukan beras mentah. Tips hemat OCD: beras disimpan di botol soda. Kalori: tidak disebutkan.",
+    "food_urls": [
+      "https://pia.gov.ph/disaster-information-service/civil-defense-promotes-go-bag-for-emergencies/",
+      "https://pia.gov.ph/news/ocd-ncr-72-hr-self-sufficiency-crucial-survival-measure-after-big-one/",
+      "https://pia.gov.ph/news/visayas/cv-visayas/rice-in-soda-bottles-cash-in-go-bags-ocd-shares-low-cost-disaster-tips"
+    ],
+    "sanitation": {
+      "portable_toilet_per_person_day": null,
+      "note": "Tisu toilet & perlengkapan higiene dasar (tanpa jumlah)",
+      "urls": [
+        "https://pia.gov.ph/news/ocd-ncr-72-hr-self-sufficiency-crucial-survival-measure-after-big-one/"
+      ]
+    },
+    "items": [
+      {
+        "name": "Dokumen penting tersegel/tahan air",
+        "qty": "—",
+        "note": "",
+        "url": "https://pia.gov.ph/disaster-information-service/civil-defense-promotes-go-bag-for-emergencies/"
+      },
+      {
+        "name": "Senter + lilin, korek api, peluit",
+        "qty": "—",
+        "note": "",
+        "url": "https://pia.gov.ph/disaster-information-service/civil-defense-promotes-go-bag-for-emergencies/"
+      },
+      {
+        "name": "Radio portabel + baterai cadangan",
+        "qty": "—",
+        "note": "",
+        "url": "https://pia.gov.ph/disaster-information-service/civil-defense-promotes-go-bag-for-emergencies/"
+      },
+      {
+        "name": "Kotak P3K + obat pribadi",
+        "qty": "—",
+        "note": "Disesuaikan kebutuhan medis individu",
+        "url": "https://pia.gov.ph/news/ocd-ncr-72-hr-self-sufficiency-crucial-survival-measure-after-big-one/"
+      },
+      {
+        "name": "Uang tunai",
+        "qty": "sedikit",
+        "note": "",
+        "url": "https://pia.gov.ph/news/ocd-ncr-72-hr-self-sufficiency-crucial-survival-measure-after-big-one/"
+      },
+      {
+        "name": "Makanan siap santap & air kemasan",
+        "qty": "3 hari",
+        "note": "",
+        "url": "https://pia.gov.ph/disaster-information-service/civil-defense-promotes-go-bag-for-emergencies/"
+      },
+      {
+        "name": "HP + power bank",
+        "qty": "—",
+        "note": "",
+        "url": "https://pia.gov.ph/disaster-information-service/civil-defense-promotes-go-bag-for-emergencies/"
+      },
+      {
+        "name": "Jas hujan, sleeping bag/selimut, tali",
+        "qty": "—",
+        "note": "",
+        "url": "https://pia.gov.ph/disaster-information-service/civil-defense-promotes-go-bag-for-emergencies/"
+      },
+      {
+        "name": "Tisu toilet / perlengkapan higiene",
+        "qty": "—",
+        "note": "",
+        "url": "https://pia.gov.ph/news/ocd-ncr-72-hr-self-sufficiency-crucial-survival-measure-after-big-one/"
+      },
+      {
+        "name": "Daftar nomor darurat (BFP, PNP, DRRMO lokal)",
+        "qty": "—",
+        "note": "Spesifikasi pengadaan OSG",
+        "url": "https://osg.gov.ph/public/documents/procurement/bidding/2023/023-11-220/TOR%20Emergency%20Go%20Bags%20NEP%20FY2024.pdf"
+      }
+    ],
+    "go_bag": {
+      "note": "Wadah apa saja (ransel sampai ember); simpan dekat pintu keluar utama; cek tiap 3 bulan & ganti barang kedaluwarsa.",
+      "urls": [
+        "https://pia.gov.ph/disaster-information-service/civil-defense-promotes-go-bag-for-emergencies/",
+        "https://pia.gov.ph/news/ocd-ncr-72-hr-self-sufficiency-crucial-survival-measure-after-big-one/"
+      ]
+    },
+    "special_needs": [
+      {
+        "group": "infant/children/elderly/disability",
+        "note": "Barang untuk bayi, anak, lansia, disabilitas (tanpa rincian)",
+        "urls": [
+          "https://pia.gov.ph/disaster-information-service/civil-defense-promotes-go-bag-for-emergencies/"
+        ]
+      },
+      {
+        "group": "medication",
+        "note": "Kit disesuaikan kebutuhan medis",
+        "urls": [
+          "https://pia.gov.ph/news/ocd-ncr-72-hr-self-sufficiency-crucial-survival-measure-after-big-one/"
+        ]
+      },
+      {
+        "group": "pets",
+        "note": "Tidak disebutkan",
+        "urls": []
+      }
+    ],
+    "scenario_items": {
+      "earthquake": [
+        {
+          "item": "Fokus 'Big One' (West Valley Fault): swadaya ≥72 jam, Go Bag dekat pintu",
+          "url": "https://pia.gov.ph/news/ocd-ncr-72-hr-self-sufficiency-crucial-survival-measure-after-big-one/"
+        }
+      ],
+      "volcano": [
+        {
+          "item": "Masker N95 (atau 2 lapis masker bedah / kain basah), goggle, lengan & celana panjang; minum banyak air",
+          "url": "https://doh.gov.ph/doh-press-release/doh-warns-public-on-taal-eruptive-activity"
+        },
+        {
+          "item": "DOH Bicol: N95/double surgical mask, pelindung mata",
+          "url": "https://bicol.doh.gov.ph/news-releases/doh-bicol-chd-activates-code-white-alert-cautions-public-amid-mt-bulusan-eruption/"
+        },
+        {
+          "item": "PHIVOLCS: N95 atau kain/handuk basah",
+          "url": "https://www.phivolcs.dost.gov.ph/index.php/taal-volcano-bulletin-menu/9633-eruption"
+        }
+      ],
+      "drought_el_nino": [
+        {
+          "item": "OCD CALABARZON: siapkan go bag 3 hari & hemat air jelang El Niño kuat awal 2027",
+          "url": "https://pia.gov.ph/news/luzon/calabarzon/ocd-urges-calabarzon-families-to-prepare-go-bags-conserve-water"
+        }
+      ],
+      "typhoon_flood": [
+        {
+          "item": "Tidak ada daftar khusus ditemukan",
+          "url": "https://pia.gov.ph/disaster-information-service/civil-defense-promotes-go-bag-for-emergencies/"
+        }
+      ],
+      "pandemic": [
+        {
+          "item": "Tidak disebutkan",
+          "url": "https://pia.gov.ph/disaster-information-service/civil-defense-promotes-go-bag-for-emergencies/"
+        }
+      ],
+      "nuclear": [
+        {
+          "item": "Tidak disebutkan",
+          "url": "https://pia.gov.ph/disaster-information-service/civil-defense-promotes-go-bag-for-emergencies/"
+        }
+      ],
+      "conflict": [
+        {
+          "item": "Tidak disebutkan",
+          "url": "https://pia.gov.ph/disaster-information-service/civil-defense-promotes-go-bag-for-emergencies/"
+        }
+      ]
+    },
+    "unique_points": [
+      "Go Bag boleh berupa ember (multi-fungsi)",
+      "Cek tiap 3 bulan (lebih sering dari negara lain)",
+      "Tips murah OCD: beras di botol soda",
+      "Peringatan El Niño kuat awal 2027"
+    ],
+    "unique_urls": [
+      "https://pia.gov.ph/disaster-information-service/civil-defense-promotes-go-bag-for-emergencies/",
+      "https://pia.gov.ph/news/visayas/cv-visayas/rice-in-soda-bottles-cash-in-go-bags-ocd-shares-low-cost-disaster-tips",
+      "https://pia.gov.ph/news/luzon/calabarzon/ocd-urges-calabarzon-families-to-prepare-go-bags-conserve-water"
+    ]
+  },
+  {
+    "id": "AU",
+    "country": "Australia",
+    "agency": "National Emergency Management Agency (NEMA, federal); Queensland Government — Get Ready Queensland / QLD SES (negara bagian); Australian Red Cross Get Prepared (secondary)",
+    "url": "https://www.nema.gov.au/sites/default/files/2025-05/NEMA_Flood_VERSION-2-290425.pdf",
+    "secondary_urls": [
+      "https://www.getready.qld.gov.au/sites/default/files/2023-12/GRQ%20Emergency%20Kit%20checklist.pdf",
+      "https://www.getready.qld.gov.au/prepare/kit",
+      "https://www.redcross.org.au/emergencies/prepare/packing/"
+    ],
+    "accessed": "2026-11-03",
+    "last_updated_by_source": "NEMA 'Your flood/storm & cyclone resilient home' v2 2025-04/05; NEMA bushfire 2024-11; GRQ checklist 2023-12",
+    "verification": "search_snippet_only",
+    "target_days": {
+      "min": 3,
+      "recommended": 3,
+      "note": "NEMA: rencanakan untuk 'beberapa hari ke depan — atau lebih lama jika tinggal di daerah terpencil' (tanpa angka). Queensland: kit untuk 3 hari (termasuk 3 hari tanpa listrik). Red Cross (secondary): air ≥3 hari.",
+      "urls": [
+        "https://www.nema.gov.au/about-us/media-centre/bushfire-preparation-key-flooding-fuels-fire",
+        "https://www.getready.qld.gov.au/sites/default/files/2023-12/GRQ%20Emergency%20Kit%20checklist.pdf",
+        "https://www.qld.gov.au/emergency/dealing-disasters/disaster-types/flood/flood-prepare/pack-an-emergency-kit",
+        "https://www.redcross.org.au/globalassets/cms/downloads/pdfs/disaster-plan/easy-english-rediplan-accessible.pdf"
+      ]
+    },
+    "water_l_per_person_day": 3.33,
+    "water_note": "Queensland: min. 10 L air minum/orang untuk 3 hari (≈3,3 L/hari, hasil bagi — bukan angka sumber). NEMA checklist evakuasi banjir/siklon: 'plenty of water (at least 3 litres per person)' — durasi tidak disebutkan.",
+    "water_urls": [
+      "https://www.getready.qld.gov.au/sites/default/files/2023-12/GRQ%20Emergency%20Kit%20checklist.pdf",
+      "https://www.getready.qld.gov.au/prepare/kit",
+      "https://www.nema.gov.au/sites/default/files/2025-05/NEMA_Flood_VERSION-2-290425.pdf",
+      "https://www.nema.gov.au/sites/default/files/2025-05/NEMA_Cyclone%20and%20Storm_VERSION-2-290425.pdf"
+    ],
+    "food_note": "Makanan tidak mudah basi untuk 3 hari (Queensland); NEMA: food, water, medicines. Kalori: tidak disebutkan.",
+    "food_urls": [
+      "https://www.getready.qld.gov.au/prepare/kit",
+      "https://www.nema.gov.au/about-us/media-centre/difference-between-el-nino-and-la-nina-and-how-prepare"
+    ],
+    "sanitation": {
+      "portable_toilet_per_person_day": null,
+      "note": "Tidak disebutkan",
+      "urls": []
+    },
+    "items": [
+      {
+        "name": "Air minum",
+        "qty": "min. 10 L/orang (3 hari) [QLD]; ≥3 L/orang [NEMA evakuasi]",
+        "note": "",
+        "url": "https://www.getready.qld.gov.au/sites/default/files/2023-12/GRQ%20Emergency%20Kit%20checklist.pdf"
+      },
+      {
+        "name": "Makanan, obat-obatan, kotak P3K",
+        "qty": "3 hari",
+        "note": "",
+        "url": "https://www.nema.gov.au/about-us/media-centre/difference-between-el-nino-and-la-nina-and-how-prepare"
+      },
+      {
+        "name": "Obat & resep",
+        "qty": "min. 3 hari",
+        "note": "NEMA checklist banjir/badai",
+        "url": "https://www.nema.gov.au/sites/default/files/2025-05/NEMA_Flood_VERSION-2-290425.pdf"
+      },
+      {
+        "name": "Senter, radio baterai, baterai cadangan",
+        "qty": "—",
+        "note": "",
+        "url": "https://www.nema.gov.au/about-us/media-centre/difference-between-el-nino-and-la-nina-and-how-prepare"
+      },
+      {
+        "name": "Dokumen penting (ID, asuransi, info medis) dalam wadah tahan air",
+        "qty": "—",
+        "note": "",
+        "url": "https://www.nema.gov.au/sites/default/files/2025-05/NEMA_Flood_VERSION-2-290425.pdf"
+      },
+      {
+        "name": "Pakaian",
+        "qty": "—",
+        "note": "",
+        "url": "https://www.nema.gov.au/about-us/media-centre/difference-between-el-nino-and-la-nina-and-how-prepare"
+      },
+      {
+        "name": "Wadah penyimpanan kuat & tahan air untuk kit",
+        "qty": "1",
+        "note": "",
+        "url": "https://www.nema.gov.au/about-us/media-centre/bushfire-preparation-key-flooding-fuels-fire"
+      }
+    ],
+    "go_bag": {
+      "note": "NEMA evacuation checklist (banjir, badai/siklon, bushfire): air, obat & resep ≥3 hari, dokumen, hewan & perlengkapannya.",
+      "urls": [
+        "https://www.nema.gov.au/sites/default/files/2025-05/NEMA_Flood_VERSION-2-290425.pdf",
+        "https://www.nema.gov.au/sites/default/files/2025-05/NEMA_Cyclone%20and%20Storm_VERSION-2-290425.pdf",
+        "https://www.nema.gov.au/sites/default/files/2024-11/D2024%2083121%20%20NEMA%20-%20Your%20bushfire%20resilient%20home_1.pdf"
+      ]
+    },
+    "special_needs": [
+      {
+        "group": "pets",
+        "note": "Putuskan ke mana hewan pergi; bawa makanan, obat, kandang. QLD: makanan & air botol hewan min. 5 hari",
+        "urls": [
+          "https://www.nema.gov.au/about-us/media-centre/difference-between-el-nino-and-la-nina-and-how-prepare",
+          "https://www.nema.gov.au/sites/default/files/2025-05/NEMA_Flood_VERSION-2-290425.pdf",
+          "https://www.getready.qld.gov.au/pets"
+        ]
+      },
+      {
+        "group": "infant",
+        "note": "(Red Cross, secondary) formula, botol steril, air bersih untuk beberapa hari",
+        "urls": [
+          "https://www.redcross.org.au/emergencies/prepare/organise/"
+        ]
+      },
+      {
+        "group": "medication",
+        "note": "Obat & resep min. 3 hari",
+        "urls": [
+          "https://www.nema.gov.au/sites/default/files/2025-05/NEMA_Flood_VERSION-2-290425.pdf"
+        ]
+      },
+      {
+        "group": "elderly/disability",
+        "note": "Tidak disebutkan di sumber yang ditemukan",
+        "urls": []
+      }
+    ],
+    "scenario_items": {
+      "flood": [
+        {
+          "item": "Rumah tahan banjir + checklist evakuasi",
+          "url": "https://www.nema.gov.au/sites/default/files/2025-05/NEMA_Flood_VERSION-2-290425.pdf"
+        }
+      ],
+      "cyclone_storm": [
+        {
+          "item": "Rumah tahan badai/siklon + checklist evakuasi",
+          "url": "https://www.nema.gov.au/sites/default/files/2025-05/NEMA_Cyclone%20and%20Storm_VERSION-2-290425.pdf"
+        }
+      ],
+      "bushfire": [
+        {
+          "item": "Rumah tahan bushfire; kit di wadah kuat tahan air",
+          "url": "https://www.nema.gov.au/sites/default/files/2024-11/D2024%2083121%20%20NEMA%20-%20Your%20bushfire%20resilient%20home_1.pdf"
+        }
+      ],
+      "power_outage": [
+        {
+          "item": "QLD: pastikan kit cukup 3 hari tanpa listrik",
+          "url": "https://www.qld.gov.au/emergency/dealing-disasters/disaster-types/flood/flood-prepare/pack-an-emergency-kit"
+        }
+      ],
+      "drought_el_nino": [
+        {
+          "item": "NEMA: El Niño/La Niña dan cara bersiap",
+          "url": "https://www.nema.gov.au/about-us/media-centre/difference-between-el-nino-and-la-nina-and-how-prepare"
+        }
+      ],
+      "earthquake": [
+        {
+          "item": "Tidak disebutkan",
+          "url": "https://www.nema.gov.au/about-us/media-centre/difference-between-el-nino-and-la-nina-and-how-prepare"
+        }
+      ],
+      "pandemic": [
+        {
+          "item": "Tidak disebutkan",
+          "url": "https://www.nema.gov.au/about-us/media-centre/difference-between-el-nino-and-la-nina-and-how-prepare"
+        }
+      ],
+      "nuclear": [
+        {
+          "item": "Tidak disebutkan",
+          "url": "https://www.nema.gov.au/about-us/media-centre/difference-between-el-nino-and-la-nina-and-how-prepare"
+        }
+      ],
+      "conflict": [
+        {
+          "item": "Tidak disebutkan",
+          "url": "https://www.nema.gov.au/about-us/media-centre/difference-between-el-nino-and-la-nina-and-how-prepare"
+        }
+      ]
+    },
+    "unique_points": [
+      "Panduan rumah tangga konkret ada di tingkat negara bagian (Get Ready Queensland), bukan federal",
+      "Fokus bushfire & siklon",
+      "Air 10 L/orang/3 hari (Queensland)"
+    ],
+    "unique_urls": [
+      "https://www.getready.qld.gov.au/sites/default/files/2023-12/GRQ%20Emergency%20Kit%20checklist.pdf",
+      "https://www.nema.gov.au/sites/default/files/2024-11/D2024%2083121%20%20NEMA%20-%20Your%20bushfire%20resilient%20home_1.pdf"
+    ]
+  },
+  {
+    "id": "NZ",
+    "country": "New Zealand",
+    "agency": "National Emergency Management Agency (NEMA, Te Rākau Whakamarumaru) — Get Ready",
+    "url": "https://getready.govt.nz/prepared/household/supplies",
+    "secondary_urls": [
+      "https://getready.govt.nz/prepared/household/supplies/storing-water",
+      "https://www.civildefence.govt.nz/guidance-training/consistent-messages/readiness/have-emergency-supplies"
+    ],
+    "accessed": "2026-11-03",
+    "last_updated_by_source": "tidak disebutkan untuk halaman supplies; materi tsunami easy-read diperbarui 2025-03",
+    "verification": "search_snippet_only",
+    "target_days": {
+      "min": 3,
+      "recommended": 7,
+      "note": "Rencanakan terjebak di rumah ≥3 hari; makanan min. 3 hari, 'a week or more if you can'. Grup CDEM regional bisa menganjurkan lebih (West Coast: air 14 hari, dokumen 2021-22).",
+      "urls": [
+        "https://getready.govt.nz/prepared/household/supplies",
+        "https://www.civildefence.govt.nz/guidance-training/consistent-messages/readiness/have-emergency-supplies",
+        "https://www.civildefence.govt.nz/assets/Uploads/documents/resilience-fund/2021-22/WCCDEM-Water-Resilience-Options-Paper.pdf"
+      ]
+    },
+    "water_l_per_person_day": 3,
+    "water_note": "Min. 3 L/orang/hari untuk minum & higiene dasar; 9 L/orang untuk 3 hari (= 4 botol 2,25 L); 1 minggu idealnya 21 L/orang. Lebih banyak bila mencuci/memasak. Pakai botol soda bersih (bukan botol susu), cek tiap 6 bulan.",
+    "water_urls": [
+      "https://getready.govt.nz/prepared/household/supplies/storing-water",
+      "https://www.civildefence.govt.nz/guidance-training/consistent-messages/readiness/have-emergency-supplies"
+    ],
+    "food_note": "Makanan tahan lama yang tidak perlu dimasak (kecuali punya kompor camping/BBQ gas); ingat makanan bayi & hewan; diet khusus/alergi untuk 3 hari. Kalori: tidak disebutkan.",
+    "food_urls": [
+      "https://getready.govt.nz/prepared/household/supplies",
+      "https://www.civildefence.govt.nz/guidance-training/consistent-messages/readiness/have-emergency-supplies"
+    ],
+    "sanitation": {
+      "portable_toilet_per_person_day": null,
+      "note": "Toilet darurat: ember plastik besar 15–20 L kedap air bertutup; sistem dua ember (padat/cair, rujukan WREMO); tisu toilet. Setelah gempa besar jangan flush (saluran bisa rusak). Jumlah kantong/hari: tidak disebutkan.",
+      "urls": [
+        "https://getready.govt.nz/prepared/household/supplies",
+        "https://www.civildefence.govt.nz/guidance-training/consistent-messages/readiness/have-emergency-supplies",
+        "https://www.civildefence.govt.nz/assets/Uploads/documents/resilience-fund/2015-16/IHC-preparedness-booklet.pdf"
+      ]
+    },
+    "items": [
+      {
+        "name": "Air",
+        "qty": "3 L/orang/hari; 9 L/3 hari; 21 L/minggu",
+        "note": "",
+        "url": "https://getready.govt.nz/prepared/household/supplies/storing-water"
+      },
+      {
+        "name": "Makanan tahan lama tanpa masak",
+        "qty": "min. 3 hari, ideal ≥1 minggu",
+        "note": "",
+        "url": "https://getready.govt.nz/prepared/household/supplies"
+      },
+      {
+        "name": "Ember plastik besar untuk toilet darurat + tisu toilet",
+        "qty": "2 ember (sistem dua ember)",
+        "note": "",
+        "url": "https://www.civildefence.govt.nz/guidance-training/consistent-messages/readiness/have-emergency-supplies"
+      },
+      {
+        "name": "Kotak P3K, senter, radio, baterai",
+        "qty": "—",
+        "note": "Simpan di tempat mudah diraih",
+        "url": "https://getready.govt.nz/prepared/household/supplies"
+      },
+      {
+        "name": "Obat & salinan resep (nama/dosis)",
+        "qty": "3 hari",
+        "note": "",
+        "url": "https://www.civildefence.govt.nz/guidance-training/consistent-messages/readiness/have-emergency-supplies"
+      },
+      {
+        "name": "Grab bag: sepatu jalan, baju hangat, jas hujan & topi, air & camilan, hand sanitiser, charger HP portabel, uang tunai pecahan kecil, salinan dokumen & ID berfoto",
+        "qty": "per orang",
+        "note": "",
+        "url": "https://getready.govt.nz/prepared/household/supplies"
+      }
+    ],
+    "go_bag": {
+      "note": "Grab bag per orang; obat di grab bag bila bisa.",
+      "urls": [
+        "https://getready.govt.nz/prepared/household/supplies"
+      ]
+    },
+    "special_needs": [
+      {
+        "group": "disability",
+        "note": "Pastikan makanan, alat, obat cukup 3 hari di rumah; grab bag untuk anjing pemandu/assist dog (makanan, obat, catatan vaksin, ID, harness)",
+        "urls": [
+          "https://nzsl.getready.govt.nz/prepared/advice-for-disabled-people",
+          "https://getready.govt.nz/prepared/advice-for-disabled-people/steps-to-get-ready"
+        ]
+      },
+      {
+        "group": "pets",
+        "note": "Air & makanan hewan; bawa hewan saat evakuasi, pastikan tempat evakuasi menerima hewan",
+        "urls": [
+          "https://getready.govt.nz/prepared/household/supplies",
+          "https://getready.govt.nz/prepared/household/impacts/have-to-evacuate"
+        ]
+      },
+      {
+        "group": "infant",
+        "note": "Makanan bayi",
+        "urls": [
+          "https://getready.govt.nz/prepared/household/supplies"
+        ]
+      },
+      {
+        "group": "medication",
+        "note": "Obat & salinan resep",
+        "urls": [
+          "https://www.civildefence.govt.nz/guidance-training/consistent-messages/readiness/have-emergency-supplies"
+        ]
+      }
+    ],
+    "scenario_items": {
+      "tsunami": [
+        {
+          "item": "'Long or Strong, Get Gone': guncangan >1 menit atau sulit berdiri → segera ke tempat tinggi/jauh dari pantai, jangan tunggu peringatan resmi",
+          "url": "https://getready.govt.nz/emergency/tsunami"
+        },
+        {
+          "item": "Easy-read tsunami (Mar 2025)",
+          "url": "https://getready.govt.nz/assets/Uploads/documents/alternate-formats/easy-read/pdf/easy-read-tsunami-info-en-mar25.pdf"
+        }
+      ],
+      "volcano": [
+        {
+          "item": "Masker P2/N95 terpasang baik (atau kain), goggle tanpa ventilasi samping, sepatu kokoh, sarung tangan, baju tertutup",
+          "url": "https://getready.govt.nz/emergency/volcanic-activity"
+        },
+        {
+          "item": "Plastik penutup elektronik, sapu, sekop, filter/kantong vakum cadangan, kantong plastik tebal untuk abu; stok darurat di mobil",
+          "url": "https://www.civildefence.govt.nz/emergency-events/advice-and-support/during-and-after-emergencies/during-a-volcanic-eruption"
+        },
+        {
+          "item": "Antisipasi listrik padam akibat abu",
+          "url": "https://www.civildefence.govt.nz/emergency-events/advice-and-support/during-and-after-emergencies/during-a-volcanic-eruption"
+        }
+      ],
+      "earthquake": [
+        {
+          "item": "Jangan flush toilet setelah gempa besar; gunakan toilet darurat",
+          "url": "https://www.civildefence.govt.nz/assets/Uploads/documents/resilience-fund/2015-16/IHC-preparedness-booklet.pdf"
+        }
+      ],
+      "power_outage": [
+        {
+          "item": "Senter, radio, baterai; abu vulkanik dapat memicu pemadaman",
+          "url": "https://getready.govt.nz/prepared/household/supplies"
+        }
+      ],
+      "pandemic": [
+        {
+          "item": "Tidak disebutkan di sumber yang ditemukan",
+          "url": "https://getready.govt.nz/prepared/household/supplies"
+        }
+      ],
+      "nuclear": [
+        {
+          "item": "Tidak disebutkan",
+          "url": "https://getready.govt.nz/prepared/household/supplies"
+        }
+      ],
+      "conflict": [
+        {
+          "item": "Tidak disebutkan",
+          "url": "https://getready.govt.nz/prepared/household/supplies"
+        }
+      ]
+    },
+    "unique_points": [
+      "Angka air jelas: 9 L/3 hari, 21 L/minggu per orang",
+      "Toilet darurat sistem dua ember",
+      "'Long or Strong, Get Gone' (evakuasi tsunami mandiri)",
+      "Stok darurat juga di mobil (abu vulkanik)"
+    ],
+    "unique_urls": [
+      "https://getready.govt.nz/prepared/household/supplies/storing-water",
+      "https://www.civildefence.govt.nz/guidance-training/consistent-messages/readiness/have-emergency-supplies",
+      "https://getready.govt.nz/emergency/tsunami",
+      "https://www.civildefence.govt.nz/emergency-events/advice-and-support/during-and-after-emergencies/during-a-volcanic-eruption"
+    ]
+  }
+]

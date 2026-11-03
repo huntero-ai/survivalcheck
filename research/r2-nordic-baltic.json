@@ -1,0 +1,464 @@
+[
+  {
+    "country": "Sweden",
+    "agency": "Myndigheten för civilt försvar (MCF; sampai 31 Des 2025 bernama MSB - Myndigheten för samhällsskydd och beredskap)",
+    "url": "https://www.mcf.se/sv/rad-till-privatpersoner/broschyren-om-krisen-eller-kriget-kommer/ladda-ner-broschyren-om-krisen-eller-kriget-kommer/",
+    "url_secondary": [
+      "https://rib.msb.se/filer/pdf/31523.pdf",
+      "https://www.mcf.se/sv/rad-till-privatpersoner/hemberedskap---preppa-for-en-vecka/grunder-i-hemberedskap/",
+      "https://www.mcf.se/sv/aktuellt/nyheter/2025/december/msb-blir-myndigheten-for-civilt-forsvar-fran-den-11-2026/"
+    ],
+    "accessed": "2026-11-03",
+    "last_updated_by_source": "Brosur 'Om krisen eller kriget kommer' edisi ke-5: Nov 2024 (tidak dicetak ulang setelah ganti nama MSB->MCF 1 Jan 2026). Halaman 'Grunder i hemberedskap' ditinjau 2026-10-19.",
+    "verification": "search-snippet-only (WebFetch ke mcf.se/msb.se gagal: DNS ENOTFOUND, domain di luar allowlist sesi)",
+    "target_days": { "min": 7, "recommended": 7 },
+    "target_days_note": "'Minst en vecka' (minimal satu minggu). Halaman Grunder menyebut pemerintah merekomendasikan 1 minggu sejak 2020. Obat resep rutin: stok 1 bulan (rekomendasi Socialstyrelsen).",
+    "water_l_per_person_day": 3,
+    "water_note": "Minimal 3 L/orang/hari untuk minum & masak. Versi mudah-baca MCF dan Kriskalendern 2026: 3-5 L/hari (~25 L/orang/minggu) termasuk sikat gigi, cuci, hewan. Contoh Norrköping: 3 L x 7 hari ~ 14 botol PET besar.",
+    "food_note": "Bahan kering, kalengan, sumber protein, lemak, makanan energi cepat, minuman tahan suhu ruang; masak dari bahan dasar; tidak ada angka kkal yang disebutkan.",
+    "items": [
+      { "name": "Air minum + wadah air bersih bertutup / botol PET", "qty": "min. 3 L/orang/hari (3-5 L di versi mudah-baca)", "note": "Bekukan sebagian botol PET: jadi cadangan air + pendingin freezer saat listrik padam", "url": "https://www.mcf.se/sv/rad-till-privatpersoner/hemberedskap---preppa-for-en-vecka/vatten/tillgang-till-vatten-i-kris/" },
+      { "name": "Makanan tahan lama suhu ruang", "qty": "untuk 1 minggu", "note": "Bahan kering, kalengan, protein, lemak, makanan energi cepat", "url": "https://www.mcf.se/sv/rad-till-privatpersoner/hemberedskap---preppa-for-en-vecka/mat/tillgang-till-mat-i-kris/" },
+      { "name": "Kompor kemah/trangia + bahan bakar", "qty": "1/rumah tangga", "note": "Untuk memasak saat kompor listrik mati", "url": "https://www.mcf.se/sv/rad-till-privatpersoner/hemberedskap---preppa-for-en-vecka/grunder-i-hemberedskap/" },
+      { "name": "Radio baterai / surya / engkol + baterai cadangan", "qty": "1/rumah tangga", "note": "Radio baterai yang sudah dimiliki juga boleh", "url": "https://www.mcf.se/sv/rad-till-privatpersoner/hemberedskap---preppa-for-en-vecka/tillgang-till-kommunikation-i-kris/" },
+      { "name": "Power bank + charger mobil", "qty": "tidak disebutkan", "note": "", "url": "https://www.mcf.se/sv/rad-till-privatpersoner/hemberedskap---preppa-for-en-vecka/tillgang-till-kommunikation-i-kris/" },
+      { "name": "Daftar nomor telepon penting di kertas + titik temu keluarga", "qty": "1", "note": "", "url": "https://www.mcf.se/sv/rad-till-privatpersoner/hemberedskap---preppa-for-en-vecka/tillgang-till-kommunikation-i-kris/" },
+      { "name": "Senter + baterai cadangan", "qty": "tidak disebutkan", "note": "", "url": "https://www.mcf.se/sv/rad-till-privatpersoner/hemberedskap---preppa-for-en-vecka/grunder-i-hemberedskap/" },
+      { "name": "Selimut, matras, sleeping bag, pakaian hangat (wol, kaus kaki tebal)", "qty": "per orang", "note": "Boleh beli bekas untuk hemat", "url": "https://www.mcf.se/sv/rad-till-privatpersoner/hemberedskap---preppa-for-en-vecka/tillgang-till-varme-i-kris/" },
+      { "name": "Lilin, korek api/pemantik, sumber panas alternatif", "qty": "tidak disebutkan", "note": "Lilin hanya pelengkap; waspada kebakaran", "url": "https://www.mcf.se/sv/rad-till-privatpersoner/hemberedskap---preppa-for-en-vecka/tillgang-till-varme-i-kris/" },
+      { "name": "Kotak P3K + obat penting", "qty": "obat resep rutin: stok 1 bulan", "note": "Rekomendasi Socialstyrelsen untuk pengobatan jangka panjang (hipertensi, jantung, asma/PPOK, diabetes, ginjal) + alat medis habis pakai", "url": "https://www.mcf.se/sv/rad-till-privatpersoner/hemberedskap---preppa-for-en-vecka/medicin-for-en-manad-hemma/" },
+      { "name": "Uang tunai", "qty": "contoh SEK 1.000 per orang dewasa (pecahan campur) untuk ~1 minggu", "note": "Angka dari Riksbank (bank sentral), bukan MCF; plus kartu dari jaringan berbeda + kartu fisik & PIN untuk pembayaran offline", "url": "https://www.riksbank.se/en-gb/payments--cash/payments-in-sweden/payments-report-2026/the-riksbanks-policy-recommendations/households-should-have-multiple-payment-methods-so-that-they-can-pay-in-the-event-of-disruptions-for-example-sek-1000-in-cash-per-adult/" },
+      { "name": "Toilet darurat: kantong sampah kuat di dudukan toilet + pasir kucing/serbuk gergaji/kompos; ember bertutup", "qty": "tidak disebutkan", "note": "Jangan siram/terus pakai toilet tanpa air (saluran mampet, terutama apartemen)", "url": "https://www.mcf.se/sv/rad-till-privatpersoner/hemberedskap---preppa-for-en-vecka/vatten/hygien-tvatt-och-toalett/" },
+      { "name": "Tisu toilet, tisu basah, hand sanitizer, popok, pembalut, krim cuci tanpa bilas", "qty": "tidak disebutkan", "note": "Mandi 'lima titik' dengan sedikit air", "url": "https://www.mcf.se/sv/rad-till-privatpersoner/hemberedskap---preppa-for-en-vecka/vatten/hygien-tvatt-och-toalett/" }
+    ],
+    "special_needs": ["pets", "medication", "disability", "infant"],
+    "special_needs_note": "Hewan: stok pakan min. 1 minggu, air ekstra; hewan TIDAK boleh dibawa ke skyddsrum. Halaman khusus untuk disabilitas gerak, tunanetra, tuli-buta, disabilitas intelektual. Obat resep: 1 bulan. Bayi: popok disebut di daftar sanitasi; susu formula tidak disebutkan secara eksplisit di sumber yang terbaca.",
+    "special_needs_urls": [
+      "https://www.mcf.se/sv/rad-till-privatpersoner/hemberedskap---preppa-for-en-vecka/beredskap-for-dina-husdjur/",
+      "https://www.mcf.se/sv/rad-till-privatpersoner/hemberedskap---preppa-for-en-vecka/extra-stod/rorelsehindrad/",
+      "https://www.mcf.se/en/advice-for-individuals/home-preparedness--prepping-for-at-least-a-week/one-months-supply-of-medicines-at-home/"
+    ],
+    "scenario_items": {
+      "conflict_war": [
+        { "name": "Saat flyglarm: segera ke skyddsrum atau ruang pelindung lain (ruang bawah tanah, garasi, stasiun metro bawah tanah)", "url": "https://www.krisinformation.se/en/hazards-and-risks/shelters-evacuation-and-warning-systems/shelters/" },
+        { "name": "Bawa ke skyddsrum: air, makanan suhu ruang, obat, P3K, pakaian hangat, ID + uang tunai, kunci, HP + charger/power bank, senter (makanan & higiene tidak disediakan di shelter)", "url": "https://www.krisinformation.se/en/hazards-and-risks/shelters-evacuation-and-warning-systems/shelters/" },
+        { "name": "Sekitar 64.000 skyddsrum; harus siap dalam 48 jam saat siaga tinggi; mungkin tinggal beberapa hari; siap gangguan air/listrik/pemanas di shelter", "url": "https://www.mcf.se/en/advice-for-individuals/civil-defence-shelters-evacuation-and-warning-systems/good-to-know-about-civil-defence-shelters/" },
+        { "name": "Pertahanan psikologis: kenali disinformasi; brosur menyatakan Swedia tidak akan menyerah dan info sebaliknya adalah palsu", "url": "https://rib.msb.se/filer/pdf/31523.pdf" }
+      ],
+      "power_outage": [
+        { "name": "Panaskan satu ruangan, kumpul bersama, tutup celah pintu/jendela, karpet/selimut di lantai, pakaian berlapis (wol paling dalam)", "url": "https://www.mcf.se/sv/rad-till-privatpersoner/hemberedskap---preppa-for-en-vecka/tillgang-till-varme-i-kris/" },
+        { "name": "Sumber panas alternatif (tungku kayu, kakelugn, perapian, pemanas minyak tanah/gas); ventilasi; jangan pakai tungku/lilin saat tidur", "url": "https://www.mcf.se/en/advice-for-individuals/home-preparedness--prepping-for-at-least-a-week/access-to-heat-during-a-crisis/" },
+        { "name": "Isolasi pipa air; jangan cairkan pipa beku dengan api; jangan nyalakan semua alat sekaligus setelah listrik kembali", "url": "https://www.mcf.se/en/advice-for-individuals/home-preparedness--prepping-for-at-least-a-week/access-to-heat-during-a-crisis/" }
+      ],
+      "nuclear": [
+        { "name": "Tablet iodium HANYA diminum atas instruksi länsstyrelsen; untuk <=40 th, hamil & menyusui; >40 th tidak bermanfaat", "url": "https://www.stralsakerhetsmyndigheten.se/omraden/krisberedskap-och-civilt-forsvar/beredskap-vid-olyckor/skyddsatgarder-vid-en-karnkraftsolycka/jodtabletter/" },
+        { "name": "Dibagikan di muka ke penghuni zona siaga sekitar 3 PLTN; kecelakaan di luar negeri (mis. Ukraina) tidak membenarkan minum iodium di Swedia; studi SSM 2026 mengusulkan pemesanan gratis di apotek untuk zona ~100 km (belum diputuskan pemerintah)", "url": "https://www.stralsakerhetsmyndigheten.se/aktuellt/nyheter/2026/ny-utredning-unga-som-bor-nara-karnkraftverk-har-samre-koll-pa-sina-jodtabletter/" },
+        { "name": "Tinggal di dalam ruangan (inomhusvistelse) sesuai instruksi", "url": "https://stralsakerhetsmyndigheten.se/omraden/beredskap/karnenergiberedskap-vid-karnteknisk-olycka-i-sverige/skyddsatgarder-vid-en-karnkraftsolycka/inomhusvistelse" }
+      ],
+      "cyber_payment_disruption": [
+        { "name": "Punya beberapa metode bayar: tunai (~SEK 1.000/dewasa), kartu dari jaringan berbeda, Swish; kartu fisik + PIN untuk pembayaran kartu offline (berlaku saat serangan siber/gangguan data)", "url": "https://www.riksbank.se/en-gb/press-and-published/notices-and-press-releases/press-releases/2026/offline-card-payments--the-options-are-now-expanding/" }
+      ]
+    },
+    "unique_points": [
+      "Lembaga ganti nama MSB -> Myndigheten för civilt försvar (MCF) per 1 Jan 2026; brosur 2024 tetap berlaku",
+      "Brosur 2024 (5,2 juta eksemplar) jauh lebih berfokus ke perang dibanding edisi 2018",
+      "Obat resep rutin: stok 1 bulan (lebih panjang dari target umum 1 minggu)",
+      "Bank sentral memberi angka tunai konkret: SEK 1.000/dewasa + kartu offline dengan PIN",
+      "Brosur pendamping untuk perusahaan (Jan 2026, 130.000 tempat kerja)"
+    ]
+  },
+  {
+    "country": "Norway",
+    "agency": "Direktoratet for samfunnssikkerhet og beredskap (DSB); iodium: Direktoratet for strålevern og atomsikkerhet (DSA)",
+    "url": "https://www.dsb.no/en/Safe-everyday-life/Self-preparedness/How-to-contribute-to-Norway_78s-emergency-preparedness2/",
+    "url_secondary": [
+      "https://www.dsb.no/siteassets/sikkerhverdag/egenberedskap/brosjyren/dsb-egenberedskap-engelsk-web.pdf",
+      "https://www.dsb.no/siteassets/sikkerhverdag/egenberedskap/checklist-for-your-emergency-kit.pdf",
+      "https://www.dsb.no/en/Safe-everyday-life/Self-preparedness/Frequently-asked-questions-about-self-preparedness/"
+    ],
+    "accessed": "2026-11-03",
+    "last_updated_by_source": "Saran diperbarui Mei 2024 (3 hari -> 1 minggu); brosur dikirim ke semua rumah tangga musim gugur 2024 (32 bahasa); Okt 2025 brosur sederhana untuk kelompok rentan & pendamping.",
+    "verification": "search-snippet-only (WebFetch tidak dipakai karena domain resmi gagal resolve di sesi ini)",
+    "target_days": { "min": 7, "recommended": 7 },
+    "target_days_note": "Naik dari 'minimal 3 hari' menjadi '1 minggu' pada Mei 2024.",
+    "water_l_per_person_day": 2.9,
+    "water_note": "DSB menyebut ~20 L/orang untuk 1 minggu (~2,9 L/hari) untuk minum, masak, kebersihan; sebagian bisa diganti jus/minuman non-alkohol. Jika tak ada ruang: 5-10 L lebih baik daripada nol. Ganti air simpanan ~1x/tahun.",
+    "food_note": "Makanan untuk semua anggota selama 1 minggu: sedikit stok ekstra makanan biasa + makanan tahan suhu ruang (crispbread, oatmeal, kacang kalengan, daging kaleng, energy bar, buah kering, cokelat, madu, biskuit, kacang). Yang perlu dimasak: pasta, nasi, sup instan, tepung, makanan kaleng, freeze-dried. Habiskan isi kulkas/freezer dulu saat listrik padam.",
+    "items": [
+      { "name": "Air minum bersih di jeriken/botol", "qty": "~20 L/orang/minggu", "note": "Isi dari keran (air dingin), simpan sejuk & gelap", "url": "https://www.dsb.no/en/Safe-everyday-life/Self-preparedness/emergency-water/" },
+      { "name": "Makanan tahan suhu ruang", "qty": "1 minggu untuk semua anggota", "note": "Lihat food_note", "url": "https://www.dsb.no/en/Safe-everyday-life/Self-preparedness/food-you-should-keep-in-the-house-in-the-event-of-an-emergency/" },
+      { "name": "Radio DAB baterai/engkol/surya", "qty": "1/rumah tangga", "note": "Radio mobil juga bisa; NRK P1 = kanal kontinjensi", "url": "https://www.dsb.no/en/Safe-everyday-life/Self-preparedness/How-to-contribute-to-Norway_78s-emergency-preparedness2/" },
+      { "name": "Senter/headlamp baterai/engkol/surya; korek api & lilin", "qty": "tidak disebutkan", "note": "", "url": "https://www.dsb.no/en/Safe-everyday-life/Self-preparedness/How-to-contribute-to-Norway_78s-emergency-preparedness2/" },
+      { "name": "Pakaian hangat, selimut/duvet/sleeping bag", "qty": "per orang", "note": "", "url": "https://www.dsb.no/siteassets/sikkerhverdag/egenberedskap/sjekkliste-egenberedskap-a4-bokmal.pdf" },
+      { "name": "Kayu bakar (jika punya tungku/perapian); pemanas gas/parafin untuk dalam ruangan", "qty": "tidak disebutkan", "note": "Grill/kompor luar ruang jangan dipakai di dalam", "url": "https://www.dsb.no/siteassets/sikkerhverdag/egenberedskap/sjekkliste-egenberedskap-a4-bokmal.pdf" },
+      { "name": "Kompor/grill untuk memasak tanpa listrik", "qty": "tidak disebutkan", "note": "Gunakan di luar ruangan", "url": "https://www.dsb.no/siteassets/sikkerhverdag/egenberedskap/sjekkliste-egenberedskap-a4-bokmal.pdf" },
+      { "name": "Obat rutin + alat medis", "qty": "min. 7 hari stok ekstra; beli ulang paling lambat 1 minggu sebelum habis", "note": "Juga parasetamol, obat alergi", "url": "https://www.dsb.no/en/Safe-everyday-life/Self-preparedness/medicines-and-first-aid-equipment-you-should-keep-at-home/" },
+      { "name": "Perlengkapan P3K", "qty": "1 set", "note": "Sarung tangan sekali pakai, salin, pembersih luka, kasa steril, plester, perban, gel luka bakar, pinset, gunting, termometer, pelindung napas buatan, masker, disinfektan tangan", "url": "https://www.dsb.no/en/Safe-everyday-life/Self-preparedness/medicines-and-first-aid-equipment-you-should-keep-at-home/" },
+      { "name": "Tablet iodium", "qty": "untuk anak, dewasa <40, hamil & menyusui", "note": "Beli di apotek tanpa resep SEBELUM kejadian; minum hanya atas instruksi otoritas", "url": "https://www.dsa.no/atomberedskap/jodtabletter" },
+      { "name": "Sedikit uang tunai + beberapa kartu pembayaran", "qty": "tidak disebutkan", "note": "", "url": "https://www.dsb.no/en/Safe-everyday-life/Self-preparedness/How-to-contribute-to-Norway_78s-emergency-preparedness2/" },
+      { "name": "Baterai + power bank terisi", "qty": "tidak disebutkan", "note": "HP bisa diisi di mobil", "url": "https://www.dsb.no/en/Safe-everyday-life/Self-preparedness/How-to-contribute-to-Norway_78s-emergency-preparedness2/" },
+      { "name": "Daftar nomor telepon penting tercetak", "qty": "1", "note": "", "url": "https://www.dsb.no/en/Safe-everyday-life/Self-preparedness/How-to-contribute-to-Norway_78s-emergency-preparedness2/" },
+      { "name": "Higiene: tisu basah, hand sanitizer, sarung tangan sekali pakai, tisu toilet ekstra, kantong sampah", "qty": "tidak disebutkan", "note": "Toilet darurat: kantong belanja dobel di dudukan toilet atau ember, ikat simpul ganda, buang ke sampah residu", "url": "https://www.dsb.no/en/Safe-everyday-life/Self-preparedness/Good-hygiene-if-the-water-disappears/" }
+    ],
+    "special_needs": ["pets", "medication", "disability", "infant", "elderly"],
+    "special_needs_note": "Hewan: air untuk semua termasuk hewan, pakan min. 1 minggu, obat ekstra, kehangatan, kandang angkut, P3K hewan, pasir/kantong kotoran. Halaman khusus disabilitas; Okt 2025 saran untuk kelompok rentan & pendamping. Bayi: anak disebut terkait iodium; kebutuhan bayi spesifik (formula) tidak disebutkan di sumber yang terbaca.",
+    "special_needs_urls": [
+      "https://www.dsb.no/en/Safe-everyday-life/Self-preparedness/Self-preparedness-for-pets/",
+      "https://www.dsb.no/en/Safe-everyday-life/Self-preparedness/Self-preparedness-in-the-event-of-disabilities/",
+      "https://www.dsb.no/aktuelt/egenberedskapsrad-for-sarbare-grupper-og-parorende"
+    ],
+    "scenario_items": {
+      "conflict_war": [
+        { "name": "Sirene 3 seri dengan jeda 1 menit = 'pesan penting - cari informasi' (dengarkan NRK P1)", "url": "https://www.dsb.no/en/Safe-everyday-life/Self-preparedness/what-the-air-raid-sirens-means/" },
+        { "name": "Brosur 2024 menyebut ancaman perang, sabotase, ancaman digital; info varsling, evakuasi, dan tempat tinggal saat darurat nasional", "url": "https://www.dsb.no/en/Safe-everyday-life/Self-preparedness/places-to-stay-in-a-national-emergency/" }
+      ],
+      "power_outage": [
+        { "name": "Listrik padam dapat mematikan air keran, saluran pembuangan, pembayaran, internet, HP, memasak -> radio DAB baterai, kayu bakar/pemanas indoor, tunai + beberapa kartu", "url": "https://www.dsb.no/siteassets/sikkerhverdag/egenberedskap/brosjyren/dsb-egenberedskap-engelsk-web.pdf" }
+      ],
+      "nuclear": [
+        { "name": "Simpan tablet iodium di rumah bila <40 th, punya anak, hamil/menyusui; prioritas anak/remaja <18, hamil, menyusui; beli di apotek (Jodix, Kaliumjodid SERB tanpa resep) SEBELUM kecelakaan; minum hanya atas saran otoritas; ikuti dosis di brosur kemasan", "url": "https://www.dsa.no/atomberedskap/jodtabletter" },
+        { "name": "Kommune juga menyimpan tablet untuk anak, remaja, hamil, menyusui (termasuk di sekolah/TK)", "url": "https://www.dsa.no/atomberedskap/distribusjon-av-jodtabletter-til-kommunene" },
+        { "name": "Egenberedskap ved atomhendelser (saran DSA)", "url": "https://www.dsa.no/atomberedskap/hva-kan-jeg-gjore" }
+      ],
+      "cyber_payment_disruption": [
+        { "name": "Sedikit uang tunai + beberapa kartu pembayaran (pembayaran bisa gagal)", "url": "https://www.dsb.no/en/Safe-everyday-life/Self-preparedness/How-to-contribute-to-Norway_78s-emergency-preparedness2/" }
+      ]
+    },
+    "unique_points": [
+      "Kenaikan resmi 3 hari -> 1 minggu (Mei 2024)",
+      "Angka air dinyatakan per minggu: ~20 L/orang",
+      "Satu-satunya di cakupan ini yang secara aktif menganjurkan rumah tangga MEMBELI tablet iodium di apotek sebelum kejadian (untuk <40, anak, hamil, menyusui)",
+      "Survei DSB 2024: hanya ~20% rumah tangga punya tablet iodium; survei 2025: >50% menyimpan air minum",
+      "Brosur tersedia 32 bahasa; versi sederhana untuk kelompok rentan (Okt 2025)"
+    ]
+  },
+  {
+    "country": "Finland",
+    "agency": "Kementerian Dalam Negeri (Sisäministeriö) + Digital and Population Data Services Agency (panduan Suomi.fi); 72 tuntia (SPEK, didanai National Emergency Supply Agency); iodium: STUK",
+    "url": "https://www.suomi.fi/guides/preparedness/how-to-prepare-for-incidents-and-crises/general-instructions-on-preparedness-home-emergency-supplies-and-on-what-to-do-in-different-situations",
+    "url_secondary": [
+      "https://www.suomi.fi/guides/preparedness/checklist",
+      "https://intermin.fi/en/rescue-services/preparedness/preparedness-guide",
+      "https://72tuntia.fi/en/home-emergency-food-supply/"
+    ],
+    "accessed": "2026-11-03",
+    "last_updated_by_source": "Panduan Suomi.fi terbit 18.11.2024 (tambahan instruksi ancaman udara/drone kemudian); proyek harmonisasi panduan Kemendagri berjalan s.d. 30 Apr 2028 dan panduan akan diperbarui.",
+    "verification": "search-snippet-only",
+    "target_days": { "min": 3, "recommended": 3 },
+    "target_days_note": "Minimal 72 jam (3 hari); 'stok lebih lama juga ide bagus jika memungkinkan'. TIDAK ditemukan kenaikan resmi ke 7 hari per Nov 2026.",
+    "water_l_per_person_day": 2,
+    "water_note": "Suomi.fi: ~2 L air minum/orang/hari, min. 3 hari (=6 L), plus air untuk masak & hewan. 72tuntia (lebih baru): air botol min. 5 L per penghuni. Total pemakaian termasuk masak/cuci ~1-2 ember/hari (72tuntia selko). Ada juga wadah bersih bertutup untuk menampung air.",
+    "food_note": "Makanan siap santap/tidak perlu dimasak untuk 3 hari; makanan freezer yang masih dingin seperti kulkas masih bisa dipakai.",
+    "items": [
+      { "name": "Air botol + wadah bersih bertutup untuk menampung air", "qty": "~2 L/orang/hari x 3 hari (72tuntia: min. 5 L air botol/orang)", "note": "", "url": "https://www.suomi.fi/guides/preparedness/checklist" },
+      { "name": "Makanan siap santap", "qty": "3 hari", "note": "", "url": "https://www.suomi.fi/guides/preparedness/checklist" },
+      { "name": "Radio baterai / tanpa listrik jaringan", "qty": "1", "note": "YLE menyiarkan info gangguan di radio", "url": "https://www.suomi.fi/guides/preparedness/checklist" },
+      { "name": "Senter", "qty": "tidak disebutkan", "note": "", "url": "https://www.suomi.fi/guides/preparedness/checklist" },
+      { "name": "Power bank terisi", "qty": "tidak disebutkan", "note": "", "url": "https://www.suomi.fi/guides/preparedness/checklist" },
+      { "name": "Obat untuk beberapa waktu lebih lama", "qty": "tidak disebutkan (angka hari tidak spesifik)", "note": "", "url": "https://www.suomi.fi/guides/preparedness/checklist" },
+      { "name": "Perlengkapan higiene yang bisa dipakai tanpa air", "qty": "tidak disebutkan", "note": "", "url": "https://www.suomi.fi/guides/preparedness/checklist" },
+      { "name": "Sedikit uang tunai", "qty": "tidak disebutkan", "note": "Kartu & ATM tidak berfungsi saat listrik padam", "url": "https://www.suomi.fi/guides/preparedness/checklist" },
+      { "name": "Lakban (duct tape)", "qty": "1", "note": "Berguna untuk menyegel celah saat perintah berlindung di dalam", "url": "https://www.suomi.fi/guides/preparedness/checklist" },
+      { "name": "Tablet iodium", "qty": "untuk rumah tangga dengan anggota <=40 th, hamil, menyusui", "note": "Dibeli di apotek tanpa resep; anak <3 th disediakan layanan kesehatan publik", "url": "https://stuk.fi/en/the-iodine-tablet-protects-the-thyroid-gland" },
+      { "name": "Pakan & air hewan", "qty": "tidak disebutkan", "note": "", "url": "https://www.suomi.fi/guides/preparedness/checklist" }
+    ],
+    "special_needs": ["pets", "medication", "infant", "elderly"],
+    "special_needs_note": "Hewan: pakan & air. Iodium: anak <3 th didistribusi oleh layanan kesehatan publik; jika tablet kurang diprioritaskan untuk anak, hamil, menyusui. Kebutuhan bayi lain (formula, popok) tidak disebutkan di sumber yang terbaca.",
+    "special_needs_urls": [
+      "https://www.suomi.fi/guides/preparedness/checklist",
+      "https://72tuntia.fi/wp-content/uploads/2023/03/72-hours-Instructor-background-information-2022-3_2023.pdf"
+    ],
+    "scenario_items": {
+      "conflict_war": [
+        { "name": "Sirene naik-turun 1 menit: segera masuk, berlindung di tengah bangunan berdinding solid, jauhi jendela, tutup pintu/jendela/ventilasi, matikan ventilasi; aman = nada kontinu 1 menit", "url": "https://www.suomi.fi/guides/preparedness/how-to-prepare-for-incidents-and-crises/threat-from-the-air" },
+        { "name": "Drone: jaga jarak min. 150 m, jangan didekati, masuk ke dalam bangunan", "url": "https://valtioneuvosto.fi/en/-/1410869/authorities-instructions-for-when-you-see-a-drone" },
+        { "name": "Bawa ke shelter (masa perang): ID, obat penting, HP, uang tunai, air minum, makanan tanpa dipanaskan, alas tidur, senter, hiburan; DILARANG: kompor gas, alkohol, senjata", "url": "https://www.suomi.fi/guides/preparedness/how-to-prepare-for-incidents-and-crises/military-conflicts-and-civil-defence" },
+        { "name": "Peringatan via aplikasi 112 Suomi, radio, teleteks, TV", "url": "https://www.suomi.fi/citizen/rights-and-obligations/emergencies-and-security/guide/what-to-do-in-an-emergency/emergency-bulletins-alarm-signals-and-pre-emptive-warnings" }
+      ],
+      "power_outage": [
+        { "name": "Pada -20°C suhu dalam rumah turun <10°C dalam ~1-4 hari (rumah kayu <24 jam); pilih satu ruangan tengah, tutup jendela dengan tirai, tidur berdampingan berbagi selimut, sleeping bag; 1 orang ~ panas bohlam 70 W; alkohol tidak menghangatkan", "url": "https://www.suomi.fi/guides/preparedness/how-to-prepare-for-incidents-and-crises/power-cut" },
+        { "name": "Siapkan sumber panas non-listrik; oven/perapian + kayu kering; kompor portabel untuk memanaskan air botol panas", "url": "https://72tuntia.fi/en/power-outage/" }
+      ],
+      "nuclear": [
+        { "name": "Iodium direkomendasikan untuk <=40 th & hamil; tersedia di rumah/tempat kerja sebagai kesiapan dasar; minum HANYA atas instruksi otoritas; jangan ke apotek mencarinya saat rekomendasi minum diumumkan; hanya melindungi tiroid", "url": "https://www.suomi.fi/guides/preparedness/how-to-prepare-for-incidents-and-crises/radiation-hazards" },
+        { "name": "STUK: saat ini tidak ada risiko radiasi di Finlandia, tidak perlu minum/beli khusus sekarang", "url": "https://stuk.fi/en/situation-in-ukraine" }
+      ],
+      "cyber_payment_disruption": [
+        { "name": "Panduan gangguan infrastruktur komunikasi (radio baterai, tunai)", "url": "https://www.suomi.fi/guides/preparedness/how-to-prepare-for-incidents-and-crises/disruptions-in-communications-infrastructure" }
+      ]
+    },
+    "unique_points": [
+      "Masih 72 jam sebagai minimum (berbeda dari Swedia/Norwegia 1 minggu); harmonisasi panduan hingga 2028",
+      "Angka laju pendinginan rumah tanpa pemanas (1-4 hari ke <10°C) - berguna sebagai edukasi",
+      "Instruksi drone (jarak 150 m) ditambahkan ke panduan",
+      "Lakban masuk checklist dasar"
+    ]
+  },
+  {
+    "country": "Denmark",
+    "agency": "Styrelsen for Samfundssikkerhed (kampanye 'Forberedt på kriser', dulu Beredskabsstyrelsen/DEMA) di bawah Ministeriet for Samfundssikkerhed og Beredskab; iodium: Sundhedsstyrelsen",
+    "url": "https://www.brs.dk/en/prepared/",
+    "url_secondary": [
+      "https://www.brs.dk/da/forberedt/",
+      "https://www.brs.dk/globalassets/brs---beredskabsstyrelsen/dokumenter/krisekommunikation/2024/-prepared_for_crises_checklist-.pdf",
+      "https://mssb.dk/media/ue3ayelr/beredskabspjece_webfil-a.pdf"
+    ],
+    "accessed": "2026-11-03",
+    "last_updated_by_source": "Kampanye 'Forberedt på kriser' 2024 (dikirim via Digital Post); brosur 'Totalberedskab' Februari 2026 (mssb.dk) mengulang target 3 hari.",
+    "verification": "search-snippet-only",
+    "target_days": { "min": 3, "recommended": 3 },
+    "target_days_note": "3 døgn (3 hari); tetap sama di brosur Feb 2026.",
+    "water_l_per_person_day": 3,
+    "water_note": "3 L/orang/hari untuk minum & menyiapkan makanan = 9 L/orang untuk 3 hari; hitung juga hewan. Wadah food-grade; air botol simpan sejuk-gelap, pakai sebelum tanggal kedaluwarsa.",
+    "food_note": "Makanan tahan lama yang tidak perlu kulkas/freezer dan tidak perlu oven/kompor; jika perlu direbus (nasi/pasta) harus ada cara memanaskan air tanpa listrik/gas kota; DILARANG grill di dalam ruangan (asap & CO).",
+    "items": [
+      { "name": "Air", "qty": "3 L/orang/hari; 9 L/orang/3 hari", "note": "Termasuk untuk hewan", "url": "https://www.brs.dk/en/prepared/" },
+      { "name": "Makanan tahan lama tanpa kulkas & tanpa masak", "qty": "3 hari", "note": "", "url": "https://www.brs.dk/en/prepared/" },
+      { "name": "Radio FM baterai/engkol/surya", "qty": "1", "note": "DR menyiarkan pengumuman darurat otoritas", "url": "https://www.brs.dk/en/prepared/" },
+      { "name": "Senter, lilin, korek api, baterai", "qty": "tidak disebutkan", "note": "", "url": "https://www.brs.dk/globalassets/brs---beredskabsstyrelsen/dokumenter/krisekommunikation/2024/-prepared_for_crises_checklist-.pdf" },
+      { "name": "Power bank", "qty": "tidak disebutkan", "note": "Saat padam besar, jaringan telepon/internet bisa ikut mati", "url": "https://www.brs.dk/da/forberedt/" },
+      { "name": "Kartu pembayaran fisik (PIN dihafal) + sedikit tunai koin & pecahan kecil", "qty": "tidak disebutkan", "note": "", "url": "https://www.brs.dk/en/prepared/" },
+      { "name": "Obat + kotak P3K", "qty": "obat min. 3 hari", "note": "", "url": "https://www.brs.dk/en/prepared/" },
+      { "name": "Higiene: tisu toilet, hand sanitizer, tisu basah, pembalut, tampon, popok", "qty": "3 hari", "note": "Toilet tak bisa disiram: tampung kotoran di kantong sampah residu yang kuat", "url": "https://www.brs.dk/da/forberedt/" },
+      { "name": "Selimut, duvet, pakaian hangat", "qty": "tidak disebutkan", "note": "Tinggal di satu ruangan bila dingin lama", "url": "https://www.brs.dk/da/forberedt/" },
+      { "name": "Susu formula, popok, perlengkapan perawatan anak kecil/lansia/orang sakit", "qty": "tidak disebutkan", "note": "", "url": "https://www.brs.dk/da/forberedt/" }
+    ],
+    "special_needs": ["infant", "elderly", "pets", "medication"],
+    "special_needs_note": "Formula bayi & popok, perawatan lansia/sakit disebut eksplisit; hewan disebut terutama terkait air.",
+    "scenario_items": {
+      "conflict_war": [
+        { "name": "Brosur 'Totalberedskab' (Feb 2026) membingkai ancaman hibrida/siber; saran rumah tangga tetap 3 hari", "url": "https://mssb.dk/media/ue3ayelr/beredskabspjece_webfil-a.pdf" },
+        { "name": "Peringatan publik (sirene)", "url": "https://www.brs.dk/en/what-you-can-do/in-case-of-an-emergency/public-warnings-in-case-of-emergencies/" }
+      ],
+      "power_outage": [
+        { "name": "Selimut/pakaian hangat, satu ruangan, keamanan api lilin; cara memanaskan air tanpa listrik; tanpa grill dalam ruangan", "url": "https://www.brs.dk/da/forberedt/" }
+      ],
+      "nuclear": [
+        { "name": "Tablet iodium untuk <40 th, hamil & menyusui; Sundhedsstyrelsen yang memutuskan kapan & untuk siapa; utama: tetap di dalam ruangan & ikuti otoritas", "url": "https://www.sst.dk/vidensbase/forebyggelse/forurening-og-miljoe/luftforurening/jod-og-jodtabletter" },
+        { "name": "Untuk kejadian nuklir di Ukraina tidak relevan membeli/memakai iodium di Denmark", "url": "https://www.brs.dk/da/borger/krig-i-ukraine/danmarks-nukleare-beredskab-i-relation-til-krigen-i-ukraine/" }
+      ],
+      "cyber_payment_disruption": [
+        { "name": "Kartu fisik + PIN dihafal + tunai kecil saat internet/pembayaran kartu gagal", "url": "https://www.brs.dk/en/prepared/" }
+      ]
+    },
+    "unique_points": [
+      "Tetap 3 hari meski konteks hibrida/perang meningkat (brosur Feb 2026)",
+      "Lembaga baru: Ministeriet for Samfundssikkerhed og Beredskab + Styrelsen for Samfundssikkerhed",
+      "Larangan eksplisit grill dalam ruangan (CO)",
+      "Dikirim via Digital Post (kotak surat digital pemerintah)"
+    ]
+  },
+  {
+    "country": "Estonia",
+    "agency": "Päästeamet (Estonian Rescue Board) - olevalmis.ee / 'Ole valmis!'; Riigikantselei - kriis.ee",
+    "url": "https://www.olevalmis.ee/en/emergency-supplies",
+    "url_secondary": [
+      "https://kriis.ee/sites/default/files/documents/2022-10/Ole%20Valmis%202022%20ENG.pdf",
+      "https://www.kriis.ee/en/security-situation-europe/preparing-possible-crises/how-can-i-prepare-possible-crises"
+    ],
+    "accessed": "2026-11-03",
+    "last_updated_by_source": "Brosur 'Ole valmis!' versi diperbarui 2022; situs olevalmis.ee (versi baru, publikasi peringatan bahaya 2024). Tanggal pembaruan halaman persediaan: tidak disebutkan.",
+    "verification": "search-snippet-only",
+    "target_days": { "min": 7, "recommended": 7 },
+    "target_days_note": "Mampu bertahan di rumah tanpa listrik, air, pemanas min. 1 minggu. Halaman lama: stok air minimal 24 jam.",
+    "water_l_per_person_day": 3,
+    "water_note": "Min. 3 L/orang/hari; 21 L/orang/minggu (kriis.ee). Versi lama: 2 L minum + 1 L masak. Rebus air yang tidak diolah 3-5 menit; simpan tablet/filter penjernih.",
+    "food_note": "Separuh stok makanan harus bisa dimakan tanpa dipanaskan/dimasak (acar/awetan, sup instan, roti kering, kacang & buah kering, biskuit, permen, muesli bar, madu; makanan kaleng siap santap).",
+    "items": [
+      { "name": "Air minum", "qty": "3 L/orang/hari (21 L/orang/minggu)", "note": "", "url": "https://www.kriis.ee/en/security-situation-europe/preparing-possible-crises/how-can-i-prepare-possible-crises" },
+      { "name": "Tablet/filter penjernih air", "qty": "tidak disebutkan", "note": "", "url": "https://kriis.ee/sites/default/files/documents/2022-10/Ole%20Valmis%202022%20ENG.pdf" },
+      { "name": "Makanan 1 minggu, 50% tanpa masak", "qty": "1 minggu", "note": "", "url": "https://www.olevalmis.ee/en/emergency-supplies" },
+      { "name": "Grill/kompor kemah/kompor portabel", "qty": "tidak disebutkan", "note": "Patuhi aturan keselamatan api", "url": "https://www.olevalmis.ee/en/emergency-supplies" },
+      { "name": "Radio baterai/dinamo (radio mobil sebagai cadangan)", "qty": "1", "note": "Sumber info utama saat padam", "url": "https://www.olevalmis.ee/en/emergency-supplies" },
+      { "name": "Baterai cadangan / power bank terisi", "qty": "tidak disebutkan", "note": "", "url": "https://www.olevalmis.ee/en/emergency-supplies" },
+      { "name": "Uang tunai", "qty": "cukup untuk kebutuhan keluarga 1 minggu", "note": "Pembayaran mobile & kartu bisa gagal saat gangguan data", "url": "https://www.olevalmis.ee/en/emergency-supplies" },
+      { "name": "Obat rutin (tebus beberapa resep)", "qty": "min. 1 minggu stok", "note": "Plus penurun demam, obat alergi, obat pencernaan, obat flu", "url": "https://www.olevalmis.ee/en/emergency-supplies" },
+      { "name": "Makanan bayi; pakan hewan", "qty": "tidak disebutkan", "note": "", "url": "https://www.olevalmis.ee/en/emergency-supplies" }
+    ],
+    "special_needs": ["infant", "pets", "medication"],
+    "special_needs_note": "Makanan bayi dan pakan hewan masuk daftar; obat min. 1 minggu. Lansia/disabilitas: tidak disebutkan di sumber yang terbaca.",
+    "scenario_items": {
+      "conflict_war": [
+        { "name": "Halaman 'Military conflict' dan 'Seeking shelter' di olevalmis.ee (radio baterai/engkol di tempat berlindung)", "url": "https://www.olevalmis.ee/en/military-conflict" },
+        { "name": "Publikasi peringatan bahaya (sirene, pesan EE-ALARM) 2024", "url": "https://www.olevalmis.ee/assets/files/s--C9_j9GaF--/v1/olevalmis-payload-live/fspoqnn5x5gmlxhb0a6s/Hazard%20notification%20publication%20(2024)%20.pdf?_a=BAMAK+Ri0" }
+      ],
+      "power_outage": [
+        { "name": "Siap 1 minggu tanpa listrik, air, pemanas; radio baterai; tunai", "url": "https://www.olevalmis.ee/en/power-cuts" }
+      ],
+      "nuclear": [
+        { "name": "JANGAN minum tablet iodium kecuali ada instruksi spesifik otoritas Estonia; rumah sakit punya stok; efek tablet hanya 24-36 jam", "url": "https://www.rescue.ee/en/radiation-accident" },
+        { "name": "Q&A: tidak boleh minum iodium tanpa saran otoritas; saran Finlandia menyimpan di rumah terkait PLTN di negaranya", "url": "https://kriis.ee/en/security-situation-europe/ukrainian-war-refugees/frequently-asked-questions" }
+      ],
+      "cyber_payment_disruption": [
+        { "name": "Gangguan komunikasi: radio, tunai untuk 1 minggu", "url": "https://www.olevalmis.ee/en/communication-outage" }
+      ]
+    },
+    "unique_points": [
+      "Aturan '50% stok makanan harus bisa dimakan tanpa dimasak'",
+      "Tunai dihitung untuk kebutuhan keluarga 1 minggu",
+      "Sikap iodium paling ketat: rumah tangga tidak dianjurkan menyimpan/minum mandiri; stok di rumah sakit"
+    ]
+  },
+  {
+    "country": "Latvia",
+    "agency": "Aizsardzības ministrija (Kementerian Pertahanan) - brosur '72 stundas / Kā rīkoties krīzes gadījumā'; VUGD (Dinas Pemadam Kebakaran & Penyelamatan Negara); iodium: Veselības inspekcija (VVD)",
+    "url": "https://www.mod.gov.lv/sites/mod/files/document/72H%20buklets_ENG_WEB_2024.pdf",
+    "url_secondary": [
+      "https://www.mod.gov.lv/sites/mod/files/document/72%20h%20buklets%202024.pdf",
+      "https://www.vugd.gov.lv/en/food-supplies",
+      "https://www.mod.gov.lv/sites/mod/files/document/Rokasgr%C4%81mata%20-%20K%C4%81%20r%C4%ABkoties%20kara%20gad%C4%ABjum%C4%81_0.pdf"
+    ],
+    "accessed": "2026-11-03",
+    "last_updated_by_source": "Brosur edisi diperbarui 2024 (LV/EN/RU). Situs 72h.gov.lv TIDAK ditemukan di indeks pencarian (tidak terverifikasi).",
+    "verification": "search-snippet-only",
+    "target_days": { "min": 3, "recommended": 7 },
+    "target_days_note": "Kerangka 72 jam; air 'min. 3 hari, sebaiknya 1 minggu'; makanan 3-7 hari (MoD); VUGD: makanan min. 72 jam.",
+    "water_l_per_person_day": 3,
+    "water_note": "Dewasa ~3 L/hari minum (4 L saat cuaca panas) + 10-12 L/hari untuk higiene (sesuaikan); isi bak mandi saat ada peringatan. Materi lain (IeM) menyebut min. 2 L/hari untuk tas darurat.",
+    "food_note": "VUGD: simpan suhu ruang, umur simpan min. 6 bulan, butuh sedikit air/panas (awetan, pasta, sereal, tepung, minyak, keju keras, kacang) + makanan bayi & pakan hewan; masak dengan kompor spiritus, BBQ, perapian, api.",
+    "items": [
+      { "name": "Air minum", "qty": "~3 L/dewasa/hari (4 L cuaca panas); min. 3 hari, sebaiknya 1 minggu", "note": "", "url": "https://www.mod.gov.lv/sites/mod/files/document/72H%20buklets_ENG_WEB_2024.pdf" },
+      { "name": "Air higiene", "qty": "10-12 L/hari (sesuaikan kebutuhan keluarga)", "note": "Isi bak mandi", "url": "https://www.mod.gov.lv/sites/mod/files/document/72H%20buklets_ENG_WEB_2024.pdf" },
+      { "name": "Filter air + tablet disinfeksi", "qty": "tidak disebutkan", "note": "", "url": "https://www.mod.gov.lv/sites/mod/files/document/72H%20buklets_ENG_WEB_2024.pdf" },
+      { "name": "Makanan tahan lama", "qty": "3-7 hari", "note": "Umur simpan >=6 bulan (VUGD)", "url": "https://www.vugd.gov.lv/en/food-supplies" },
+      { "name": "Radio portabel", "qty": "1", "note": "", "url": "https://www.mod.gov.lv/sites/mod/files/document/72H%20buklets_ENG_WEB_2024.pdf" },
+      { "name": "Senter, baterai cadangan, power bank", "qty": "tidak disebutkan", "note": "", "url": "https://www.mod.gov.lv/sites/mod/files/document/72H%20buklets_ENG_WEB_2024.pdf" },
+      { "name": "Uang tunai", "qty": "jumlah 1 minggu untuk seluruh keluarga, pecahan EUR 5/10/20", "note": "", "url": "https://www.mod.gov.lv/sites/mod/files/document/72H%20buklets_ENG_WEB_2024.pdf" },
+      { "name": "Salinan dokumen penting dalam pembungkus kedap air", "qty": "1 set", "note": "", "url": "https://www.mod.gov.lv/sites/mod/files/document/72H%20buklets_ENG_WEB_2024.pdf" },
+      { "name": "P3K + obat penting + min. 1 produk dari tiap kelompok obat (analgesik/antipiretik, pencernaan, alergi); selimut foil; termometer", "qty": "tidak disebutkan", "note": "", "url": "https://www.mod.gov.lv/sites/mod/files/document/72H%20buklets_ENG_WEB_2024.pdf" },
+      { "name": "Kit mobil: botol air besar (5 L), makanan umur simpan panjang, P3K, senter", "qty": "tidak disebutkan", "note": "Baru di edisi 2024", "url": "https://www.mod.gov.lv/sites/mod/files/document/72H%20buklets_ENG_WEB_2024.pdf" },
+      { "name": "Pakan & air hewan", "qty": "tidak disebutkan", "note": "", "url": "https://www.mod.gov.lv/sites/mod/files/document/72H%20buklets_ENG_WEB_2024.pdf" }
+    ],
+    "special_needs": ["infant", "pets", "medication"],
+    "special_needs_note": "Makanan bayi & pakan hewan (VUGD); air untuk hewan (MoD). Lansia/disabilitas: tidak disebutkan di sumber yang terbaca.",
+    "scenario_items": {
+      "conflict_war": [
+        { "name": "Buku saku 'Kā rīkoties kara gadījumā' (Cara bertindak saat perang), berdasar pelajaran perang Ukraina", "url": "https://www.mod.gov.lv/sites/mod/files/document/Rokasgr%C4%81mata%20-%20K%C4%81%20r%C4%ABkoties%20kara%20gad%C4%ABjum%C4%81_0.pdf" },
+        { "name": "Notifikasi cell broadcast ancaman ruang udara: panduan tindakan", "url": "https://www.mod.gov.lv/en/news/what-do-upon-receiving-cell-broadcast-notification-about-potential-threat-latvian-airspace" },
+        { "name": "Aplikasi 112 Latvija menampilkan shelter terdekat", "url": "https://www.vugd.gov.lv/en/recommendations-field-civil-protection" }
+      ],
+      "power_outage": [
+        { "name": "Ketahui cara memutus air, gas, listrik di rumah; brosur mencakup listrik/internet padam", "url": "https://www.mod.gov.lv/sites/mod/files/document/72H%20buklets_ENG_WEB_2024.pdf" }
+      ],
+      "nuclear": [
+        { "name": "Profilaksis iodium (VVD): mulai 10 jam sebelum s.d. 2 jam setelah kenaikan iodium radioaktif di udara; umumnya 1 dosis kecuali ada instruksi lain; maks. 7 hari; bukan 'obat anti-radiasi'", "url": "https://www.vvd.gov.lv/lv/media/7026/download" }
+      ],
+      "cyber_payment_disruption": [
+        { "name": "Brosur mencakup ancaman siber/militer; tunai 1 minggu", "url": "https://www.mod.gov.lv/en/nozares-politika/comprehensive-state-defence/building-resilience" }
+      ]
+    },
+    "unique_points": [
+      "Satu-satunya yang memberi angka air higiene terpisah: 10-12 L/hari, dan 4 L/hari saat panas (relevan untuk iklim tropis Indonesia)",
+      "Pecahan tunai spesifik (EUR 5/10/20) untuk 1 minggu",
+      "Kit mobil ditambahkan di edisi 2024",
+      "Brosur diterbitkan oleh Kementerian Pertahanan (bukan lembaga sipil)"
+    ]
+  },
+  {
+    "country": "Lithuania",
+    "agency": "Priešgaisrinės apsaugos ir gelbėjimo departamentas (PAGD, di bawah Kemendagri) - lt72.lt; Kementerian Pertahanan (KAM) - brosur 'Jei krizė arba karas: kaip elgtis?' 2025; iodium: Kementerian Kesehatan (SAM), Radiacinės saugos centras (RSC)",
+    "url": "https://kam.lt/wp-content/uploads/2025/04/Jeikrizearbakaraskaipelgtisanglukalba.pdf",
+    "url_secondary": [
+      "https://lt72.lt/kaip-pasiruosti-3/",
+      "https://lt72.lt/maisto-atsargos-3/",
+      "https://sam.lrv.lt/lt/veiklos-sritys/visuomenes-sveikatos-prieziura/ekstremaliuju-situaciju-prevencija-ir-valdymas/pasirengimas-ekstremalioms-situacijoms-krizems-ir-mobilizacijai/jei-krize-arba-karas-kaip-elgtis-informacinis-leidinys-skirtas-visiems-lietuvos-gyventojams/"
+    ],
+    "accessed": "2026-11-03",
+    "last_updated_by_source": "Brosur nasional 'If war or crisis comes: what should I do?' April 2025 (halaman SAM diperbarui 28 Apr 2025); saluran konsultasi 24/7 nomor 1856 (2025).",
+    "verification": "search-snippet-only",
+    "target_days": { "min": 3, "recommended": 3 },
+    "target_days_note": "Prinsip LT72: min. 72 jam; PAGD: stok lebih lama adalah keuntungan. Tidak ditemukan kenaikan ke 7 hari.",
+    "water_l_per_person_day": 3,
+    "water_note": "Angka tidak konsisten: brosur 2025 = 9-12 L/dewasa untuk 3 hari (3-4 L/hari, termasuk makanan & higiene); lt72 'maisto atsargos' = min. 6 L/orang/72 jam (2 L/hari); lt72 tas evakuasi = 2-4 L/hari. Nilai 3 dipilih sebagai batas bawah brosur terbaru.",
+    "food_note": "Makanan cukup untuk keluarga min. 3 hari; ransum darurat 3 hari di survival kit.",
+    "items": [
+      { "name": "Air", "qty": "9-12 L/dewasa/3 hari", "note": "Simpan di botol kecil (mis. 0,5 L) agar mudah dibawa (lt72)", "url": "https://kam.lt/wp-content/uploads/2025/04/Jeikrizearbakaraskaipelgtisanglukalba.pdf" },
+      { "name": "Makanan tahan lama", "qty": "min. 3 hari", "note": "", "url": "https://kam.lt/wp-content/uploads/2025/04/Jeikrizearbakaraskaipelgtisanglukalba.pdf" },
+      { "name": "Radio baterai + baterai cadangan", "qty": "1", "note": "Sebaiknya mekanis/baterai", "url": "https://essc.lrv.lt/lt/naujienos/ka-svarbu-tureti-72-valandu-isvykimo-krepsyje-rekomendacijos-gyventojams/" },
+      { "name": "Uang tunai pecahan kecil", "qty": "tidak disebutkan", "note": "Simpan tunai/barang berharga di beberapa tempat", "url": "https://kam.lt/wp-content/uploads/2025/04/Jeikrizearbakaraskaipelgtisanglukalba.pdf" },
+      { "name": "Kotak P3K, power bank, senter, selimut hangat", "qty": "tidak disebutkan", "note": "", "url": "https://kam.lt/wp-content/uploads/2025/04/Jeikrizearbakaraskaipelgtisanglukalba.pdf" },
+      { "name": "Tas evakuasi 72 jam (išvykimo krepšys) dengan dokumen & tunai", "qty": "1/orang", "note": "", "url": "https://lt72.lt/isvykimo-krepsys-5/" }
+    ],
+    "special_needs": ["medication"],
+    "special_needs_note": "Hewan peliharaan: tidak disebutkan di sumber yang terbaca. Dosis iodium anak: neonatus <1 bulan 1/4 tablet, 1 bulan-3 th 1/2 tablet (65 mg). Kebutuhan bayi/lansia lain: tidak disebutkan.",
+    "scenario_items": {
+      "conflict_war": [
+        { "name": "Kenali struktur perlindungan kolektif & shelter terdekat; pertimbangkan menyesuaikan ruang bawah tanah/garasi bawah tanah sebagai shelter pribadi; nyalakan siaran penyiar nasional", "url": "https://kam.lt/wp-content/uploads/2025/04/Jeikrizearbakaraskaipelgtisanglukalba.pdf" },
+        { "name": "Sirene & sinyal perlindungan sipil", "url": "https://lt72.lt/?page_id=1952" }
+      ],
+      "power_outage": [
+        { "name": "Radio baterai, power bank, senter, selimut hangat (detail pemanas tidak disebutkan di sumber yang terbaca)", "url": "https://kam.lt/wp-content/uploads/2025/04/Jeikrizearbakaraskaipelgtisanglukalba.pdf" }
+      ],
+      "nuclear": [
+        { "name": "Siap bertahan 72 jam di rumah tanpa keluar (makanan, air, obat, higiene); tetap di dalam, tutup pintu/jendela/ventilasi", "url": "https://rsc.lrv.lt/en/preparing-for-a-nuclear-power-plant-accident/" },
+        { "name": "Kalium iodida HANYA setelah pengumuman resmi Kemenkes (radio/TV), TIDAK boleh profilaksis; dewasa & >=12 th: 130 mg (2x65 mg) melindungi 24 jam; optimal <=6 jam sebelum paparan, tidak lebih awal dari 24 jam; masih efektif <=8 jam setelah; preparat iodium lain (tingtur, suplemen) tidak cocok", "url": "https://sam.lrv.lt/uploads/sam/documents/files/DUK%20apie%20kalio%20jodido%20tabletes.pdf" },
+        { "name": "Konteks PLTN Astravets (Belarus): zona perencanaan 100 km; tablet dibagikan ke penduduk dalam radius 30 km (pengumuman lama)", "url": "https://lt72.lt/kaip-pasiruosti-baltarusijos-atomines-elektrines-avarijai/" }
+      ],
+      "cyber_payment_disruption": [
+        { "name": "Tunai pecahan kecil", "url": "https://kam.lt/wp-content/uploads/2025/04/Jeikrizearbakaraskaipelgtisanglukalba.pdf" }
+      ]
+    },
+    "unique_points": [
+      "Risiko nuklir spesifik: PLTN Astravets di Belarus dekat Vilnius; tablet dibagikan di radius 30 km",
+      "Brosur 'If war or crisis comes' 2025 dari Kementerian Pertahanan, termasuk saran mengubah ruang bawah tanah jadi shelter pribadi",
+      "Saluran konsultasi 24/7 perlindungan sipil: 1856",
+      "Angka air antar-halaman resmi tidak konsisten (6 L vs 9-12 L per 3 hari)"
+    ]
+  },
+  {
+    "country": "Poland",
+    "agency": "Ministerstwo Spraw Wewnętrznych i Administracji (MSWiA) - 'Poradnik bezpieczeństwa' (Nr publikacji 1/2025); Rządowe Centrum Bezpieczeństwa (RCB); PSP (pemadam kebakaran)",
+    "url": "https://www.gov.pl/attachment/7e0e1e44-4599-429d-8282-c6d42fba6e95",
+    "url_secondary": [
+      "https://www.gov.pl/attachment/9aa63303-0c11-4756-9369-646f5ef4a595",
+      "https://www.gov.pl/web/poradnikbezpieczenstwa/przygotuj-swoje-otoczenie",
+      "https://www.gov.pl/web/poradnikbezpieczenstwa/dlugotrwaly-brak-pradu-blackout"
+    ],
+    "accessed": "2026-11-03",
+    "last_updated_by_source": "Poradnik bezpieczeństwa Nr 1/2025, dikirim ke ~17 juta rumah tangga awal 2026 (juga di aplikasi mObywatel & huruf Braille); instruksi ancaman serangan udara MSWiA (12 halaman) menyusul.",
+    "verification": "search-snippet-only",
+    "target_days": { "min": 3, "recommended": 3 },
+    "target_days_note": "Minimal 3 hari, tinjau stok tiap beberapa bulan. (Materi gov.pl lain yang kurang pasti statusnya menyebut 3 L/hari min. 7 hari; leaflet pertahanan sipil lama: 14 L/orang untuk 1 minggu.)",
+    "water_l_per_person_day": 3,
+    "water_note": "Min. 3 L/orang/hari. Tas evakuasi kecil: min. 0,5 L/orang.",
+    "food_note": "Makanan siap santap: kalengan, crackers, bar energi; perhatikan kedaluwarsa.",
+    "items": [
+      { "name": "Air minum", "qty": "min. 3 L/orang/hari x 3 hari", "note": "", "url": "https://www.gov.pl/attachment/7e0e1e44-4599-429d-8282-c6d42fba6e95" },
+      { "name": "Makanan siap santap (kaleng, crackers, bar)", "qty": "min. 3 hari", "note": "", "url": "https://www.gov.pl/attachment/7e0e1e44-4599-429d-8282-c6d42fba6e95" },
+      { "name": "Tablet penjernih air", "qty": "tidak disebutkan", "note": "", "url": "https://www.gov.pl/attachment/9aa63303-0c11-4756-9369-646f5ef4a595" },
+      { "name": "Senter + radio baterai/engkol", "qty": "1", "note": "", "url": "https://www.gov.pl/web/poradnikbezpieczenstwa/przygotuj-swoje-otoczenie" },
+      { "name": "HP terisi + power bank; lilin + pemantik", "qty": "tidak disebutkan", "note": "", "url": "https://www.gov.pl/web/poradnikbezpieczenstwa/przygotuj-swoje-otoczenie" },
+      { "name": "Uang tunai berbagai pecahan", "qty": "tidak disebutkan", "note": "", "url": "https://www.gov.pl/web/poradnikbezpieczenstwa/przygotuj-swoje-otoczenie" },
+      { "name": "P3K dengan obat resep rutin, pereda nyeri, antidiare", "qty": "tidak disebutkan", "note": "", "url": "https://www.gov.pl/web/poradnikbezpieczenstwa/przygotuj-swoje-otoczenie" },
+      { "name": "Sumber panas alternatif tidak bergantung listrik (pemanas gas/minyak, perapian)", "qty": "tidak disebutkan", "note": "", "url": "https://www.gov.pl/web/poradnikbezpieczenstwa/dlugotrwaly-brak-pradu-blackout" },
+      { "name": "Ransel evakuasi untuk SETIAP anggota rumah tangga, termasuk anak", "qty": "1/orang (20-30 L untuk evakuasi 1-3 hari)", "note": "", "url": "https://www.gov.pl/web/poradnikbezpieczenstwa/ewakuacja" },
+      { "name": "Pakan & air ternak", "qty": "14 hari", "note": "Hewan peliharaan: amankan + pakan & air bila tidak bisa dievakuasi", "url": "https://www.gov.pl/web/poradnikbezpieczenstwa/przygotuj-swoje-otoczenie" }
+    ],
+    "special_needs": ["pets", "livestock", "medication"],
+    "special_needs_note": "Ternak 14 hari pakan & air; hewan peliharaan. Bayi: hanya popok di daftar higiene; formula tidak disebutkan. Versi Braille tersedia.",
+    "scenario_items": {
+      "conflict_war": [
+        { "name": "Saat alarm: ikuti rute ke tempat berlindung, bawa ransel darurat, hindari lift; ruang ideal tanpa jendela, dinding & plafon tebal; ledakan di luar: tiarap di cekungan, lindungi kepala", "url": "https://www.gov.pl/web/poradnikbezpieczenstwa/atak-z-powietrza" },
+        { "name": "Instruksi MSWiA: ruang di tengah bangunan, aturan 'dua dinding' (min. 2 dinding solid antara Anda dan luar); hindari ruangan berjendela/balkon/boiler/tabung gas/cermin besar; peta shelter gdziesieukryc.pl; ikuti peringatan RCB", "url": "https://www.gov.pl/web/mswia/mswia-publikuje-instrukcje-reagowania-podczas-zagrozenia-atakiem-z-powietrza" },
+        { "name": "Pakai SMS alih-alih panggilan agar jaringan tidak penuh", "url": "https://www.gov.pl/web/poradnikbezpieczenstwa/atak-z-powietrza" }
+      ],
+      "power_outage": [
+        { "name": "Blackout bisa berhari-hari (alam/sengaja): penerangan + baterai, pemanas gas/minyak/perapian, radio baterai, walkie-talkie, radio CB, pertimbangkan generator, power bank, mode hemat baterai; kumpul di satu ruangan; batasi buka kulkas; cabut alat listrik; tunai pecahan kecil", "url": "https://www.gov.pl/web/poradnikbezpieczenstwa/dlugotrwaly-brak-pradu-blackout" }
+      ],
+      "nuclear": [
+        { "name": "Kalium iodida hanya saat ancaman nyata & atas perintah otoritas, tidak dikonsumsi mandiri; idealnya <=2 jam sejak paparan, masih bermanfaat <=8 jam; terlalu dini tidak melindungi & bisa merugikan (berlaku juga untuk larutan Lugol); dibagikan lewat titik distribusi gmina", "url": "https://www.gov.pl/web/uw-mazowiecki/dystrybucja-tabletek-jodku-potasu-na-terenie-wojewodztwa-mazowieckiego-w-przypadku-zagrozenia-radiacyjnego" },
+        { "name": "Poradnik memuat bagian ancaman CBRN", "url": "https://www.gov.pl/attachment/9aa63303-0c11-4756-9369-646f5ef4a595" }
+      ],
+      "cyber_payment_disruption": [
+        { "name": "Pembayaran kartu tidak berfungsi saat blackout -> tunai pecahan kecil; RCB 'Crisis and War Guide' mencakup perlindungan dari disinformasi", "url": "https://www.gov.pl/web/rcb-en/crisis-and-war-guide" }
+      ]
+    },
+    "unique_points": [
+      "Dikirim fisik ke ~17 juta rumah tangga + versi mObywatel & Braille",
+      "Ransel evakuasi wajib untuk tiap anggota termasuk anak",
+      "Aturan 'dua dinding' untuk berlindung dari serangan udara/drone",
+      "Ternak: stok pakan & air 14 hari",
+      "Saran radio CB/walkie-talkie dan generator untuk blackout"
+    ]
+  }
+]
