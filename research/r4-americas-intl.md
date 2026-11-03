@@ -1,21 +1,31 @@
 # R4 — Amerika (AS, Kanada) + Standar Internasional
 
 - Agent: R4 · Diakses: 2026-11-03 · Data terstruktur: `research/r4-americas-intl.json`
-- Status verifikasi: **SEBAGIAN** — lihat §0.
+- Status verifikasi: **sebagian besar terverifikasi**. Sumber CDC, EPA, WHO, UNHCR/WFP, Sphere (pangan), dan IFRC dibaca utuh. FEMA/Ready.gov, Kanada, Sphere (WASH), dan Red Cross masih level cuplikan pencarian — lihat §0.
 
 ## 0. Catatan akses web (WAJIB dibaca PM / S2)
 
-| Tool | Hasil |
-|---|---|
-| `WebFetch https://www.ready.gov/kit` (+ `/water`, `/food`) | **GAGAL**: `getaddrinfo ENOTFOUND www.ready.gov` — domain di luar allowlist jaringan sesi |
-| `WebFetch https://www.cdc.gov/water-emergency/...` | **GAGAL**: `getaddrinfo ENOTFOUND www.cdc.gov` — alasan sama |
-| `WebSearch` (dengan `allowed_domains` resmi) | **BERHASIL** |
+**Putaran 1 (network tertutup):**
+- `WebFetch` ke ready.gov dan cdc.gov gagal (`getaddrinfo ENOTFOUND`).
+- Riset dilakukan dengan `WebSearch` yang difilter ke domain resmi.
 
-Karena tool menyuruh berhenti mencoba host lain setelah dua host gagal, WebFetch tidak dipakai lagi. Riset dilanjutkan **hanya dengan WebSearch yang difilter ke domain resmi** (ready.gov, fema.gov, cdc.gov, epa.gov, canada.ca, getprepared.gc.ca, spherestandards.org, who.int, unhcr.org, wfp.org, ifrc.org; redcross.org sebagai *secondary*).
-Akibatnya:
-- Semua angka berasal dari **cuplikan hasil pencarian** di halaman resmi itu, bukan dari halaman yang dibaca utuh. Di JSON ditandai `"verification": "search_snippet_only"`.
-- Tanggal "last updated" halaman sebagian besar **tidak bisa dipastikan**.
-- **Saran:** sebelum Fase 3, izinkan domain `ready.gov, cdc.gov, canada.ca, spherestandards.org, who.int, unhcr.org, ifrc.org, epa.gov` di pengaturan jaringan sesi, lalu verifikasi ulang angka bertanda ⚠.
+**Putaran 2 (setelah user membuka Network access):**
+- Tool `WebFetch` masih gagal DNS (`ENOTFOUND`).
+- `curl` lewat proxy sesi berfungsi. Halaman diunduh **dengan User-Agent bawaan curl, tanpa pemalsuan**. Dokumen dihosting UNHCR (PDF resmi Sphere/FNNE di emergency.unhcr.org) dipakai karena itu salinan resmi lembaga PBB, bukan mirror pihak ketiga.
+
+| Domain | Hasil putaran 2 | Status angka |
+|---|---|---|
+| cdc.gov (air, bayi, ibu hamil, hewan, radiasi, pengolahan air) | 200 OK | **verified** |
+| epa.gov (disinfeksi darurat; diperbarui 2026-02-24) | 200 OK | **verified** |
+| cdn.who.int / who.int (TN9, HWT, halaman Humanitarian emergencies, PDF gizi ibu) | 200 OK | **verified** |
+| emergency.unhcr.org (FNNE 2002/2004; bab Pangan + Appendix 6 Sphere 2018) | 200 OK | **verified** |
+| ifrc.org PAPE PDF, wash.ifrc.org HWTS manual | 200 OK | **verified** |
+| ready.gov, fema.gov | **HTTP 403 dari server (AkamaiGHost)** | cuplikan WebSearch |
+| spherestandards.org, handbook.spherestandards.org | **HTTP 403 dari server** | WASH Sphere = cuplikan |
+| redcross.org, cdc.gov/aging | HTTP 403 dari server | cuplikan |
+| canada.ca, getprepared.gc.ca | server menutup koneksi (`Empty reply` / `HTTP2 INTERNAL_ERROR`) | cuplikan |
+
+Di JSON, tiap objek punya field `verification`. Angka konstanta yang sudah dicek ke halaman utuh diberi tanda `[verified]` di `note`.
 
 Konversi satuan dihitung oleh R4: 1 galon AS = 3,785 L; 1 ft = 0,3048 m.
 
@@ -59,9 +69,23 @@ URL: https://www.ready.gov/kit · checklist PDF: https://www.ready.gov/sites/def
 | Gempa | Ikat rak buku, kulkas, pemanas air, dan TV; barang berat di rak bawah; kit beberapa hari; senter, APAR, peluit; latihan Drop-Cover-Hold On | https://www.ready.gov/earthquakes |
 | Nuklir / shelter-in-place | *Get Inside, Stay Inside, Stay Tuned*. Tetap di tempat paling terlindung selama **24 jam pertama**. Matikan kipas, AC, dan pemanas *forced-air*; tutup jendela, pintu, dan *damper* perapian; bawa hewan ke dalam. Setelah ledakan nuklir ada waktu ±10 menit atau lebih untuk mencari tempat berlindung sebelum *fallout* tiba. | https://www.ready.gov/radiation |
 
-### 1.2 CDC
-- **Air**: min. 1 galon/orang/hari selama 3 hari; **usahakan stok 2 minggu**. Simpan lebih banyak di iklim panas, saat musim panas, atau di daerah rawan kekeringan. Air isi sendiri diganti **tiap 6 bulan**; air kemasan mengikuti tanggal kedaluwarsa. Simpan pada 50–70 °F (10–21 °C), memakai wadah *food-grade*. — https://www.cdc.gov/water-emergency/about/how-to-create-and-store-an-emergency-water-supply.html
-- **Ibu hamil/menyusui**: simpan air lebih banyak (tanpa angka); vitamin prenatal, pembalut, pakaian, handuk bersih, sarung tangan. — https://www.cdc.gov/children-and-school-preparedness/resources/emergency-kit-checklist-pregnant-women-infants-and-children.html
+### 1.2 CDC ✅ (sebagian besar diverifikasi dari halaman utuh)
+- **Air** (halaman diperbarui 2025-06-27):
+  - "Store at least 1 gallon of water per person, per day for 3 days … for drinking, cooking, brushing teeth, and other uses. Try to store a 2-week supply if possible."
+  - "Consider storing more water than this for pregnant women, people who are sick, pets, or if you live in a hot climate." Tidak ada angkanya.
+  - Air isi sendiri diganti **tiap 6 bulan**. Simpan pada 50–70 °F (10–21 °C).
+  - URL: https://www.cdc.gov/water-emergency/about/how-to-create-and-store-an-emergency-water-supply.html
+- **Pengolahan air (CDC)** — https://www.cdc.gov/water-emergency/about/index.html (2024-09-19):
+  - Rebus **1 menit**; **3 menit di atas 6.500 ft (±1.981 m)**.
+  - Pemutih 5–9%: **2 tetes (0,1 mL) per liter**, 8 tetes (½ mL) per galon. Pemutih 1%: 10 tetes (½ mL) per liter.
+  - Gandakan dosis bila air keruh, berwarna, atau sangat dingin. Diamkan **≥30 menit**.
+  - Disinfektan kimia kurang efektif terhadap *Cryptosporidium* dan *Giardia* dibanding merebus.
+- **Ibu hamil/bayi/anak** (checklist 2026-04-20) — https://www.cdc.gov/children-and-school-preparedness/resources/emergency-kit-checklist-pregnant-women-infants-and-children.html:
+  - "Prescription medications (**at least 2 weeks supply**)".
+  - Air "at least one gallon per person per day for several days … Consider storing more water than this if you are pregnant or lactating".
+  - Perlengkapan hewan untuk beberapa hari.
+  - Vitamin prenatal, air ekstra, botol/dot + formula (RTF atau bubuk), *cooler* kecil untuk ASI.
+  - Periksa kit **tiap 6 bulan**.
 - **Bayi** (https://www.cdc.gov/infant-feeding-emergencies-toolkit/php/checklist.html, https://www.cdc.gov/infant-feeding-emergencies-toolkit/php/preparedness.html):
   - Formula **siap minum (RTF)** paling aman (tidak perlu air, steril), cukup untuk **beberapa hari**; cek ulang tiap bulan karena bayi cepat tumbuh.
   - Bila memakai formula bubuk: air kemasan, wadah campur, dan takaran.
@@ -77,11 +101,14 @@ URL: https://www.ready.gov/kit · checklist PDF: https://www.ready.gov/sites/def
 - **Pandemi**: stok air & makanan 2 minggu di rumah (3 hari untuk evakuasi); obat bebas (pereda nyeri, obat lambung, obat batuk/pilek, cairan elektrolit, vitamin) — https://stacks.cdc.gov/view/cdc/46451/cdc_46451_DS1.pdf
 - **Radiasi** (https://www.cdc.gov/radiation-emergencies/response/get-inside.html): tetap di dalam **min. 24 jam**. Melepas pakaian lapisan luar menghilangkan hingga **90%** material radioaktif. Jangan keluar menjemput keluarga.
 
-### 1.3 EPA — Disinfeksi air darurat
+### 1.3 EPA — Disinfeksi air darurat ✅ (diperbarui 2026-02-24)
 URL: https://www.epa.gov/ground-water-and-drinking-water/emergency-disinfection-drinking-water
-- **Rebus**: didih bergolak (*rolling boil*) **≥1 menit**; **3 menit** di atas 5.000 ft (±1.524 m). CDC memakai ambang 6.500 ft (±1.981 m).
-- **Pemutih tanpa pewangi**: **8 tetes (6%)** atau **6 tetes (8,25%) per galon** (≈2 tetes/L). Aduk, diamkan **30 menit**. **Gandakan dosis** bila air keruh, berwarna, atau sangat dingin. Bila air tidak berbau klorin, ulangi dosis dan tunggu 15 menit lagi. Pakai pemutih yang disimpan <1 tahun.
-- **Tingtur yodium 2%**: 5 tetes per liter. Hindari bila hamil, punya gangguan tiroid, atau alergi yodium (peringatan CDC).
+- **Rebus**: didih bergolak (*rolling boil*) **≥1 menit**; **3 menit** "at altitudes above 5,000 feet (1,000 meters)". Konversi di halaman EPA tidak konsisten: 5.000 ft = ±1.524 m.
+- **Pemutih tanpa pewangi 6% atau 8,25%**: **2 tetes per liter** (untuk kedua konsentrasi); per galon 8 tetes (6%) atau 6 tetes (8,25%).
+  - Aduk, diamkan **30 menit**; air harus berbau klorin samar. Bila tidak, ulangi dosis dan tunggu 15 menit lagi.
+  - **Gandakan dosis** bila air keruh, berwarna, atau sangat dingin. Pakai pemutih yang disimpan <1 tahun.
+- **Tingtur yodium 2%**: **5 tetes per liter**, 10 tetes bila keruh; diamkan ≥30 menit. Hindari bila hamil, punya gangguan tiroid, atau alergi yodium (CDC).
+- **Kaporit granul (HTH)**: 1 sdt munjung per 2 galon menghasilkan larutan ±500 mg/L; pakai 1 bagian larutan per 100 bagian air.
 - **Tablet** (klorin, yodium, klorin dioksida): **ikuti label**, karena tidak ada dosis universal.
 - Merebus atau klorinasi **tidak** menghilangkan logam berat, garam, atau kebanyakan bahan kimia.
 
@@ -146,28 +173,63 @@ URL: https://spherestandards.org/wp-content/uploads/Sphere-Handbook-2018-EN.pdf 
   - Toilet komunal min. 1 per 20 orang (1 per 50 di fase awal krisis mendadak).
   - **Volume ekskreta untuk perencanaan: 1–2 L/orang/hari.**
 - **Higiene**: sabun mandi **250 g/orang/bulan**; sabun cuci **200 g/orang/bulan**; tambahan **250 g/bulan** untuk higiene menstruasi.
-- **Pangan**: **2.100 kkal/orang/hari**, 10–12% energi dari protein; disesuaikan dengan demografi (Appendix 6). ⚠ Tabel per usia tidak berhasil diambil.
+- **Pangan** ✅ (Appendix 6, PDF resmi bab Pangan dihosting UNHCR: https://emergency.unhcr.org/sites/default/files/2024-05/SphereFS+N.pdf):
+  - Energi **2.100 kkal**, protein 53 g (10% energi), lemak 40 g (17% energi).
+  - "These average population minimum requirements **incorporate the requirements of all age groups and both sexes** … **should not be used as requirements for an individual**." Angka ini sudah memperhitungkan ibu hamil dan menyusui.
+  - Naikkan bila aktivitas di atas "light" (1,6 × BMR) atau suhu rata-rata <20 °C.
+  - Sphere 2018 tidak memuat tabel per usia; tabelnya ada di FNNE Annex 1 (§3.3).
+- Catatan: angka WASH Sphere (air, sabun, toilet) di atas masih level cuplikan, karena spherestandards.org membalas 403.
 
-### 3.2 WHO
-- **TN9 "How much water is needed"** (https://cdn.who.int/media/docs/default-source/wash-documents/who-tn-09-how-much-water-is-needed.pdf): angkanya sama dengan Sphere (2,5–3 / 2–6 / 3–6 / total 7,5–15 L). Pendekatan bertahap: penuhi kebutuhan *survival* dulu.
-- **Halaman Humanitarian emergencies** (https://www.who.int/teams/environment-climate-change-and-health/water-sanitation-and-health/environmental-health-in-emergencies/humanitarian-emergencies): min. 15 L/orang/hari secepatnya; ±20 L untuk higiene dasar dan higiene pangan.
+### 3.2 WHO ✅
+- **TN9 "How much water is needed"** (diperbarui Juli 2013; https://cdn.who.int/media/docs/default-source/wash-documents/who-tn-09-how-much-water-is-needed.pdf):
+  - Table 9.1: survival (drinking and food) **2,5–3 L** ("depends on climate and individual physiology"); higiene dasar **2–6 L**; masak dasar **3–6 L**; total **7,5–15 L**.
+  - Pendekatan bertahap: penuhi kebutuhan *survival* dulu.
+  - Table 9.2 menyebut **masjid 2–5 L/orang/hari untuk wudu dan minum** (relevan untuk Indonesia, angka fasilitas).
+- **Halaman Humanitarian emergencies** (https://www.who.int/teams/environment-climate-change-and-health/water-sanitation-and-health/environmental-health-in-emergencies/humanitarian-emergencies):
+  - "Based on estimates of requirements of **lactating women who engage in moderate physical activity in above-average temperatures**, a minimum of **7.5 litres** per capita per day will meet the requirements of most people under most conditions."
+  - Dalam darurat minimal **15 L**; ±**20 L** untuk higiene dasar dan higiene pangan.
+  - Residu klorin sistem perpipaan >0,5 mg/L.
 - **Domestic Water Quantity, Service Level and Health, ed. 2** (https://iris.who.int/server/api/core/bitstreams/ca623971-c9ee-4a72-9f60-f2a389ffb5c7/content): minimum air **minum 5,3 L/orang/hari** (konteks umum); 20 L sering cukup untuk minum, masak, dan higiene dasar.
 - **Pengolahan air rumah tangga** (https://cdn.who.int/media/docs/default-source/wash-documents/hwt-after-emergencies.pdf?sfvrsn=f28f139a_4):
   - Dosis klorin harus menyisakan **residu klorin bebas 0,4–0,5 mg/L setelah 30 menit**; air harus jernih; waktu kontak lebih lama bila air dingin.
   - Merebus: cukup sampai **mendidih bergolak lalu didinginkan** (GDWQ); WHO-EMRO menyarankan didihkan **≥3 menit** (https://applications.emro.who.int/dsaf/dsa605.pdf).
   - Merebus tidak meninggalkan residu desinfektan.
 
-### 3.3 WFP / UNHCR / UNICEF / WHO — *Food and Nutrition Needs in Emergencies* (2002/2004)
-URL: https://iris.who.int/bitstream/handle/10665/68660/a83743.pdf
-- Angka perencanaan awal **2.100 kkal/orang/hari** (populasi tipikal, aktivitas ringan).
-- **Ibu hamil +285 kkal/hari; ibu menyusui +500 kkal/hari** — https://www.who.int/docs/default-source/documents/publications/maternal-nutrition-in-emergencies.pdf. Modul IFE UNHCR menyebut ±450 kkal untuk ibu menyusui.
-- Suhu <20 °C: **+100 kkal per 5 °C di bawah 20 °C** — https://www.unhcr.org/uk/sites/uk/files/legacy-pdf/45fa745b2.pdf
-- ⚠ **Tabel per kelompok usia (bayi, anak, remaja, lansia) TIDAK berhasil diambil.**
+### 3.3 WFP / UNHCR / UNICEF / WHO — *Food and Nutrition Needs in Emergencies* (2002/2004) ✅
+URL: https://emergency.unhcr.org/sites/default/files/2024-01/Food%20and%20nutrition%20needs%20in%20emergencies%202004.pdf (salinan WHO IRIS: https://iris.who.int/bitstream/handle/10665/68660/a83743.pdf)
+- Angka perencanaan awal **2.100 kkal/orang/hari**; "was also designed to include the needs of pregnant and lactating women within the population".
+- **Ibu hamil +285 kkal/hari; ibu menyusui +500 kkal/hari**. Angka ini juga ada di https://www.who.int/docs/default-source/documents/publications/maternal-nutrition-in-emergencies.pdf. Modul IFE UNHCR menyebut ±450 (cuplikan).
+- Suhu <20 °C: +100 kkal per 5 °C → 15 °C +100; 10 °C +200; 5 °C +300; 0 °C +400.
+- **Annex 1 — Kebutuhan energi per kelompok usia** (sumber: WHO 2000; profil negara berkembang; aktivitas ringan; BB dewasa L 60 kg / P 52 kg). Satuan kkal/orang/hari:
 
-### 3.4 IFRC
-- **PAPE** (https://www.ifrc.org/sites/default/files/PAPE-2.0-English.pdf, https://www.ifrc.org/document/prepare-your-family-and-home-pape-messages): air & makanan untuk **±1 minggu**, yaitu **25–30 L per anggota rumah tangga** (≈3,6–4,3 L/hari); makanan ≥7 hari; ganti air tiap 6 bulan; radio, senter, baterai, P3K, obat, penjernih air, uang tunai, salinan dokumen.
+| Usia (tahun) | Laki-laki | Perempuan | Rata-rata L+P |
+|---|---|---|---|
+| 0 (<1) | 850 | 780 | 820 |
+| 1 | 1.250 | 1.190 | 1.220 |
+| 2 | 1.430 | 1.330 | 1.380 |
+| 3 | 1.560 | 1.440 | 1.500 |
+| 4 | 1.690 | 1.540 | 1.620 |
+| 0–4 | 1.320 | 1.250 | 1.290 |
+| 5–9 | 1.980 | 1.730 | 1.860 |
+| 10–14 | 2.370 | 2.040 | 2.210 |
+| 15–19 | 2.700 | 2.120 | 2.420 |
+| 20–59 | 2.460 | 1.990 | 2.230 |
+| 60+ | 2.010 | 1.780 | 1.890 |
+| Hamil | — | +285 | +285 |
+| Menyusui | — | +500 | +500 |
+| Seluruh populasi | 2.250 | 1.910 | 2.080 |
+
+### 3.4 IFRC ✅
+- **PAPE** (https://www.ifrc.org/sites/default/files/PAPE-2.0-English.pdf):
+  - "Store enough clean water and non-perishable food to survive for about a week – **25 to 30 litres (7 gallons) for each household member**. About half of this is for drinking or cooking and half for sanitation."
+  - "… based on an estimated **two litres** for drinking and another **two for sanitation**. Include allocations for pets and service animals. Replace every six months."
+  - Makanan ≥7 hari (cek kedaluwarsa tiap 6 bulan); ransum ±2.100 kalori/orang/hari. Dewasa minum ±2 L/hari dalam kondisi rata-rata.
+  - **Item**: P3K + obat resep; masker debu; senter (surya/engkol/baterai); kantong plastik + pengikat untuk sanitasi; pemutih cair; plastik + lakban untuk menyegel jendela/pintu; pisau lipat serbaguna; korek; peluit; kertas & spidol; telepon + baterai cadangan; telepon rumah non-listrik; pakaian, jas hujan, sepatu kokoh, sarung tangan kerja; selimut & handuk; alat bantu (kacamata); kontak darurat + salinan dokumen (disimpan di luar rumah bila mungkin).
+  - **Pengolahan air**: saring; rebus **≥1 menit** atau sampai muncul gelembung besar; pemutih **1 tetes per liter**, 8 tetes per galon, atau 1 tutup botol per jeriken 20 L, lalu diamkan 30 menit. ⚠ Dosis per liter ini lebih rendah dari CDC/EPA/Health Canada (2 tetes/L). Alternatif **SODIS**: botol bening di bawah sinar matahari langsung **6 jam**.
+  - Contoh pesan gempa: tas evakuasi untuk rumah dan mobil berisi 1 galon air/orang/hari dan makanan untuk 3 hari.
+- Pesan keluarga PAPE: https://www.ifrc.org/document/prepare-your-family-and-home-pape-messages
 - **IFRC First Aid Guidelines 2020** (https://www.ifrc.org/sites/default/files/2022-02/EN_GFARC_GUIDELINES_2020.pdf): kit untuk kebutuhan dasar **3 hari pertama**.
-- **Manual HWTS IFRC** (https://wash.ifrc.org/wp-content/uploads/2025/06/ifrc-hwts-manual-english.pdf): ±5 L/orang/hari untuk minum dan menyiapkan makanan mentah.
+- **Manual HWTS IFRC** (edisi 2, 2018; https://wash.ifrc.org/wp-content/uploads/2025/06/ifrc-hwts-manual-english.pdf): "Usually around **5 litres per person per day** is needed" untuk minum dan menyiapkan makanan mentah; "may vary depending on climate".
 - **Rencana keluarga**: titik kumpul dan kontak di luar daerah sebagai "checkpoint" — https://www.ifrc.org/document/family-safety-plan-template
 
 ---
@@ -181,53 +243,58 @@ URL: https://iris.who.int/bitstream/handle/10665/68660/a83743.pdf
 | Pengali panas | ×2 | — | cairan saat sangat panas | FEMA | https://www.ready.gov/water |
 | Air minum (Kanada) | 2 | L/orang/hari | semua | Health Canada | https://www.canada.ca/en/health-canada/services/food-drinking-water-safe-emergency.html |
 | Air total (Kanada) | 4 ⚠ | L/orang/hari | semua | Public Safety Canada | https://www.canada.ca/en/services/policing/emergencies/preparedness/get-prepared/emergency-kits.html |
-| Air *survival* | 2,5–3 | L/orang/hari | minum + makanan | Sphere/WHO TN9 | https://cdn.who.int/media/docs/default-source/wash-documents/who-tn-09-how-much-water-is-needed.pdf |
+| Air *survival* ✅ | 2,5–3 | L/orang/hari | minum + makanan | Sphere/WHO TN9 | https://cdn.who.int/media/docs/default-source/wash-documents/who-tn-09-how-much-water-is-needed.pdf |
 | Air higiene dasar | 2–6 | L/orang/hari | — | Sphere/WHO | sama |
 | Air masak dasar | 3–6 | L/orang/hari | — | Sphere/WHO | sama |
 | Air total kemanusiaan | 15 (min.) | L/orang/hari | kamp/pengungsian | Sphere/WHO | https://spherestandards.org/wp-content/uploads/Sphere-Handbook-2018-EN.pdf |
-| Air IFRC | 25–30 | L/orang/minggu | anggota rumah tangga | IFRC | https://www.ifrc.org/sites/default/files/PAPE-2.0-English.pdf |
+| Air IFRC ✅ | 25–30 (=2 L minum + 2 L sanitasi/hari) | L/orang/minggu | anggota rumah tangga | IFRC | https://www.ifrc.org/sites/default/files/PAPE-2.0-English.pdf |
 | Ganti air simpanan | 6 | bulan | air isi sendiri | CDC/FEMA/IFRC | https://www.cdc.gov/water-emergency/about/how-to-create-and-store-an-emergency-water-supply.html |
-| Tambahan air hamil/menyusui/anak | tidak disebutkan | — | — | CDC/FEMA | https://www.cdc.gov/children-and-school-preparedness/resources/emergency-kit-checklist-pregnant-women-infants-and-children.html |
+| Tambahan air hamil/menyusui/sakit/iklim panas ✅ | tidak disebutkan (CDC: "consider storing more") | — | — | CDC/FEMA | https://www.cdc.gov/children-and-school-preparedness/resources/emergency-kit-checklist-pregnant-women-infants-and-children.html |
 | Air anjing | 4 | L/ekor/hari | anjing rata-rata | Public Safety Canada | https://www.canada.ca/en/services/policing/emergencies/preparedness/get-prepared/emergency-planning-resources/animals.html |
 | Air kucing | 1 | L/ekor/hari | kucing rata-rata | Public Safety Canada | sama |
 | Pakan hewan | tidak disebutkan | g/hari | — | — | — |
-| Durasi stok hewan | 14 | hari | makanan, air, obat | CDC | https://www.cdc.gov/healthy-pets/emergency-preparedness/preparedness-kit.html |
-| Kalori perencanaan | 2.100 | kkal/orang/hari | rata-rata populasi | WFP/UNHCR/WHO; Sphere | https://iris.who.int/bitstream/handle/10665/68660/a83743.pdf |
-| Tambahan hamil | +285 | kkal/hari | ibu hamil | WHO | https://www.who.int/docs/default-source/documents/publications/maternal-nutrition-in-emergencies.pdf |
+| Durasi stok hewan ✅ | 14 | hari | makanan, air, obat | CDC | https://www.cdc.gov/healthy-pets/emergency-preparedness/preparedness-kit.html |
+| Kalori perencanaan ✅ | 2.100 | kkal/orang/hari | rata-rata POPULASI (sudah termasuk semua usia + hamil/menyusui; bukan untuk individu) | WFP/UNHCR/WHO; Sphere | https://iris.who.int/bitstream/handle/10665/68660/a83743.pdf |
+| Tambahan hamil ✅ | +285 | kkal/hari | ibu hamil | WHO | https://www.who.int/docs/default-source/documents/publications/maternal-nutrition-in-emergencies.pdf |
 | Tambahan menyusui | +500 (UNHCR IFE: 450) | kkal/hari | ibu menyusui | WHO | sama |
-| Koreksi dingin | +100 | kkal per 5 °C di bawah 20 °C | populasi | WFP/UNHCR/WHO | https://www.unhcr.org/uk/sites/uk/files/legacy-pdf/45fa745b2.pdf |
-| Kalori per usia | ⚠ tidak berhasil diambil | — | — | Sphere App. 6 | https://spherestandards.org/wp-content/uploads/Sphere-Handbook-2018-EN.pdf |
+| Koreksi dingin ✅ | +100 | kkal per 5 °C di bawah 20 °C | populasi | WFP/UNHCR/WHO | https://www.unhcr.org/uk/sites/uk/files/legacy-pdf/45fa745b2.pdf |
+| Kalori per usia ✅ | 0–4 th: 1.290; 5–9: 1.860; 10–14: 2.210; 15–19: 2.420; 20–59: 2.230; 60+: 1.890 (rinci per tahun & L/P di §3.3) | kkal/orang/hari | per kelompok usia | FNNE 2002 Annex 1 (WHO 2000) | https://emergency.unhcr.org/sites/default/files/2024-01/Food%20and%20nutrition%20needs%20in%20emergencies%202004.pdf |
 | Kantong toilet | 1 | kantong/orang/hari | *packet latrine* (konteks kemanusiaan) | CDC (arsip) | https://archive.cdc.gov/www_cdc_gov/healthywater/global/sanitation/sanitation-emergency-response.html |
 | Volume ekskreta | 1–2 | L/orang/hari | perencanaan | Sphere | https://handbook.spherestandards.org/?handbook=Sphere&lang=english&chapter_id=ch006&section_id=ch006_005&match=toilet |
 | Sabun mandi | 250 | g/orang/bulan | semua | Sphere | sama |
-| Rebus | 1 | menit | didih bergolak | CDC/EPA/Health Canada | https://www.epa.gov/ground-water-and-drinking-water/emergency-disinfection-drinking-water |
-| Rebus dataran tinggi | 3 | menit | >5.000 ft / ±1.524 m (EPA); >6.500 ft (CDC); Health Canada: ≥2 menit >2.000 m | EPA/CDC | sama |
-| Pemutih 5,25–6% | 2 | tetes/L | air jernih | Health Canada/EPA | https://www.canada.ca/en/health-canada/services/food-drinking-water-safe-emergency.html |
-| Waktu kontak klorin | 30 | menit | — | EPA/HC/WHO | https://www.epa.gov/ground-water-and-drinking-water/emergency-disinfection-drinking-water |
-| Residu klorin target | 0,4–0,5 | mg/L | setelah 30 menit | WHO | https://cdn.who.int/media/docs/default-source/wash-documents/hwt-after-emergencies.pdf?sfvrsn=f28f139a_4 |
-| Yodium 2% | 5 | tetes/L | — | EPA | https://www.epa.gov/ground-water-and-drinking-water/emergency-disinfection-drinking-water |
+| Rebus ✅ | 1 | menit | didih bergolak | CDC/EPA/Health Canada | https://www.epa.gov/ground-water-and-drinking-water/emergency-disinfection-drinking-water |
+| Rebus dataran tinggi ✅ | 3 | menit | EPA: >5.000 ft (EPA menulis "1,000 meters"); CDC: >6.500 ft (±1.981 m); Health Canada: ≥2 menit >2.000 m (cuplikan) | EPA/CDC | https://www.cdc.gov/water-emergency/about/index.html |
+| Pemutih 5–9% ✅ | 2 (0,1 mL) | tetes/L | air jernih; gandakan bila keruh/dingin. IFRC: 1 tetes/L; pemutih 1%: 10 tetes/L | CDC/EPA (+Health Canada cuplikan) | https://www.cdc.gov/water-emergency/about/index.html |
+| Waktu kontak klorin ✅ | 30 | menit | — | EPA/HC/WHO | https://www.epa.gov/ground-water-and-drinking-water/emergency-disinfection-drinking-water |
+| Residu klorin target ✅ | 0,4–0,5 | mg/L | setelah 30 menit | WHO | https://cdn.who.int/media/docs/default-source/wash-documents/hwt-after-emergencies.pdf?sfvrsn=f28f139a_4 |
+| Yodium 2% ✅ | 5 (10 bila keruh) | tetes/L | — | EPA | https://www.epa.gov/ground-water-and-drinking-water/emergency-disinfection-drinking-water |
 | Tablet penjernih | ikuti label | — | — | EPA | sama |
 | Obat minimum | 7 (CDC: 7–10) | hari | pengguna obat resep | CDC | https://stacks.cdc.gov/view/cdc/80940 |
-| Obat dianjurkan | 14 | hari | obat resep; pandemi | CDC / Public Safety Canada | https://www.cdc.gov/children-and-school-preparedness/resources/emergency-kit-checklist-pregnant-women-infants-and-children.html |
-| Formula bayi | "beberapa hari" (RTF) | — | bayi formula | CDC | https://www.cdc.gov/infant-feeding-emergencies-toolkit/php/preparedness.html |
-| Popok | min. 1 pak besar (+2 pak tisu basah) | pak | bayi | CDC | https://www.cdc.gov/infant-feeding-emergencies-toolkit/php/checklist.html |
+| Obat dianjurkan ✅ | 14 | hari | obat resep; pandemi | CDC / Public Safety Canada | https://www.cdc.gov/children-and-school-preparedness/resources/emergency-kit-checklist-pregnant-women-infants-and-children.html |
+| Formula bayi ✅ | "beberapa hari" (RTF) | — | bayi formula | CDC | https://www.cdc.gov/infant-feeding-emergencies-toolkit/php/preparedness.html |
+| Popok ✅ | min. 1 pak besar (+2 pak tisu basah) | pak | bayi | CDC | https://www.cdc.gov/infant-feeding-emergencies-toolkit/php/checklist.html |
 | Kulkas aman | 4 | jam | listrik padam | FEMA | https://www.ready.gov/power-outages |
 | Freezer penuh aman | 48 (Kanada 24–48) | jam | listrik padam | FEMA | sama |
-| Shelter-in-place radiasi | 24 | jam | nuklir/radiologi | FEMA/CDC/Public Safety Canada | https://www.ready.gov/radiation |
+| Shelter-in-place radiasi ✅ | 24 | jam | nuklir/radiologi | FEMA/CDC/Public Safety Canada | https://www.ready.gov/radiation |
 | Jarak generator | ≥6,1 (20 ft) | m | generator portabel | FEMA | https://www.ready.gov/power-outages |
+| Air masjid (wudu + minum) ✅ | 2–5 | L/orang/hari | fasilitas ibadah | WHO TN9 | https://cdn.who.int/media/docs/default-source/wash-documents/who-tn-09-how-much-water-is-needed.pdf |
+| Minimum WHO (dasar: ibu menyusui, aktivitas sedang, suhu di atas rata-rata) ✅ | 7,5 | L/kapita/hari | semua | WHO | https://www.who.int/teams/environment-climate-change-and-health/water-sanitation-and-health/environmental-health-in-emergencies/humanitarian-emergencies |
+| SODIS ✅ | 6 | jam | botol bening, sinar matahari langsung | IFRC | https://www.ifrc.org/sites/default/files/PAPE-2.0-English.pdf |
+
+Tanda ✅ = diverifikasi dari halaman/PDF utuh pada 2026-11-03. Tanpa tanda = level cuplikan WebSearch.
 
 ### Usulan untuk S2 (pendapat R4, bukan angka sumber)
 - **Air**: 3 L/orang/hari ≈ batas atas *survival* Sphere/WHO, mendekati 1 galon AS. Untuk total dengan higiene minimal ala Kanada, pakai 4 L. Pengali iklim panas: FEMA hanya menyebut "bisa berlipat dua" untuk cairan minum. Untuk Indonesia, pengali 1,5 pada porsi minum lebih konservatif daripada 2,0 pada total — keputusan ada di S2.
 - **Hewan**: anjing 4 L/hari dan kucing 1 L/hari (Kanada) adalah satu-satunya angka resmi yang ditemukan.
 - **Toilet**: angka "5 kantong/orang/hari" di PLAN §2 berasal dari Jepang (per penggunaan). Sumber AS/Internasional hanya memberi 1 kantong/orang/hari untuk *packet latrine* (konteks kemanusiaan), sehingga angka 5 harus diverifikasi oleh R1.
-- **Kalori**: 2.100 kkal adalah **rata-rata populasi** yang sudah memperhitungkan anak. Bila memakai bobot `orang_setara`, jangan menerapkan 2.100 penuh ke anak dan sekaligus mengalikan bobot — hindari hitungan ganda.
+- **Kalori**: Sphere menegaskan 2.100 kkal adalah rata-rata populasi dan **tidak untuk individu**. Untuk rumah tangga, lebih tepat menjumlahkan kebutuhan per anggota dari FNNE Annex 1, misalnya dewasa 20–59 = 2.230 (atau per jenis kelamin), anak 5–9 = 1.860, lansia 60+ = 1.890, ditambah 285/500 untuk ibu hamil/menyusui. Bobot `orang_setara` di PLAN tersirat dari tabel ini: anak 5–9 ≈ 0,83 × dewasa, anak 1–4 ≈ 0,55–0,73, bayi <1 ≈ 0,37 (sebagian besar dari ASI/formula), lansia ≈ 0,85.
 
 ## 5. Celah data
-1. **Kalori per kelompok usia** (Sphere Appendix 6 / WHO-UNHCR 2002): tidak berhasil diambil.
-2. **Pakan hewan g/hari**: tidak ada sumber resmi.
-3. **Popok/hari dan mL formula/hari**: tidak ada sumber resmi (CDC hanya memberi jumlah pak / "beberapa hari").
-4. **Kantong toilet per orang per hari untuk rumah tangga**: tidak ada di AS/Kanada/Sphere.
-5. **Air tambahan untuk hamil/menyusui/anak**: hanya "lebih banyak", tanpa angka.
-6. **Konflik air Kanada** 2 L vs 4 L belum terselesaikan tanpa membaca halaman utuh.
-7. **Pandemi di Kanada**: tidak ditemukan panduan rumah tangga.
-8. **Semua angka** perlu verifikasi fetch langsung setelah domain diizinkan (lihat §0).
+1. **Pakan hewan g/hari**: tidak ada sumber resmi.
+2. **Popok/hari dan mL formula/hari**: tidak ada sumber resmi (CDC hanya memberi jumlah pak / "beberapa hari").
+3. **Kantong toilet per orang per hari untuk rumah tangga**: tidak ada di AS/Kanada/Sphere.
+4. **Air tambahan untuk hamil/menyusui/anak**: hanya "lebih banyak", tanpa angka.
+5. **Konflik air Kanada** 2 L vs 4 L belum terselesaikan tanpa membaca halaman utuh.
+6. **Pandemi di Kanada**: tidak ditemukan panduan rumah tangga.
+7. **FEMA/Ready.gov, Kanada, WASH Sphere, dan Red Cross** masih level cuplikan, karena server membalas 403 atau menutup koneksi walau network sudah dibuka (lihat §0). Perlu verifikasi manual lewat browser oleh manusia bila angka ini dipakai sebagai sumber utama.
+8. **Dosis pemutih tidak seragam**: CDC/EPA 2 tetes/L, IFRC 1 tetes/L. Usulan: pakai 2 tetes/L (lebih konservatif, sumber pemerintah).
