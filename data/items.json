@@ -6,7 +6,7 @@
   "scenarios": "[] = inti (selalu dihitung); selain itu item hanya muncul bila salah satu skenario dipilih",
   "per_person": "jumlah per orang sekali (bukan per hari); qty_mode per_household",
   "per_animal_day": "jumlah per hewan per hari",
-  "gating": "true bila min_tier_gating terisi; gating_group alt_power_any = cukup salah satu item grup",
+  "gating": "true bila min_tier_gating terisi; gating_group (alt_power_any, cooking_fuel_any) = cukup salah satu item grup; qty_mode fuel_days = hari bahan bakar masak (D-047)",
   "evidence": "DIBACA | CUPLIKAN (D-P2); item CUPLIKAN wajib dicek Q1",
   "bnpb_checklist": "nomor 1-28 checklist tas BNPB 2026 (SUMMARY 4.3); bnpb_indicators = nomor indikator keluarga 1-18",
   "kcal_per_unit": "null + todo R5b = diisi agent R5b, jangan menebak",
@@ -452,8 +452,8 @@
     "en": "Drinking water for dogs"
    },
    "why": {
-    "id": "Sekitar 4 L per anjing per hari (Kanada, cuplikan; perlu verifikasi QA). Durasi mengikuti target, minimal 5 hari (D-016).",
-    "en": "About 4 L per dog per day (Canada, snippet only; QA to verify). Duration follows the target, minimum 5 days (D-016)."
+    "id": "Sekitar 4 L per anjing per hari (panduan Kanada). Durasi mengikuti target, minimal 5 hari (D-016).",
+    "en": "About 4 L per dog per day (Canadian guidance). Duration follows the target, minimum 5 days (D-016)."
    },
    "sources": [
     "CA-PS-KIT",
@@ -488,8 +488,8 @@
     "en": "Drinking water for cats"
    },
    "why": {
-    "id": "Sekitar 1 L per kucing per hari (Kanada, cuplikan; perlu verifikasi QA). Durasi mengikuti target, minimal 5 hari (D-016).",
-    "en": "About 1 L per cat per day (Canada, snippet only; QA to verify). Duration follows the target, minimum 5 days (D-016)."
+    "id": "Sekitar 1 L per kucing per hari (panduan Kanada). Durasi mengikuti target, minimal 5 hari (D-016).",
+    "en": "About 1 L per cat per day (Canadian guidance). Duration follows the target, minimum 5 days (D-016)."
    },
    "sources": [
     "CA-PS-KIT",
@@ -1189,8 +1189,8 @@
    "per_person_day": null,
    "per_household": 1,
    "modifiers": {},
-   "gating": true,
-   "min_tier_gating": 4,
+   "gating": false,
+   "min_tier_gating": null,
    "location": "home",
    "scenarios": [],
    "applies_if": [],
@@ -1200,8 +1200,8 @@
     "en": "Portable stove (canister/camping)"
    },
    "why": {
-    "id": "Memasak tanpa listrik: kompor gas kaleng (JP), kompor kemping (SE, NO, EE, CH, KR). Dipakai juga saat gas rumah habis.",
-    "en": "Cooking without mains power: canister stove (JP), camping stove (SE, NO, EE, CH, KR). Also useful when household gas runs out."
+    "id": "Memasak tanpa listrik: kompor gas kaleng (JP), kompor kemping (SE, NO, EE, CH, KR). Dipakai juga saat gas rumah habis. Sebagai saran; syarat tier 4 dihitung dari hari bahan bakar masak.",
+    "en": "Cooking without mains power: canister stove (JP), camping stove (SE, NO, EE, CH, KR). Also useful when household gas runs out. Advice only; the tier 4 requirement is counted from days of cooking fuel."
    },
    "sources": [
     "JP-MAFF",
@@ -1215,12 +1215,12 @@
    "decision": "D-024"
   },
   {
-   "id": "gas_canister",
+   "id": "fuel_canister",
    "category": "food",
    "priority": "important",
-   "qty_mode": "per_person_day",
-   "unit": "tabung",
-   "per_person_day": 0.8571,
+   "qty_mode": "fuel_days",
+   "unit": "hari",
+   "per_person_day": null,
    "per_household": null,
    "modifiers": {},
    "gating": true,
@@ -1230,49 +1230,83 @@
    "applies_if": [],
    "bnpb_checklist": null,
    "label": {
-    "id": "Tabung gas kaleng untuk kompor portabel",
-    "en": "Gas canisters for the portable stove"
+    "id": "Bahan bakar masak: gas kaleng + kompor portabel",
+    "en": "Cooking fuel: canister gas + portable stove"
    },
    "why": {
-    "id": "Sekitar 6 tabung per orang per minggu (MAFF). Hanya untuk kompor portabel; konsumsi LPG rumah diisi pengguna.",
-    "en": "About 6 canisters per person per week (MAFF). For portable stoves only; household LPG use is entered by the user."
+    "id": "Isi berapa hari kamu bisa memasak dengan gas kaleng. Cukup salah satu dari gas kaleng, LPG 3 kg, atau kompor alternatif. Saran jumlah (bukan syarat): sekitar 6 kaleng per orang per minggu (MAFF Jepang).",
+    "en": "Enter how many days you can cook with canister gas. Any one of canister gas, 3 kg LPG or an alternative stove is enough. Suggested amount (not a requirement): about 6 canisters per person per week (Japan MAFF)."
    },
    "sources": [
     "JP-MAFF",
     "KR-MOIS"
    ],
    "evidence": "DIBACA",
-   "per_person_week": 6,
-   "decision": "D-024"
+   "gating_group": "cooking_fuel_any",
+   "decision": "D-047",
+   "suggest_per_person_week": 6
   },
   {
-   "id": "lpg_usage",
+   "id": "fuel_lpg",
    "category": "food",
-   "priority": "extra",
-   "qty_mode": "user_usage_per_day",
-   "unit": "kg",
+   "priority": "important",
+   "qty_mode": "fuel_days",
+   "unit": "hari",
    "per_person_day": null,
    "per_household": null,
    "modifiers": {},
-   "gating": false,
-   "min_tier_gating": null,
+   "gating": true,
+   "min_tier_gating": 4,
    "location": "home",
    "scenarios": [],
    "applies_if": [],
    "bnpb_checklist": null,
    "label": {
-    "id": "Gas LPG rumah (pemakaian harian)",
-    "en": "Household LPG (daily use)"
+    "id": "Bahan bakar masak: LPG 3 kg",
+    "en": "Cooking fuel: 3 kg LPG"
    },
    "why": {
-    "id": "Jumlah LPG per hari diisi pengguna; tidak ada angka resmi per rumah tangga (D-024, G-11).",
-    "en": "Daily LPG use is entered by the user; there is no official household figure (D-024, G-11)."
+    "id": "Isi berapa hari tabung LPG 3 kg yang kamu punya bisa dipakai memasak. Cukup salah satu dari gas kaleng, LPG 3 kg, atau kompor alternatif. Tidak ada angka resmi per rumah tangga, jadi ini perkiraanmu.",
+    "en": "Enter how many days your 3 kg LPG cylinder lasts for cooking. Any one of canister gas, 3 kg LPG or an alternative stove is enough. There is no official per-household figure, so this is your own estimate."
    },
    "sources": [
     "JP-MAFF"
    ],
    "evidence": "DIBACA",
-   "decision": "D-024"
+   "gating_group": "cooking_fuel_any",
+   "decision": "D-047"
+  },
+  {
+   "id": "fuel_alt_stove",
+   "category": "food",
+   "priority": "important",
+   "qty_mode": "fuel_days",
+   "unit": "hari",
+   "per_person_day": null,
+   "per_household": null,
+   "modifiers": {},
+   "gating": true,
+   "min_tier_gating": 4,
+   "location": "home",
+   "scenarios": [],
+   "applies_if": [],
+   "bnpb_checklist": null,
+   "label": {
+    "id": "Bahan bakar masak: kompor alternatif",
+    "en": "Cooking fuel: alternative stove"
+   },
+   "why": {
+    "id": "Isi berapa hari kamu bisa memasak dengan kompor alternatif (misalnya kompor spiritus, arang, atau kayu bakar) beserta bahan bakarnya. Cukup salah satu dari gas kaleng, LPG 3 kg, atau kompor alternatif. Pakai hanya di luar ruangan atau tempat berventilasi baik: asapnya mengandung gas CO.",
+    "en": "Enter how many days you can cook with an alternative stove (for example a spirit, charcoal or wood stove) and its fuel. Any one of canister gas, 3 kg LPG or an alternative stove is enough. Use only outdoors or in a well-ventilated place: the fumes contain CO."
+   },
+   "sources": [
+    "JP-MAFF",
+    "SE-MCF-2024",
+    "EE-OLEVALMIS"
+   ],
+   "evidence": "DIBACA",
+   "gating_group": "cooking_fuel_any",
+   "decision": "D-047"
   },
   {
    "id": "cookware",
@@ -1309,7 +1343,7 @@
    "category": "meds_firstaid",
    "priority": "critical",
    "qty_mode": "derived",
-   "unit": "hari stok",
+   "unit": "hari",
    "per_person_day": null,
    "per_household": null,
    "modifiers": {
@@ -1871,8 +1905,8 @@
     "en": "Soap"
    },
    "why": {
-    "id": "Sekitar 250 g per orang per bulan (Sphere, cuplikan). Non-gating (D-013).",
-    "en": "About 250 g per person per month (Sphere, snippet). Non-gating (D-013)."
+    "id": "Sekitar 250 g per orang per bulan (pedoman Sphere). Saran, bukan syarat tier (D-013).",
+    "en": "About 250 g per person per month (Sphere guidelines). Advice, not a tier requirement (D-013)."
    },
    "sources": [
     "INT-SPHERE",
@@ -2344,8 +2378,8 @@
     "en": "Generator"
    },
    "why": {
-    "id": "Opsi daya cadangan (EE). PERINGATAN: jangan di dalam ruangan (CO), min. 6,1 m dari rumah (FEMA, cuplikan), jangan sambung ke instalasi rumah tanpa teknisi.",
-    "en": "A backup power option (EE). WARNING: never indoors (CO), at least 6.1 m from the house (FEMA, snippet), do not connect to house wiring without an electrician."
+    "id": "Opsi daya cadangan (EE). PERINGATAN: jangan di dalam ruangan (CO), min. 6,1 m dari rumah (FEMA), jangan sambung ke instalasi rumah tanpa teknisi.",
+    "en": "A backup power option (EE). WARNING: never indoors (CO), at least 6.1 m from the house (FEMA), do not connect to house wiring without an electrician."
    },
    "sources": [
     "EE-OLEVALMIS",
@@ -2572,8 +2606,8 @@
     "en": "Printed local map/evacuation routes"
    },
    "why": {
-    "id": "Peta atau rute evakuasi tercetak bila ponsel mati (TW, FEMA; cuplikan). Jalur resmi: BPBD dan InaRISK.",
-    "en": "A printed map or evacuation routes if the phone dies (TW, FEMA; snippets). Official routes: BPBD and InaRISK."
+    "id": "Peta atau rute evakuasi tercetak bila ponsel mati (Taiwan, FEMA). Jalur resmi: BPBD dan InaRISK.",
+    "en": "A printed map or evacuation routes if the phone dies (Taiwan, FEMA). Official routes: BPBD and InaRISK."
    },
    "sources": [
     "TW-MND",
@@ -3618,8 +3652,8 @@
     "en": "Tarpaulin and rope"
    },
    "why": {
-    "id": "Menutup kebocoran atau kerusakan sementara saat cuaca ekstrem (AU, cuplikan).",
-    "en": "Temporarily covers leaks or damage in extreme weather (AU, snippet)."
+    "id": "Menutup kebocoran atau kerusakan sementara saat cuaca ekstrem (panduan Australia).",
+    "en": "Temporarily covers leaks or damage in extreme weather (Australian guidance)."
    },
    "sources": [
     "AU-NEMA-STORM",
@@ -4322,7 +4356,7 @@
    "category": "special_needs",
    "priority": "critical",
    "qty_mode": "derived",
-   "unit": "Wh",
+   "unit": "hari",
    "per_person_day": null,
    "per_household": null,
    "modifiers": {},
@@ -5090,8 +5124,8 @@
     "en": "Know food-safety limits in the fridge during outages"
    },
    "why": {
-    "id": "Kulkas tertutup aman sekitar 4 jam, freezer penuh sekitar 48 jam (FEMA, cuplikan). Buka sesedikit mungkin.",
-    "en": "A closed fridge is safe for about 4 hours, a full freezer about 48 hours (FEMA, snippet). Open as little as possible."
+    "id": "Kulkas tertutup aman sekitar 4 jam, freezer penuh sekitar 48 jam (FEMA). Buka sesedikit mungkin.",
+    "en": "A closed fridge is safe for about 4 hours, a full freezer about 48 hours (FEMA). Open as little as possible."
    },
    "sources": [
     "US-FEMA-POWER"

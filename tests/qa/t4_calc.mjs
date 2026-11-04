@@ -45,13 +45,13 @@ r = ev(P({ adult: 2 }, { target_days: 7 }), { ...T3, cash_days: 6 }, { bag: bag(
 r = ev(P({ adult: 2 }, { target_days: 7 }), { ...T3, radio_portable: 0 }, { bag: bag(21), ind: ind(13) }); eq(r.tier.value, 2, 'S2c tanpa radio -> tier 2');
 
 console.log('== S3: tier 4 (belum dicakup tes S2) ==');
-const T4 = { ...T3, water_drinking: 84, food_rice: { qty: 18 }, toilet_bags: 140, water_treatment_chemical: 1, stove_portable: 1, gas_canister: 24, family_emergency_plan: 1 };
-// manual: air 3*2*14=84; kkal 4460*14=62440, beras 18kg=64620; toilet 5*2*14=140; gas 0.8571*2*14=23.9988 -> 24.
+const T4 = { ...T3, water_drinking: 84, food_rice: { qty: 18 }, toilet_bags: 140, water_treatment_chemical: 1, fuel_lpg: 14, family_emergency_plan: 1 };
+// manual: air 3*2*14=84; kkal 4460*14=62440, beras 18kg=64620; toilet 5*2*14=140; bahan bakar masak (D-047): salah satu dari gas kaleng/LPG 3 kg/kompor alternatif >= 14 hari.
 let r4 = ev(P({ adult: 2 }, { target_days: 14 }), T4, { bag: bag(21), ind: ind(25) });
 eq(r4.tier.value, 4, 'S3 tier 4'); eq(r4.survival.days, 14, 'S3 hari bertahan 14'); eq(r4.tier_checks['4'], true, 'S3 tier_checks[4]');
 r = ev(P({ adult: 2 }, { target_days: 14 }), T4, { bag: bag(21), ind: ind(24) }); eq(r.tier.value, 3, 'S3b indikator 24 (<25) -> tier 3 walau semua stok tier 4');
-r = ev(P({ adult: 2 }, { target_days: 14 }), { ...T4, stove_portable: 0 }, { bag: bag(21), ind: ind(25) }); eq(r.tier.value, 3, 'S3c tanpa kompor -> tier 3');
-r = ev(P({ adult: 2 }, { target_days: 14 }), { ...T4, gas_canister: 23 }, { bag: bag(21), ind: ind(25) }); eq(r.tier.value, 3, 'S3d gas 23 < 24 -> tier 3');
+r = ev(P({ adult: 2 }, { target_days: 14 }), { ...T4, fuel_lpg: 0 }, { bag: bag(21), ind: ind(25) }); eq(r.tier.value, 3, 'S3c tanpa bahan bakar masak -> tier 3');
+r = ev(P({ adult: 2 }, { target_days: 14 }), { ...T4, fuel_lpg: 13 }, { bag: bag(21), ind: ind(25) }); eq(r.tier.value, 3, 'S3d bahan bakar 13 < 14 hari -> tier 3');
 r = ev(P({ adult: 2 }, { target_days: 14 }), { ...T4, family_emergency_plan: 0 }, { bag: bag(21), ind: ind(25) }); eq(r.tier.value, 3, 'S3e tanpa rencana keluarga -> tier 3');
 r = ev(P({ adult: 2 }, { target_days: 14 }), { ...T4, water_treatment_chemical: 0 }, { bag: bag(21), ind: ind(25) }); eq(r.tier.value, 3, 'S3f tanpa penjernih -> tier 3');
 r = ev(P({ adult: 2 }, { target_days: 14, meds: [{ label: 'a', doses_per_day: 1, stock_days: 13 }] }), { ...T4, elderly_meds: 0 }, { bag: bag(21), ind: ind(25) }); eq(r.tier.value, 3, 'S3g obat 13 hari (<14) -> tier 4 tertahan, tier 3');
@@ -61,8 +61,8 @@ r = ev(P({ adult: 2 }, { target_days: 14, meds: [{ label: 'a', doses_per_day: 1,
 r = ev(P({ adult: 2 }, { target_days: 14, meds: [{ label: 'a', doses_per_day: 1, stock_days: 6 }] }), T4, { bag: bag(21), ind: ind(25) }); eq(r.tier.value, 1, 'S3j obat 6 hari (<7) -> tier 1 (tahan tier 2) bila hari bertahan >=1');
 
 console.log('== S4: tier 5 + skor tak menaikkan tier ==');
-const T5 = { water_drinking: 90, food_rice: { qty: 19 }, toilet_bags: 150, flashlight: 1, spare_batteries: 1, gobag_main: 1, power_bank: 1, radio_portable: 1, emergency_numbers_printed: 1, doc_copy_ktp: 1, doc_copy_kk: 1, doc_copy_property: 1, doc_copy_bank: 1, doc_waterproof_bag: 1, cash_days: 7, water_treatment_chemical: 1, stove_portable: 1, gas_canister: 26, family_emergency_plan: 1, solar_panel: 1, first_aid_knowledge: 1 };
-// manual: air 3*30=90; kkal 2230*30=66900, beras 19kg=68210; gas 0.8571*30=25.713 -> 26
+const T5 = { water_drinking: 90, food_rice: { qty: 19 }, toilet_bags: 150, flashlight: 1, spare_batteries: 1, gobag_main: 1, power_bank: 1, radio_portable: 1, emergency_numbers_printed: 1, doc_copy_ktp: 1, doc_copy_kk: 1, doc_copy_property: 1, doc_copy_bank: 1, doc_waterproof_bag: 1, cash_days: 7, water_treatment_chemical: 1, fuel_lpg: 30, family_emergency_plan: 1, solar_panel: 1, first_aid_knowledge: 1 };
+// manual: air 3*30=90; kkal 2230*30=66900, beras 19kg=68210; bahan bakar masak 30 hari
 let r5 = ev(P({ adult: 1 }, { target_days: 30 }), T5, { bag: bag(21), ind: ind(25) });
 eq(r5.tier.value, 5, 'S4 tier 5'); eq(r5.survival.days, 30, 'S4 hari 30');
 r = ev(P({ adult: 1 }, { target_days: 30 }), { ...T5, solar_panel: 0 }, { bag: bag(21), ind: ind(25) }); eq(r.tier.value, 4, 'S4b tanpa daya alternatif -> tier 4');

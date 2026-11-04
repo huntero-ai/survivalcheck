@@ -129,7 +129,11 @@ function numField(ctx, o) {
     else if (r.soft) { err.textContent = tr(ctx, 'inventory.validation.very_large', 'Angkanya sangat besar. Sudah benar?', 'That number is very large. Is it correct?'); err.className = 'f-error f-soft'; input.removeAttribute('aria-invalid'); }
     else { err.textContent = ''; input.removeAttribute('aria-invalid'); }
   };
-  input.addEventListener('input', () => { const r = validateNumber(input.value, o); if (r.ok) { if (!r.soft) show(r); o.onValue(r.value); } });
+  input.addEventListener('input', () => {
+    const r = validateNumber(input.value, o);
+    if (r.ok) { if (!r.soft) show(r); o.onValue(r.value); }
+    else { show(r); o.onValue(null); } // nilai tak sah tidak boleh tersimpan (prefiks valid sebelumnya dibuang)
+  });
   input.addEventListener('blur', () => show(validateNumber(input.value, o)));
   const el = h('div', { class: 'field f-num' + (o.compact ? ' f-compact' : '') },
     h('label', { for: id, text: o.label }),
@@ -204,6 +208,12 @@ function sourceLine(ctx, it) {
     h('p', { text: lab(ctx, it.why) || '' }),
     (it.sources && it.sources.length) ? h('p', { class: 'f-hint', text: tr(ctx, 'common.sources', 'Sumber', 'Sources') + ': ' + it.sources.join(', ') }) : null,
     h('p', { class: 'f-hint', text: it.evidence === 'DIBACA' ? tr(ctx, 'common.evidence_read', 'Sumber dibaca langsung', 'Source read directly') : tr(ctx, 'common.evidence_snippet', 'Dari kutipan, perlu dicek ulang', 'From an excerpt, to be re-checked') }));
+}
+
+/** Penanda terlihat untuk item evidence CUPLIKAN (tidak tersembunyi di <details>). */
+function evidenceBadge(ctx, it) {
+  if (!it || it.evidence !== 'CUPLIKAN') return null;
+  return h('span', { class: 'chip chip-warn f-excerpt', 'data-evidence': 'excerpt' }, h('span', { 'aria-hidden': 'true', text: '△ ' }), tr(ctx, 'common.excerpt_badge', 'Dari kutipan sumber, perlu dicek ulang', 'From a source excerpt, to be re-checked'));
 }
 
 // =====================================================================
@@ -501,6 +511,7 @@ export function renderTarget(root, ctx) {
       summary.append(h('p', { text: tr(ctx, 'target.effective_duration_why', 'Karena {scenario}, target dinaikkan dari {from} ke {to} hari.', 'Because of {scenario}, the target is raised from {from} to {to} days.', { scenario: cause, from: days, to: eff }) }));
     }
     if (water > R.water.drinking_l_per_person_day) summary.append(h('p', { text: tr(ctx, 'target.water_raised', 'Air minum dinaikkan menjadi {n} L per orang per hari.', 'Drinking water is raised to {n} L per person per day.', { n: water }) }));
+    if (water > R.water.drinking_l_per_person_day) summary.append(h('p', { class: 'f-hint', 'data-note': 'water-careful', text: tr(ctx, 'target.water_careful', 'Angka hati-hati: 4 L berasal dari panduan untuk cuaca panas (Latvia), bukan khusus kekeringan. Anggap sebagai batas aman, bukan angka pasti.', 'Cautious figure: 4 L comes from hot-weather guidance (Latvia), not drought-specific. Treat it as a safe margin, not an exact number.') }));
     if (meds > Math.max(eff, R.meds.min_days)) summary.append(h('p', { text: tr(ctx, 'target.medicine_raised', 'Stok obat rutin dinaikkan menjadi {n} hari.', 'Routine medicine stock is raised to {n} days.', { n: meds }) }));
     belowMin.textContent = days < R.defaults.bnpb_minimum_days ? tr(ctx, 'target.below_min', 'Target di bawah 3 hari berarti di bawah minimum BNPB. Kamu tetap boleh memakainya.') : (days > 90 ? tr(ctx, 'target.validation.days_large', 'Target lebih dari 90 hari jarang realistis. Tetap lanjut?') : '');
   }
@@ -622,12 +633,13 @@ function renderCategory(root, ctx, def, cats) {
       if (e && e.status === 'needs_input') kind = 'input';
       else if (e && e.coverage != null) kind = e.coverage >= 0.9995 ? 'ok' : (isFilled(ctx, it) || e.have > 0 ? 'short' : 'none');
       l.chipHost.append(statusChip(ctx, kind));
-      if (l.needEl) l.needEl.textContent = e && e.need != null ? tr(ctx, 'inventory.need_label', 'Kebutuhan: {n}', 'Need: {n}', { n: `${fmt(ctx, e.need)} ${e.unit || ''}`.trim() }) + (e.missing ? ' · ' + tr(ctx, 'inventory.missing_label', 'Kurang: {n}', 'Short: {n}', { n: fmt(ctx, e.missing, 0) }) : '') : '';
+      if (l.needEl) l.needEl.textContent = e && e.need != null && !(it.unit === '-' || it.qty_mode === 'boolean') ? tr(ctx, 'inventory.need_label', 'Kebutuhan: {n}', 'Need: {n}', { n: `${fmt(ctx, e.need)} ${e.unit && e.unit !== '-' ? e.unit : ''}`.trim() }) + (e.missing ? ' · ' + tr(ctx, 'inventory.missing_label', 'Kurang: {n}', 'Short: {n}', { n: fmt(ctx, e.missing, 0) }) : '') : '';
     }
     if (def.id === 'food' && foodTotal) updateFoodTotals(res);
   }
 
   if (def.id === 'water') root.append(notice('', h('p', { text: tr(ctx, 'inventory.water_note', 'Kami memakai 3 L per orang per hari untuk minum dan masak. Air kebersihan 2 L per orang per hari adalah saran.') })));
+  if (def.id === 'water' && res0.household.water_l_per_person_day > rules(ctx).water.drinking_l_per_person_day) root.append(notice('', h('p', { 'data-note': 'water-careful', text: tr(ctx, 'target.water_careful', 'Angka hati-hati: 4 L berasal dari panduan untuk cuaca panas (Latvia), bukan khusus kekeringan. Anggap sebagai batas aman, bukan angka pasti.', 'Cautious figure: 4 L comes from hot-weather guidance (Latvia), not drought-specific. Treat it as a safe margin, not an exact number.') })));
   if (def.id === 'power') root.append(notice('', h('p', { text: tr(ctx, 'categories.power_desc', 'Power bank, power station, panel surya') }), h('a', { class: 'btn', href: '#/daya', text: tr(ctx, 'power.title', 'Daya listrik') + ' →' })));
   if (def.id === 'plan_knowledge') root.append(notice('', h('a', { class: 'btn', href: '#/keluarga', text: tr(ctx, 'family_eval.title', 'Evaluasi keluarga') + ' →' })));
 
@@ -668,7 +680,7 @@ function buildItemRow(ctx, it, res, refreshLive, live) {
   const chipHost = h('span', { class: 'f-chiphost' });
   const needEl = h('p', { class: 'f-need' });
   const id = nid('it');
-  li.append(h('div', { class: 'f-item-top' }, h('h3', { id: id + '-t', text: lab(ctx, it.label) }), chipHost), needEl);
+  li.append(h('div', { class: 'f-item-top' }, h('h3', { id: id + '-t', text: lab(ctx, it.label) }), chipHost), ...[evidenceBadge(ctx, it)].filter(Boolean), needEl);
   const inv = ctx.state.inventory || {};
   const cur = inv[it.id];
   const loc = it.location || 'home';
@@ -686,7 +698,12 @@ function buildItemRow(ctx, it, res, refreshLive, live) {
       body.append(numField(ctx, { label: tr(ctx, 'f.usage_per_day', 'Pemakaian per hari (total rumah tangga)', 'Use per day (whole household)') + (unit ? ` (${unit})` : ''), min: 0, max: 100000, value: p.usage_per_day[it.id], compact: true,
         onValue: (v) => { const q = getProfile(ctx); if (v == null) delete q.usage_per_day[it.id]; else q.usage_per_day[it.id] = v; saveProfile(ctx, q); refreshLive(); } }).el);
     }
-    const label = tr(ctx, 'inventory.have_label', 'Dimiliki') + (unit ? ` (${unit})` : '');
+    const label = it.qty_mode === 'fuel_days' ? tr(ctx, 'inventory.fuel_days_label', 'Cukup untuk berapa hari memasak', 'Enough for how many days of cooking') + ` (${unit})` : tr(ctx, 'inventory.have_label', 'Dimiliki') + (unit ? ` (${unit})` : '');
+    if (it.suggest_per_person_week && res && res.status === 'ok') {
+      const n = res.household.n_total;
+      const dd = res.targets.effective_target_days;
+      body.append(h('p', { class: 'f-hint', text: tr(ctx, 'inventory.fuel_suggest', 'Saran jumlah, bukan syarat: sekitar {per} kaleng per orang per minggu. Untuk {n} orang selama {days} hari: sekitar {cans} kaleng.', 'Suggested amount, not a requirement: about {per} canisters per person per week. For {n} people over {days} days: about {cans} canisters.', { per: it.suggest_per_person_week, n, days: dd, cans: Math.ceil((it.suggest_per_person_week * n * dd) / 7) }) }));
+    }
     if (itemNeedsToggle(it, e)) {
       if (loc === 'both') body.append(locationSelect(ctx, it, cur, label, refreshLive));
       else body.append(switchRow(ctx, { label: tr(ctx, 'inventory.have_yes', 'Sudah punya'), checked: haveOf(cur) > 0, onChange: (on) => { setInv(ctx, it.id, on ? 1 : 0); refreshLive(); } }).el);

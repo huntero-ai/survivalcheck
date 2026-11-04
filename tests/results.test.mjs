@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { buildShoppingList, toPlainText } from '../src/shopping.js';
-import { fixtureResult } from '../src/results.js';
+import { fixtureResult } from './fixture.mjs';
 
 const load = (p) => JSON.parse(readFileSync(new URL(p, import.meta.url), 'utf8'));
 const cases = load('../tests/cases.json');

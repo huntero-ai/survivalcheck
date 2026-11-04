@@ -277,7 +277,8 @@ async function renderRoute() {
   }
   if (token !== renderToken) return;
   const h1 = main.querySelector('h1');
-  document.title = (h1 ? h1.textContent + ' · ' : '') + t('app.name');
+  const appName = t('app.name');
+  document.title = h1 && h1.textContent && h1.textContent.trim() !== appName ? h1.textContent + ' · ' + appName : appName;
   if (h1) { h1.setAttribute('tabindex', '-1'); h1.focus({ preventScroll: true }); }
   window.scrollTo(0, 0);
 }
@@ -348,7 +349,7 @@ function renderHome(main) {
   main.append(h('h2', {}, t('home.steps_title')), h('ol', {}, ['profile', 'target', 'inventory', 'result'].map((k) => h('li', {}, t('home.steps.' + k)))));
   // disclaimer
   const dis = h('section', { class: 'card', 'aria-labelledby': 'dis-h' }, h('h2', { id: 'dis-h' }, t('disclaimer.title')), h('p', {}, t('disclaimer.short')),
-    h('a', { href: '#/info/disclaimer' }, t('common.show_more')));
+    h('a', { class: 'link-touch', href: '#/info/disclaimer' }, t('common.show_more')));
   if (!state.settings.disclaimerAccepted) {
     dis.append(h('div', { class: 'btn-row' }, h('button', { class: 'btn', type: 'button', onclick: () => { state.settings.disclaimerAccepted = true; save(); renderRoute(); } }, t('disclaimer.accept'))));
   }

@@ -1865,20 +1865,16 @@
        "missing": 1
       },
       {
-       "kind": "item",
-       "id": "stove_portable",
-       "unit": "buah",
-       "need": 1.0,
-       "have": 0.0,
-       "missing": 1
-      },
-      {
-       "kind": "item",
-       "id": "gas_canister",
-       "unit": "tabung",
-       "need": 36.0,
-       "have": 0.0,
-       "missing": 36
+       "kind": "group_any",
+       "group": "cooking_fuel_any",
+       "ids": [
+        "fuel_canister",
+        "fuel_lpg",
+        "fuel_alt_stove"
+       ],
+       "unit": "hari",
+       "days": 14,
+       "missing": 14
       },
       {
        "kind": "item",
@@ -1941,11 +1937,25 @@
       "missing": 0,
       "coverage": 1.0
      },
-     "gas_canister": {
-      "unit": "tabung",
-      "need": 18.0,
+     "fuel_canister": {
+      "unit": "hari",
+      "need": 7.0,
       "have": 0.0,
-      "missing": 18,
+      "missing": 7,
+      "coverage": 0.0
+     },
+     "fuel_lpg": {
+      "unit": "hari",
+      "need": 7.0,
+      "have": 0.0,
+      "missing": 7,
+      "coverage": 0.0
+     },
+     "fuel_alt_stove": {
+      "unit": "hari",
+      "need": 7.0,
+      "have": 0.0,
+      "missing": 7,
       "coverage": 0.0
      },
      "water_hygiene": {
@@ -1966,18 +1976,11 @@
       "missing": 1
      },
      {
-      "id": "stove_portable",
-      "unit": "buah",
-      "need": 1.0,
+      "id": "fuel_canister",
+      "unit": "hari",
+      "need": 7.0,
       "have": 0.0,
-      "missing": 1
-     },
-     {
-      "id": "gas_canister",
-      "unit": "tabung",
-      "need": 18.0,
-      "have": 0.0,
-      "missing": 18
+      "missing": 7
      },
      {
       "id": "family_emergency_plan",
@@ -1995,6 +1998,13 @@
      },
      {
       "id": "water_container",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "stove_portable",
       "unit": "buah",
       "need": 1.0,
       "have": 0.0,
@@ -2935,7 +2945,7 @@
       "qty": 400
      },
      "toilet_bags": 3200,
-     "gas_canister": 520,
+     "fuel_canister": 33,
      "stove_portable": 1,
      "flashlight": 1,
      "spare_batteries": 1,
@@ -3114,12 +3124,12 @@
       "missing": 940,
       "coverage": 0.3472
      },
-     "gas_canister": {
-      "unit": "tabung",
-      "need": 1542.78,
-      "have": 520.0,
-      "missing": 1023,
-      "coverage": 0.3371
+     "fuel_canister": {
+      "unit": "hari",
+      "need": 90.0,
+      "have": 33.0,
+      "missing": 57,
+      "coverage": 0.3667
      },
      "toilet_bags": {
       "unit": "kantong",
@@ -3174,11 +3184,11 @@
       "missing": 45
      },
      {
-      "id": "gas_canister",
-      "unit": "tabung",
-      "need": 1542.78,
-      "have": 520.0,
-      "missing": 1023
+      "id": "fuel_canister",
+      "unit": "hari",
+      "need": 90.0,
+      "have": 33.0,
+      "missing": 57
      },
      {
       "id": "water_container",
@@ -3190,7 +3200,7 @@
     ],
     "category_progress": {
      "water": 33.0,
-     "food": 42.9,
+     "food": 43.6,
      "meds_firstaid": 4.5,
      "sanitation": 4.0,
      "lighting": 20.0,

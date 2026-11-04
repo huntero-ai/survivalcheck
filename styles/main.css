@@ -63,13 +63,15 @@ img,svg { max-width:100%; }
 
 /* Shell */
 .app-header { position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:var(--sp-2); padding:var(--sp-2) var(--sp-4); background:var(--c-surface); border-bottom:1px solid var(--c-divider); min-height:56px; }
-.app-header .brand { flex:1; min-width:0; font-weight:700; font-size:var(--fs-h3); color:var(--c-text); text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.app-header .brand { flex:1; min-width:0; display:inline-flex; align-items:center; min-height:var(--touch-min); font-weight:700; font-size:var(--fs-h3); color:var(--c-text); text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .icon-link { display:inline-flex; align-items:center; justify-content:center; gap:var(--sp-1); min-width:var(--touch-min); min-height:var(--touch-min); padding:0 var(--sp-2); color:var(--c-primary); text-decoration:none; border-radius:var(--r-md); font-size:var(--fs-small); font-weight:600; }
 .icon-link svg { width:24px; height:24px; flex:none; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
 .icon-link:hover { background:var(--c-surface-2); }
 .app-main { max-width:40rem; margin:0 auto; padding:var(--sp-4) var(--sp-4) calc(var(--sp-12) + var(--sp-4)); min-height:60vh; outline:none; }
 .has-nav .app-main { padding-bottom:calc(var(--nav-h) + var(--sp-12) + env(safe-area-inset-bottom)); }
-.app-main > h1:focus { outline:none; }
+.app-main h1[tabindex="-1"]:focus, .app-main h1[tabindex="-1"]:focus-visible { outline:none; }
+.link-touch { display:inline-flex; align-items:center; min-height:var(--touch-min); }
+@media (max-width:360px) { .app-header { padding-inline:var(--sp-2); gap:var(--sp-1); } .app-header .brand { font-size:1rem; } .icon-link { padding:0 var(--sp-1); } }
 
 .bottom-nav { position:fixed; left:0; right:0; bottom:0; z-index:30; display:flex; background:var(--c-surface); border-top:1px solid var(--c-divider); padding-bottom:env(safe-area-inset-bottom); }
 .bottom-nav a { flex:1 1 0; min-width:0; height:var(--nav-h); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; color:var(--c-text-muted); text-decoration:none; font-size:var(--fs-tiny); font-weight:500; }

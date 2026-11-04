@@ -11,7 +11,9 @@ const FALLBACK = {
   other: 'Lainnya',
   diy: 'Alternatif hemat atau buat sendiri',
   needs_input: 'isi pemakaian harian dulu',
-  noPrice: 'Tanpa harga. Nama toko hanya contoh umum.',
+  excerpt: 'Dari kutipan sumber, perlu dicek ulang',
+  anyOf: 'Cukup salah satu: {items}',
+  noPrice: 'Tanpa harga. Nama toko hanya contoh umum, bukan rekomendasi.',
   label: 'Untuk pemutih, yodium, dan tablet: cek kadar dan petunjuk di label.',
   rx: 'Obat resep: tanyakan ke dokter, fasilitas kesehatan, atau apotek. Jangan membeli obat keras tanpa resep.',
 };
@@ -43,6 +45,8 @@ export function buildShoppingList(result, data, lang = 'id', checked = {}) {
     const needsInput = s.status === 'needs_input' || s.missing == null;
     if (!needsInput && !(s.missing > 0)) continue;
     const it = itemsById[s.id] || {};
+    // item pengetahuan/rencana (satuan '-') bukan barang belanja (B-06); tetap tampil di hasil dan inventaris
+    if (it.unit === '-') continue;
     const b = buyById[s.id] || {};
     const entry = {
       id: s.id,
@@ -51,6 +55,8 @@ export function buildShoppingList(result, data, lang = 'id', checked = {}) {
       unit: s.unit || it.unit || '',
       needsInput,
       priority: s.priority,
+      excerpt: it.evidence === 'CUPLIKAN',
+      anyOf: (s.group_ids || []).length > 1 ? s.group_ids.map((x) => loc((itemsById[x] || {}).label, lang) || x) : [],
       why: loc(it.why, lang),
       tip: b.buy_tip ? loc(b.buy_tip, lang) : '',
       diy: b.diy ? loc(b.diy, lang) : '',
@@ -112,10 +118,12 @@ export function toPlainText(list, t) {
     for (const e of g.items) {
       const qty = e.needsInput ? T(t, 'shopping.needs_input', FALLBACK.needs_input) : `${fmt(e.qty)}${e.unit ? ' ' + e.unit : ''}`;
       let line = `[${e.checked ? 'x' : ' '}] ${e.label} - ${qty}`;
+      if (e.excerpt) line += ` (${T(t, 'common.excerpt_badge', FALLBACK.excerpt)})`;
       if (g.kind === 'free' || g.kind === 'home') {
         if (e.free) line += ` (${e.free.text}${e.free.source ? ', ' + e.free.source : ''})`;
       }
       L.push(line);
+      if (e.anyOf.length) L.push('    ' + T(t, 'result.shortfall_any_of', FALLBACK.anyOf, { items: e.anyOf.join(' / ') }));
       if (e.tip) L.push('    ' + e.tip);
     }
     L.push('');
@@ -177,8 +185,10 @@ export function render(root, ctx) {
     const build = () => buildShoppingList(result, ctx.data, ctx.lang, checked);
     let list = build();
 
+    const hadFocus = document.activeElement === title;
     page.textContent = '';
     page.append(title);
+    if (hadFocus) title.focus({ preventScroll: true });
     const status = h('p', { class: 'sc-sr', role: 'status', 'aria-live': 'polite' });
     const progress = h('p', { class: 'sc-muted' });
     const body = h('div', { class: 'sc-shop-body' });
@@ -206,6 +216,8 @@ export function render(root, ctx) {
               input, h('span', { class: 'sc-box', 'aria-hidden': 'true' }),
               h('span', { class: 'sc-itemname', text: e.label }),
               h('span', { class: 'sc-itemqty', text: qty })),
+            e.excerpt ? h('p', { class: 'sc-small sc-indent' }, h('span', { class: 'sc-chip sc-chip-excerpt', 'data-evidence': 'excerpt', text: '△ ' + tr(ctx, 'common.excerpt_badge', FALLBACK.excerpt) })) : null,
+            e.anyOf.length ? h('p', { class: 'sc-small sc-muted sc-indent', text: tr(ctx, 'result.shortfall_any_of', FALLBACK.anyOf, { items: e.anyOf.join(' / ') }) }) : null,
             e.free ? h('p', { class: 'sc-small sc-muted sc-indent', text: e.free.text + (e.free.source ? ` (${e.free.source})` : '') }) : null,
             e.tip ? h('p', { class: 'sc-small sc-muted sc-indent', text: e.tip }) : null].filter(Boolean));
           input.addEventListener('change', () => {

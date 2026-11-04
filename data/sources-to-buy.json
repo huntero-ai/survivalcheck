@@ -605,7 +605,7 @@
     "en": "Use in a ventilated place, never inside a tent or closed room."
    }
   },
-  "gas_canister": {
+  "fuel_canister": {
    "stores": [
     "outdoor",
     "minimarket",
@@ -621,11 +621,11 @@
    "free_official": null,
    "often_at_home": false,
    "buy_tip": {
-    "id": "Pastikan jenis tabung cocok dengan kompor (cek label).",
-    "en": "Make sure the canister type fits the stove (check the label)."
+    "id": "Pastikan jenis tabung cocok dengan kompor (cek label). Saran jumlah: sekitar 6 kaleng per orang per minggu.",
+    "en": "Make sure the canister type fits the stove (check the label). Suggested amount: about 6 canisters per person per week."
    }
   },
-  "lpg_usage": {
+  "fuel_lpg": {
    "stores": [
     "minimarket",
     "traditional_market"
@@ -635,8 +635,27 @@
    "free_official": null,
    "often_at_home": true,
    "buy_tip": {
-    "id": "Beli dari agen/pangkalan resmi; ini pemakaian harian, bukan barang tambahan.",
-    "en": "Buy from an official agent/outlet; this is daily use, not an extra item."
+    "id": "Beli dari agen/pangkalan resmi. Tabung rumah tangga sering sudah ada; hitung berapa hari satu tabung cukup untuk memasak.",
+    "en": "Buy from an official agent/outlet. A household cylinder is often already at home; estimate how many days one cylinder lasts for cooking."
+   }
+  },
+  "fuel_alt_stove": {
+   "stores": [
+    "outdoor",
+    "hardware",
+    "traditional_market",
+    "online_marketplace"
+   ],
+   "examples": [
+    "Tokopedia",
+    "Shopee"
+   ],
+   "diy": null,
+   "free_official": null,
+   "often_at_home": false,
+   "buy_tip": {
+    "id": "Pakai hanya di luar ruangan atau tempat berventilasi baik (risiko gas CO). Simpan bahan bakar jauh dari api.",
+    "en": "Use only outdoors or in a well-ventilated place (CO risk). Keep fuel away from flames."
    }
   },
   "cookware": {

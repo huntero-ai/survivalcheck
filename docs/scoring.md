@@ -47,6 +47,7 @@ Peta `item id -> nilai`. Id yang tidak ada = 0/false.
 |---|---|---|
 | `per_person_day` | angka | Total yang dimiliki dalam satuan item (L air, kantong, rol, g, tabung). |
 | `per_household`, `boolean` | angka atau bool | Jumlah buah/set; `true` = 1, `false` = 0. |
+| `fuel_days` | angka (hari) | Berapa hari bisa memasak dengan bahan bakar itu (D-047). |
 | `user_usage_per_day` | angka | Total yang dimiliki (mis. 28 porsi formula, 1500 g pakan). Pemakaian harian dari `profile.usage_per_day`. |
 | item `food_*` (jenis pangan) | objek `{qty, grams_per_unit?, kcal_per_unit?, kcal_total?}` | Lihat 3.3. |
 | `cash_days` | angka | Jumlah hari belanja pokok yang tertutup tunai (tanpa nominal, D-017). |
@@ -158,7 +159,8 @@ Jenis pangan (`R.food.aggregates`) dan `food_no_cook_share` berlaku tetapi **tid
 | Jenis (berdasarkan id/`qty_mode`) | `need` | `have` |
 |---|---|---|
 | `water_drinking` (per_person_day) | `water_rate * N * days` | inventaris |
-| `water_hygiene`, `toilet_bags`, `toilet_paper`, `soap`, `gas_canister` (per_person_day) | `per_person_day * N * days` (kecuali `water_hygiene`: `R.water.hygiene_l_per_person_day`) | inventaris |
+| `water_hygiene`, `toilet_bags`, `toilet_paper`, `soap` (per_person_day) | `per_person_day * N * days` (kecuali `water_hygiene`: `R.water.hygiene_l_per_person_day`) | inventaris |
+| `fuel_days` (`fuel_canister`, `fuel_lpg`, `fuel_alt_stove`; D-047) | `days` (hari yang dievaluasi; bukan per orang) | inventaris = hari bahan bakar masak yang tercukupi |
 | `user_usage_per_day` | `usage * max(days, modifiers.min_days bila ada)` (`pet_food` min 5) | inventaris. `usage` null -> `unknown` (lihat 3.10). `usage` 0 -> need 0 |
 | `water_pet_dog` / `water_pet_cat` | `jumlah_hewan * 4 (anjing) atau 1 (kucing) * max(days, 5)` | inventaris |
 | `per_household` / `boolean` | `per_household`, atau `per_person * N`, atau 1 | inventaris (bool -> 0/1) |
@@ -200,6 +202,7 @@ Parameter tier ada di `R.tiers[]`: `stock_days` (T2=3, T3=7, T4=14, T5=30), `bag
 Untuk tiap `T` dalam 2..5, hitung `unmet(T)`:
 1. **Item gating**: untuk tiap item berlaku dengan `gating = true` dan `min_tier_gating <= T`:
    - grup `gating_group` (`alt_power_any`: power_station, solar_panel, generator): terpenuhi bila **salah satu** anggota dimiliki >= 1; dihitung sekali per grup.
+   - grup `cooking_fuel_any` (D-047: `fuel_canister` gas kaleng, `fuel_lpg` LPG 3 kg, `fuel_alt_stove` kompor alternatif): terpenuhi bila **salah satu** anggota punya hari bahan bakar `>= stock_days` tier (T4: 14, T5: 30); hari tidak dijumlah antar anggota. Entri syarat naik: `{kind:'group_any', group, ids, missing: hari kurang, unit:'hari', days: stock_days}`. Jumlah MAFF (~6 kaleng/orang/minggu) hanya saran tampilan di form (`suggest_per_person_week`), tidak memengaruhi tier/skor.
    - `cash_days`: evaluasi dengan `days = R.cash.gating_days` (7).
    - selain itu: evaluasi `have_need(it, tier.stock_days)`; terpenuhi bila `have + eps >= need`. Untuk item hitungan/ya-tidak, `need` tidak bergantung hari; `meds_personal` otomatis `max(stock_days, 7)` (T2: 7, T3: 7, T4: 14, T5: 30).
    - Item gating dengan nilai `unknown` (pemakaian belum diisi, atau daya medis belum ada) dianggap **tidak terpenuhi** (`input_missing`).
@@ -217,7 +220,7 @@ untuk T = 2..5 berurutan: jika ok[T] (dan semua tier sebelumnya >=2 ok): tier = 
 Gating saat ini dari `items.json` (informasi; kode selalu membaca field):
 - Tier 2: `water_drinking`, `food_kcal_total`, `toilet_bags`, `flashlight`, `spare_batteries`, `gobag_main`; bila berlaku: `meds_personal`, `infant_formula`, `infant_mpasi`, `infant_diapers`, `elderly_meds`, `medical_device_backup_power`.
 - Tier 3: `power_bank`, `radio_portable`, `emergency_numbers_printed`, `doc_copy_ktp`, `doc_copy_kk`, `doc_copy_property`, `doc_copy_bank`, `doc_waterproof_bag`, `cash_days`.
-- Tier 4: `water_treatment_chemical`, `stove_portable`, `gas_canister`, `family_emergency_plan` (+ indikator >= 25).
+- Tier 4: `water_treatment_chemical`, salah satu bahan bakar masak (`cooking_fuel_any`: gas kaleng / LPG 3 kg / kompor alternatif, selama `stock_days` hari; D-047), `family_emergency_plan` (+ indikator >= 25). `stove_portable` hanya saran (non-gating).
 - Tier 5: salah satu `power_station|solar_panel|generator`, `first_aid_knowledge`.
 
 ### 3.9 Skor 0-100 (D-029)
@@ -235,6 +238,8 @@ total          = half-up(total_exact)
 - Skor tidak menaikkan tier; tier tidak memengaruhi skor.
 
 ### 3.10 Kekurangan (F5, F6)
+Anggota grup `cooking_fuel_any` menghasilkan **satu** baris kekurangan (wakil grup = anggota pertama; `group_ids` memuat semua anggota; `have` = hari terbaik grup) dan tidak ada baris bila salah satu anggota cukup untuk target. Cakupan `items_eval` dan progres kategori memakai cakupan terbaik grup, dihitung sekali.
+
 Untuk tiap item berlaku (kecuali jenis pangan/food_no_cook_share):
 ```
 d = effective_target_days  (meds: meds_target_days; cash: cash_target_days)

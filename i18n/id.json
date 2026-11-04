@@ -52,7 +52,8 @@
       "per_person_day": "per orang per hari"
     },
     "coming_soon": "Segera hadir",
-    "coming_soon_body": "Bagian ini sedang disiapkan dan akan tersedia pada pembaruan berikutnya."
+    "coming_soon_body": "Bagian ini sedang disiapkan dan akan tersedia pada pembaruan berikutnya.",
+    "excerpt_badge": "Dari kutipan sumber, perlu dicek ulang"
   },
   "nav": {
     "home": "Beranda",
@@ -206,7 +207,8 @@
     "validation": {
       "days_required": "Isi jumlah hari antara 1 dan 365.",
       "days_large": "Target lebih dari 90 hari jarang realistis. Tetap lanjut?"
-    }
+    },
+    "water_careful": "Angka hati-hati: 4 L berasal dari panduan untuk cuaca panas (Latvia), bukan khusus kekeringan. Anggap sebagai batas aman, bukan angka pasti."
   },
   "scenarios": {
     "earthquake": "Gempa bumi",
@@ -329,7 +331,9 @@
       "not_a_number": "Isi dengan angka.",
       "very_large": "Angkanya sangat besar. Sudah benar?",
       "expiry_past": "Tanggal ini sudah lewat. Item kedaluwarsa tidak dihitung sebagai stok."
-    }
+    },
+    "fuel_days_label": "Cukup untuk berapa hari memasak",
+    "fuel_suggest": "Saran jumlah, bukan syarat: sekitar {per} kaleng per orang per minggu. Untuk {n} orang selama {days} hari: sekitar {cans} kaleng."
   },
   "power": {
     "title": "Daya listrik",
@@ -498,7 +502,7 @@
     "of": "Tier {n} dari 5",
     "0": {
       "name": "Belum Siap",
-      "summary": "Belum mulai, dan itu tidak apa-apa. Satu langkah kecil sudah cukup untuk naik."
+      "summary": "Baru di awal, dan itu tidak apa-apa. Satu langkah kecil sudah cukup untuk naik."
     },
     "1": {
       "name": "Rentan",
@@ -608,7 +612,7 @@
     "where_to_buy": "Di mana mendapatkannya",
     "diy_alt": "Alternatif hemat atau buat sendiri",
     "free_official": "Gratis atau resmi",
-    "no_price_note": "Aplikasi ini tidak menampilkan harga. Nama jaringan toko hanya contoh umum, bukan rekomendasi merek.",
+    "no_price_note": "Aplikasi ini tidak menampilkan harga. Nama jaringan toko hanya contoh umum, bukan rekomendasi merek atau toko.",
     "see_shopping": "Lihat daftar belanja",
     "share_print": "Cetak atau simpan",
     "recalc": "Hasil dihitung ulang otomatis saat data berubah.",
@@ -623,7 +627,10 @@
     "next_bag_more": "Centang {n} item lagi.",
     "next_family_more": "{n} poin lagi.",
     "shortfall_needs_input": "Isi angka pemakaian harian untuk menghitung",
-    "blocks_tier": "Menahan tier {n}"
+    "blocks_tier": "Menahan tier {n}",
+    "survive_over_year": "> 365 hari",
+    "shortfall_any_of": "Cukup salah satu: {items}",
+    "next_group_fuel": "Bahan bakar masak untuk {days} hari. Cukup salah satu: {items}"
   },
   "shopping": {
     "title": "Daftar belanja",
@@ -661,7 +668,7 @@
     "pet_shop": "Petshop",
     "online_marketplace": "Marketplace online",
     "free_official": "Gratis atau sumber resmi",
-    "examples_label": "Contoh umum"
+    "examples_label": "Contoh umum (hanya contoh, bukan rekomendasi)"
   },
   "info": {
     "title": "Info dan panduan",
@@ -917,9 +924,9 @@
       "boil_title": "Rebus",
       "boil_body": "Didihkan hingga mendidih bergolak selama 1 menit. Di atas 1.000 m dari permukaan laut, rebus 3 menit.",
       "bleach_title": "Pemutih rumah tangga",
-      "bleach_body": "Hanya untuk pemutih berkadar 5 sampai 9% tanpa pewangi atau tambahan. Beri 2 tetes per liter, 4 tetes bila airnya keruh. Aduk, tunggu 30 menit. Air harus berbau klorin samar. Bila kadarnya lain atau kamu ragu, rebus saja.",
+      "bleach_body": "Hanya untuk pemutih berkadar 5 sampai 9% tanpa pewangi atau tambahan. Cek kadar di label dulu. Beri 2 tetes per liter, 4 tetes bila airnya keruh. Aduk, tunggu 30 menit. Air harus berbau klorin samar. Bila kadarnya lain atau kamu ragu, rebus saja.",
       "iodine_title": "Yodium tingtur",
-      "iodine_body": "Kadar 2%: 5 tetes per liter. Kadar 7%: 2 tetes per liter. Tidak untuk ibu hamil atau orang dengan gangguan tiroid. Ikuti label.",
+      "iodine_body": "Cek kadar di label. Kadar 2%: 5 tetes per liter, 10 tetes bila airnya keruh. Kadar 7%: 2 tetes per liter. Aduk, diamkan minimal 30 menit sebelum diminum. Jangan dipakai bila alergi yodium, sedang hamil, atau punya gangguan tiroid. Bila ragu, rebus saja.",
       "tablet_title": "Tablet pemurni air",
       "tablet_body": "Ikuti petunjuk pada kemasan untuk jumlah tablet dan waktu tunggu.",
       "settle_title": "Air keruh: endapkan dulu",

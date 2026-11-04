@@ -7,7 +7,6 @@ import * as P from './power.js';
 const EPS = 1e-9;
 const AGE_GROUPS = ['infant', 'toddler', 'child', 'adult', 'elderly'];
 const PRIORITY_RANK = { critical: 0, important: 1, extra: 2 };
-const UNIT_OVERRIDE = { meds_personal: 'hari', medical_device_backup_power: 'hari' };
 const BAG_TOTAL = 28;
 
 const round = P.round;
@@ -191,7 +190,7 @@ export function evaluate(state, data) {
   const medsHave = h.meds.length ? minMeds : 0;
   function haveNeed(it, days) {
     const id = it.id;
-    const unit = UNIT_OVERRIDE[id] || it.unit;
+    const unit = it.unit;
     const out = (need, have, extra) => ({ unit, need, have, unknown: false, ...extra });
     const inv = haveOf(h.inventory[id]);
     if (id === 'water_drinking') return out(waterRate * N * days, inv);
@@ -217,6 +216,8 @@ export function evaluate(state, data) {
       return out(Math.max(0, u) * Math.max(days, minD), inv);
     }
     if (it.qty_mode === 'per_person_day') return out(it.per_person_day * N * days, inv);
+    // bahan bakar masak (D-047): input = hari bahan bakar; kebutuhan = jumlah hari yang dievaluasi
+    if (it.qty_mode === 'fuel_days') return out(days, inv);
     // per_household / boolean
     const need = it.per_household != null ? it.per_household : it.per_person != null ? it.per_person * N : 1;
     return out(need, inv);
@@ -233,8 +234,27 @@ export function evaluate(state, data) {
     evals.set(it.id, { it, ...hn, coverage });
     if (hn.unknown && it.qty_mode === 'user_usage_per_day' && isCritOrGate(it)) warnings.add('usage_missing:' + it.id);
   }
+  // grup gating (D-047): cukup salah satu anggota 'fuel_days' memenuhi; semua anggota memakai cakupan terbaik grup
+  const fuelGroups = new Map();
+  for (const e of evals.values()) {
+    if (e.it.qty_mode === 'fuel_days' && e.it.gating_group) {
+      if (!fuelGroups.has(e.it.gating_group)) fuelGroups.set(e.it.gating_group, []);
+      fuelGroups.get(e.it.gating_group).push(e);
+    }
+  }
+  for (const members of fuelGroups.values()) {
+    const best = Math.max(...members.map((m) => m.coverage || 0));
+    const bestHave = Math.max(...members.map((m) => m.have));
+    for (const m of members) {
+      m.coverage = best;
+      m.groupOk = best >= 1 - EPS;
+      m.groupHave = bestHave;
+      m.groupRep = m === members[0];
+    }
+  }
   // f(it) untuk skor/kategori: null = dikeluarkan
   const fOf = (e) => {
+    if (e.groupOk !== undefined && !e.groupRep) return null; // grup bahan bakar dihitung sekali
     if (e.unknown) return isCritOrGate(e.it) ? 0 : null;
     if (e.need == null || !(e.need > EPS)) return null;
     return e.coverage;
@@ -323,9 +343,19 @@ export function evaluate(state, data) {
       }
     }
     for (const [g, members] of groups) {
-      if (!members.some((m) => haveOf(h.inventory[m.id]) >= 1 - EPS)) {
+      const meets = (m) => {
+        const hn = haveNeed(m, td.stock_days);
+        return !hn.unknown && hn.have + EPS >= hn.need;
+      };
+      if (!members.some(meets)) {
         const first = members.slice().sort((a, b) => cmpKey(sortKey(a), sortKey(b)))[0];
-        list.push({ key: sortKey(first), req: { kind: 'group_any', group: g, ids: members.map((m) => m.id), missing: 1 } });
+        const req = { kind: 'group_any', group: g, ids: members.map((m) => m.id), missing: 1 };
+        if (first.qty_mode === 'fuel_days') {
+          req.unit = first.unit;
+          req.days = td.stock_days;
+          req.missing = missingOf(td.stock_days, Math.max(...members.map((m) => haveOf(h.inventory[m.id]))));
+        }
+        list.push({ key: sortKey(first), req });
       }
     }
     list.sort((a, b) => cmpKey(a.key, b.key));
@@ -417,6 +447,12 @@ export function evaluate(state, data) {
     let entry = null;
     if (e.unknown) {
       if (isCritOrGate(it)) entry = { missing: null, status: 'needs_input', need: null, have: round(e.have, 2), pct: 1 };
+    } else if (e.groupOk !== undefined) {
+      // anggota grup bahan bakar: satu baris saja (wakil grup), hanya bila grup belum terpenuhi
+      if (!e.groupOk && e.groupRep) {
+        const m = missingOf(e.need, e.groupHave);
+        if (m > 0) entry = { missing: m, need: round(e.need, 2), have: round(e.groupHave, 2), pct: round(1 - e.coverage, 6), group_ids: (fuelGroups.get(it.gating_group) || []).map((x) => x.it.id) };
+      }
     } else if (e.need > EPS && e.have + EPS < e.need) {
       const m = missingOf(e.need, e.have);
       if (m > 0) entry = { missing: m, need: round(e.need, 2), have: round(e.have, 2), pct: round(1 - e.coverage, 6) };
@@ -438,7 +474,7 @@ export function evaluate(state, data) {
     if (e.unknown) {
       itemsEval[e.it.id] = { unit: e.unit, need: null, have: round(e.have, 2), missing: null, coverage: null, status: 'needs_input' };
     } else if (e.need > EPS) {
-      const m = e.have + EPS < e.need ? missingOf(e.need, e.have) : 0;
+      const m = e.groupOk ? 0 : e.have + EPS < e.need ? missingOf(e.need, e.groupHave != null ? e.groupHave : e.have) : 0;
       itemsEval[e.it.id] = { unit: e.unit, need: round(e.need, 2), have: round(e.have, 2), missing: Math.max(0, m), coverage: round(e.coverage, 4) };
     }
     const f = fOf(e);

@@ -73,8 +73,9 @@
 .sc-checkitem[hidden] { display: none; }
 .sc-checklabel { display: flex; align-items: center; gap: var(--sp-3, 12px); min-height: var(--touch-min, 44px); padding: var(--sp-2, 8px) 0; cursor: pointer; }
 .sc-check { flex: none; width: 28px; height: 28px; margin: 8px; accent-color: var(--c-primary, #0f6b5a); }
-.sc-itemname { flex: 1; }
-.sc-itemqty { font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; }
+.sc-itemname { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.sc-itemqty { font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; min-width: 0; max-width: 45%; overflow-wrap: anywhere; }
+.sc-chip-excerpt { background: var(--c-warn-bg, #fbf0d5); color: var(--c-warn-fg, #6b4a00); }
 .sc-checkitem.done .sc-itemname { text-decoration: line-through; color: var(--c-text-muted, #4a524e); }
 .sc-indent { margin-left: 52px; }
 .sc-box { display: none; }

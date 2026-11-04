@@ -83,7 +83,7 @@ export function exportJSON(state) {
 export function parseImport(text) {
   let obj;
   try { obj = JSON.parse(text); } catch (e) { throw new Error('read'); }
-  if (!obj || obj.app !== 'survivalcheck' || typeof obj.state !== 'object' || obj.state === null) throw new Error('format');
+  if (!obj || obj.app !== 'survivalcheck' || typeof obj.state !== 'object' || obj.state === null || Array.isArray(obj.state)) throw new Error('format');
   if (obj.schema !== SCHEMA) throw new Error('version');
   return normalize(obj.state);
 }

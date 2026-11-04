@@ -136,3 +136,30 @@ node tests/qa/t8_perf.mjs
 Simulasi `_site`: salin berkas ter-track ke folder baru, jalankan isi langkah "Siapkan _site" dari `pages.yml` (diekstrak lewat `yaml.safe_load`), serve `_site` di prefix `/survivalcheck/` (`tests/qa/lib.mjs` `serve(root, prefix)`).
 
 Catatan metode: `t5_content.mjs` memakai regex kasar (mis. "USD" cocok dengan "Pusdalops", "yodium" cocok di daftar belanja); hasil FAIL skrip itu sudah ditinjau manual dan dinilai bukan pelanggaran, kecuali B-08. Skrip menulis keluaran ke `/tmp/qa-shots/`, bukan ke repo. Skrip `t3c_inputs_ui.mjs` memakai pemilih label "Dimiliki (L)" pertama yang ternyata air kebersihan; `t3d_inv_input.mjs` adalah versi yang dipakai untuk bukti B-11.
+
+## 7. Status perbaikan (Fixer, 2026-11-04)
+
+Semua P1 dan P2 diperbaiki; tidak ada yang ditolak. Tes pelindung: `tests/fixes.test.mjs` (node:test), `tests/e2e-fixes.mjs` (Playwright 320/360 px), `tests/engine.test.mjs` + `tests/cases.json` (tc06, tc10 dihitung ulang). Detail perubahan data di `docs/build-notes.md` bagian Fix.
+
+| ID | Status | Perbaikan dan alasan |
+|---|---|---|
+| B-01 | fixed | Penanda "Dari kutipan sumber, perlu dicek ulang" (`data-evidence="excerpt"`, i18n `common.excerpt_badge`) terlihat di Hasil (baris kekurangan), Belanja (layar + teks salin) dan Inventaris (di baris item, di luar `<details>`). |
+| B-02 | fixed | D-047: gating tier 4/5 memakai grup `cooking_fuel_any` (gas kaleng / LPG 3 kg / kompor alternatif) dalam hari (14/30), bukan 0,8571 tabung/orang/hari. Saran MAFF ~6 kaleng/orang/minggu hanya hint di form. `items.json`, `rules.json`, `engine.js`, `forms.js`, `scoring.md`, `cases.json` diselaraskan. |
+| B-03 | fixed | `.sc-itemname/.sc-itemqty` boleh menyusut dan membungkus teks; diuji 30 rute di 320 px (id+en) tanpa scroll horizontal. |
+| B-04 | fixed | Tautan merek `min-height` 44 px, header dirapatkan di <=360 px (nama tidak terpotong di 320); "Lihat selengkapnya" 44 px (`.link-touch`). |
+| B-05 | fixed | `why` air anjing/kucing dan item CUPLIKAN lain ditulis ulang tanpa catatan internal; tes menyapu semua `why` (id+en). |
+| B-06 | fixed | Satuan "-" tidak tampil di inventaris; item pengetahuan/rencana (unit "-") disaring dari daftar belanja (tetap di hasil/inventaris). |
+| B-07 | fixed | Aturan outline h1 kini mengena (`.app-main h1[tabindex="-1"]`); judul beranda tidak lagi ganda; fokus h1 Belanja dipertahankan setelah render asinkron. |
+| B-08 | fixed | Nama toko tetap sebagai contoh jaringan umum; label "Contoh umum (hanya contoh, bukan rekomendasi)" dan catatan bawah diperkuat. |
+| B-09 | fixed | `parseImport` menolak `state` berupa array. |
+| B-10 | fixed | Hasil menampilkan "> 365 hari" (i18n id/en). |
+| B-11 | fixed | Input tak sah mengosongkan nilai tersimpan (prefiks valid tidak tersisa). |
+| B-12 | fixed | Fallback fixture dihapus dari `results.js`; `fixtureResult` pindah ke `tests/fixture.mjs` (hanya tes). |
+| B-13 | fixed | Yodium: 5 tetes/L, 10 bila keruh, diamkan >= 30 menit, jangan bila alergi yodium; kotak pemutih memuat "Cek kadar di label" (id+en). |
+| B-14 | fixed | Catatan "Angka hati-hati" pada air 4 L di halaman Target dan Inventaris air saat kekeringan. Angka tidak diubah (D-006). |
+| B-15 | fixed | `orientation` dihapus dari manifest; CSP `<meta>` (`script-src 'self'`, gaya inline diizinkan untuk atribut `style` dari DOM, `worker-src/connect-src 'self'`); SW, offline, dan semua rute diuji tanpa pelanggaran. `frame-ancestors` tidak bisa lewat meta (tidak dipasang). |
+| B-16 | fixed | "Belum mulai" diganti "Baru di awal" (id) / "just at the start" (en). |
+| B-17 | fixed | `cancel-in-progress: false`. |
+| B-18 | fixed | Unit di `items.json` "hari"; `UNIT_OVERRIDE` dihapus. |
+
+SW: `survivalcheck-v3` (juga di `tests/e2e-shell.mjs`).

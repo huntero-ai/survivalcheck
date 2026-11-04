@@ -51,7 +51,7 @@ for (const i of mf.icons) ok((await context.request.get(new URL(i.src, BASE).hre
 await page.evaluate(() => navigator.serviceWorker.ready);
 await page.reload(); await page.waitForSelector('h1');
 ok(await page.evaluate(() => !!navigator.serviceWorker.controller), 'SW terdaftar dan mengendalikan halaman');
-const cached = await page.evaluate(async () => (await (await caches.open('survivalcheck-v2')).keys()).map((r) => new URL(r.url).pathname));
+const cached = await page.evaluate(async () => (await (await caches.open('survivalcheck-v3')).keys()).map((r) => new URL(r.url).pathname));
 ok(['index.html', 'src/app.js', 'data/items.json', 'i18n/id.json', 'i18n/en.json', 'docs/sources.md'].every((p) => cached.some((c) => c.endsWith('/' + p))), 'aset penting di-precache (' + cached.length + ' entri)');
 
 // 360 px tanpa scroll horizontal

@@ -52,7 +52,8 @@
       "per_person_day": "per person per day"
     },
     "coming_soon": "Coming soon",
-    "coming_soon_body": "This section is being prepared and will be available in an upcoming update."
+    "coming_soon_body": "This section is being prepared and will be available in an upcoming update.",
+    "excerpt_badge": "From a source excerpt, to be re-checked"
   },
   "nav": {
     "home": "Home",
@@ -206,7 +207,8 @@
     "validation": {
       "days_required": "Enter a number of days between 1 and 365.",
       "days_large": "A target over 90 days is rarely realistic. Continue anyway?"
-    }
+    },
+    "water_careful": "Cautious figure: 4 L comes from hot-weather guidance (Latvia), not drought-specific. Treat it as a safe margin, not an exact number."
   },
   "scenarios": {
     "earthquake": "Earthquake",
@@ -329,7 +331,9 @@
       "not_a_number": "Enter a number.",
       "very_large": "That number is very large. Is it right?",
       "expiry_past": "This date has passed. Expired items are not counted as stock."
-    }
+    },
+    "fuel_days_label": "Enough for how many days of cooking",
+    "fuel_suggest": "Suggested amount, not a requirement: about {per} canisters per person per week. For {n} people over {days} days: about {cans} canisters."
   },
   "power": {
     "title": "Power",
@@ -498,7 +502,7 @@
     "of": "Tier {n} of 5",
     "0": {
       "name": "Not Ready Yet",
-      "summary": "You have not started yet, and that is okay. One small step is enough to move up."
+      "summary": "You are just at the start, and that is okay. One small step is enough to move up."
     },
     "1": {
       "name": "Vulnerable",
@@ -608,7 +612,7 @@
     "where_to_buy": "Where to get it",
     "diy_alt": "Budget or DIY alternative",
     "free_official": "Free or official",
-    "no_price_note": "This app does not show prices. Store chain names are only general examples, not brand recommendations.",
+    "no_price_note": "This app does not show prices. Store chain names are only general examples, not brand or store recommendations.",
     "see_shopping": "See shopping list",
     "share_print": "Print or save",
     "recalc": "The result is recalculated automatically when data changes.",
@@ -623,7 +627,10 @@
     "next_bag_more": "Check {n} more items.",
     "next_family_more": "{n} more points.",
     "shortfall_needs_input": "Enter daily use to calculate",
-    "blocks_tier": "Holding back tier {n}"
+    "blocks_tier": "Holding back tier {n}",
+    "survive_over_year": "> 365 days",
+    "shortfall_any_of": "Any one is enough: {items}",
+    "next_group_fuel": "Cooking fuel for {days} days. Any one is enough: {items}"
   },
   "shopping": {
     "title": "Shopping list",
@@ -661,7 +668,7 @@
     "pet_shop": "Pet shop",
     "online_marketplace": "Online marketplace",
     "free_official": "Free or official source",
-    "examples_label": "General examples"
+    "examples_label": "General examples (examples only, not a recommendation)"
   },
   "info": {
     "title": "Info and guides",
@@ -917,9 +924,9 @@
       "boil_title": "Boil",
       "boil_body": "Bring to a rolling boil for 1 minute. Above 1,000 m above sea level, boil for 3 minutes.",
       "bleach_title": "Household bleach",
-      "bleach_body": "Only for 5 to 9% bleach without scent or additives. Add 2 drops per liter, 4 drops if the water is cloudy. Stir and wait 30 minutes. The water should have a faint chlorine smell. If the strength is different or you are unsure, boil instead.",
+      "bleach_body": "Only for 5 to 9% bleach without scent or additives. Check the strength on the label first. Add 2 drops per liter, 4 drops if the water is cloudy. Stir and wait 30 minutes. The water should have a faint chlorine smell. If the strength is different or you are unsure, boil instead.",
       "iodine_title": "Tincture of iodine",
-      "iodine_body": "2% strength: 5 drops per liter. 7% strength: 2 drops per liter. Not for pregnant women or people with thyroid conditions. Follow the label.",
+      "iodine_body": "Check the strength on the label. 2% strength: 5 drops per liter, 10 drops if the water is cloudy. 7% strength: 2 drops per liter. Stir and let it stand at least 30 minutes before drinking. Do not use if you are allergic to iodine, pregnant, or have a thyroid condition. If unsure, boil instead.",
       "tablet_title": "Water purification tablets",
       "tablet_body": "Follow the pack instructions for the number of tablets and waiting time.",
       "settle_title": "Cloudy water: settle it first",

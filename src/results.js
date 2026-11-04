@@ -67,35 +67,12 @@ function ensureCss(root) {
   mk('sc-print-css', 'print.css', 'print');
 }
 
-/** Bangun result dari satu kasus uji (dipakai bila engine.js belum ada & oleh tes). */
-export function fixtureResult(cases, itemsList, id) {
-  const all = [].concat(cases.cases || [], cases.extra_cases || []);
-  const c = all.find((x) => x.id === id) || all[0];
-  const e = JSON.parse(JSON.stringify(c.expected || {}));
-  const byId = indexById(itemsList || []);
-  const head = (e.shortfall_head || []).map((s) => {
-    const it = byId[s.id] || {};
-    return Object.assign({ category: it.category, priority: it.priority, min_tier_gating: it.min_tier_gating, blocks_tier: it.min_tier_gating }, s);
-  });
-  e.status = 'ok';
-  e.shortfall = head;
-  e.tier_checks = e.tier && e.tier.checks_2_to_5;
-  e.tier = Object.assign({ next_tier: null }, e.tier);
-  if (e.tier.value != null && e.tier.value < 5 && e.tier.next_tier == null) e.tier.next_tier = e.tier.value + 1;
-  return e;
-}
-
 export async function loadResult(ctx) {
   try {
     const eng = await import('./engine.js');
     if (eng && typeof eng.evaluate === 'function') return { result: eng.evaluate(ctx.state, ctx.data), fixture: false };
-  } catch (e) { /* engine belum ada -> fixture */ }
-  try {
-    const r = await fetch(new URL('../tests/cases.json', import.meta.url));
-    const cases = await r.json();
-    const items = arr(ctx.data && ctx.data.items, 'items');
-    return { result: fixtureResult(cases, items, 'tc02_family_infant_formula_7d'), fixture: true };
-  } catch (e) { return { result: null, fixture: true }; }
+  } catch (e) { /* engine gagal dimuat: jangan menampilkan data uji */ }
+  return { result: null, fixture: false };
 }
 
 /** Daftar kekurangan ternormalisasi + diperkaya dari items.json. */
@@ -134,11 +111,12 @@ function survivalCard(ctx, result) {
   const s = result.survival || {};
   const target = result.targets && result.targets.effective_target_days;
   const days = s.days_exact != null && s.days_exact < 1 ? tr(ctx, 'result.survive_less_than_one', 'kurang dari 1 hari')
+    : s.days > 365 ? tr(ctx, 'result.survive_over_year', '> 365 hari')
     : tr(ctx, 'result.survive_value', '± {n} hari', { n: s.days });
   const ok = target != null && s.days_exact != null && s.days_exact >= target;
   const resource = tr(ctx, 'result.bottleneck.' + (BOTTLENECK_KEY[s.bottleneck] || s.bottleneck), s.bottleneck || '');
   const line = ok ? tr(ctx, 'result.bottleneck_ok', 'Semua sumber daya utama cukup untuk target.')
-    : tr(ctx, 'result.bottleneck_line', '{resource} habis lebih dulu, sekitar hari ke-{n}.', { resource, n: Math.max(1, s.days || 0) });
+    : tr(ctx, 'result.bottleneck_line', '{resource} habis lebih dulu, sekitar hari ke-{n}.', { resource, n: Math.min(365, Math.max(1, s.days || 0)) });
   return h('section', { class: 'sc-card', 'aria-labelledby': 'sc-surv-h' },
     h('h2', { id: 'sc-surv-h', text: tr(ctx, 'result.survive_heading', 'Saat ini bisa bertahan') }),
     h('p', { class: 'sc-display', 'aria-live': 'polite', text: days }),
@@ -213,6 +191,7 @@ function reqLine(ctx, r, itemsById) {
     const u = r.unit ? ' ' + r.unit : '';
     return tr(ctx, 'result.next_item', '{item}: kurang {missing}', { item: nm(r.id), missing: fmt(r.missing, lang) + u });
   }
+  if (r.kind === 'group_any' && r.days) return tr(ctx, 'result.next_group_fuel', 'Bahan bakar masak untuk {days} hari. Cukup salah satu: {items}', { days: r.days, items: (r.ids || []).map(nm).join(' / ') });
   if (r.kind === 'group_any') return tr(ctx, 'result.next_group_any', 'Salah satu dari: {items}', { items: (r.ids || []).map(nm).join(' / ') });
   if (r.kind === 'input_missing') return tr(ctx, 'result.next_input_missing', '{item}: isi angka pemakaian harian dulu', { item: nm(r.id) });
   if (r.kind === 'bag') {
@@ -237,6 +216,12 @@ function nextCard(ctx, result, itemsById) {
     link('#/belanja', tr(ctx, 'result.see_shopping', 'Lihat daftar belanja'), 'sc-btn-primary'));
 }
 
+/** Penanda terlihat untuk item evidence CUPLIKAN (B-01). */
+export function evidenceBadge(ctx, it) {
+  if (!it || it.evidence !== 'CUPLIKAN') return null;
+  return h('p', { class: 'sc-chips' }, h('span', { class: 'sc-chip sc-chip-excerpt', 'data-evidence': 'excerpt', text: '△ ' + tr(ctx, 'common.excerpt_badge', 'Dari kutipan sumber, perlu dicek ulang') }));
+}
+
 function shortfallRow(ctx, s, itemsById, buyById, storeLabel) {
   const lang = ctx.lang;
   const it = itemsById[s.id] || {};
@@ -247,7 +232,9 @@ function shortfallRow(ctx, s, itemsById, buyById, storeLabel) {
     : tr(ctx, 'result.shortfall_missing', 'Kurang {qty}', { qty: `${fmt(s.missing, lang)}${s.unit ? ' ' + s.unit : ''}` });
   const li = h('li', { class: 'sc-short' },
     h('h4', { class: 'sc-short-name', text: name }),
-    h('p', { class: 'sc-short-qty', text: qty }));
+    h('p', { class: 'sc-short-qty', text: qty }),
+    s.group_ids && s.group_ids.length > 1 ? h('p', { class: 'sc-small sc-muted', text: tr(ctx, 'result.shortfall_any_of', 'Cukup salah satu: {items}', { items: s.group_ids.map((x) => loc((itemsById[x] || {}).label, lang) || x).join(' / ') }) }) : null,
+    evidenceBadge(ctx, it));
   if (s.blocks_tier) li.append(h('p', { class: 'sc-small sc-muted', text: tr(ctx, 'result.blocks_tier', 'Menahan tier {n}', { n: s.blocks_tier }) }));
   const chips = h('p', { class: 'sc-chips' });
   if (buy.often_at_home) chips.append(h('span', { class: 'sc-chip sc-chip-home', text: tr(ctx, 'result.already_at_home', 'Biasanya sudah ada di rumah') }));
@@ -257,7 +244,7 @@ function shortfallRow(ctx, s, itemsById, buyById, storeLabel) {
   if (stores.length) {
     li.append(h('p', { class: 'sc-small sc-muted', text: tr(ctx, 'result.where_to_buy', 'Di mana mendapatkannya') }),
       h('p', { class: 'sc-chips' }, stores.map((sid) => h('span', { class: 'sc-chip sc-chip-store', text: storeLabel(sid) }))));
-    if ((buy.examples || []).length) li.append(h('p', { class: 'sc-small sc-muted', text: `${tr(ctx, 'stores.examples_label', 'Contoh umum')}: ${buy.examples.join(', ')}` }));
+    if ((buy.examples || []).length) li.append(h('p', { class: 'sc-small sc-muted', text: `${tr(ctx, 'stores.examples_label', 'Contoh umum, bukan rekomendasi')}: ${buy.examples.join(', ')}` }));
   }
   if (buy.diy) li.append(h('p', { class: 'sc-small' }, h('strong', { text: tr(ctx, 'result.diy_alt', 'Alternatif hemat atau buat sendiri') + ': ' }), loc(buy.diy, lang)));
   if (buy.free_official) {

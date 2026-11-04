@@ -336,7 +336,8 @@
   "meds_days_formula": "max(stock_days tier T, meds.min_days)",
   "cash_days_formula": "cash.gating_days bila T>=3",
   "gating_groups": {
-   "alt_power_any": "cukup salah satu item grup (power_station, solar_panel, generator) dimiliki >= 1"
+   "alt_power_any": "cukup salah satu item grup (power_station, solar_panel, generator) dimiliki >= 1",
+   "cooking_fuel_any": "cukup salah satu item grup (fuel_canister, fuel_lpg, fuel_alt_stove) memiliki hari bahan bakar >= stock_days tier (T4: 14, T5: 30); jumlah MAFF ~6 kaleng/orang/minggu hanya saran tampilan (D-047)"
   },
   "score_cannot_raise_tier": true,
   "target_tier": "tier tertinggi (>=1) dengan stock_days <= effective_target_days; hanya untuk tampilan 'target Anda setara tier X'",

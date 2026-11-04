@@ -71,3 +71,17 @@ Permintaan ke E1/PM:
 - SW: `survivalcheck-v2`; semua src/*.js, styles/*.css, data/*.json, i18n/*.json masuk CORE precache.
 - Unit: `meds_personal` ("hari stok") dan `medical_device_backup_power` ("Wh") di items.json tetap; engine menimpa ke "hari" (UNIT_OVERRIDE). Disarankan samakan di items.json kelak; angka tidak diubah.
 - Uji: `tests/e2e-flow.mjs` (alur 360 px, offline, EN, ekspor/impor/hapus; `SHOTS_DIR=<dir>` menyimpan screenshot).
+
+## Fix (perbaikan temuan QA Q1, 2026-11-04)
+
+Perubahan data (diizinkan PM; kontrak "jangan ubah data" dilonggarkan untuk bagian ini):
+- `data/items.json`:
+  - D-047 (B-02): `gas_canister` dan `lpg_usage` dihapus; diganti tiga item gating tier 4 `fuel_canister` (gas kaleng + kompor portabel), `fuel_lpg` (LPG 3 kg), `fuel_alt_stove` (kompor alternatif), semuanya `qty_mode: fuel_days`, unit "hari", `gating_group: cooking_fuel_any`. `fuel_canister.suggest_per_person_week: 6` (saran MAFF, hanya tampilan). `stove_portable` jadi non-gating (saran). `_schema.gating` diperbarui.
+  - B-18: unit `meds_personal` dan `medical_device_backup_power` jadi "hari"; `UNIT_OVERRIDE` dihapus dari engine.
+  - B-05: `why` `water_pet_dog`, `water_pet_cat`, `soap`, `map_paper_local`, `tarpaulin_rope`, `fridge_food_safety_knowledge`, `generator` ditulis ulang tanpa "cuplikan/perlu verifikasi QA/snippet". Penanda kutipan kini lewat UI (`evidence: CUPLIKAN` tetap).
+- `data/rules.json`: `tier_rule.gating_groups.cooking_fuel_any` ditambahkan.
+- `data/sources-to-buy.json`: entri `gas_canister`/`lpg_usage` diganti `fuel_canister`/`fuel_lpg`/`fuel_alt_stove` (tanpa harga; catatan saran 6 kaleng/orang/minggu di `buy_tip`).
+- `tests/cases.json`: tc06 (syarat naik `group_any` hari, items_eval, urutan shortfall_head) dan tc10 (`fuel_canister: 33` hari menggantikan `gas_canister: 520`; shortfall_head, items_eval, category_progress.food 42,9 -> 43,6) dihitung ulang; kasus lain tidak berubah.
+
+Kode: `engine.js` (qty_mode `fuel_days`, grup gating berbasis hari, satu baris kekurangan per grup), `forms.js` (isian hari, saran MAFF, penanda kutipan, unit "-" tak tampil, B-11, catatan air 4 L), `results.js` (penanda kutipan, "> 365 hari", hapus fallback fixture; `fixtureResult` pindah ke `tests/fixture.mjs`), `shopping.js` (penanda kutipan, saring item satuan "-", "cukup salah satu"), `storage.js` (tolak state array), `app.js` + `styles/*` (target sentuh, fokus h1, judul, overflow 320 px), `index.html` (CSP meta), `manifest.webmanifest` (tanpa orientation), `pages.yml` (cancel-in-progress false), `sw.js` v3, i18n id/en.
+Tes baru: `tests/fixes.test.mjs` (node:test) dan `tests/e2e-fixes.mjs` (Playwright, 320/360 px).
