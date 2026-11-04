@@ -22,7 +22,7 @@ jobs:
         run: |
           mkdir _site
           cp index.html manifest.webmanifest sw.js .nojekyll _site/
-          cp -r src styles icons data i18n _site/
+          cp -r src styles icons data i18n fonts _site/
           mkdir _site/docs && cp docs/sources.md _site/docs/
           rm -f _site/icons/make-icons.mjs _site/data/*.md
       - uses: actions/configure-pages@v5
