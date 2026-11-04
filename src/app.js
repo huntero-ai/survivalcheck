@@ -242,7 +242,8 @@ let renderToken = 0;
 
 function activeTab(name) {
   if (name === 'home') return 'home';
-  if (['inventaris', 'daya'].includes(name)) return 'stok';
+  // Alur penyiapan (profil, target, keluarga) adalah bagian dari Stok.
+  if (['profil', 'target', 'keluarga', 'inventaris', 'daya'].includes(name)) return 'stok';
   return 'more';
 }
 
@@ -251,9 +252,9 @@ function updateChrome(name, rest) {
   els.nav.querySelectorAll('a').forEach((a) => {
     if (a.dataset.tab === tab) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
   });
-  const setupHidden = ['profil', 'target', 'keluarga'].includes(name);
-  els.nav.hidden = setupHidden;
-  document.body.classList.toggle('has-nav', !setupHidden);
+  // Nav bawah selalu tampil; padding bawah (has-nav) mencegah konten tertutup.
+  els.nav.hidden = false;
+  document.body.classList.add('has-nav');
   // stepper
   document.querySelectorAll('.stepper-host').forEach((n) => n.remove());
   const idx = SETUP_STEPS.findIndex((s) => s.route === name);
