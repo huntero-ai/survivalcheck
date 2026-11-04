@@ -19,7 +19,7 @@ function distSeg(px, py, ax, ay, bx, by) {
 }
 // Koordinat dalam ruang 0..512. scale: ukuran isi (1 = penuh, maskable lebih kecil).
 function sample(x, y, maskable) {
-  const bg = [15, 107, 90], fg = [255, 255, 255];
+  const bg = [0, 114, 204], fg = [255, 255, 255];
   const rr = 96;
   if (!maskable) { // sudut membulat -> transparan
     const cx = Math.min(Math.max(x, rr), 512 - rr), cy = Math.min(Math.max(y, rr), 512 - rr);
