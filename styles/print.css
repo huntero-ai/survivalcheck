@@ -1,0 +1,26 @@
+/* SurvivalCheck - cetak rapi (E3). Dimuat dengan media="print". Hitam-putih, tanpa nav, tanpa potongan di tengah item. */
+@page { margin: 14mm; }
+html, body { background: #fff !important; color: #000 !important; font-size: 11pt; }
+body * { color: #000 !important; background: transparent !important; box-shadow: none !important; text-shadow: none !important; }
+nav, header, footer, [role="navigation"], .bottom-nav, .sc-noprint, .sc-actions, .sc-sticky, button, .sc-btn, .sc-check, details > summary { display: none !important; }
+.sc-print-only { display: block !important; }
+.sc-printhead { font-size: 16pt; font-weight: 700; margin: 0 0 4pt; }
+.sc-printfoot { margin-top: 14pt; padding-top: 6pt; border-top: 1px solid #000; font-size: 9pt; }
+.sc-page { max-width: none; padding: 0; margin: 0; }
+.sc-card { border: 0 !important; border-top: 1px solid #000 !important; border-radius: 0; padding: 6pt 0 0; margin: 0 0 10pt; }
+.sc-group { break-inside: auto; }
+.sc-group h2 { font-size: 13pt; break-after: avoid; page-break-after: avoid; }
+.sc-checkitem, .sc-short, .sc-prog li { break-inside: avoid; page-break-inside: avoid; }
+.sc-checklabel { min-height: 0; padding: 3pt 0; gap: 6pt; }
+.sc-box { display: inline-block !important; flex: none; font-size: 14pt; line-height: 1; }
+.sc-box::before { content: "\2610"; }
+.sc-checkitem.done .sc-box::before { content: "\2612"; }
+.sc-checkitem[hidden] { display: none !important; }
+.sc-checkitem.done .sc-itemname { text-decoration: line-through; }
+.sc-indent { margin-left: 20pt; }
+.sc-chip { border: 1px solid #000; background: #fff !important; }
+.sc-bar { border: 1px solid #000; }
+.sc-bar-fill { background: #000 !important; }
+.sc-info, .sc-danger { border: 1px solid #000 !important; padding: 4pt; }
+a { text-decoration: none; }
+a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; }
