@@ -161,8 +161,9 @@ let token = 0;
 export function render(root, ctx) {
   const my = ++token;
   root.textContent = '';
+  const title = h('h1', { tabindex: '-1', text: tr(ctx, 'shopping.title', 'Daftar belanja') });
   const page = h('div', { class: 'sc-page sc-shopping' },
-    h('h1', { text: tr(ctx, 'shopping.title', 'Daftar belanja') }),
+    title,
     h('p', { class: 'sc-muted', role: 'status', text: tr(ctx, 'common.loading', 'Memuat...') }));
   root.append(page);
 
@@ -177,6 +178,7 @@ export function render(root, ctx) {
     let list = build();
 
     page.textContent = '';
+    page.append(title);
     const status = h('p', { class: 'sc-sr', role: 'status', 'aria-live': 'polite' });
     const progress = h('p', { class: 'sc-muted' });
     const body = h('div', { class: 'sc-shop-body' });
@@ -199,13 +201,13 @@ export function render(root, ctx) {
           const qty = e.needsInput ? tr(ctx, 'shopping.needs_input', FALLBACK.needs_input) : `${fmt(e.qty, ctx.lang)}${e.unit ? ' ' + e.unit : ''}`;
           const li = h('li', { class: 'sc-checkitem' + (input.checked ? ' done' : '') });
           if (hide && input.checked) li.hidden = true;
-          li.append(
+          li.append(...[
             h('label', { for: cid, class: 'sc-checklabel' },
               input, h('span', { class: 'sc-box', 'aria-hidden': 'true' }),
               h('span', { class: 'sc-itemname', text: e.label }),
               h('span', { class: 'sc-itemqty', text: qty })),
             e.free ? h('p', { class: 'sc-small sc-muted sc-indent', text: e.free.text + (e.free.source ? ` (${e.free.source})` : '') }) : null,
-            e.tip ? h('p', { class: 'sc-small sc-muted sc-indent', text: e.tip }) : null);
+            e.tip ? h('p', { class: 'sc-small sc-muted sc-indent', text: e.tip }) : null].filter(Boolean));
           input.addEventListener('change', () => {
             if (input.checked) checked[e.id] = true; else delete checked[e.id];
             li.classList.toggle('done', input.checked);
@@ -249,7 +251,7 @@ export function render(root, ctx) {
     btnTxt.addEventListener('click', () => { try { downloadTxt(plain(), 'daftar-belanja.txt'); } catch (e) { flash(tr(ctx, 'shopping.copy_failed', 'Tidak bisa mengunduh otomatis. Pakai tombol cetak.')); } });
 
     const m = list.meta;
-    page.append(
+    page.append(...[
       h('p', { class: 'sc-print-only sc-printhead', text: tr(ctx, 'shopping.print_title', FALLBACK.title) }),
       m.persons != null ? h('p', { class: 'sc-muted' }, tr(ctx, 'shopping.print_for', FALLBACK.for, { n: m.persons, days: m.days })) : null,
       h('p', { class: 'sc-muted sc-noprint', text: tr(ctx, 'shopping.intro', '') }),
@@ -260,13 +262,13 @@ export function render(root, ctx) {
       h('div', { class: 'sc-actions sc-noprint sc-sticky' }, btnPrint, btnCopy, btnTxt),
       h('p', { class: 'sc-small sc-muted sc-noprint', text: tr(ctx, 'shopping.print_tip', '') }),
       h('p', { class: 'sc-print-only sc-printfoot', text: `${new Date().toLocaleDateString(ctx.lang === 'en' ? 'en-GB' : 'id-ID')} · ${tr(ctx, 'warnings.not_substitute', 'Bukan pengganti instruksi otoritas setempat.')}` }),
-      h('p', { class: 'sc-noprint' }, h('a', { href: '#/hasil', class: 'sc-btn sc-btn-secondary', text: tr(ctx, 'common.back', 'Kembali') })));
+      h('p', { class: 'sc-noprint' }, h('a', { href: '#/hasil', class: 'sc-btn sc-btn-secondary', text: tr(ctx, 'common.back', 'Kembali') }))].filter(Boolean));
     draw();
     updateProgress();
   }).catch(() => {
     if (my !== token) return;
     page.textContent = '';
-    page.append(h('p', { role: 'alert', text: tr(ctx, 'errors.data_load', 'Data gagal dimuat.') }));
+    page.append(title, h('p', { role: 'alert', text: tr(ctx, 'errors.data_load', 'Data gagal dimuat.') }));
   });
 }
 

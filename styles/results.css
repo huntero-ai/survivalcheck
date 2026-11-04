@@ -81,3 +81,5 @@
 
 @media (prefers-reduced-motion: reduce) { .sc-page * { transition: none !important; animation: none !important; } }
 @media (max-width: 380px) { .sc-btn { flex: 1 1 100%; } }
+/* Integrasi: bilah aksi lengket jangan tertutup bottom nav tetap. */
+.sc-sticky { position: static; } /* tiga tombol bertumpuk menutupi daftar di 360 px */

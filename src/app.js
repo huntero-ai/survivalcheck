@@ -9,6 +9,7 @@ const DATA_FILES = {
   power: 'data/power.json',
   indicators: 'data/bnpb_family_indicators.json',
   buy: 'data/sources-to-buy.json',
+  province_risks: 'data/province_risks.json',
 };
 const MONTH_MS = 30 * 24 * 3600 * 1000;
 const REMINDERS = [
@@ -202,6 +203,7 @@ function loadCss(href) {
   if (loadedCss.has(href)) return;
   loadedCss.add(href);
   const l = h('link', { rel: 'stylesheet', href });
+  if (/print\.css$/.test(href)) l.media = 'print'; // print.css tidak punya @media sendiri
   l.addEventListener('error', () => l.remove());
   document.head.append(l);
 }
@@ -414,6 +416,14 @@ function infoGuides(main) {
     if (sc.id === 'nuclear') body.append(h('p', {}, t('info.guides.nuclear_lead')), h('div', { class: 'notice warn' }, h('strong', {}, t('info.guides.ki_title')), h('p', {}, t('info.guides.ki_body'))), h('p', {}, t('info.guides.nuclear_shelter')));
     if (intl) body.append(h('p', { class: 'muted' }, t('scenarios.note_international')));
     body.append(h('p', { class: 'muted' }, t('scenarios.' + sc.id + '_desc')));
+    for (const phase of ['before', 'during', 'after']) {
+      const pts = I18n.raw('info.guides.' + sc.id + '.' + phase);
+      const list = Array.isArray(pts) ? pts : typeof pts === 'string' ? [pts] : [];
+      if (!list.length) continue;
+      body.append(h('h3', {}, t('info.guides.' + phase)), h('ul', {}, list.map((p) => h('li', {}, String(p)))));
+    }
+    const src = I18n.raw('info.guides.' + sc.id + '.source');
+    if (typeof src === 'string') body.append(h('p', { class: 'muted small' }, t('info.guides.source_line', { source: src })));
     main.append(h('details', { class: 'guide' }, h('summary', {}, h('span', {}, I18n.getLang() === 'en' ? sc.label.en : sc.label.id), h('span', { class: 'chip ' + (intl ? 'chip-info' : '') }, t(intl ? 'scenarios.label_international' : 'scenarios.label_national'))), body));
   }
 }

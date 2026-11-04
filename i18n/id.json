@@ -50,7 +50,9 @@
       "percent": "{n}%",
       "per_day": "per hari",
       "per_person_day": "per orang per hari"
-    }
+    },
+    "coming_soon": "Segera hadir",
+    "coming_soon_body": "Bagian ini sedang disiapkan dan akan tersedia pada pembaruan berikutnya."
   },
   "nav": {
     "home": "Beranda",
@@ -615,7 +617,13 @@
     "plan_month": "Bulan depan",
     "plan_later": "Setelah itu",
     "tier_up_message": "Selamat, kamu naik ke tier {n}.",
-    "scenario_gaps": "Tambahan untuk skenario {scenario}"
+    "scenario_gaps": "Tambahan untuk skenario {scenario}",
+    "next_group_any": "Salah satu dari: {items}",
+    "next_input_missing": "{item}: isi angka pemakaian harian dulu",
+    "next_bag_more": "Centang {n} item lagi.",
+    "next_family_more": "{n} poin lagi.",
+    "shortfall_needs_input": "Isi angka pemakaian harian untuk menghitung",
+    "blocks_tier": "Menahan tier {n}"
   },
   "shopping": {
     "title": "Daftar belanja",
@@ -636,7 +644,9 @@
     "group_free_official": "Gratis atau resmi",
     "group_at_home": "Biasanya sudah ada di rumah (cek dulu)",
     "check_label_note": "Untuk pemutih, yodium, dan tablet: cek kadar dan petunjuk di label.",
-    "rx_note": "Obat resep: tanyakan ke dokter, fasilitas kesehatan, atau apotek. Jangan membeli obat keras tanpa resep."
+    "rx_note": "Obat resep: tanyakan ke dokter, fasilitas kesehatan, atau apotek. Jangan membeli obat keras tanpa resep.",
+    "needs_input": "isi pemakaian harian dulu",
+    "group_other": "Lainnya"
   },
   "stores": {
     "minimarket": "Minimarket",
@@ -693,7 +703,213 @@
       "nuclear_lead": "Belum ada panduan khusus untuk warga Indonesia. Isi di sini mengacu pada rujukan internasional (CDC, Inggris, Finlandia, Polandia) dan hanya sebagai gambaran umum. Ikuti arahan otoritas yang berwenang.",
       "ki_title": "Tablet kalium iodida (KI)",
       "ki_body": "Tablet kalium iodida tidak masuk daftar belanja dan jangan diminum sendiri. Hanya minum bila otoritas yang berwenang memberi instruksi, dan ikuti dosis yang mereka berikan.",
-      "nuclear_shelter": "Berlindung di dalam ruangan setidaknya 24 jam atau sampai ada arahan lain."
+      "nuclear_shelter": "Berlindung di dalam ruangan setidaknya 24 jam atau sampai ada arahan lain.",
+      "earthquake": {
+        "before": [
+          "Ikat atau paku perabot ke dinding; taruh barang berat di bagian bawah.",
+          "Tentukan titik aman di dalam rumah, serta titik kumpul utama dan cadangan di luar.",
+          "Taruh alas kaki dan senter di dekat tempat tidur.",
+          "Siapkan alat pemadam api (APAR), peluit, dan Tas Siaga.",
+          "Siapkan helm, atau bantal, untuk melindungi kepala."
+        ],
+        "during": [
+          "Drop, Cover, Hold On: merunduk, berlindung, dan bertahan. Jangan lari saat guncangan.",
+          "Lindungi kepala dengan helm atau bantal.",
+          "Setelah guncangan berhenti, menuju titik kumpul."
+        ],
+        "after": [
+          "Bila ada tanda likuefaksi, longsor, api, atau gas, evakuasi mendatar, menjauh dari lokasi.",
+          "Pakai alas kaki dan bawa senter yang sudah disiapkan.",
+          "Berkumpul di titik kumpul utama; bila tidak bisa, pakai titik cadangan.",
+          "Di pantai: gempa kuat atau lama berarti ikuti panduan tsunami."
+        ],
+        "source": "BNPB 2026 dan 2019/2020; BMKG"
+      },
+      "tsunami": {
+        "before": [
+          "Kenali jalur dan rambu evakuasi serta tempat tinggi terdekat dari rumah, sekolah, dan tempat kerja.",
+          "Siapkan Tas Siaga, radio, dan senter.",
+          "Latih evakuasi berjalan kaki bersama keluarga."
+        ],
+        "during": [
+          "Gempa kuat atau lama di dekat pantai adalah peringatan dini: segera ke tempat tinggi. Jangan menunggu sirene atau peringatan resmi.",
+          "Menjauh dari pantai dan tepi sungai.",
+          "Evakuasi berjalan kaki, hindari jembatan; tinggalkan kendaraan bila macet.",
+          "Bila tempat aman tidak diketahui, larilah sejauh mungkin dari pantai dan naik ke tempat yang lebih tinggi.",
+          "Status AWAS dan SIAGA berarti evakuasi. WASPADA berarti jauhi pantai dan tepi sungai."
+        ],
+        "after": [
+          "Tsunami bisa datang sampai 5 kali. Jangan kembali sebelum dinyatakan aman oleh pihak berwenang.",
+          "Ikuti info dari TV nasional, radio daerah, sirene, atau kentongan.",
+          "Mengikuti jalur dan rambu evakuasi sampai tiba di tempat aman."
+        ],
+        "source": "BMKG (siaran pers 2021, Buku Saku Gempabumi dan Tsunami 2020); BNPB"
+      },
+      "flood_landslide": {
+        "before": [
+          "Siapkan diri untuk hidup mandiri sekurangnya 3 hari.",
+          "Simpan dokumen penting dalam plastik kedap air.",
+          "Siapkan ember atau wadah berisi air bersih.",
+          "Siapkan tongkat dan sepatu pelindung."
+        ],
+        "during": [
+          "Matikan listrik utama dan lepas regulator LPG.",
+          "Mengungsilah sebelum air setinggi lutut; arus 30 cm saja sudah berbahaya.",
+          "Gunakan tongkat untuk memeriksa pijakan.",
+          "Longsor: menjauh bila terdengar gemuruh atau sirine, dan waspada longsor susulan."
+        ],
+        "after": [
+          "Saat membersihkan rumah, pakai sarung tangan, boots, dan disinfektan.",
+          "Buang makanan yang terendam banjir.",
+          "Air minum: rebus, atau olah dengan tawas, PAC, tablet, atau iodine.",
+          "Cuci tangan pakai sabun; sepatu pelindung mencegah leptospirosis."
+        ],
+        "source": "BNPB 2026 dan 2019; Kemenkes (air bersih saat banjir; penyakit menular saat banjir)"
+      },
+      "eruption": {
+        "before": [
+          "Siapkan masker dan kacamata pelindung.",
+          "Siapkan makanan siap saji, senter dan baterai, uang tunai secukupnya, dan obat khusus.",
+          "Kenali radius bahaya (KRB) dan pantau MAGMA Indonesia."
+        ],
+        "during": [
+          "Patuhi radius bahaya yang ditetapkan.",
+          "Pakai masker (atau kain basah) dan kacamata pelindung. Jangan pakai lensa kontak.",
+          "Pakai baju lengan panjang, celana panjang, dan topi."
+        ],
+        "after": [
+          "Bersihkan abu dari atap rumah.",
+          "Waspada lahar saat hujan.",
+          "Di luar rumah, tetap pakai masker dan kacamata pelindung."
+        ],
+        "source": "BNPB 2019/2020; ESDM dan PVMBG"
+      },
+      "haze": {
+        "before": [
+          "Siapkan masker N95 untuk tiap anggota keluarga.",
+          "Pantau kualitas udara. Kategori PM10 menurut BNPB: Baik 0-50, Sedang 50-150, Tidak Sehat 150-250, Sangat Tidak Sehat 250-350, Berbahaya di atas 350.",
+          "Kenali kelompok rentan: balita, ibu hamil, lansia, penderita asma, paru, atau jantung."
+        ],
+        "during": [
+          "Tetap di dalam rumah dan tutup akses asap.",
+          "Pakai AC atau filtrasi udara bila ada.",
+          "Bila harus keluar, pakai N95 dengan rapat tanpa celah.",
+          "Kelompok rentan sebaiknya tidak keluar rumah.",
+          "Cukup minum air dan makan bergizi."
+        ],
+        "after": [
+          "Ke puskesmas atau rumah sakit bila sesak, batuk menetap, nyeri dada, atau iritasi mata berat.",
+          "Sebagian besar ISPA bisa dirawat di rumah dengan istirahat dan cukup minum.",
+          "Terus pantau kualitas udara sebelum beraktivitas di luar."
+        ],
+        "source": "BNPB 2019/2020; Kemenkes (Agustus dan Oktober 2026)"
+      },
+      "drought": {
+        "before": [
+          "Pasang tandon air di pekarangan untuk menampung air hujan.",
+          "BMKG: kemarau 2026 lebih kering dari normal, berlangsung 3 sampai 7 bulan tergantung wilayah.",
+          "Aplikasi ini memakai 4 L per orang per hari untuk skenario ini sebagai asumsi (rujukan Latvia), bukan angka resmi Indonesia."
+        ],
+        "during": [
+          "Hemat air dan atur jadwal pemakaian.",
+          "Minta bantuan air bersih ke pihak berwenang (pemerintah daerah)."
+        ],
+        "after": [
+          "Tetap hemat air selama kemarau belum berakhir.",
+          "Tampung air hujan di tandon begitu musim hujan tiba."
+        ],
+        "source": "BNPB 2019/2020; BMKG (Juni 2026). Tidak ada angka stok air resmi dari sumber Indonesia"
+      },
+      "extreme_weather": {
+        "before": [
+          "Pantau peringatan dini BMKG: curah hujan, siklon tropis, gelombang tinggi, dan rob. Contact Center BMKG: 196.",
+          "Pastikan alat komunikasi, senter, dan radio siap."
+        ],
+        "during": [
+          "Bawa barang masuk rumah, kunci pintu dan jendela, lalu matikan listrik.",
+          "Saat petir: membungkuk, duduk, dan peluk lutut. Jangan tiarap.",
+          "Jauhi pohon besar dan papan reklame.",
+          "Gelombang pasang: siapkan alat komunikasi dan jauhi pantai."
+        ],
+        "after": [],
+        "source": "BNPB 2012 dan 2019; BMKG (peringatan dini, Contact Center 196)"
+      },
+      "power_outage": {
+        "before": [
+          "Pastikan power bank, radio, dan senter dengan baterai ada di Tas Siaga. Taruh satu senter di kamar.",
+          "Siapkan uang tunai dan kompor yang tidak butuh listrik (rujukan Swedia, Jerman, Swiss).",
+          "Bila memakai alat medis listrik, bicarakan rencana cadangan dengan dokter dan penyedia alat.",
+          "Isi modul Daya listrik di aplikasi ini untuk memperkirakan berapa lama dayamu cukup."
+        ],
+        "during": [
+          "Kumpulkan keluarga. Pakai senter, bukan lilin.",
+          "Cek info resmi lewat radio atau ponsel; jangan menyebar info yang belum jelas.",
+          "Jangan pakai genset, kompor, atau arang di dalam rumah, garasi, atau ruang semi tertutup. Risiko gas CO.",
+          "Jaga pintu kulkas dan freezer tetap tertutup."
+        ],
+        "after": [
+          "Kulkas menjaga makanan aman sekitar 4 jam; freezer penuh sekitar 48 jam. Buang makanan mudah rusak setelah 4 jam tanpa listrik.",
+          "Obat yang harus dingin: tanyakan dokter atau apoteker sebelum memakainya setelah listrik padam."
+        ],
+        "source": "BNPB 2026; CDC dan FDA (keamanan makanan dan obat); panduan Swedia, Jerman, Swiss, dan Denmark (tunai, kompor, CO)"
+      },
+      "pandemic": {
+        "before": [
+          "Simpan air dan pangan minimal 14 hari, dan obat rutin untuk 30 hari.",
+          "Siapkan masker, hand sanitizer, dan termometer.",
+          "Pastikan imunisasi rutin tetap berjalan."
+        ],
+        "during": [
+          "Cuci tangan dengan sabun dan pakai hand sanitizer.",
+          "Jaga jarak minimal 1 m dan pakai masker di tempat umum.",
+          "Terapkan etika batuk.",
+          "Bila bergejala: isolasi diri dan manfaatkan telemedis.",
+          "Disinfeksi permukaan yang sering disentuh."
+        ],
+        "after": [
+          "Di pengungsian: pakai masker, jaga kebersihan tangan, dan lapor gejala segera.",
+          "Lanjutkan imunisasi rutin, termasuk imunisasi kejar (risiko campak dan pertusis)."
+        ],
+        "source": "BNPB 2020; Kemenkes 2025; CDC (stok 2 minggu); Jerman dan Swiss (masker FFP2, termometer)"
+      },
+      "conflict": {
+        "before": [
+          "Rujukan internasional, belum ada panduan warga Indonesia. Bila otoritas Indonesia mengeluarkan arahan, ikuti arahan itu.",
+          "Siapkan pangan dan air untuk minimal 7 hari (rujukan Swedia, Norwegia, Estonia).",
+          "Siapkan uang tunai untuk sekitar 1 minggu.",
+          "Siapkan radio dengan baterai atau engkol."
+        ],
+        "during": [
+          "Hindari kerumunan demo dan laporkan kerusuhan atau kekerasan ke Kepolisian (BNPB 2012).",
+          "Prinsip \"dua dinding\" (Latvia, Polandia): berada di tempat yang dibatasi dua dinding dari luar, jauh dari jendela.",
+          "Waspadai disinformasi; cek kabar lewat radio dan sumber resmi."
+        ],
+        "after": [
+          "Ikuti arahan otoritas sebelum kembali ke rumah atau bepergian.",
+          "Laporkan orang atau rencana mencurigakan ke pihak berwenang."
+        ],
+        "source": "Swedia, Norwegia, Estonia, Latvia, dan Polandia (rujukan internasional). Indonesia: BNPB 2012 untuk kerusuhan"
+      },
+      "nuclear": {
+        "before": [
+          "Rujukan internasional, belum ada panduan warga Indonesia. Ikuti arahan otoritas (BAPETEN, BNPB, pemerintah daerah).",
+          "Siapkan plastik lembaran dan lakban untuk menyegel jendela dan ventilasi.",
+          "Siapkan radio berbaterai untuk mengikuti arahan.",
+          "Tablet kalium iodida (KI) tidak perlu distok. Minum hanya atas instruksi otoritas."
+        ],
+        "during": [
+          "Masuk ke dalam bangunan dan tetap di dalam sedikitnya 24 jam, atau sampai ada arahan lain.",
+          "Matikan AC, kipas, dan ventilasi; tutup jendela dan pintu.",
+          "Segel celah dengan plastik dan lakban.",
+          "Bawa hewan peliharaan masuk. Jangan keluar untuk menjemput keluarga."
+        ],
+        "after": [
+          "Lepas pakaian lapisan luar; ini bisa menghilangkan hingga 90% material radioaktif. Lalu mandi.",
+          "Minum KI hanya bila otoritas menginstruksikan, sesuai dosis yang mereka berikan.",
+          "Tetap ikuti radio dan arahan otoritas sebelum keluar."
+        ],
+        "source": "Rujukan internasional: CDC, Inggris, Finlandia, Polandia, Estonia, Latvia. Indonesia: BAPETEN 2017 (hanya cuplikan, belum diverifikasi)"
+      }
     },
     "water": {
       "title": "Penjernihan air",
@@ -822,5 +1038,42 @@
     "checked": "Dicentang",
     "unchecked": "Belum dicentang",
     "dialog_close": "Tutup dialog"
+  },
+  "f": {
+    "range": "Isi angka antara {min} dan {max}.",
+    "needs_input": "Isi pemakaian harian",
+    "why": "Mengapa dan sumber",
+    "days": "hari",
+    "hours": "jam",
+    "qty": "Jumlah",
+    "hungry": "Boros daya",
+    "see_result": "Lihat hasil sementara",
+    "to_family": "Lanjut ke evaluasi keluarga",
+    "next_category": "Kategori berikutnya: {name}",
+    "other_items": "Item lainnya",
+    "items": "Daftar item",
+    "usage_per_day": "Pemakaian per hari (total rumah tangga)",
+    "meds_from_profile": "Dihitung dari obat rutin di Profil: stok terendah {n} hari.",
+    "power_from_module": "Dihitung dari modul Daya listrik.",
+    "grams_per_unit": "Berat per {unit} (gram)",
+    "kcal_required": "Wajib dari label",
+    "kcal_unresolved": "isi kalori per kemasan dari label agar terhitung.",
+    "other_kcal_total": "Total kalori pangan lain (kkal)",
+    "not_counted": "tidak dihitung",
+    "answered": "terjawab",
+    "skip_warn": "Bila dilewati, yang belum dijawab dihitung 0. Tier 2 butuh skor minimal 13 dan tier 4 minimal 25.",
+    "estimate_note": "Semua angka watt adalah perkiraan. Cek label perangkatmu.",
+    "pick_medical": "Di Profil kamu menandai ada alat medis listrik. Pilih alat medisnya di bawah (ditandai \"Alat medis\") agar daya ikut menentukan hari bertahan.",
+    "pick_medical_short": "Pilih alat medis di atas untuk melihat hari daya.",
+    "medical_days": "Alat medis: cukup ± {n} hari",
+    "medical_short": "Daya alat medis kurang dari target {n} hari.",
+    "too_big": "Kapasitas sebesar ini jarang realistis untuk rumah tangga. Bicarakan dengan dokter atau penyedia alat tentang rencana cadangan.",
+    "self_suff": "Mandiri selama cuaca cerah",
+    "sun_default": "Kosongkan untuk memakai asumsi {n} jam.",
+    "assumptions": "Asumsi perhitungan",
+    "assumption_note": "Angka bertanda asumsi bukan nilai resmi. Cek label perangkatmu.",
+    "safety": "Keselamatan listrik",
+    "more_safety": "Tips keselamatan lain",
+    "no_province": "Belum memilih provinsi? "
   }
 }

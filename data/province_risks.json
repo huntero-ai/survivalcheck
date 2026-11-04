@@ -1,0 +1,313 @@
+{
+ "type": "province_risks",
+ "source": "BNPB, Buku Indeks Risiko Bencana Indonesia (IRBI) Tahun 2024 (PDF dibuat 2025-05-02); 'dominant_hazards' = bencana paling banyak terjadi menurut DIBI 2024 seperti dikutip di profil provinsi; 'hazards_exposed' = daftar 'ANCAMAN BENCANA' di profil provinsi",
+ "accessed": "2026-11-03",
+ "evidence": "DIBACA",
+ "note": "IRBI 2025 ada di https://inarisk.bnpb.go.id/IRBI-2025 tetapi berupa flipbook Flash, tidak terbaca.",
+ "data": [
+  {
+   "province": "Aceh",
+   "dominant_hazards": "banjir, cuaca ekstrem, karhutla",
+   "hazards_exposed": "gempa bumi, tsunami, gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem & abrasi, karhutla",
+   "irbi_2024": 144.29,
+   "risk_class_2024": "tinggi",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Sumatera Utara",
+   "dominant_hazards": "banjir, cuaca ekstrem, karhutla",
+   "hazards_exposed": "gempa bumi, tsunami, gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem & abrasi, karhutla",
+   "irbi_2024": 139.84,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Sumatera Barat",
+   "dominant_hazards": "banjir, tanah longsor, karhutla",
+   "hazards_exposed": "gempa bumi, tsunami, gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem & abrasi, karhutla",
+   "irbi_2024": 142.55,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Riau",
+   "dominant_hazards": "banjir, gelombang pasang & abrasi, karhutla",
+   "hazards_exposed": "gempa bumi, tsunami, gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem & abrasi, karhutla",
+   "irbi_2024": 137.69,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Jambi",
+   "dominant_hazards": "banjir, karhutla",
+   "hazards_exposed": "gempa bumi, gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem & abrasi, karhutla",
+   "irbi_2024": 138.02,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Sumatera Selatan",
+   "dominant_hazards": "banjir, cuaca ekstrem, karhutla",
+   "hazards_exposed": "gempa bumi, tsunami, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem/abrasi, karhutla",
+   "irbi_2024": 131.05,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Bengkulu",
+   "dominant_hazards": "banjir, cuaca ekstrem, karhutla",
+   "hazards_exposed": "gempa bumi, tsunami, gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem & abrasi, karhutla",
+   "irbi_2024": 144.08,
+   "risk_class_2024": "tinggi",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Lampung",
+   "dominant_hazards": "banjir, cuaca ekstrem, kekeringan",
+   "hazards_exposed": "gempa bumi, tsunami, letusan gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem/abrasi, karhutla",
+   "irbi_2024": 130.1,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Kepulauan Bangka Belitung",
+   "dominant_hazards": "banjir, cuaca ekstrem, karhutla",
+   "hazards_exposed": "gempa bumi, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem & abrasi, karhutla",
+   "irbi_2024": 143.42,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Kepulauan Riau",
+   "dominant_hazards": "banjir, cuaca ekstrem, karhutla",
+   "hazards_exposed": "tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem & abrasi, karhutla",
+   "irbi_2024": 109.24,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "DKI Jakarta",
+   "dominant_hazards": "banjir, cuaca ekstrem",
+   "hazards_exposed": "gempa bumi, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem/abrasi",
+   "irbi_2024": 59.29,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Jawa Barat",
+   "dominant_hazards": "banjir, tanah longsor, cuaca ekstrem",
+   "hazards_exposed": "gempa bumi, tsunami, letusan gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, karhutla, gelombang ekstrem/abrasi",
+   "irbi_2024": 114.15,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Jawa Tengah",
+   "dominant_hazards": "banjir, tanah longsor, cuaca ekstrem",
+   "hazards_exposed": "gempa bumi, tsunami, letusan gunung api, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem/abrasi, karhutla",
+   "irbi_2024": 99.61,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "DI Yogyakarta",
+   "dominant_hazards": "cuaca ekstrem, kekeringan",
+   "hazards_exposed": "gempa bumi, letusan gunung api, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem, tsunami",
+   "irbi_2024": 102.83,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Jawa Timur",
+   "dominant_hazards": "banjir, cuaca ekstrem, tanah longsor, karhutla",
+   "hazards_exposed": "gempa bumi, letusan gunung api, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem, tsunami",
+   "irbi_2024": 113.7,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Banten",
+   "dominant_hazards": "banjir",
+   "hazards_exposed": "gempa bumi, tsunami, banjir, tanah longsor, kekeringan, cuaca ekstrem, gelombang ekstrem/abrasi, karhutla",
+   "irbi_2024": 128.64,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Bali",
+   "dominant_hazards": "tanah longsor, banjir, gempa bumi",
+   "hazards_exposed": "gempa bumi, tsunami, letusan gunung api, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem",
+   "irbi_2024": 111.28,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Nusa Tenggara Barat",
+   "dominant_hazards": "gempa bumi, tsunami, banjir, tanah longsor",
+   "hazards_exposed": "gempa bumi, tsunami, letusan gunung api, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem",
+   "irbi_2024": 113.64,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Nusa Tenggara Timur",
+   "dominant_hazards": "banjir, gempa bumi, tsunami, tanah longsor",
+   "hazards_exposed": "gempa bumi, tsunami, gunung api, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem",
+   "irbi_2024": 131.85,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Kalimantan Barat",
+   "dominant_hazards": "banjir, tanah longsor, karhutla, angin puting beliung",
+   "hazards_exposed": "gempa bumi, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem",
+   "irbi_2024": 131.66,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Kalimantan Tengah",
+   "dominant_hazards": "banjir, tanah longsor",
+   "hazards_exposed": "gempa bumi, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem",
+   "irbi_2024": 117.48,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Kalimantan Selatan",
+   "dominant_hazards": "banjir, cuaca ekstrem, karhutla",
+   "hazards_exposed": "gempa bumi, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem, tsunami",
+   "irbi_2024": 122.11,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Kalimantan Timur",
+   "dominant_hazards": "banjir, karhutla, cuaca ekstrem, tanah longsor",
+   "hazards_exposed": "gempa bumi, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem",
+   "irbi_2024": 136.11,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Kalimantan Utara",
+   "dominant_hazards": "banjir, cuaca ekstrem, tanah longsor, karhutla",
+   "hazards_exposed": "tsunami, banjir, tanah longsor, karhutla, kekeringan, gelombang ekstrem & abrasi, cuaca ekstrem",
+   "irbi_2024": 131.84,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Sulawesi Utara",
+   "dominant_hazards": "banjir, cuaca ekstrem",
+   "hazards_exposed": "gempa bumi, letusan gunung api, banjir, tanah longsor, kekeringan, gelombang ekstrem/abrasi, karhutla, cuaca ekstrem, tsunami",
+   "irbi_2024": 125.91,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Sulawesi Tengah",
+   "dominant_hazards": "banjir",
+   "hazards_exposed": "gempa bumi, tsunami, banjir, banjir bandang, tanah longsor, karhutla, kekeringan, gelombang ekstrem, abrasi",
+   "irbi_2024": 137.25,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Sulawesi Selatan",
+   "dominant_hazards": "banjir, cuaca ekstrem",
+   "hazards_exposed": "gempa bumi, banjir, cuaca ekstrem, tsunami, banjir bandang, tanah longsor, karhutla, kekeringan, gelombang ekstrem & abrasi",
+   "irbi_2024": 140.76,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Sulawesi Tenggara",
+   "dominant_hazards": "banjir, cuaca ekstrem",
+   "hazards_exposed": "gempa bumi, tsunami, banjir, cuaca ekstrem, tanah longsor, karhutla, kekeringan, gelombang ekstrem",
+   "irbi_2024": 151.77,
+   "risk_class_2024": "tinggi",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Gorontalo",
+   "dominant_hazards": "banjir",
+   "hazards_exposed": "gempa bumi, tsunami, banjir, tanah longsor, karhutla, kekeringan, gelombang ekstrem & abrasi",
+   "irbi_2024": 116.02,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Sulawesi Barat",
+   "dominant_hazards": "banjir",
+   "hazards_exposed": "gempa bumi, tsunami, banjir, tanah longsor, karhutla, kekeringan, gelombang ekstrem & abrasi",
+   "irbi_2024": 155.69,
+   "risk_class_2024": "tinggi",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Maluku",
+   "dominant_hazards": "banjir, cuaca ekstrem",
+   "hazards_exposed": "gempa bumi, tsunami, banjir, tanah longsor, karhutla, kekeringan, gelombang ekstrem & abrasi",
+   "irbi_2024": 161.5,
+   "risk_class_2024": "tinggi",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Maluku Utara",
+   "dominant_hazards": "banjir, cuaca ekstrem, gempa bumi",
+   "hazards_exposed": "gempa bumi, tsunami, banjir, letusan gunung api, tanah longsor, karhutla, kekeringan, gelombang ekstrem & abrasi, cuaca ekstrem",
+   "irbi_2024": 145.09,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Papua",
+   "dominant_hazards": "banjir, gelombang pasang & abrasi",
+   "hazards_exposed": "gempa bumi, tsunami, banjir, tanah longsor, kekeringan, cuaca ekstrem, karhutla, gelombang ekstrem/abrasi",
+   "irbi_2024": 137.43,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Papua Barat",
+   "dominant_hazards": "banjir, tanah longsor, gelombang pasang & abrasi",
+   "hazards_exposed": "gempa bumi, tsunami, banjir, tanah longsor, kekeringan, cuaca ekstrem, karhutla, gelombang ekstrem/abrasi",
+   "irbi_2024": 145.76,
+   "risk_class_2024": "tinggi",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Papua Selatan",
+   "dominant_hazards": "banjir, gelombang pasang & abrasi",
+   "hazards_exposed": "abrasi, cuaca ekstrem, banjir, gempa bumi, longsor, tsunami, karhutla, gelombang ekstrem, kekeringan",
+   "irbi_2024": 138.2,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Papua Tengah",
+   "dominant_hazards": "banjir",
+   "hazards_exposed": "banjir, banjir bandang, gelombang ekstrem & abrasi, gempa bumi, likuefaksi, karhutla, kekeringan, longsor, tsunami",
+   "irbi_2024": 116.49,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Papua Pegunungan",
+   "dominant_hazards": "tanah longsor",
+   "hazards_exposed": "banjir, karhutla, banjir bandang, cuaca ekstrem, gempa bumi, kekeringan, tanah longsor",
+   "irbi_2024": 102.05,
+   "risk_class_2024": "sedang",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  },
+  {
+   "province": "Papua Barat Daya",
+   "dominant_hazards": "banjir",
+   "hazards_exposed": "banjir, karhutla, banjir bandang, cuaca ekstrem, gempa bumi, kekeringan, tanah longsor",
+   "irbi_2024": 148.44,
+   "risk_class_2024": "tinggi",
+   "source_url": "https://inarisk.bnpb.go.id/pdf/BUKU%20IRBI%202024.pdf"
+  }
+ ]
+}

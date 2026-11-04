@@ -61,3 +61,13 @@ Permintaan ke E1/PM:
 - `ctx.data.province_risks` (isi `research/r5-indonesia.json` record province_risks atau `data/province_risks.json`) bila ingin saran provinsi dari data; sementara forms.js memakai tabel bawaan hasil turunan IRBI 2024.
 - Kunci i18n kurang (fallback dipakai): f.range, f.needs_input, f.why, f.days, f.hours, f.qty, f.hungry, f.see_result, f.to_family, f.next_category, f.other_items, f.items, f.usage_per_day, f.meds_from_profile, f.power_from_module, f.grams_per_unit, f.kcal_required, f.kcal_unresolved, f.other_kcal_total, f.not_counted, f.answered, f.skip_warn, f.estimate_note, f.pick_medical, f.pick_medical_short, f.medical_days, f.medical_short, f.too_big, f.self_suff, f.sun_default, f.assumptions, f.assumption_note, f.safety, f.more_safety, f.no_province.
 - `ctx.save(patch)` dipakai sebagai shallow merge kunci tingkat atas; forms selalu mengirim objek utuh.
+
+## Integrasi (PM/Integrator)
+
+- i18n: semua kunci permintaan E1/E2/E3 ditambahkan ke `id.json`/`en.json`; `info.guides.<skenario>.before|during|after` (array) + `.source` untuk 11 skenario, hanya dari r5-indonesia, SUMMARY 2.11, decisions D-032/033/034/037, power.md. Konflik dan nuklir berlabel rujukan internasional; KI hanya atas instruksi otoritas; tsunami: jangan menunggu sirene. `drought.after` dan `extreme_weather.after` kosong/tipis karena sumber tidak ada (extreme_weather.after sengaja kosong, renderer melewatinya). `tests/i18n.test.mjs` memeriksa kunci id=en, panjang array, tanpa harga/"53 negara".
+- Renderer panduan di `src/app.js` merender array lewat DOM (tanpa innerHTML).
+- Bug diperbaiki: `shopping.js` kehilangan `<h1>` (kini dipertahankan, fokus lewat router); teks "null" muncul di item belanja (`append(null)`); `print.css` dimuat tanpa `media="print"` sehingga menyembunyikan semua tombol di layar (kini `media=print` di `loadCss`); bilah aksi lengket belanja menimpa daftar dan tertutup bottom nav (kini statis).
+- `data/province_risks.json` dibuat dari record province_risks r5-indonesia.json (38 provinsi, nama cocok dengan `provinces.*`), dimuat di app.js sebagai `ctx.data.province_risks`; forms.js memakainya (fallback tabel bawaan; ditambah pemetaan "banjir bandang").
+- SW: `survivalcheck-v2`; semua src/*.js, styles/*.css, data/*.json, i18n/*.json masuk CORE precache.
+- Unit: `meds_personal` ("hari stok") dan `medical_device_backup_power` ("Wh") di items.json tetap; engine menimpa ke "hari" (UNIT_OVERRIDE). Disarankan samakan di items.json kelak; angka tidak diubah.
+- Uji: `tests/e2e-flow.mjs` (alur 360 px, offline, EN, ekspor/impor/hapus; `SHOTS_DIR=<dir>` menyimpan screenshot).

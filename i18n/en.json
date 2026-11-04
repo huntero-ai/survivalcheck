@@ -50,7 +50,9 @@
       "percent": "{n}%",
       "per_day": "per day",
       "per_person_day": "per person per day"
-    }
+    },
+    "coming_soon": "Coming soon",
+    "coming_soon_body": "This section is being prepared and will be available in an upcoming update."
   },
   "nav": {
     "home": "Home",
@@ -615,7 +617,13 @@
     "plan_month": "Next month",
     "plan_later": "After that",
     "tier_up_message": "Congratulations, you moved up to tier {n}.",
-    "scenario_gaps": "Extras for the {scenario} scenario"
+    "scenario_gaps": "Extras for the {scenario} scenario",
+    "next_group_any": "Any one of: {items}",
+    "next_input_missing": "{item}: enter daily use first",
+    "next_bag_more": "Check {n} more items.",
+    "next_family_more": "{n} more points.",
+    "shortfall_needs_input": "Enter daily use to calculate",
+    "blocks_tier": "Holding back tier {n}"
   },
   "shopping": {
     "title": "Shopping list",
@@ -636,7 +644,9 @@
     "group_free_official": "Free or official",
     "group_at_home": "Usually already at home (check first)",
     "check_label_note": "For bleach, iodine, and tablets: check the strength and instructions on the label.",
-    "rx_note": "Prescription medicine: ask your doctor, health facility, or pharmacist. Do not buy prescription-only medicine without a prescription."
+    "rx_note": "Prescription medicine: ask your doctor, health facility, or pharmacist. Do not buy prescription-only medicine without a prescription.",
+    "needs_input": "enter daily use first",
+    "group_other": "Other"
   },
   "stores": {
     "minimarket": "Convenience store",
@@ -693,7 +703,213 @@
       "nuclear_lead": "There is no dedicated guidance for residents of Indonesia yet. This content draws on international references (CDC, UK, Finland, Poland) and is a general overview only. Follow the competent authorities.",
       "ki_title": "Potassium iodide (KI) tablets",
       "ki_body": "Potassium iodide tablets are not on the shopping list and should not be taken on your own. Take them only if the competent authorities instruct you to, and follow the dose they give.",
-      "nuclear_shelter": "Shelter indoors for at least 24 hours or until told otherwise."
+      "nuclear_shelter": "Shelter indoors for at least 24 hours or until told otherwise.",
+      "earthquake": {
+        "before": [
+          "Fasten furniture to walls (nails or straps); keep heavy items on low shelves.",
+          "Pick a safe spot inside the home, plus a main and a backup meeting point outside.",
+          "Keep shoes and a flashlight next to your bed.",
+          "Prepare a fire extinguisher, whistle and go-bag.",
+          "Keep a helmet, or a pillow, ready to protect your head."
+        ],
+        "during": [
+          "Drop, Cover, Hold On: get down, take cover and hold on. Do not run while the ground is shaking.",
+          "Protect your head with a helmet or a pillow.",
+          "When the shaking stops, go to your meeting point."
+        ],
+        "after": [
+          "If you see signs of liquefaction, landslide, fire or gas, evacuate sideways, away from the spot.",
+          "Put on shoes and take the flashlight you prepared.",
+          "Meet at the main meeting point; if you cannot, use the backup one.",
+          "At the coast: a strong or long quake means follow the tsunami guide."
+        ],
+        "source": "BNPB 2026 and 2019/2020; BMKG"
+      },
+      "tsunami": {
+        "before": [
+          "Learn the evacuation routes and signs and the nearest high ground from home, school and work.",
+          "Prepare a go-bag, radio and flashlight.",
+          "Practise evacuating on foot with your family."
+        ],
+        "during": [
+          "A strong or long earthquake near the coast is the early warning: go to high ground right away. Do not wait for a siren or an official warning.",
+          "Move away from the beach and riverbanks.",
+          "Evacuate on foot and avoid bridges; leave your vehicle if traffic is stuck.",
+          "If you do not know where safe ground is, run as far from the coast as you can and climb higher.",
+          "Alert levels AWAS and SIAGA mean evacuate. WASPADA means stay away from the beach and riverbanks."
+        ],
+        "after": [
+          "A tsunami can arrive up to 5 times. Do not go back until the authorities say it is safe.",
+          "Follow information from national TV, local radio, sirens or kentongan drums.",
+          "Keep following the evacuation routes and signs until you reach safe ground."
+        ],
+        "source": "BMKG (2021 press release, Earthquake and Tsunami Pocket Book 2020); BNPB"
+      },
+      "flood_landslide": {
+        "before": [
+          "Prepare to be self-reliant for at least 3 days.",
+          "Keep important documents in waterproof plastic.",
+          "Have buckets or containers filled with clean water.",
+          "Have a stick and protective shoes ready."
+        ],
+        "during": [
+          "Switch off the main power and remove the LPG regulator.",
+          "Evacuate before the water reaches knee height; a 30 cm current is already dangerous.",
+          "Use a stick to test your footing.",
+          "Landslide: move away when you hear a rumble or siren, and watch for further slides."
+        ],
+        "after": [
+          "When cleaning, wear gloves and boots and use disinfectant.",
+          "Throw away food that was soaked by floodwater.",
+          "Drinking water: boil it, or treat it with alum, PAC, tablets or iodine.",
+          "Wash hands with soap; protective shoes help prevent leptospirosis."
+        ],
+        "source": "BNPB 2026 and 2019; Ministry of Health (clean water and infectious disease during floods)"
+      },
+      "eruption": {
+        "before": [
+          "Prepare masks and protective goggles.",
+          "Prepare ready-to-eat food, a flashlight and batteries, enough cash and special medicines.",
+          "Know the hazard radius zones (KRB) and follow MAGMA Indonesia."
+        ],
+        "during": [
+          "Respect the hazard radius that has been set.",
+          "Wear a mask (or a wet cloth) and protective goggles. Do not wear contact lenses.",
+          "Wear long sleeves, long trousers and a hat."
+        ],
+        "after": [
+          "Clear ash from the roof.",
+          "Watch for lahars when it rains.",
+          "Outdoors, keep wearing a mask and protective goggles."
+        ],
+        "source": "BNPB 2019/2020; Ministry of Energy and Mineral Resources (ESDM) and PVMBG"
+      },
+      "haze": {
+        "before": [
+          "Have an N95 mask for each family member.",
+          "Follow air quality readings. BNPB PM10 categories: Good 0-50, Moderate 50-150, Unhealthy 150-250, Very unhealthy 250-350, Hazardous above 350.",
+          "Know who is vulnerable: young children, pregnant women, older people, and people with asthma, lung or heart conditions."
+        ],
+        "during": [
+          "Stay indoors and close off ways for smoke to get in.",
+          "Use air conditioning or air filtration if you have it.",
+          "If you must go out, wear an N95 snugly with no gaps.",
+          "Vulnerable people should not go outside.",
+          "Drink enough water and eat well."
+        ],
+        "after": [
+          "Go to a clinic or hospital if you have shortness of breath, a persistent cough, chest pain or severe eye irritation.",
+          "Most acute respiratory infections can be treated at home with rest and enough fluids.",
+          "Keep checking air quality before going outdoors."
+        ],
+        "source": "BNPB 2019/2020; Ministry of Health (August and October 2026)"
+      },
+      "drought": {
+        "before": [
+          "Install a water tank in your yard to collect rainwater.",
+          "BMKG: the 2026 dry season is drier than normal and lasts 3 to 7 months depending on the region.",
+          "This app uses 4 L per person per day for this scenario as an assumption (a Latvian reference), not an official Indonesian figure."
+        ],
+        "during": [
+          "Save water and set a schedule for using it.",
+          "Ask the authorities (local government) for clean water assistance."
+        ],
+        "after": [
+          "Keep saving water until the dry season is over.",
+          "Collect rainwater in your tank once the rainy season arrives."
+        ],
+        "source": "BNPB 2019/2020; BMKG (June 2026). No official household water figure exists from Indonesian sources"
+      },
+      "extreme_weather": {
+        "before": [
+          "Follow BMKG early warnings: rainfall, tropical cyclones, high waves and tidal flooding. BMKG Contact Center: 196.",
+          "Make sure your communication device, flashlight and radio are ready."
+        ],
+        "during": [
+          "Bring things indoors, lock doors and windows, and switch off the power.",
+          "During lightning: crouch down, sit and hug your knees. Do not lie flat.",
+          "Stay away from large trees and billboards.",
+          "Tidal surge: keep a communication device ready and stay away from the coast."
+        ],
+        "after": [],
+        "source": "BNPB 2012 and 2019; BMKG (early warnings, Contact Center 196)"
+      },
+      "power_outage": {
+        "before": [
+          "Make sure a power bank, a radio and a flashlight with batteries are in your go-bag. Keep one flashlight in the bedroom.",
+          "Keep cash and a stove that does not need electricity (Swedish, German and Swiss references).",
+          "If you use electric medical equipment, talk to your doctor and equipment provider about a backup plan.",
+          "Fill in the Electric power module in this app to estimate how long your power lasts."
+        ],
+        "during": [
+          "Gather the family. Use a flashlight, not candles.",
+          "Check official information by radio or phone; do not share unconfirmed information.",
+          "Do not use a generator, stove or charcoal inside the home, a garage or a semi-enclosed space. Carbon monoxide risk.",
+          "Keep the fridge and freezer doors closed."
+        ],
+        "after": [
+          "A fridge keeps food safe for about 4 hours; a full freezer about 48 hours. Throw away perishable food after 4 hours without power.",
+          "Medicines that must stay cold: ask your doctor or pharmacist before using them after an outage."
+        ],
+        "source": "BNPB 2026; CDC and FDA (food and medicine safety); Swedish, German, Swiss and Danish guidance (cash, stove, CO)"
+      },
+      "pandemic": {
+        "before": [
+          "Keep at least 14 days of water and food, and 30 days of routine medicines.",
+          "Have masks, hand sanitizer and a thermometer.",
+          "Keep routine immunisations up to date."
+        ],
+        "during": [
+          "Wash hands with soap and use hand sanitizer.",
+          "Keep at least 1 m apart and wear a mask in public places.",
+          "Cover coughs and sneezes properly.",
+          "If you have symptoms: isolate yourself and use telemedicine.",
+          "Disinfect frequently touched surfaces."
+        ],
+        "after": [
+          "In evacuation centres: wear a mask, keep hands clean and report symptoms right away.",
+          "Continue routine and catch-up immunisations (measles and pertussis risk)."
+        ],
+        "source": "BNPB 2020; Ministry of Health 2025; CDC (2-week stock); Germany and Switzerland (FFP2 masks, thermometer)"
+      },
+      "conflict": {
+        "before": [
+          "International reference; there is no guidance for Indonesian residents yet. If Indonesian authorities issue instructions, follow them.",
+          "Keep food and water for at least 7 days (Swedish, Norwegian and Estonian references).",
+          "Keep cash for about 1 week.",
+          "Have a radio with batteries or a hand crank."
+        ],
+        "during": [
+          "Avoid protest crowds and report riots or violence to the Police (BNPB 2012).",
+          "\"Two walls\" principle (Latvia, Poland): stay where two walls separate you from the outside, away from windows.",
+          "Beware of disinformation; check news through radio and official sources."
+        ],
+        "after": [
+          "Follow the authorities' instructions before returning home or travelling.",
+          "Report suspicious people or plans to the authorities."
+        ],
+        "source": "Sweden, Norway, Estonia, Latvia and Poland (international references). Indonesia: BNPB 2012 for civil unrest"
+      },
+      "nuclear": {
+        "before": [
+          "International reference; there is no guidance for Indonesian residents yet. Follow the authorities (BAPETEN, BNPB, local government).",
+          "Keep plastic sheeting and tape to seal windows and vents.",
+          "Keep a battery radio to follow instructions.",
+          "You do not need to stock potassium iodide (KI) tablets. Take them only if the authorities instruct you to."
+        ],
+        "during": [
+          "Get inside and stay inside for at least 24 hours, or until told otherwise.",
+          "Switch off air conditioning, fans and ventilation; close windows and doors.",
+          "Seal gaps with plastic and tape.",
+          "Bring pets inside. Do not go out to pick up family."
+        ],
+        "after": [
+          "Remove outer clothing; this can remove up to 90% of radioactive material. Then shower.",
+          "Take KI only if the authorities tell you to, at the dose they give.",
+          "Keep following the radio and the authorities before going out."
+        ],
+        "source": "International references: CDC, UK, Finland, Poland, Estonia, Latvia. Indonesia: BAPETEN 2017 (excerpt only, not verified)"
+      }
     },
     "water": {
       "title": "Making water safe",
@@ -822,5 +1038,42 @@
     "checked": "Checked",
     "unchecked": "Not checked",
     "dialog_close": "Close dialog"
+  },
+  "f": {
+    "range": "Enter a number between {min} and {max}.",
+    "needs_input": "Enter daily use",
+    "why": "Why, and sources",
+    "days": "days",
+    "hours": "hours",
+    "qty": "Quantity",
+    "hungry": "High power",
+    "see_result": "See interim result",
+    "to_family": "Continue to family evaluation",
+    "next_category": "Next category: {name}",
+    "other_items": "Other items",
+    "items": "Items",
+    "usage_per_day": "Use per day (whole household)",
+    "meds_from_profile": "Calculated from routine medicines in Profile: lowest stock {n} days.",
+    "power_from_module": "Calculated from the Electric power module.",
+    "grams_per_unit": "Weight per {unit} (grams)",
+    "kcal_required": "Required from label",
+    "kcal_unresolved": "enter calories per pack from the label so it counts.",
+    "other_kcal_total": "Total calories of other food (kcal)",
+    "not_counted": "not counted",
+    "answered": "answered",
+    "skip_warn": "Unanswered counts as 0. Tier 2 needs a score of at least 13 and tier 4 at least 25.",
+    "estimate_note": "All wattage figures are estimates. Check your device label.",
+    "pick_medical": "Your profile says you use electric medical equipment. Select it below (marked \"Medical device\") so power counts toward survival days.",
+    "pick_medical_short": "Select the medical device above to see the days of power.",
+    "medical_days": "Medical device: about {n} days",
+    "medical_short": "Medical device power is below the {n}-day target.",
+    "too_big": "This capacity is rarely realistic for a household. Talk to your doctor or equipment provider about a backup plan.",
+    "self_suff": "Self-sufficient while the weather is sunny",
+    "sun_default": "Leave empty to use the assumed {n} hours.",
+    "assumptions": "Calculation assumptions",
+    "assumption_note": "Figures marked as assumptions are not official values. Check your device label.",
+    "safety": "Electrical safety",
+    "more_safety": "More safety tips",
+    "no_province": "No province selected? "
   }
 }
