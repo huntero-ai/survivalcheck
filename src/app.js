@@ -387,7 +387,7 @@ async function renderInfo(main, sub) {
   main.textContent = ''; renderNotFound(main);
 }
 
-const TEL = { n112: ['112'], n110: ['110'], n113: ['113'], n115: ['115'], n117: ['117'], n118_119: ['118', '119'], n119_spgdt: ['119'], n123: ['123'], n196: ['196'] };
+const TEL = { n112: ['112'], n110: ['110'], n113: ['113'], n115: ['115'], n117: ['117'], n118_119: ['118'], n119_spgdt: ['119'], n123: ['123'], n196: ['196'] };
 function infoEmergency(main) {
   main.append(h('h1', {}, t('info.emergency.title')));
   const grid = h('div', { class: 'tel-grid' });
@@ -395,8 +395,7 @@ function infoEmergency(main) {
     const text = t('info.emergency.' + key);
     const desc = text.includes(': ') ? text.slice(text.indexOf(': ') + 2) : text;
     for (const n of nums) {
-      if (key === 'n119_spgdt' && nums.length === 1 && false) continue;
-      grid.append(h('div', { class: 'tel-row' }, h('a', { class: 'btn btn-primary', href: 'tel:' + n, 'aria-label': t('a11y.call_number', { number: n }) }, n), h('span', {}, key === 'n118_119' && n === '119' ? '' : desc)));
+      grid.append(h('div', { class: 'tel-row' }, h('a', { class: 'btn btn-primary', href: 'tel:' + n, 'aria-label': t('a11y.call_number', { number: n }) }, n), h('span', {}, desc)));
     }
   }
   main.append(grid, h('p', { class: 'notice warn' }, t('info.emergency.n112_caveat')), h('p', { class: 'muted' }, t('info.emergency.verify_note')));
