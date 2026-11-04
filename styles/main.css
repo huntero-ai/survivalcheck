@@ -221,3 +221,29 @@ details.guide { border:0; border-radius:var(--r-lg); }
   .print-only { display:block!important; }
 }
 .print-only { display:none; }
+
+/* ---- Ruang napas: lebih lega, tanpa penjelasan berlebih ---- */
+.app-main { padding:var(--sp-8) var(--sp-6) calc(var(--sp-12) + var(--sp-8)); }
+.has-nav .app-main { padding-bottom:calc(var(--nav-h) + var(--sp-12) + var(--sp-6) + env(safe-area-inset-bottom)); }
+h1 { margin-bottom:var(--sp-8); font-size:1.5rem; letter-spacing:-.3px; }
+h2 { margin-bottom:var(--sp-4); }
+p { margin-bottom:var(--sp-4); }
+.card { padding:var(--sp-6); margin-bottom:var(--sp-5); border-radius:var(--r-lg); box-shadow:none; }
+.btn { min-height:52px; padding:var(--sp-3) var(--sp-6); border-radius:16px; }
+.btn-block { width:100%; }
+.btn-row { gap:var(--sp-3); margin:var(--sp-6) 0; }
+.notice { padding:var(--sp-4) var(--sp-5); margin-bottom:var(--sp-5); }
+.hero { gap:var(--sp-6); margin:var(--sp-4) 0 var(--sp-8); }
+.hero .cta { max-width:20rem; }
+.pill-row { gap:var(--sp-3); }
+.stat-grid { gap:var(--sp-4); margin-top:var(--sp-5); }
+.next-card { margin:0 0 var(--sp-5); padding:var(--sp-6); }
+.next-card p { margin-bottom:var(--sp-5); }
+.foot-note { text-align:center; margin-top:var(--sp-8); font-size:var(--fs-small); }
+.foot-note a { color:var(--c-text-muted); }
+.stepper-host { padding-bottom:0; }
+.step-count { display:none; }
+.f-hint, .f-saved { display:none; }
+.f-nav { margin-top:var(--sp-8); display:flex; gap:var(--sp-3); }
+.f-nav .btn { flex:1; }
+.foot-note a { display:inline-flex; align-items:center; min-height:44px; }

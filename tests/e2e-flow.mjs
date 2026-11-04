@@ -56,8 +56,7 @@ const num = (label) => page.getByLabel(label, { exact: true }).first();
 await page.goto(BASE); await page.waitForSelector('main h1');
 await check('beranda');
 await shot('01-beranda');
-await page.click('text=Saya mengerti');
-await page.click('text=Mulai, hanya sekitar 5 menit');
+await page.click('text=Mulai cek kesiapan');
 await page.waitForSelector('main h1');
 ok(/#\/profil/.test(page.url()), 'onboarding mengarah ke profil');
 
@@ -116,10 +115,10 @@ await check('tas siaga'); await shot('07-tas');
 await go('#/keluarga');
 const radios = page.locator('main fieldset');
 const nFs = await radios.count();
-for (let i = 0; i < Math.min(nFs, 8); i++) await radios.nth(i).locator('input[type=radio]').last().check();
+for (let i = 0; i < Math.min(nFs, 3); i++) await radios.nth(i).locator('input[type=radio]').last().check();
 await page.waitForTimeout(300);
 s = await state();
-ok(Object.keys(s.indicators).length >= 6, 'indikator keluarga tersimpan: ' + Object.keys(s.indicators).length);
+ok(Object.keys(s.indicators).length >= 18, 'indikator keluarga tersimpan: ' + Object.keys(s.indicators).length);
 await check('indikator'); await shot('08-indikator');
 
 // ---- 6. daya listrik ----
@@ -135,7 +134,7 @@ ok(s.power_inventory && s.power_inventory.power_bank_mah === 20000, 'power bank 
 await check('daya'); await shot('09-daya');
 
 // ---- 7. hasil ----
-await go('#/hasil');
+await go('#/rincian');
 const hasil = await page.innerText('main');
 ok(/tier/i.test(hasil), 'hasil menampilkan tier');
 ok(/skor|\d+\s*\/\s*\d+/i.test(hasil), 'hasil menampilkan skor');
@@ -172,7 +171,7 @@ ok(/rujukan internasional/i.test(alltxt), 'konflik/nuklir berlabel rujukan inter
 await check('panduan'); await shot('12-panduan');
 
 // ---- 10. offline ----
-await go('#/hasil');
+await go('#/rincian');
 await page.evaluate(() => navigator.serviceWorker.ready);
 await page.reload(); await page.waitForSelector('main h1');
 await context.setOffline(true);
@@ -183,14 +182,14 @@ ok(/tier/i.test(off) && /bertahan/i.test(off), 'hasil tetap tampil saat offline 
 await page.goto(BASE + '#/belanja'); await page.reload(); await page.waitForSelector('.sc-checkitem');
 ok(true, 'belanja jalan offline');
 await page.goto(BASE + '#/inventaris/water'); await page.reload(); await page.waitForSelector('main h1');
-ok((await page.locator('main input[type=number]').first().inputValue()) === '6', 'data inventaris tersimpan terbaca offline');
+ok((await page.locator('main input[type=number]').evaluateAll((els) => els.map((e) => e.value))).includes('6'), 'data inventaris tersimpan terbaca offline');
 await context.setOffline(false);
 
 // ---- 11. bahasa EN ----
 await go('#/pengaturan');
 await page.check('input[name=lang][value=en]');
 await page.waitForTimeout(300);
-await go('#/hasil');
+await go('#/rincian');
 const en = await page.innerText('main');
 ok(/survive|days|Tier/i.test(en) && !/bertahan/i.test(en), 'hasil dalam bahasa Inggris');
 await check('hasil EN'); await shot('13-hasil-en');
@@ -219,7 +218,7 @@ await page.click('[role=alertdialog] .btn-primary');
 await page.waitForSelector('.toast');
 s = await state();
 ok(s && s.profile.counts.adult === 2 && Object.keys(s.bag_checklist).length >= 10, 'impor memulihkan data');
-await go('#/hasil');
+await go('#/rincian');
 ok(/tier/i.test(await page.innerText('main')), 'hasil terhitung ulang setelah impor');
 
 // ---- akhir ----

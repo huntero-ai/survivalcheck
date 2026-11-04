@@ -188,9 +188,9 @@ function statusChip(ctx, kind) {
 }
 
 function notice(kind, ...kids) { return h('div', { class: 'notice' + (kind ? ' ' + kind : '') }, ...kids); }
-function savedNote(ctx) { return h('p', { class: 'muted f-saved', text: tr(ctx, 'common.saved_auto', 'Tersimpan otomatis di perangkat ini', 'Saved automatically on this device') }); }
+function savedNote() { return document.createDocumentFragment(); }
 function pageHeader(ctx, title, intro) {
-  return [h('h1', { text: title }), intro ? h('p', { class: 'muted', text: intro }) : null];
+  return [h('h1', { text: title })];
 }
 function navBar(ctx, back, next) {
   return h('div', { class: 'f-nav' },
@@ -367,16 +367,6 @@ export function renderProfile(root, ctx) {
   root.append(h('section', { class: 'card f-section' }, housing,
     switchRow(ctx, { label: tr(ctx, 'profile.altitude', 'Tinggal di atas 1.000 m dari permukaan laut'), hint: tr(ctx, 'profile.altitude_hint', 'Air direbus lebih lama di dataran tinggi (3 menit).'), checked: p.altitude_over_1000, onChange: (on) => upd((x) => { x.altitude_over_1000 = on; }) }).el));
 
-  // 8. provinsi
-  const provId = nid('prov');
-  const sel = h('select', { id: provId });
-  sel.append(h('option', { value: '', text: tr(ctx, 'profile.province_placeholder', 'Belum dipilih') }));
-  PROVINCE_KEYS.map((k) => [k, ctx.t('provinces.' + k)]).sort((a, b) => a[1].localeCompare(b[1], 'id')).forEach(([k, name]) => { const o = h('option', { value: k, text: name }); if (p.province === k) o.selected = true; sel.append(o); });
-  const jatim = h('p', { class: 'f-hint', text: tr(ctx, 'profile.province_note_jatim', 'Catatan: data IRBI Jawa Timur sama dengan DI Yogyakarta, jadi sarannya perlu kamu periksa lagi.') });
-  jatim.hidden = p.province !== 'jawa_timur';
-  sel.addEventListener('change', () => { upd((x) => { x.province = sel.value || null; }); jatim.hidden = sel.value !== 'jawa_timur'; });
-  root.append(section(tr(ctx, 'profile.province_title', 'Provinsi'), h('div', { class: 'field' }, h('label', { for: provId, text: tr(ctx, 'profile.province_label', 'Pilih provinsi (opsional)') }), sel), h('p', { class: 'f-hint', text: tr(ctx, 'profile.province_hint', 'Kami memakai data risiko BNPB (IRBI 2024) untuk menyarankan jenis bencana. Kamu tetap bisa mengubahnya.') }), jatim));
-
   root.append(savedNote(ctx), navBar(ctx, { href: '#/', label: tr(ctx, 'common.back', 'Kembali') }, { href: '#/target', label: tr(ctx, 'common.next', 'Lanjut') }));
 
   function refresh() {
@@ -453,7 +443,7 @@ export function renderTarget(root, ctx) {
   root.append(h('div', { class: 'days-picker' }, dec, dial, inc), label, hint, presetRow, needs,
     h('p', { class: 'muted center', text: tr(ctx, 'target.change_anytime', 'Bisa diubah kapan saja.', 'You can change this any time.') }));
   update();
-  root.append(savedNote(ctx), navBar(ctx, { href: '#/profil', label: tr(ctx, 'common.back', 'Kembali') }, { href: '#/inventaris', label: tr(ctx, 'common.next', 'Lanjut') }));
+  root.append(savedNote(ctx), navBar(ctx, { href: '#/profil', label: tr(ctx, 'common.back', 'Kembali') }, { href: '#/keluarga', label: tr(ctx, 'common.next', 'Lanjut') }));
 }
 
 // =====================================================================
@@ -468,7 +458,8 @@ function setInv(ctx, id, value) {
   if (value == null) delete inv[id]; else inv[id] = value;
   ctx.save({ inventory: inv });
 }
-function isQuick(ctx) { return !!(ctx.state.settings && ctx.state.settings.mode === 'quick'); }
+function isQuick() { return false; }
+function tahapOf(it) { return isCoreItem(it) ? 1 : it.priority === 'extra' ? 3 : 2; }
 function isCoreItem(it) { return it.priority === 'critical' || (it.gating && it.min_tier_gating != null && it.min_tier_gating <= 2); }
 function isFilled(ctx, it) {
   const inv = ctx.state.inventory || {};
@@ -486,67 +477,65 @@ export function renderInventory(root, ctx, params) {
   const res = ev(ctx);
   const cats = catsOf(ctx);
   if (!cat) return renderCategoryList(root, ctx, res, cats);
+  const tahap = params && params.tahap ? Number(params.tahap) : null;
   const def = cats.find((c) => c.id === cat);
   if (!def) {
     root.append(h('h1', { text: tr(ctx, 'errors.not_found', 'Halaman tidak ditemukan.') }), h('a', { class: 'btn btn-primary', href: '#/inventaris', text: tr(ctx, 'nav.inventory', 'Stok') }));
     return;
   }
-  renderCategory(root, ctx, def, cats);
+  renderCategory(root, ctx, def, cats, tahap);
 }
 
-function categoryStats(ctx, res, catId) {
+function categoryStats(ctx, res, catId, tahap) {
   const set = new Set(res.status === 'ok' ? res.applicable_ids : []);
-  const list = items(ctx).filter((it) => set.has(it.id) && it.category === catId);
-  const quick = isQuick(ctx);
-  const shown = quick ? list.filter(isCoreItem) : list;
-  const filled = shown.filter((it) => isFilled(ctx, it)).length;
-  const prog = res.status === 'ok' ? res.category_progress[catId] : null;
-  return { total: shown.length, filled, prog };
+  const list = items(ctx).filter((it) => set.has(it.id) && (catId == null || it.category === catId) && (tahap == null || tahapOf(it) === tahap));
+  const filled = list.filter((it) => isFilled(ctx, it)).length;
+  return { total: list.length, filled };
 }
 
 function renderCategoryList(root, ctx, res, cats) {
-  root.append(...pageHeader(ctx, tr(ctx, 'inventory.title', 'Persediaan'), tr(ctx, 'inventory.intro', 'Isi yang kamu punya sekarang. Angka kira-kira sudah cukup.')));
-  if (res.status !== 'ok') root.append(notice('warn', h('p', { text: tr(ctx, 'profile.validation.no_people', 'Isi minimal satu orang agar perhitungan bisa dimulai.') }), h('a', { class: 'btn', href: '#/profil', text: tr(ctx, 'nav.profile', 'Profil') })));
-  // mode cepat/lengkap
-  const mode = isQuick(ctx) ? 'quick' : 'full';
-  const modeBtn = (m, text) => h('button', { type: 'button', class: 'btn', 'aria-pressed': String(mode === m), onclick: () => { const s = cp(ctx.state.settings || {}); s.mode = m; ctx.save({ settings: s }); renderInventory(root, ctx, {}); } }, text);
-  root.append(h('div', { class: 'btn-row', role: 'group', 'aria-label': tr(ctx, 'home.mode_hint', 'Mode isian') }, modeBtn('quick', tr(ctx, 'inventory.mode_quick', 'Cepat')), modeBtn('full', tr(ctx, 'inventory.mode_full', 'Lengkap'))));
-  if (mode === 'quick') root.append(notice('', h('p', { text: tr(ctx, 'inventory.quick_banner', 'Mode cepat: hanya pertanyaan inti. Hasil sementara bisa kurang akurat.') })));
-  if (res.status === 'ok') {
-    const allFilled = cats.every((c) => categoryStats(ctx, res, c.id).filled === 0);
-    if (allFilled) root.append(notice('', h('strong', { text: tr(ctx, 'inventory.empty_state_title', 'Belum ada yang diisi') }), h('p', { text: tr(ctx, 'inventory.empty_state_body', 'Tidak apa-apa. Mulai dari satu kategori, misalnya air. Setiap isian langsung tersimpan.') })));
+  root.append(h('h1', { text: tr(ctx, 'inventory.title', 'Stok', 'Stock') }));
+  if (res.status !== 'ok') {
+    root.append(h('div', { class: 'f-empty-block' }, h('p', { text: tr(ctx, 'profile.validation.no_people', 'Isi dulu data rumah tanggamu.') }), h('a', { class: 'btn btn-primary', href: '#/profil', text: tr(ctx, 'nav.profile', 'Profil') })));
+    return;
   }
-  root.append(h('p', null, h('a', { class: 'btn', href: '#/hasil', text: tr(ctx, 'f.see_result', 'Lihat hasil sementara', 'See interim result') })));
-  const ul = h('ul', { class: 'f-catlist' });
-  for (const c of cats) {
-    const st = categoryStats(ctx, res, c.id);
-    const na = st.total === 0;
-    let chip;
-    if (na) chip = h('span', { class: 'chip' }, tr(ctx, 'common.not_applicable', 'Tidak berlaku untuk rumah tangga ini'));
-    else if (st.filled === 0) chip = statusChip(ctx, 'none');
-    else if (st.prog != null && st.prog >= 99.95) chip = statusChip(ctx, 'ok');
-    else chip = statusChip(ctx, 'short');
-    const pct = st.prog == null ? 0 : st.prog;
-    const nm = lab(ctx, c.label);
-    const desc = tr(ctx, 'categories.' + c.id + '_desc', '');
-    const prog = tr(ctx, 'inventory.category_progress', '{done} dari {total} terisi', '{done} of {total} filled', { done: st.filled, total: st.total });
-    const link = h('a', { class: 'f-catcard', href: '#/inventaris/' + c.id, 'aria-label': `${nm}, ${prog}` },
-      h('span', { class: 'f-cat-top' }, h('strong', { text: nm }), chip),
-      desc ? h('span', { class: 'f-hint', text: desc }) : null,
-      na ? null : h('span', { class: 'f-cat-prog' },
-        h('span', { class: 'f-bar', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': String(Math.round(pct)), 'aria-label': tr(ctx, 'a11y.progress_bar', 'Kemajuan {pct} persen', 'Progress {pct} percent', { pct: Math.round(pct) }) }, h('span', { class: 'f-bar-fill', style: `width:${Math.min(100, Math.max(0, pct))}%` })),
-        h('span', { class: 'f-cat-pct', text: `${fmt(ctx, pct, 0)}% · ${prog}` })));
-    ul.append(h('li', null, link));
-  }
-  root.append(ul, savedNote(ctx), navBar(ctx, { href: '#/target', label: tr(ctx, 'common.back', 'Kembali') }, { href: '#/keluarga', label: tr(ctx, 'f.to_family', 'Lanjut ke evaluasi keluarga', 'Continue to family evaluation') }));
+  const TAHAP = [
+    [1, tr(ctx, 'stage.1', 'Bekal dasar', 'Essentials')],
+    [2, tr(ctx, 'stage.2', 'Lengkapi', 'Build up')],
+    [3, tr(ctx, 'stage.3', 'Pelengkap', 'Extras')],
+  ];
+  const stats = TAHAP.map(([n]) => categoryStats(ctx, res, null, n));
+  let current = stats.findIndex((st) => st.total > 0 && st.filled < st.total);
+  if (current < 0) current = 0;
+  const wrap = h('div', { class: 'f-stages' });
+  TAHAP.forEach(([n, name], i) => {
+    const st = stats[i];
+    if (!st.total) return;
+    const pct = Math.round((st.filled / st.total) * 100);
+    const done = st.filled >= st.total;
+    const det = h('details', { class: 'f-stage' + (i === current ? ' is-current' : '') });
+    if (i === current) det.open = true;
+    det.append(h('summary', null,
+      h('span', { class: 'f-stage-top' }, h('strong', { text: name }), h('span', { class: 'f-stage-count', text: done ? '\u2713' : `${st.filled}/${st.total}` })),
+      h('span', { class: 'f-bar', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': String(pct), 'aria-label': name }, h('span', { class: 'f-bar-fill', style: `width:${pct}%` }))));
+    const ul = h('ul', { class: 'f-catlist' });
+    for (const c of cats) {
+      const cs = categoryStats(ctx, res, c.id, n);
+      if (!cs.total) continue;
+      const cd = cs.filled >= cs.total;
+      ul.append(h('li', null, h('a', { class: 'f-catcard', href: `#/inventaris/${c.id}/${n}`, 'aria-label': `${lab(ctx, c.label)}, ${cs.filled}/${cs.total}` },
+        h('span', { class: 'f-cat-top' }, h('span', { text: lab(ctx, c.label) }), h('span', { class: 'f-stage-count', text: cd ? '\u2713' : `${cs.filled}/${cs.total}` })))));
+    }
+    det.append(ul);
+    wrap.append(det);
+  });
+  root.append(wrap);
 }
 
-function renderCategory(root, ctx, def, cats) {
-  const idx = cats.findIndex((c) => c.id === def.id);
+function renderCategory(root, ctx, def, cats, tahap) {
   root.append(h('a', { class: 'back-link', href: '#/inventaris', text: '← ' + tr(ctx, 'nav.inventory', 'Stok') }));
-  root.append(...pageHeader(ctx, lab(ctx, def.label), tr(ctx, 'categories.' + def.id + '_desc', '')));
-  const quick = isQuick(ctx);
-  if (quick) root.append(notice('', h('p', { text: tr(ctx, 'inventory.quick_banner', 'Mode cepat: hanya pertanyaan inti.') }), h('button', { type: 'button', class: 'btn', onclick: () => { const s = cp(ctx.state.settings || {}); s.mode = 'full'; ctx.save({ settings: s }); renderInventory(root, ctx, { category: def.id }); } }, tr(ctx, 'inventory.switch_to_full', 'Lengkapi dengan mode lengkap'))));
+  root.append(h('h1', { text: lab(ctx, def.label) }));
+  const quick = false;
 
   const res0 = ev(ctx);
   if (res0.status !== 'ok') {
@@ -555,7 +544,7 @@ function renderCategory(root, ctx, def, cats) {
   }
   const applicable = new Set(res0.applicable_ids);
   let list = items(ctx).filter((it) => it.category === def.id && applicable.has(it.id));
-  if (quick) list = list.filter(isCoreItem);
+  if (tahap) list = list.filter((it) => tahapOf(it) === tahap);
 
   // pembaruan langsung chip & kebutuhan tanpa membuat ulang kolom isian
   const live = new Map(); // id -> {chipHost, needEl, it}
@@ -575,10 +564,6 @@ function renderCategory(root, ctx, def, cats) {
     if (def.id === 'food' && foodTotal) updateFoodTotals(res);
   }
 
-  if (def.id === 'water') root.append(notice('', h('p', { text: tr(ctx, 'inventory.water_note', 'Kami memakai 3 L per orang per hari untuk minum dan masak. Air kebersihan 2 L per orang per hari adalah saran.') })));
-  if (def.id === 'water' && res0.household.water_l_per_person_day > rules(ctx).water.drinking_l_per_person_day) root.append(notice('', h('p', { 'data-note': 'water-careful', text: tr(ctx, 'target.water_careful', 'Angka hati-hati: 4 L berasal dari panduan untuk cuaca panas (Latvia), bukan khusus kekeringan. Anggap sebagai batas aman, bukan angka pasti.', 'Cautious figure: 4 L comes from hot-weather guidance (Latvia), not drought-specific. Treat it as a safe margin, not an exact number.') })));
-  if (def.id === 'power') root.append(notice('', h('p', { text: tr(ctx, 'categories.power_desc', 'Power bank, power station, panel surya') }), h('a', { class: 'btn', href: '#/daya', text: tr(ctx, 'power.title', 'Daya listrik') + ' →' })));
-  if (def.id === 'plan_knowledge') root.append(notice('', h('a', { class: 'btn', href: '#/keluarga', text: tr(ctx, 'family_eval.title', 'Evaluasi keluarga') + ' →' })));
 
   let foodTotal = null;
   let updateFoodTotals = () => {};
@@ -587,22 +572,30 @@ function renderCategory(root, ctx, def, cats) {
     foodTotal = fb.totals; updateFoodTotals = fb.update;
     root.append(fb.el);
   }
-  if (def.id === 'gobag') root.append(buildBagChecklist(ctx, res0, root));
+  if (def.id === 'water' && res0.household.water_l_per_person_day > rules(ctx).water.drinking_l_per_person_day) root.append(notice('', h('p', { 'data-note': 'water-careful', text: tr(ctx, 'target.water_careful', 'Angka hati-hati: 4 L berasal dari panduan untuk cuaca panas, bukan khusus kekeringan.', 'Cautious figure: 4 L comes from hot-weather guidance, not drought-specific.') })));
+  if (def.id === 'gobag' && !tahap) root.append(buildBagChecklist(ctx, res0, root));
 
   const FOOD_SKIP = new Set([...(rules(ctx).food.aggregates), 'food_kcal_total', 'food_no_cook_share']);
   const ul = h('ul', { class: 'f-itemlist' });
-  for (const it of list) {
-    if (FOOD_SKIP.has(it.id)) continue;
-    ul.append(buildItemRow(ctx, it, res0, refreshLive, live));
+  const more = h('ul', { class: 'f-itemlist' });
+  more.hidden = true;
+  let shown = 0;
+  const visible = list.filter((it) => !FOOD_SKIP.has(it.id));
+  const todo = visible.filter((it) => !isFilled(ctx, it));
+  const doneIts = visible.filter((it) => isFilled(ctx, it));
+  for (const it of [...todo, ...doneIts]) {
+    const row = buildItemRow(ctx, it, res0, refreshLive, live);
+    if (!tahap || shown < 5) ul.append(row); else more.append(row);
+    shown++;
   }
-  if (ul.children.length) root.append(h('h2', { class: 'f-h2', text: def.id === 'gobag' || def.id === 'food' ? tr(ctx, 'f.other_items', 'Item lainnya', 'Other items') : tr(ctx, 'f.items', 'Daftar item', 'Items') }), ul);
+  if (ul.children.length) root.append(ul);
+  if (more.children.length) {
+    const btn = h('button', { type: 'button', class: 'btn btn-block', text: tr(ctx, 'f.show_rest', 'Tampilkan {n} lagi', 'Show {n} more', { n: more.children.length }), onclick: () => { more.hidden = false; btn.remove(); } });
+    root.append(btn, more);
+  }
   refreshLive();
 
-  const prev = cats[idx - 1];
-  const next = cats[idx + 1];
-  root.append(savedNote(ctx), navBar(ctx,
-    prev ? { href: '#/inventaris/' + prev.id, label: '← ' + lab(ctx, prev.label) } : { href: '#/inventaris', label: tr(ctx, 'common.back', 'Kembali') },
-    next ? { href: '#/inventaris/' + next.id, label: tr(ctx, 'f.next_category', 'Kategori berikutnya: {name}', 'Next category: {name}', { name: lab(ctx, next.label) }) } : { href: '#/keluarga', label: tr(ctx, 'f.to_family', 'Lanjut ke evaluasi keluarga') }));
+  root.append(h('div', { class: 'f-nav' }, h('a', { class: 'btn btn-primary btn-block', href: '#/inventaris', text: tr(ctx, 'common.done', 'Selesai', 'Done') })));
 }
 
 function itemNeedsToggle(it, e) {
@@ -642,15 +635,7 @@ function buildItemRow(ctx, it, res, refreshLive, live) {
       body.append(h('p', { class: 'f-hint', text: tr(ctx, 'inventory.fuel_suggest', 'Saran jumlah, bukan syarat: sekitar {per} kaleng per orang per minggu. Untuk {n} orang selama {days} hari: sekitar {cans} kaleng.', 'Suggested amount, not a requirement: about {per} canisters per person per week. For {n} people over {days} days: about {cans} canisters.', { per: it.suggest_per_person_week, n, days: dd, cans: Math.ceil((it.suggest_per_person_week * n * dd) / 7) }) }));
     }
     if (itemNeedsToggle(it, e)) {
-      if (loc === 'both') body.append(locationSelect(ctx, it, cur, label, refreshLive));
-      else body.append(switchRow(ctx, { label: tr(ctx, 'inventory.have_yes', 'Sudah punya'), checked: haveOf(cur) > 0, onChange: (on) => { setInv(ctx, it.id, on ? 1 : 0); refreshLive(); } }).el);
-    } else if (loc === 'both') {
-      const c = cur && typeof cur === 'object' ? cur : { home: typeof cur === 'number' ? cur : 0, bag: 0 };
-      const row = h('div', { class: 'f-two' });
-      for (const [k, lk, fb] of [['bag', 'inventory.location.bag', 'Di tas siaga'], ['home', 'inventory.location.home', 'Stok rumah']]) {
-        row.append(numField(ctx, { label: `${tr(ctx, lk, fb)}${unit ? ' (' + unit + ')' : ''}`, min: 0, max: 1e7, soft: 100000, value: c[k] || '', compact: true, onValue: (v) => { const x = cp((ctx.state.inventory || {})[it.id]); const o = x && typeof x === 'object' ? x : { home: typeof x === 'number' ? x : 0, bag: 0 }; o[k] = v == null ? 0 : v; setInv(ctx, it.id, o); refreshLive(); } }).el);
-      }
-      body.append(row);
+      body.append(switchRow(ctx, { label: tr(ctx, 'inventory.have_yes', 'Sudah punya'), checked: haveOf(cur) > 0, onChange: (on) => { setInv(ctx, it.id, on ? 1 : 0); refreshLive(); } }).el);
     } else {
       body.append(numField(ctx, { label, min: 0, max: 1e7, soft: 100000, value: haveOf(cur) || (cur === 0 ? 0 : ''), compact: true, onValue: (v) => { setInv(ctx, it.id, v); refreshLive(); } }).el);
     }
@@ -658,16 +643,6 @@ function buildItemRow(ctx, it, res, refreshLive, live) {
   li.append(body, sourceLine(ctx, it));
   live.set(it.id, { chipHost, needEl, it });
   return li;
-}
-
-function locationSelect(ctx, it, cur, label, refreshLive) {
-  const id = nid('loc');
-  const c = cur && typeof cur === 'object' ? cur : { home: haveOf(cur) > 0 ? 1 : 0, bag: 0 };
-  const state = (c.home > 0 ? 1 : 0) * 2 + (c.bag > 0 ? 1 : 0); // 0 tidak, 1 tas, 2 rumah, 3 keduanya
-  const sel = h('select', { id });
-  [['0', tr(ctx, 'inventory.have_no', 'Belum punya')], ['1', tr(ctx, 'inventory.location.bag', 'Di tas siaga')], ['2', tr(ctx, 'inventory.location.home', 'Stok rumah')], ['3', tr(ctx, 'inventory.location.both', 'Di tas dan di rumah')]].forEach(([v, t]) => { const o = h('option', { value: v, text: t }); if (Number(v) === state) o.selected = true; sel.append(o); });
-  sel.addEventListener('change', () => { const n = Number(sel.value); setInv(ctx, it.id, { home: n >= 2 ? 1 : 0, bag: n === 1 || n === 3 ? 1 : 0 }); refreshLive(); });
-  return h('div', { class: 'field' }, h('label', { for: id, text: tr(ctx, 'inventory.location_title', 'Disimpan di mana?') }), sel);
 }
 
 // ----- pangan -----
@@ -794,7 +769,6 @@ export function renderPower(root, ctx) {
   }
 
   root.append(...pageHeader(ctx, tr(ctx, 'power.title', 'Daya listrik'), tr(ctx, 'power.intro', 'Hitung berapa listrik yang kamu perlukan saat padam, lalu bandingkan dengan yang kamu punya.')));
-  root.append(notice('', h('p', { text: tr(ctx, 'f.estimate_note', 'Semua angka watt adalah perkiraan. Cek label perangkat Anda.', 'All wattage figures are estimates. Check your device label.') })));
   const genWarnHost = h('div');
   root.append(genWarnHost);
 
@@ -987,49 +961,35 @@ export function renderPower(root, ctx) {
 export function renderIndicators(root, ctx) {
   root.textContent = '';
   const ind = ctx.data.indicators;
-  const groups = ind.groups;
-  const GROUP_KEY = { logistik: 'logistics', prosedur: 'procedures', mental: 'mental' };
-  root.append(...pageHeader(ctx, tr(ctx, 'family_eval.title', 'Evaluasi keluarga'), tr(ctx, 'family_eval.intro', 'Delapan belas pertanyaan dari BNPB untuk melihat kesiapan keluarga. Jawab apa adanya, tidak ada nilai buruk.')));
-  const scoreEl = h('div', { class: 'card f-section f-famscore' });
-  const answered = h('p', { class: 'muted' });
-  const updateScore = () => {
-    const vals = ctx.state.indicators || {};
-    let total = 0; let n = 0;
-    for (let i = 1; i <= 18; i++) { const v = vals['ind_' + String(i).padStart(2, '0')]; if (typeof v === 'number') { total += v; n++; } }
-    scoreEl.textContent = '';
-    const band = (ind.family_bands.find((b) => total >= b.min && total <= b.max) || {}).id;
-    const bt = { rawan: ['○ ', tr(ctx, 'bands.family.vulnerable', 'Rawan'), ''], cukup_siaga: ['◑ ', tr(ctx, 'bands.family.fairly_prepared', 'Cukup Siaga'), 'chip-warn'], siap: ['✓ ', tr(ctx, 'bands.family.ready', 'Siap'), 'chip-ok'] }[band] || ['', '', ''];
-    scoreEl.append(h('p', null, h('strong', { text: tr(ctx, 'family_eval.score_total', 'Skor: {score} dari 36', 'Score: {score} of 36', { score: total }) }), ' ', n ? h('span', { class: 'chip ' + bt[2] }, h('span', { 'aria-hidden': 'true', text: bt[0] }), bt[1]) : null),
-      h('p', { class: 'f-hint', text: `${n} / 18 ` + tr(ctx, 'f.answered', 'terjawab', 'answered') }),
-      h('p', { class: 'f-hint', text: tr(ctx, 'bands.family.rule', 'Skor 0 sampai 12 rawan, 13 sampai 24 cukup siaga, 25 sampai 36 siap.') }));
-    if (!n) scoreEl.append(h('p', { class: 'f-empty', text: tr(ctx, 'family_eval.empty_state', 'Belum dijawab. Mulai dari pertanyaan pertama.') }));
+  // 3 pertanyaan singkat; tiap jawaban (0 sampai 2) berlaku untuk satu kelompok indikator BNPB, jadi skala 36 tetap sama.
+  const Q = [
+    { group: 'logistik', text: tr(ctx, 'quick.q1', 'Sudah punya tas siaga dan stok darurat?', 'Do you have a go-bag and emergency stock?'), opts: [tr(ctx, 'quick.a0', 'Belum', 'Not yet'), tr(ctx, 'quick.q1b', 'Sebagian', 'Some'), tr(ctx, 'quick.q1c', 'Sudah lengkap', 'All set')] },
+    { group: 'prosedur', text: tr(ctx, 'quick.q2', 'Keluarga tahu harus berbuat apa saat darurat?', 'Does your family know what to do in an emergency?'), opts: [tr(ctx, 'quick.a0', 'Belum', 'Not yet'), tr(ctx, 'quick.q2b', 'Sedikit', 'A little'), tr(ctx, 'quick.q2c', 'Sudah latihan', 'Practiced')] },
+    { group: 'mental', text: tr(ctx, 'quick.q3', 'Merasa siap menghadapi keadaan darurat?', 'Do you feel ready for an emergency?'), opts: [tr(ctx, 'quick.a0', 'Belum', 'Not yet'), tr(ctx, 'quick.q3b', 'Cukup', 'Fairly'), tr(ctx, 'quick.q3c', 'Siap', 'Ready')] },
+  ];
+  const idsOf = (g) => ind.indicators.filter((x) => x.group === g).map((x) => x.id);
+  const current = (g) => {
+    const vals = idsOf(g).map((id) => (ctx.state.indicators || {})[id]).filter((v) => typeof v === 'number');
+    return vals.length ? Math.round(vals.reduce((a, b) => a + b, 0) / vals.length) : null;
   };
-  root.append(scoreEl);
-  const scaleLabel = (v) => tr(ctx, 'family_eval.option.' + v, lab(ctx, ind.scale.find((s) => s.value === v).label));
-  for (const g of groups) {
-    const sec = h('section', { class: 'card f-section' }, h('h2', { text: tr(ctx, 'family_eval.group.' + (GROUP_KEY[g.id] || g.id), lab(ctx, g.label)) }));
-    for (const q of ind.indicators.filter((x) => x.group === g.id)) {
-      const name = q.id;
-      const fs = h('fieldset', { class: 'f-fieldset f-question' }, h('legend', { text: `${q.no}. ${tr(ctx, 'family_eval.q.' + q.no, lab(ctx, q.label))}` }));
-      if (q.scenario_specific) fs.append(h('p', { class: 'f-hint', text: tr(ctx, 'family_eval.context_quake_flood', 'Pertanyaan ini terutama untuk gempa atau banjir. Tetap dijawab agar skor sebanding dengan standar BNPB.') }));
-      const cur = (ctx.state.indicators || {})[q.id];
-      const opts = h('div', { class: 'f-options' });
-      for (const v of [0, 1, 2]) {
-        const id = nid('q');
-        const r = h('input', { type: 'radio', name, id, value: String(v) });
-        r.checked = cur === v;
-        r.addEventListener('change', () => { if (r.checked) { const x = { ...(ctx.state.indicators || {}) }; x[q.id] = v; ctx.save({ indicators: x }); updateScore(); } });
-        opts.append(h('label', { class: 'f-option', for: id }, r, h('span', { text: scaleLabel(v) })));
-      }
-      fs.append(opts);
-      sec.append(fs);
-    }
-    root.append(sec);
+  root.append(h('h1', { text: tr(ctx, 'family_eval.title', 'Kesiapan keluarga', 'Family readiness') }));
+  const list = h('div', { class: 'f-quick' });
+  for (const q of Q) {
+    const name = nid('q');
+    const fs = h('fieldset', { class: 'f-fieldset f-question' }, h('legend', { text: q.text }));
+    const cur = current(q.group);
+    const opts = h('div', { class: 'f-options' });
+    q.opts.forEach((label, v) => {
+      const id = nid('o');
+      const r = h('input', { type: 'radio', name, id, value: String(v) });
+      r.checked = cur === v;
+      r.addEventListener('change', () => { if (!r.checked) return; const x = { ...(ctx.state.indicators || {}) }; for (const k of idsOf(q.group)) x[k] = v; ctx.save({ indicators: x }); });
+      opts.append(h('label', { class: 'f-option', for: id }, r, h('span', { text: label })));
+    });
+    fs.append(opts);
+    list.append(fs);
   }
-  root.append(savedNote(ctx),
-    h('p', { class: 'f-hint', text: tr(ctx, 'f.skip_warn', 'Bila dilewati, belum dijawab dihitung 0. Tier 2 butuh skor minimal 13 dan tier 4 minimal 25.', 'Unanswered counts as 0. Tier 2 needs a score of at least 13 and tier 4 at least 25.') }),
-    navBar(ctx, { href: '#/inventaris', label: tr(ctx, 'nav.inventory', 'Stok') }, { href: '#/hasil', label: tr(ctx, 'common.done', 'Selesai') }));
-  updateScore();
+  root.append(list, h('div', { class: 'f-nav' }, h('a', { class: 'btn btn-primary btn-block', href: '#/', text: tr(ctx, 'common.done', 'Selesai', 'Done') })));
 }
 
 export function destroy() { /* tidak ada pendengar global */ }
