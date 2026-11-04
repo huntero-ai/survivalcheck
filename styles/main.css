@@ -1,11 +1,12 @@
-/* SurvivalCheck - shell, tokens, komponen dasar. Monokrom (hitam putih abu). Lihat docs/design-tokens.md */
+/* SurvivalCheck - shell, tokens, komponen dasar. Biru langit + putih, aksen merah-oranye hanya untuk aksi utama. Lihat docs/design-tokens.md */
 @font-face { font-family:"Rubik"; font-style:normal; font-weight:300 900; font-display:swap; src:url("../fonts/rubik-latin-wght-normal.woff2") format("woff2-variations"), url("../fonts/rubik-latin-wght-normal.woff2") format("woff2"); }
 :root {
-  --c-bg:#FFFFFF; --c-surface:#F4F4F4; --c-surface-2:#E9E9E9; --c-text:#111111; --c-text-muted:#555555;
-  --c-border:#8C8C8C; --c-divider:#E4E4E4; --c-primary:#111111; --c-on-primary:#FFFFFF; --c-focus:#111111;
+  --c-bg:#FDFDFD; --c-surface:#F3F6F9; --c-surface-2:#E9E9E9; --c-text:#111111; --c-text-muted:#555555;
+  --c-border:#8C8C8C; --c-divider:#E4E4E4; --c-primary:#0072CC; --c-on-primary:#FFFFFF; --c-focus:#0072CC;
   --c-info-fg:#111111; --c-info-bg:#F4F4F4; --c-ok-fg:#111111; --c-ok-bg:#F4F4F4;
   --c-warn-fg:#111111; --c-warn-bg:#E9E9E9; --c-danger-fg:#FFFFFF; --c-danger-bg:#111111;
   --c-ink:#111111; --c-on-ink:#FFFFFF; --c-on-ink-muted:#D0D0D0; --c-ring:#8C8C8C;
+  --c-cta:#D93A14; --c-on-cta:#FFFFFF; --c-dial:#0072CC; --c-dial-ring:#0099FF;
   --tier-0-fg:#FFFFFF; --tier-0-bg:#111111; --tier-0-accent:#FFFFFF;
   --tier-1-fg:#FFFFFF; --tier-1-bg:#111111; --tier-1-accent:#FFFFFF;
   --tier-2-fg:#FFFFFF; --tier-2-bg:#111111; --tier-2-accent:#FFFFFF;
@@ -23,11 +24,12 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --c-bg:#0F0F0F; --c-surface:#1C1C1C; --c-surface-2:#2A2A2A; --c-text:#F2F2F2; --c-text-muted:#B0B0B0;
-    --c-border:#7A7A7A; --c-divider:#2C2C2C; --c-primary:#F2F2F2; --c-on-primary:#111111; --c-focus:#F2F2F2;
+    --c-bg:#0F0F0F; --c-surface:#171B20; --c-surface-2:#232A32; --c-text:#F2F2F2; --c-text-muted:#B0B0B0;
+    --c-border:#7A7A7A; --c-divider:#2C2C2C; --c-primary:#4DB8FF; --c-on-primary:#0F0F0F; --c-focus:#4DB8FF;
     --c-info-fg:#F2F2F2; --c-info-bg:#1C1C1C; --c-ok-fg:#F2F2F2; --c-ok-bg:#1C1C1C;
     --c-warn-fg:#F2F2F2; --c-warn-bg:#2A2A2A; --c-danger-fg:#111111; --c-danger-bg:#F2F2F2;
     --c-ink:#F2F2F2; --c-on-ink:#111111; --c-on-ink-muted:#4A4A4A; --c-ring:#5A5A5A;
+  --c-cta:#FF6B47; --c-on-cta:#111111; --c-dial:#0072CC; --c-dial-ring:#1F4F7A;
     --tier-0-fg:#111111; --tier-0-bg:#F2F2F2; --tier-0-accent:#111111;
     --tier-1-fg:#111111; --tier-1-bg:#F2F2F2; --tier-1-accent:#111111;
     --tier-2-fg:#111111; --tier-2-bg:#F2F2F2; --tier-2-accent:#111111;
@@ -38,11 +40,12 @@
   }
 }
 :root[data-theme="dark"] {
-  --c-bg:#0F0F0F; --c-surface:#1C1C1C; --c-surface-2:#2A2A2A; --c-text:#F2F2F2; --c-text-muted:#B0B0B0;
-  --c-border:#7A7A7A; --c-divider:#2C2C2C; --c-primary:#F2F2F2; --c-on-primary:#111111; --c-focus:#F2F2F2;
+  --c-bg:#0F0F0F; --c-surface:#171B20; --c-surface-2:#232A32; --c-text:#F2F2F2; --c-text-muted:#B0B0B0;
+  --c-border:#7A7A7A; --c-divider:#2C2C2C; --c-primary:#4DB8FF; --c-on-primary:#0F0F0F; --c-focus:#4DB8FF;
   --c-info-fg:#F2F2F2; --c-info-bg:#1C1C1C; --c-ok-fg:#F2F2F2; --c-ok-bg:#1C1C1C;
   --c-warn-fg:#F2F2F2; --c-warn-bg:#2A2A2A; --c-danger-fg:#111111; --c-danger-bg:#F2F2F2;
   --c-ink:#F2F2F2; --c-on-ink:#111111; --c-on-ink-muted:#4A4A4A; --c-ring:#5A5A5A;
+  --c-cta:#FF6B47; --c-on-cta:#111111; --c-dial:#0072CC; --c-dial-ring:#1F4F7A;
   --tier-0-fg:#111111; --tier-0-bg:#F2F2F2; --tier-0-accent:#111111;
   --tier-1-fg:#111111; --tier-1-bg:#F2F2F2; --tier-1-accent:#111111;
   --tier-2-fg:#111111; --tier-2-bg:#F2F2F2; --tier-2-accent:#111111;
@@ -97,7 +100,7 @@ img,svg { max-width:100%; }
 .card > :last-child { margin-bottom:0; }
 .card h2,.card h3 { margin-top:0; }
 .btn { display:inline-flex; align-items:center; justify-content:center; gap:var(--sp-2); min-height:var(--touch-min); padding:var(--sp-2) var(--sp-5); border-radius:var(--r-md); border:1.5px solid var(--c-primary); background:var(--c-surface); color:var(--c-primary); font:inherit; font-weight:600; text-decoration:none; cursor:pointer; text-align:center; }
-.btn-primary { min-height:48px; background:var(--c-primary); color:var(--c-on-primary); }
+.btn-primary { min-height:48px; background:var(--c-cta); color:var(--c-on-cta); border-color:var(--c-cta); }
 .btn-block { display:flex; width:100%; }
 .btn:disabled { opacity:.55; cursor:not-allowed; }
 .btn-row { display:flex; flex-wrap:wrap; gap:var(--sp-2); margin:var(--sp-3) 0; }
@@ -162,7 +165,7 @@ details.guide > div { padding:0 var(--sp-4) var(--sp-4); }
 .card { border:0; }
 .btn { background:transparent; border-radius:var(--r-md); }
 .btn:hover { background:var(--c-surface); }
-.btn-primary, .btn-primary:hover { min-height:52px; border-radius:16px; background:var(--c-primary); color:var(--c-on-primary); border-color:var(--c-primary); }
+.btn-primary, .btn-primary:hover { min-height:52px; border-radius:16px; background:var(--c-cta); color:var(--c-on-cta); border-color:var(--c-cta); }
 .chip { border-radius:var(--r-pill); }
 .notice { border:0; border-radius:var(--r-lg); }
 .notice a { color:inherit; }
@@ -177,8 +180,8 @@ details.guide { border:0; border-radius:var(--r-lg); }
 
 /* Hero: lingkaran hari bertahan */
 .hero { display:flex; flex-direction:column; align-items:center; gap:var(--sp-4); text-align:center; margin:0 0 var(--sp-6); }
-.dial { width:236px; height:236px; border-radius:50%; background:var(--c-ink); color:var(--c-on-ink); border:12px solid var(--c-ring); box-shadow:var(--shadow-hero); display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box; }
-.dial .dial-lbl { font-size:var(--fs-small); color:var(--c-on-ink-muted); }
+.dial { width:236px; height:236px; border-radius:50%; background:var(--c-dial); color:#FFFFFF; border:12px solid var(--c-dial-ring); box-shadow:var(--shadow-hero); display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box; }
+.dial .dial-lbl { font-size:var(--fs-small); color:#FFFFFF; opacity:.9; }
 .dial .dial-num { font-size:4rem; font-weight:500; line-height:1.05; letter-spacing:-1px; }
 .dial .dial-unit { font-size:var(--fs-h3); }
 .dial.dial-sm { width:196px; height:196px; border-width:11px; }
@@ -192,7 +195,7 @@ details.guide { border:0; border-radius:var(--r-lg); }
 .tier-card .tier-sub { font-size:var(--fs-tiny); color:var(--c-text-muted); }
 .seg-row { display:flex; gap:4px; }
 .seg-row i { width:34px; height:8px; border-radius:4px; background:var(--c-divider); display:block; }
-.seg-row i.on { background:var(--c-text); }
+.seg-row i.on { background:var(--c-primary); }
 .next-card { border:1.5px solid var(--c-divider); border-radius:var(--r-lg); padding:var(--sp-4); margin:0 0 var(--sp-4); }
 .next-card h2 { font-size:var(--fs-h3); margin:0 0 var(--sp-2); }
 .stat-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--sp-3); margin:0 0 var(--sp-4); }
@@ -221,3 +224,29 @@ details.guide { border:0; border-radius:var(--r-lg); }
   .print-only { display:block!important; }
 }
 .print-only { display:none; }
+
+/* ---- Ruang napas: lebih lega, tanpa penjelasan berlebih ---- */
+.app-main { padding:var(--sp-8) var(--sp-6) calc(var(--sp-12) + var(--sp-8)); }
+.has-nav .app-main { padding-bottom:calc(var(--nav-h) + var(--sp-12) + var(--sp-6) + env(safe-area-inset-bottom)); }
+h1 { margin-bottom:var(--sp-8); font-size:1.5rem; letter-spacing:-.3px; }
+h2 { margin-bottom:var(--sp-4); }
+p { margin-bottom:var(--sp-4); }
+.card { padding:var(--sp-6); margin-bottom:var(--sp-5); border-radius:var(--r-lg); box-shadow:none; }
+.btn { min-height:52px; padding:var(--sp-3) var(--sp-6); border-radius:16px; }
+.btn-block { width:100%; }
+.btn-row { gap:var(--sp-3); margin:var(--sp-6) 0; }
+.notice { padding:var(--sp-4) var(--sp-5); margin-bottom:var(--sp-5); }
+.hero { gap:var(--sp-6); margin:var(--sp-4) 0 var(--sp-8); }
+.hero .cta { max-width:20rem; }
+.pill-row { gap:var(--sp-3); }
+.stat-grid { gap:var(--sp-4); margin-top:var(--sp-5); }
+.next-card { margin:0 0 var(--sp-5); padding:var(--sp-6); }
+.next-card p { margin-bottom:var(--sp-5); }
+.foot-note { text-align:center; margin-top:var(--sp-8); font-size:var(--fs-small); }
+.foot-note a { color:var(--c-text-muted); }
+.stepper-host { padding-bottom:0; }
+.step-count { display:none; }
+.f-hint, .f-saved { display:none; }
+.f-nav { margin-top:var(--sp-8); display:flex; gap:var(--sp-3); }
+.f-nav .btn { flex:1; }
+.foot-note a { display:inline-flex; align-items:center; min-height:44px; }

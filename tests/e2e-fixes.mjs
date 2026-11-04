@@ -27,7 +27,7 @@ const rich = baseState({
 });
 
 // ---- B-01: penanda kutipan terlihat di hasil, belanja, inventaris ----
-for (const [hash, label] of [['#/hasil', 'hasil'], ['#/belanja', 'belanja'], ['#/inventaris/water', 'inventaris air'], ['#/inventaris/sanitation', 'inventaris sanitasi'], ['#/inventaris/tools', 'inventaris alat']]) {
+for (const [hash, label] of [['#/rincian', 'hasil'], ['#/belanja', 'belanja'], ['#/inventaris/water', 'inventaris air'], ['#/inventaris/sanitation', 'inventaris sanitasi'], ['#/inventaris/tools', 'inventaris alat']]) {
   const { ctx, page } = await open(360, rich, hash);
   if (label === 'hasil') { const more = page.getByRole('button', { name: /Lihat selengkapnya/ }); if (await more.count()) await more.first().click(); }
   const info = await page.evaluate(() => [...document.querySelectorAll('[data-evidence="excerpt"]')].map((e) => ({ txt: e.textContent, hidden: !!e.closest('details:not([open])') || e.offsetParent === null })));
@@ -49,7 +49,7 @@ for (const [hash, label] of [['#/hasil', 'hasil'], ['#/belanja', 'belanja'], ['#
 }
 
 // ---- B-03: 320 px tanpa scroll horizontal ----
-for (const hash of ['#/belanja', '#/hasil', '#/', '#/inventaris/special_needs', '#/inventaris/food', '#/inventaris/water']) {
+for (const hash of ['#/belanja', '#/rincian', '#/', '#/inventaris/special_needs', '#/inventaris/food', '#/inventaris/water']) {
   for (const lang of ['id', 'en']) {
     const st = JSON.parse(JSON.stringify(rich)); st.settings.lang = lang;
     const { ctx, page } = await open(320, st, hash);
@@ -67,14 +67,14 @@ for (const hash of ['#/belanja', '#/hasil', '#/', '#/inventaris/special_needs', 
 // ---- B-04 / B-07: target sentuh, fokus h1, judul ----
 for (const w of [320, 360]) {
   const { ctx, page } = await open(w, rich, '#/');
-  const h = await page.evaluate(() => ({ brand: document.querySelector('a.brand').getBoundingClientRect().height, more: [...document.querySelectorAll('main a')].filter((a) => /Lihat selengkapnya/.test(a.textContent)).map((a) => a.getBoundingClientRect().height), title: document.title, brandText: document.querySelector('a.brand').scrollWidth <= document.querySelector('a.brand').clientWidth }));
+  const h = await page.evaluate(() => ({ brand: document.querySelector('a.brand').getBoundingClientRect().height, more: [...document.querySelectorAll('.foot-note a')].map((a) => a.getBoundingClientRect().height), title: document.title, brandText: document.querySelector('a.brand').scrollWidth <= document.querySelector('a.brand').clientWidth }));
   ok(h.brand >= 44, `B-04 tautan merek >= 44px @${w}: ${h.brand}`);
   ok(h.more.length > 0 && h.more.every((x) => x >= 44), `B-04 "Lihat selengkapnya" >= 44px @${w}: ${h.more}`);
   ok(/^(Kesiapan rumahmu · )?SurvivalCheck$/.test(h.title), `B-07 judul beranda tanpa duplikasi: ${h.title}`);
   if (w === 320) ok(h.brandText, 'B-04 nama aplikasi tidak terpotong @320');
   await ctx.close();
 }
-for (const hash of ['#/hasil', '#/belanja', '#/profil']) {
+for (const hash of ['#/rincian', '#/belanja', '#/profil']) {
   for (const scheme of ['light', 'dark']) {
     const ctx = await browser.newContext({ viewport: { width: 360, height: 740 }, colorScheme: scheme });
     await seed(ctx, rich);
@@ -89,7 +89,7 @@ for (const hash of ['#/hasil', '#/belanja', '#/profil']) {
 // ---- B-10: hari bertahan sangat besar ----
 {
   const st = baseState({ inventory: { water_drinking: 1e9, food_rice: { qty: 1e7 } } });
-  const { ctx, page } = await open(360, st, '#/hasil');
+  const { ctx, page } = await open(360, st, '#/rincian');
   const body = await page.innerText('main');
   ok(/> 365 hari/.test(body) && !/166666666/.test(body) && !/\d{4,} hari/.test(body), 'B-10 tampil "> 365 hari"');
   await ctx.close();
@@ -136,7 +136,7 @@ for (const hash of ['#/hasil', '#/belanja', '#/profil']) {
   await ctx.close();
 }
 {
-  const { ctx, page } = await open(360, baseState({ target: { days: 14 } }), '#/hasil');
+  const { ctx, page } = await open(360, baseState({ target: { days: 14 } }), '#/rincian');
   await page.evaluate(() => {});
   const body = await page.innerText('main');
   ok(/Cukup salah satu/.test(body), 'B-02 hasil menulis "cukup salah satu" untuk bahan bakar');
@@ -151,7 +151,7 @@ for (const hash of ['#/hasil', '#/belanja', '#/profil']) {
   const sw = await page.evaluate(async () => { const r = await navigator.serviceWorker.ready; return !!r.active; });
   ok(sw, 'B-15 service worker aktif dengan CSP');
   const keys = await page.evaluate(async () => (await caches.keys()));
-  ok(keys.includes('survivalcheck-v4'), `SW cache v4: ${keys}`);
+  ok(keys.includes('survivalcheck-v7'), `SW cache v4: ${keys}`);
   const mf = await (await page.request.get(srv.base + 'manifest.webmanifest')).json();
   ok(!('orientation' in mf), 'B-15 manifest tanpa orientation');
   await ctx.close();

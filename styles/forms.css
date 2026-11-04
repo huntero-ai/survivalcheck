@@ -128,3 +128,24 @@ ul.f-list:has(.f-listrow) { padding-left: 0; }
 .f-section select { width: 100%; }
 @media (prefers-reduced-motion: reduce) { input[role="switch"]::after { transition: none; } }
 @media print { .f-nav, .f-step-btn { display: none; } }
+
+/* ---- Stok per tahap, evaluasi singkat ---- */
+.f-stages { display:flex; flex-direction:column; gap:var(--sp-4); }
+.f-stage { background:var(--c-surface); border:1px solid var(--c-divider); border-radius:var(--r-lg); padding:var(--sp-5) var(--sp-6); }
+.f-stage > summary { list-style:none; cursor:pointer; display:flex; flex-direction:column; gap:var(--sp-3); min-height:var(--touch-min); justify-content:center; }
+.f-stage > summary::-webkit-details-marker { display:none; }
+.f-stage-top { display:flex; justify-content:space-between; align-items:center; font-size:1.125rem; }
+.f-stage-count { color:var(--c-text-muted); font-variant-numeric:tabular-nums; }
+.f-stage[open] > summary { margin-bottom:var(--sp-4); }
+.f-stage .f-catlist { list-style:none; margin:0; padding:0; }
+.f-stage .f-catcard { display:block; padding:var(--sp-4) 0; border-top:1px solid var(--c-divider); text-decoration:none; color:var(--c-text); }
+.f-stage .f-cat-top { display:flex; justify-content:space-between; align-items:center; }
+.f-itemlist { list-style:none; padding:0; margin:0 0 var(--sp-5); }
+.f-itemlist > li { margin-bottom:var(--sp-4); }
+.f-quick { display:flex; flex-direction:column; gap:var(--sp-8); }
+.f-quick legend { font-size:1.25rem; font-weight:600; line-height:1.3; margin-bottom:var(--sp-5); padding:0; }
+.f-quick .f-options { display:flex; flex-direction:column; gap:var(--sp-3); }
+.f-quick .f-option { min-height:60px; padding:0 var(--sp-5); border-radius:18px; }
+.f-section { margin-bottom:var(--sp-6); }
+.field { margin-bottom:var(--sp-5); }
+.f-empty-block { text-align:center; display:flex; flex-direction:column; gap:var(--sp-5); align-items:center; }
