@@ -70,7 +70,7 @@ for (const w of [320, 360]) {
   const h = await page.evaluate(() => ({ brand: document.querySelector('a.brand').getBoundingClientRect().height, more: [...document.querySelectorAll('main a')].filter((a) => /Lihat selengkapnya/.test(a.textContent)).map((a) => a.getBoundingClientRect().height), title: document.title, brandText: document.querySelector('a.brand').scrollWidth <= document.querySelector('a.brand').clientWidth }));
   ok(h.brand >= 44, `B-04 tautan merek >= 44px @${w}: ${h.brand}`);
   ok(h.more.length > 0 && h.more.every((x) => x >= 44), `B-04 "Lihat selengkapnya" >= 44px @${w}: ${h.more}`);
-  ok(h.title === 'SurvivalCheck', `B-07 judul beranda tanpa duplikasi: ${h.title}`);
+  ok(/^(Kesiapan rumahmu · )?SurvivalCheck$/.test(h.title), `B-07 judul beranda tanpa duplikasi: ${h.title}`);
   if (w === 320) ok(h.brandText, 'B-04 nama aplikasi tidak terpotong @320');
   await ctx.close();
 }
@@ -112,10 +112,7 @@ for (const hash of ['#/hasil', '#/belanja', '#/profil']) {
 // ---- B-14: catatan angka hati-hati ----
 {
   const dr = baseState({ scenarios: ['drought'], profile: { ...baseState().profile, scenarios: ['drought'] } });
-  let ctxp = await open(360, dr, '#/target');
-  ok((await ctxp.page.locator('[data-note="water-careful"]').count()) >= 1 && /Angka hati-hati/.test(await ctxp.page.innerText('main')), 'B-14 catatan di halaman target (kekeringan)');
-  await ctxp.ctx.close();
-  ctxp = await open(360, dr, '#/inventaris/water');
+  let ctxp = await open(360, dr, '#/inventaris/water');
   ok(/Angka hati-hati/.test(await ctxp.page.innerText('main')), 'B-14 catatan di inventaris air');
   await ctxp.ctx.close();
   ctxp = await open(360, baseState(), '#/inventaris/water');
@@ -154,7 +151,7 @@ for (const hash of ['#/hasil', '#/belanja', '#/profil']) {
   const sw = await page.evaluate(async () => { const r = await navigator.serviceWorker.ready; return !!r.active; });
   ok(sw, 'B-15 service worker aktif dengan CSP');
   const keys = await page.evaluate(async () => (await caches.keys()));
-  ok(keys.includes('survivalcheck-v3'), `SW cache v3: ${keys}`);
+  ok(keys.includes('survivalcheck-v4'), `SW cache v4: ${keys}`);
   const mf = await (await page.request.get(srv.base + 'manifest.webmanifest')).json();
   ok(!('orientation' in mf), 'B-15 manifest tanpa orientation');
   await ctx.close();

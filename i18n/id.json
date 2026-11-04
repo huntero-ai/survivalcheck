@@ -183,8 +183,8 @@
     "summary_saved": "Profil tersimpan. Lanjut ke target."
   },
   "target": {
-    "title": "Target dan jenis bencana",
-    "intro": "Berapa hari kamu ingin bisa bertahan di rumah tanpa bantuan dari luar?",
+    "title": "Target bertahan",
+    "intro": "Berapa hari kamu ingin siap bertahan di rumah?",
     "duration_title": "Target lama bertahan",
     "d3": "3 hari",
     "d7": "7 hari",

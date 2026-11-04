@@ -400,121 +400,58 @@ export function renderTarget(root, ctx) {
   root.textContent = '';
   const R = rules(ctx);
   const presets = R.defaults.target_presets;
+  const max = R.defaults.target_custom_max || 365;
   const prof = getProfile(ctx);
+  const people = Object.values(prof.counts || {}).reduce((a, b) => a + (Number(b) || 0), 0);
   let days = getTargetDays(ctx);
-  let isCustom = !!(ctx.state.target && ctx.state.target.custom) || !presets.includes(days);
-  const scenarioDefs = ctx.data.items.scenarios || ctx.data.scenarios || [];
 
-  // saran provinsi: diterapkan sekali per provinsi (agar pilihan pengguna tidak ditimpa ulang)
-  let scenarios = Array.isArray(ctx.state.scenarios) ? ctx.state.scenarios.slice() : [];
-  let suggestedKey = null;
-  if (prof.province) {
-    suggestedKey = prof.province;
-    if (prof.province_suggested_for !== prof.province) {
-      const sug = provinceScenarios(ctx, prof.province);
-      scenarios = [...new Set([...scenarios, ...sug])];
-      const q = getProfile(ctx); q.province_suggested_for = prof.province;
-      ctx.save({ scenarios, profile: q });
-    }
-  }
-  const saveTarget = () => ctx.save({ target: { days, custom: isCustom } });
+  // Asumsi bawaan: listrik padam dan air tidak mengalir. Jenis bencana tidak ditanyakan lagi.
+  const sc = Array.isArray(ctx.state.scenarios) ? ctx.state.scenarios : [];
+  if (!sc.includes('power_outage')) ctx.save({ scenarios: [...sc, 'power_outage'] });
+  const saveTarget = () => ctx.save({ target: { days, custom: !presets.includes(days) } });
   if (!ctx.state.target) saveTarget();
 
-  root.append(...pageHeader(ctx, tr(ctx, 'target.title', 'Target dan jenis bencana'), tr(ctx, 'target.intro', 'Berapa hari kamu ingin bisa bertahan di rumah tanpa bantuan dari luar?')));
+  root.append(...pageHeader(ctx, tr(ctx, 'target.title', 'Target bertahan', 'Survival target'), tr(ctx, 'target.intro', 'Berapa hari kamu ingin siap bertahan di rumah?', 'How many days do you want to be ready to last at home?')));
 
-  const summary = h('div', { class: 'notice', 'aria-live': 'polite' });
-  const belowMin = h('p', { class: 'f-error f-soft', 'aria-live': 'polite' });
-
-  // durasi
-  const name = nid('dur');
-  const fs = h('fieldset', { class: 'f-fieldset', role: 'radiogroup' }, h('legend', { text: tr(ctx, 'target.duration_title', 'Target lama bertahan') }));
-  const customWrap = h('div', { class: 'f-sub' });
-  const radios = [];
-  const mkRadio = (value, labelText, badge) => {
-    const id = nid('r');
-    const r = h('input', { type: 'radio', name, id, value: String(value) });
-    r.checked = value === 'custom' ? isCustom : (!isCustom && days === value);
-    r.addEventListener('change', () => {
-      if (!r.checked) return;
-      if (value === 'custom') { isCustom = true; customWrap.hidden = false; customInput.input.focus(); }
-      else { isCustom = false; days = value; customWrap.hidden = true; saveTarget(); }
-      update();
-    });
-    radios.push(r);
-    fs.append(h('label', { class: 'choice f-bigchoice', for: id }, r, h('span', null, labelText, badge ? h('span', { class: 'chip chip-info f-badge', text: badge }) : null)));
-  };
-  const customInput = numField(ctx, { label: tr(ctx, 'target.custom_label', 'Jumlah hari'), min: 1, max: R.defaults.target_custom_max, integer: true, rangeKey: 'target.validation.days_required', soft: 90, value: isCustom ? days : '', onValue: (v) => { if (v != null) { days = v; saveTarget(); update(); } } });
-  for (const d of presets) mkRadio(d, tr(ctx, 'target.d' + d, d + ' hari', d + ' days'), d === R.defaults.target_days ? tr(ctx, 'target.default_badge', 'Disarankan') : null);
-  mkRadio('custom', tr(ctx, 'target.custom', 'Lainnya'));
-  customWrap.append(customInput.el);
-  customWrap.hidden = !isCustom;
-  fs.append(customWrap);
-  root.append(h('section', { class: 'card f-section' }, fs, h('p', { class: 'f-hint', text: tr(ctx, 'target.bnpb_min', 'Minimum BNPB: 3 hari (72 jam). Banyak negara kini menganjurkan 7 hari atau lebih.') }), belowMin));
-
-  // air 3 L vs 2 L
-  let dismissed = false;
-  try { dismissed = window.localStorage.getItem('survivalcheck.dismiss.water3l') === '1'; } catch (e) { dismissed = false; }
-  if (!dismissed) {
-    const card = notice('', h('p', null, h('strong', { text: tr(ctx, 'warnings.label', 'Perhatian') + ': ' }), tr(ctx, 'warnings.water_3l', 'BNPB menyebut minimum 2 liter air minum per orang per hari. SurvivalCheck memakai 3 liter.')),
-      h('button', { type: 'button', class: 'btn', onclick: () => { card.remove(); try { window.localStorage.setItem('survivalcheck.dismiss.water3l', '1'); } catch (e) { /* abaikan */ } } }, tr(ctx, 'common.close', 'Tutup')));
-    root.append(card);
-  }
-
-  // skenario
-  const scFs = h('fieldset', { class: 'f-fieldset f-scenarios' }, h('legend', { text: tr(ctx, 'target.scenario_title', 'Jenis bencana yang ingin disiapkan') }),
-    h('p', { class: 'f-hint', text: tr(ctx, 'target.scenario_intro', 'Pilih satu atau lebih. Barang yang sama tidak dihitung dua kali, dan kebutuhan yang paling besar yang dipakai.') }));
-  if (suggestedKey) {
-    const sug = provinceScenarios(ctx, suggestedKey);
-    scFs.append(notice('', h('strong', { text: tr(ctx, 'target.scenario_suggested', 'Disarankan untuk {province}', 'Suggested for {province}', { province: ctx.t('provinces.' + suggestedKey) }) }),
-      h('p', { text: sug.map((id) => lab(ctx, (scenarioDefs.find((s) => s.id === id) || {}).label) || id).join(', ') }),
-      h('p', { class: 'f-hint', text: tr(ctx, 'target.scenario_suggested_hint', 'Berdasarkan data risiko BNPB. Hapus centang bila tidak sesuai.') })));
-  } else {
-    scFs.append(h('p', { class: 'f-hint' }, tr(ctx, 'f.no_province', 'Belum memilih provinsi? ', 'No province selected? '), h('a', { href: '#/profil', text: tr(ctx, 'profile.province_title', 'Pilih provinsi') })));
-  }
-  const INTL = new Set(['conflict', 'nuclear']);
-  const noteIntl = h('p', { class: 'f-hint', text: tr(ctx, 'scenarios.note_international', 'Belum ada panduan khusus untuk warga Indonesia. Isi di sini disusun dari panduan resmi negara lain dan lembaga internasional.') });
-  const outageNote = h('p', { class: 'f-hint' }, tr(ctx, 'scenarios.power_outage_desc', 'Mengaktifkan modul Daya Listrik'), ' ', h('a', { href: '#/daya', text: tr(ctx, 'power.title', 'Daya listrik') }));
-  const grid = h('div', { class: 'f-cards' });
-  for (const s of scenarioDefs) {
-    const id = nid('sc');
-    const cb = h('input', { type: 'checkbox', id, value: s.id });
-    cb.checked = scenarios.includes(s.id);
-    cb.addEventListener('change', () => {
-      scenarios = cb.checked ? [...new Set([...scenarios, s.id])] : scenarios.filter((x) => x !== s.id);
-      ctx.save({ scenarios });
-      card.classList.toggle('is-checked', cb.checked); mark.textContent = cb.checked ? '✓' : '';
-      update();
-    });
-    const mark = h('span', { class: 'f-check', 'aria-hidden': 'true', text: cb.checked ? '✓' : '' });
-    const card = h('label', { class: 'f-card' + (cb.checked ? ' is-checked' : ''), for: id }, cb, mark,
-      h('span', { class: 'f-card-body' },
-        h('strong', { text: lab(ctx, s.label) }),
-        h('span', { class: 'f-hint', text: tr(ctx, 'scenarios.' + s.id + '_desc', '') }),
-        INTL.has(s.id) ? h('span', { class: 'chip chip-info f-badge', text: tr(ctx, 'scenarios.label_international', 'Rujukan internasional') }) : null));
-    grid.append(card);
-  }
-  scFs.append(grid, noteIntl, outageNote);
-  root.append(h('section', { class: 'card f-section' }, scFs, h('p', { class: 'f-hint', text: tr(ctx, 'target.scenario_none', 'Tidak memilih jenis bencana tertentu? Paket inti tetap dihitung.') })), summary);
+  const svg = (d) => { const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('aria-hidden', 'true'); s.innerHTML = '<path d="' + d + '"/>'; return s; };
+  const num = h('span', { class: 'dial-num' });
+  const dial = h('div', { class: 'dial dial-sm', role: 'group', 'aria-live': 'polite' }, num, h('span', { class: 'dial-unit', text: tr(ctx, 'f.days', 'hari', 'days') }));
+  const dec = h('button', { type: 'button', class: 'round-btn', 'aria-label': tr(ctx, 'target.dec', 'Kurangi satu hari', 'One day less') }, svg('M5 12h14'));
+  const inc = h('button', { type: 'button', class: 'round-btn fill', 'aria-label': tr(ctx, 'target.inc', 'Tambah satu hari', 'One day more') }, svg('M12 5v14M5 12h14'));
+  const label = h('p', { class: 'center', style: 'font-weight:600;margin:0' });
+  const hint = h('p', { class: 'center muted', style: 'margin:0 0 var(--sp-4)' });
+  const needs = h('div', { class: 'card' });
+  const presetRow = h('div', { class: 'preset-row', role: 'radiogroup', 'aria-label': tr(ctx, 'target.presets', 'Pilihan cepat', 'Quick picks') });
+  const pBtns = presets.map((d) => {
+    const b = h('button', { type: 'button', role: 'radio', text: tr(ctx, 'common.units.day', '{n} hari', '{n} days', { n: d }) });
+    b.addEventListener('click', () => set(d));
+    presetRow.append(b);
+    return [d, b];
+  });
+  function set(v) { days = Math.max(1, Math.min(max, Math.round(v))); saveTarget(); update(); }
+  dec.addEventListener('click', () => set(days - 1));
+  inc.addEventListener('click', () => set(days + 1));
 
   function update() {
-    // ringkasan aturan (C3) dari rules.scenario_rules
-    const SR = (R.scenario_rules && R.scenario_rules.scenarios) || {};
-    const sel = scenarios.map((s) => ({ id: s, ...(SR[s] || {}) }));
-    const maxOf = (k, base) => sel.reduce((m, s) => (typeof s[k] === 'number' ? Math.max(m, s[k]) : m), base);
-    const eff = Math.max(days, maxOf('effective_target_min_days', 0));
-    const water = maxOf('water_drinking_l_per_person_day', R.water.drinking_l_per_person_day);
-    const meds = Math.max(eff, R.meds.min_days, maxOf('meds_min_days', 0));
-    summary.textContent = '';
-    summary.append(h('strong', { text: tr(ctx, 'target.effective_duration', 'Durasi efektif: {n} hari', 'Effective duration: {n} days', { n: eff }) }));
-    if (eff > days) {
-      const cause = sel.filter((s) => (s.effective_target_min_days || 0) > days).map((s) => lab(ctx, (scenarioDefs.find((d) => d.id === s.id) || {}).label)).join(', ');
-      summary.append(h('p', { text: tr(ctx, 'target.effective_duration_why', 'Karena {scenario}, target dinaikkan dari {from} ke {to} hari.', 'Because of {scenario}, the target is raised from {from} to {to} days.', { scenario: cause, from: days, to: eff }) }));
-    }
-    if (water > R.water.drinking_l_per_person_day) summary.append(h('p', { text: tr(ctx, 'target.water_raised', 'Air minum dinaikkan menjadi {n} L per orang per hari.', 'Drinking water is raised to {n} L per person per day.', { n: water }) }));
-    if (water > R.water.drinking_l_per_person_day) summary.append(h('p', { class: 'f-hint', 'data-note': 'water-careful', text: tr(ctx, 'target.water_careful', 'Angka hati-hati: 4 L berasal dari panduan untuk cuaca panas (Latvia), bukan khusus kekeringan. Anggap sebagai batas aman, bukan angka pasti.', 'Cautious figure: 4 L comes from hot-weather guidance (Latvia), not drought-specific. Treat it as a safe margin, not an exact number.') }));
-    if (meds > Math.max(eff, R.meds.min_days)) summary.append(h('p', { text: tr(ctx, 'target.medicine_raised', 'Stok obat rutin dinaikkan menjadi {n} hari.', 'Routine medicine stock is raised to {n} days.', { n: meds }) }));
-    belowMin.textContent = days < R.defaults.bnpb_minimum_days ? tr(ctx, 'target.below_min', 'Target di bawah 3 hari berarti di bawah minimum BNPB. Kamu tetap boleh memakainya.') : (days > 90 ? tr(ctx, 'target.validation.days_large', 'Target lebih dari 90 hari jarang realistis. Tetap lanjut?') : '');
+    num.textContent = String(days);
+    dec.disabled = days <= 1; inc.disabled = days >= max;
+    for (const [d, b] of pBtns) b.setAttribute('aria-checked', String(d === days));
+    const min = R.defaults.bnpb_minimum_days;
+    let l, hh;
+    if (days < min) { l = tr(ctx, 'target.lv_below', 'Di bawah minimum BNPB', 'Below the BNPB minimum'); hh = tr(ctx, 'target.below_min', 'Target di bawah 3 hari berarti di bawah minimum BNPB. Kamu tetap boleh memakainya.', 'A target under 3 days is below the BNPB minimum. You can still use it.'); }
+    else if (days < R.defaults.target_days) { l = tr(ctx, 'target.lv_bnpb', 'Standar dasar BNPB', 'BNPB basic standard'); hh = tr(ctx, 'target.lv_bnpb_hint', 'Minimal 72 jam, sesuai tas siaga BNPB.', 'At least 72 hours, in line with the BNPB go-bag.'); }
+    else if (days === R.defaults.target_days) { l = tr(ctx, 'target.default_badge', 'Disarankan', 'Recommended'); hh = tr(ctx, 'target.lv_rec_hint', 'Melampaui standar BNPB dan umum di panduan resmi.', 'Beyond the BNPB standard and common in official guides.'); }
+    else if (days > 90) { l = tr(ctx, 'target.lv_long', 'Jangka panjang', 'Long term'); hh = tr(ctx, 'target.validation.days_large', 'Target lebih dari 90 hari jarang realistis. Tetap lanjut?', 'A target over 90 days is rarely realistic. Continue anyway?'); }
+    else { l = tr(ctx, 'target.lv_tough', 'Tangguh', 'Resilient'); hh = tr(ctx, 'target.lv_tough_hint', 'Perlu cara memasak, penjernih air, dan daya alternatif.', 'Needs a way to cook, purify water, and backup power.'); }
+    label.textContent = l; hint.textContent = hh;
+    needs.textContent = '';
+    needs.append(h('p', { class: 'muted', style: 'margin:0 0 var(--sp-3)', text: tr(ctx, 'target.assume', 'Dengan asumsi listrik padam dan air tidak mengalir, {n} orang perlu kira-kira:', 'Assuming a power cut and no running water, {n} people need roughly:', { n: people || 1 }) }),
+      h('div', { class: 'stat-grid', style: 'margin:0' },
+        h('div', null, h('div', { class: 'stat-n', text: Math.round(R.water.drinking_l_per_person_day * Math.max(people, 1) * days) + ' L' }), h('div', { class: 'muted', text: tr(ctx, 'target.need_water', 'air minum', 'drinking water') })),
+        h('div', null, h('div', { class: 'stat-n', text: tr(ctx, 'common.units.day', '{n} hari', '{n} days', { n: Math.max(days, R.meds.min_days) }) }), h('div', { class: 'muted', text: tr(ctx, 'target.need_meds', 'stok obat rutin', 'routine medicine') }))));
   }
+  root.append(h('div', { class: 'days-picker' }, dec, dial, inc), label, hint, presetRow, needs,
+    h('p', { class: 'muted center', text: tr(ctx, 'target.change_anytime', 'Bisa diubah kapan saja.', 'You can change this any time.') }));
   update();
   root.append(savedNote(ctx), navBar(ctx, { href: '#/profil', label: tr(ctx, 'common.back', 'Kembali') }, { href: '#/inventaris', label: tr(ctx, 'common.next', 'Lanjut') }));
 }

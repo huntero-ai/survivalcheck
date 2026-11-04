@@ -1,51 +1,55 @@
-/* SurvivalCheck - shell, tokens, komponen dasar. Lihat docs/design-tokens.md */
+/* SurvivalCheck - shell, tokens, komponen dasar. Monokrom (hitam putih abu). Lihat docs/design-tokens.md */
+@font-face { font-family:"Rubik"; font-style:normal; font-weight:300 900; font-display:swap; src:url("../fonts/rubik-latin-wght-normal.woff2") format("woff2-variations"), url("../fonts/rubik-latin-wght-normal.woff2") format("woff2"); }
 :root {
-  --c-bg:#FAFAF7; --c-surface:#FFFFFF; --c-surface-2:#F1F3EF; --c-text:#1B1F1D; --c-text-muted:#4A524E;
-  --c-border:#7C8580; --c-divider:#E1E5E2; --c-primary:#0F6B5A; --c-on-primary:#FFFFFF; --c-focus:#1A5FB4;
-  --c-info-fg:#1D4F91; --c-info-bg:#E3EDFA; --c-ok-fg:#245C2A; --c-ok-bg:#E2F1DE;
-  --c-warn-fg:#7A4300; --c-warn-bg:#FDF0D8; --c-danger-fg:#9B2C1C; --c-danger-bg:#FBE7E3;
-  --tier-0-fg:#4A5361; --tier-0-bg:#ECEEF1; --tier-0-accent:#6B7585;
-  --tier-1-fg:#7A4300; --tier-1-bg:#FCEFD6; --tier-1-accent:#B0721A;
-  --tier-2-fg:#0B5F56; --tier-2-bg:#DCF2EE; --tier-2-accent:#178F80;
-  --tier-3-fg:#1D4F91; --tier-3-bg:#E1ECFA; --tier-3-accent:#3B78C4;
-  --tier-4-fg:#4A3A8C; --tier-4-bg:#ECE8F8; --tier-4-accent:#7462C2;
-  --tier-5-fg:#2E5B1D; --tier-5-bg:#E3F0DA; --tier-5-accent:#4F8A35;
-  --shadow-1:0 1px 2px rgb(0 0 0 / .08); --shadow-2:0 4px 16px rgb(0 0 0 / .12);
-  --font-sans:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Helvetica Neue",Arial,sans-serif;
+  --c-bg:#FFFFFF; --c-surface:#F4F4F4; --c-surface-2:#E9E9E9; --c-text:#111111; --c-text-muted:#555555;
+  --c-border:#8C8C8C; --c-divider:#E4E4E4; --c-primary:#111111; --c-on-primary:#FFFFFF; --c-focus:#111111;
+  --c-info-fg:#111111; --c-info-bg:#F4F4F4; --c-ok-fg:#111111; --c-ok-bg:#F4F4F4;
+  --c-warn-fg:#111111; --c-warn-bg:#E9E9E9; --c-danger-fg:#FFFFFF; --c-danger-bg:#111111;
+  --c-ink:#111111; --c-on-ink:#FFFFFF; --c-on-ink-muted:#D0D0D0; --c-ring:#8C8C8C;
+  --tier-0-fg:#FFFFFF; --tier-0-bg:#111111; --tier-0-accent:#FFFFFF;
+  --tier-1-fg:#FFFFFF; --tier-1-bg:#111111; --tier-1-accent:#FFFFFF;
+  --tier-2-fg:#FFFFFF; --tier-2-bg:#111111; --tier-2-accent:#FFFFFF;
+  --tier-3-fg:#FFFFFF; --tier-3-bg:#111111; --tier-3-accent:#FFFFFF;
+  --tier-4-fg:#FFFFFF; --tier-4-bg:#111111; --tier-4-accent:#FFFFFF;
+  --tier-5-fg:#FFFFFF; --tier-5-bg:#111111; --tier-5-accent:#FFFFFF;
+  --shadow-1:none; --shadow-2:0 4px 16px rgb(0 0 0 / .12); --shadow-hero:0 24px 40px rgb(0 0 0 / .18);
+  --font-sans:"Rubik",system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Helvetica Neue",Arial,sans-serif;
   --font-mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"Liberation Mono",monospace;
   --fs-display:2rem; --fs-h1:1.5rem; --fs-h2:1.25rem; --fs-h3:1.0625rem; --fs-body:1rem; --fs-small:.875rem; --fs-tiny:.8125rem;
   --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:20px; --sp-6:24px; --sp-8:32px; --sp-12:48px;
-  --touch-min:44px; --r-sm:6px; --r-md:10px; --r-lg:16px; --r-pill:999px;
+  --touch-min:44px; --r-sm:6px; --r-md:14px; --r-lg:20px; --r-pill:999px;
   --dur-fast:120ms; --dur-base:200ms; --ease:cubic-bezier(.2,0,0,1);
-  --nav-h:64px; color-scheme:light;
+  --nav-h:72px; color-scheme:light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --c-bg:#121614; --c-surface:#1B201E; --c-surface-2:#232927; --c-text:#E8ECEA; --c-text-muted:#AEB7B2;
-    --c-border:#7F8984; --c-divider:#2C3330; --c-primary:#5CC9B0; --c-on-primary:#0B1F1A; --c-focus:#8AB8FF;
-    --c-info-fg:#9CC2F5; --c-info-bg:#16263D; --c-ok-fg:#9AD69F; --c-ok-bg:#173019;
-    --c-warn-fg:#F5C77A; --c-warn-bg:#3A2A10; --c-danger-fg:#F4A898; --c-danger-bg:#3D1C16;
-    --tier-0-fg:#C9CFD8; --tier-0-bg:#252A31; --tier-0-accent:#8E97A5;
-    --tier-1-fg:#F2C27A; --tier-1-bg:#33260F; --tier-1-accent:#D99A3D;
-    --tier-2-fg:#7FD9CB; --tier-2-bg:#11302C; --tier-2-accent:#3FB5A4;
-    --tier-3-fg:#A2C4F2; --tier-3-bg:#152740; --tier-3-accent:#6A9FE0;
-    --tier-4-fg:#C3B8F2; --tier-4-bg:#262140; --tier-4-accent:#9C8CE6;
-    --tier-5-fg:#AEDB98; --tier-5-bg:#1A2E14; --tier-5-accent:#7DBA60;
-    --shadow-1:none; --shadow-2:0 4px 16px rgb(0 0 0 / .5); color-scheme:dark;
+    --c-bg:#0F0F0F; --c-surface:#1C1C1C; --c-surface-2:#2A2A2A; --c-text:#F2F2F2; --c-text-muted:#B0B0B0;
+    --c-border:#7A7A7A; --c-divider:#2C2C2C; --c-primary:#F2F2F2; --c-on-primary:#111111; --c-focus:#F2F2F2;
+    --c-info-fg:#F2F2F2; --c-info-bg:#1C1C1C; --c-ok-fg:#F2F2F2; --c-ok-bg:#1C1C1C;
+    --c-warn-fg:#F2F2F2; --c-warn-bg:#2A2A2A; --c-danger-fg:#111111; --c-danger-bg:#F2F2F2;
+    --c-ink:#F2F2F2; --c-on-ink:#111111; --c-on-ink-muted:#4A4A4A; --c-ring:#5A5A5A;
+    --tier-0-fg:#111111; --tier-0-bg:#F2F2F2; --tier-0-accent:#111111;
+    --tier-1-fg:#111111; --tier-1-bg:#F2F2F2; --tier-1-accent:#111111;
+    --tier-2-fg:#111111; --tier-2-bg:#F2F2F2; --tier-2-accent:#111111;
+    --tier-3-fg:#111111; --tier-3-bg:#F2F2F2; --tier-3-accent:#111111;
+    --tier-4-fg:#111111; --tier-4-bg:#F2F2F2; --tier-4-accent:#111111;
+    --tier-5-fg:#111111; --tier-5-bg:#F2F2F2; --tier-5-accent:#111111;
+    --shadow-1:none; --shadow-2:0 4px 16px rgb(0 0 0 / .5); --shadow-hero:0 24px 40px rgb(0 0 0 / .6); color-scheme:dark;
   }
 }
 :root[data-theme="dark"] {
-  --c-bg:#121614; --c-surface:#1B201E; --c-surface-2:#232927; --c-text:#E8ECEA; --c-text-muted:#AEB7B2;
-  --c-border:#7F8984; --c-divider:#2C3330; --c-primary:#5CC9B0; --c-on-primary:#0B1F1A; --c-focus:#8AB8FF;
-  --c-info-fg:#9CC2F5; --c-info-bg:#16263D; --c-ok-fg:#9AD69F; --c-ok-bg:#173019;
-  --c-warn-fg:#F5C77A; --c-warn-bg:#3A2A10; --c-danger-fg:#F4A898; --c-danger-bg:#3D1C16;
-  --tier-0-fg:#C9CFD8; --tier-0-bg:#252A31; --tier-0-accent:#8E97A5;
-  --tier-1-fg:#F2C27A; --tier-1-bg:#33260F; --tier-1-accent:#D99A3D;
-  --tier-2-fg:#7FD9CB; --tier-2-bg:#11302C; --tier-2-accent:#3FB5A4;
-  --tier-3-fg:#A2C4F2; --tier-3-bg:#152740; --tier-3-accent:#6A9FE0;
-  --tier-4-fg:#C3B8F2; --tier-4-bg:#262140; --tier-4-accent:#9C8CE6;
-  --tier-5-fg:#AEDB98; --tier-5-bg:#1A2E14; --tier-5-accent:#7DBA60;
-  --shadow-1:none; --shadow-2:0 4px 16px rgb(0 0 0 / .5); color-scheme:dark;
+  --c-bg:#0F0F0F; --c-surface:#1C1C1C; --c-surface-2:#2A2A2A; --c-text:#F2F2F2; --c-text-muted:#B0B0B0;
+  --c-border:#7A7A7A; --c-divider:#2C2C2C; --c-primary:#F2F2F2; --c-on-primary:#111111; --c-focus:#F2F2F2;
+  --c-info-fg:#F2F2F2; --c-info-bg:#1C1C1C; --c-ok-fg:#F2F2F2; --c-ok-bg:#1C1C1C;
+  --c-warn-fg:#F2F2F2; --c-warn-bg:#2A2A2A; --c-danger-fg:#111111; --c-danger-bg:#F2F2F2;
+  --c-ink:#F2F2F2; --c-on-ink:#111111; --c-on-ink-muted:#4A4A4A; --c-ring:#5A5A5A;
+  --tier-0-fg:#111111; --tier-0-bg:#F2F2F2; --tier-0-accent:#111111;
+  --tier-1-fg:#111111; --tier-1-bg:#F2F2F2; --tier-1-accent:#111111;
+  --tier-2-fg:#111111; --tier-2-bg:#F2F2F2; --tier-2-accent:#111111;
+  --tier-3-fg:#111111; --tier-3-bg:#F2F2F2; --tier-3-accent:#111111;
+  --tier-4-fg:#111111; --tier-4-bg:#F2F2F2; --tier-4-accent:#111111;
+  --tier-5-fg:#111111; --tier-5-bg:#F2F2F2; --tier-5-accent:#111111;
+  --shadow-1:none; --shadow-2:0 4px 16px rgb(0 0 0 / .5); --shadow-hero:0 24px 40px rgb(0 0 0 / .6); color-scheme:dark;
 }
 
 *,*::before,*::after { box-sizing:border-box; }
@@ -146,6 +150,64 @@ details.guide > div { padding:0 var(--sp-4) var(--sp-4); }
 .back-link { display:inline-flex; align-items:center; min-height:var(--touch-min); margin:0 0 var(--sp-2); }
 
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after { transition-duration:0ms!important; animation-duration:0ms!important; scroll-behavior:auto!important; } }
+
+/* Redesign monokrom: komponen */
+.app-header { background:var(--c-bg); border-bottom:0; }
+.app-header .brand { font-weight:600; letter-spacing:-.2px; }
+.app-header .icon-link span { display:none; }
+.icon-link { color:var(--c-text); border-radius:var(--r-pill); background:transparent; border:0; font:inherit; cursor:pointer; }
+.icon-link:hover { background:var(--c-surface); }
+.icon-link .i-sun { display:none; } [data-theme="dark"] .icon-link .i-sun { display:block; } [data-theme="dark"] .icon-link .i-moon { display:none; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .icon-link .i-sun { display:block; } :root:not([data-theme="light"]) .icon-link .i-moon { display:none; } }
+.card { border:0; }
+.btn { background:transparent; border-radius:var(--r-md); }
+.btn:hover { background:var(--c-surface); }
+.btn-primary, .btn-primary:hover { min-height:52px; border-radius:16px; background:var(--c-primary); color:var(--c-on-primary); border-color:var(--c-primary); }
+.chip { border-radius:var(--r-pill); }
+.notice { border:0; border-radius:var(--r-lg); }
+.notice a { color:inherit; }
+.bottom-nav { background:var(--c-bg); }
+.bottom-nav a[aria-current="page"] { color:var(--c-text); font-weight:600; }
+.bottom-nav a[aria-current="page"]::before { display:none; }
+.bottom-nav a[aria-current="page"] svg { stroke-width:2.4; }
+.link-list a { border:0; border-radius:var(--r-lg); }
+details.guide { border:0; border-radius:var(--r-lg); }
+.stepper a, .stepper span.step { border-top-width:4px; border-radius:2px; }
+.toast { background:var(--c-ink); color:var(--c-on-ink); }
+
+/* Hero: lingkaran hari bertahan */
+.hero { display:flex; flex-direction:column; align-items:center; gap:var(--sp-4); text-align:center; margin:0 0 var(--sp-6); }
+.dial { width:236px; height:236px; border-radius:50%; background:var(--c-ink); color:var(--c-on-ink); border:12px solid var(--c-ring); box-shadow:var(--shadow-hero); display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box; }
+.dial .dial-lbl { font-size:var(--fs-small); color:var(--c-on-ink-muted); }
+.dial .dial-num { font-size:4rem; font-weight:500; line-height:1.05; letter-spacing:-1px; }
+.dial .dial-unit { font-size:var(--fs-h3); }
+.dial.dial-sm { width:196px; height:196px; border-width:11px; }
+.dial.dial-sm .dial-num { font-size:4rem; }
+.pill-row { display:flex; flex-wrap:wrap; gap:var(--sp-2); justify-content:center; }
+.pill { display:inline-flex; align-items:center; padding:6px 12px; border-radius:var(--r-pill); background:var(--c-surface); font-size:var(--fs-tiny); }
+.hero-note { margin:0; max-width:18rem; color:var(--c-text-muted); font-size:var(--fs-small); line-height:1.45; }
+.tier-card { display:block; text-decoration:none; color:var(--c-text); }
+.tier-card .tier-top { display:flex; align-items:center; justify-content:space-between; gap:var(--sp-3); margin-bottom:var(--sp-3); }
+.tier-card .tier-name { font-size:var(--fs-h3); font-weight:600; }
+.tier-card .tier-sub { font-size:var(--fs-tiny); color:var(--c-text-muted); }
+.seg-row { display:flex; gap:4px; }
+.seg-row i { width:34px; height:8px; border-radius:4px; background:var(--c-divider); display:block; }
+.seg-row i.on { background:var(--c-text); }
+.next-card { border:1.5px solid var(--c-divider); border-radius:var(--r-lg); padding:var(--sp-4); margin:0 0 var(--sp-4); }
+.next-card h2 { font-size:var(--fs-h3); margin:0 0 var(--sp-2); }
+.stat-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--sp-3); margin:0 0 var(--sp-4); }
+.stat-grid .card { margin:0; }
+.stat-grid .stat-n { font-size:1.375rem; font-weight:600; }
+
+/* Pemilih hari */
+.days-picker { display:flex; align-items:center; justify-content:center; gap:18px; margin:var(--sp-4) 0; }
+.round-btn { width:48px; height:48px; border-radius:50%; border:1.5px solid var(--c-text); background:transparent; color:var(--c-text); cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; }
+.round-btn.fill { background:var(--c-primary); color:var(--c-on-primary); border-color:var(--c-primary); }
+.round-btn svg { width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; }
+.preset-row { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--sp-2); margin:0 0 var(--sp-4); }
+.preset-row button { min-height:48px; border-radius:var(--r-md); border:1.5px solid var(--c-divider); background:transparent; color:var(--c-text); font:inherit; font-weight:500; cursor:pointer; }
+.preset-row button[aria-checked="true"] { background:var(--c-primary); color:var(--c-on-primary); border-color:var(--c-primary); }
+.center { text-align:center; }
 
 /* Cetak */
 @media print {
