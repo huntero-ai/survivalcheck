@@ -43,8 +43,10 @@ const ICONS = {
   chart: '<path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-8"/><path d="M22 20H2"/>',
   menu: '<path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/>',
   phone: '<path d="M5 3h4l2 5-2.5 1.5a11 11 0 005 5L15 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/>',
-  gear: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/>',
+  gear: '<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>',
   back: '<path d="M15 5l-7 7 7 7"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+  moon: '<path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/>',
 };
 function icon(name) {
   const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -92,6 +94,19 @@ function applyTheme() {
   const th = state.settings.theme;
   if (th === 'light' || th === 'dark') document.documentElement.setAttribute('data-theme', th);
   else document.documentElement.removeAttribute('data-theme');
+}
+function isDark() {
+  const th = state && state.settings && state.settings.theme;
+  if (th === 'dark') return true;
+  if (th === 'light') return false;
+  return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+}
+function toggleTheme() {
+  state.settings.theme = isDark() ? 'light' : 'dark';
+  applyTheme(); save();
+  const b = document.getElementById('theme-toggle');
+  if (b) b.setAttribute('aria-pressed', String(isDark()));
+  announce(isDark() ? tt('nav.dark_on', 'Mode gelap aktif', 'Dark mode on') : tt('nav.dark_off', 'Mode terang aktif', 'Light mode on'));
 }
 function applyLang() {
   const l = I18n.setLang(state.settings.lang);
@@ -149,6 +164,8 @@ function buildShell() {
   els.header = h('header', { class: 'app-header' },
     h('a', { class: 'brand', href: '#/' }, t('app.name')),
     h('a', { class: 'icon-link', href: '#/info/darurat', 'aria-label': t('info.emergency.title') }, icon('phone'), h('span', {}, t('info.emergency.title'))),
+    h('button', { class: 'icon-link', id: 'theme-toggle', type: 'button', 'aria-pressed': String(isDark()), 'aria-label': tt('nav.dark_mode', 'Mode gelap', 'Dark mode'), onclick: toggleTheme },
+      (() => { const a = icon('sun'); a.classList.add('i-sun'); return a; })(), (() => { const m = icon('moon'); m.classList.add('i-moon'); return m; })()),
     h('a', { class: 'icon-link', href: '#/pengaturan', 'aria-label': t('nav.settings') }, icon('gear')));
   els.banners = h('div', { class: 'banner-area', id: 'banners' });
   els.stepper = h('div', { id: 'stepper-wrap' });
@@ -317,9 +334,58 @@ function dueReminder() {
   }
   return null;
 }
+const BOTTLENECK_KEY = { water: 'water', food: 'kcal', meds: 'meds', infant_food: 'baby_food', power: 'power_medical' };
+async function fillHome(slot) {
+  let r = null;
+  try { const eng = await import('./engine.js'); r = eng.evaluate(state, data); } catch (e) { r = null; }
+  slot.textContent = '';
+  if (!r || r.status !== 'ok') {
+    slot.append(h('p', { class: 'hero-note' }, t('result.empty_body')), h('a', { class: 'btn btn-primary', href: '#/profil' }, t('result.go_profile')));
+    return;
+  }
+  const lang = I18n.getLang();
+  const s = r.survival, target = r.targets.effective_target_days, d = s.days;
+  const ok = d >= target;
+  const num = d < 1 ? '<1' : '\u00b1 ' + d;
+  slot.append(
+    h('div', { class: 'dial', role: 'img', 'aria-label': d < 1 ? t('result.survive_less_than_one') : t('result.survive_value', { n: d }) },
+      h('span', { class: 'dial-lbl' }, tt('home.survive_label', 'bisa bertahan', 'can last')),
+      h('span', { class: 'dial-num' }, num),
+      h('span', { class: 'dial-unit' }, tt('f.days', 'hari', 'days'))),
+    h('div', { class: 'pill-row' },
+      h('span', { class: 'pill' }, t('result.survive_target', { n: target })),
+      ok ? null : h('span', { class: 'pill' }, tt('home.short_days', 'Kurang {n} hari', 'Short by {n} days').replace('{n}', String(target - d)))),
+    h('p', { class: 'hero-note' }, ok ? t('result.bottleneck_ok')
+      : t('result.bottleneck_line', { resource: t('result.bottleneck.' + (BOTTLENECK_KEY[s.bottleneck] || s.bottleneck)), n: Math.min(365, Math.max(1, d)) })));
+  // kartu tier + langkah berikutnya
+  const n = r.tier.value;
+  const seg = h('span', { class: 'seg-row', role: 'img', 'aria-label': t('tiers.segments_label', { n }) }, [1, 2, 3, 4, 5].map((i) => h('i', { class: i <= n ? 'on' : '' })));
+  const tierCard = h('a', { class: 'card tier-card', href: '#/hasil' },
+    h('span', { class: 'tier-top' }, seg, n >= 2 ? h('span', { class: 'chip' }, t('tiers.bnpb_badge')) : null),
+    h('span', { class: 'tier-sub' }, t('tiers.of', { n })), h('span', { class: 'tier-name', style: 'display:block' }, t('tiers.' + n + '.name')));
+  const first = (r.shortfall || []).find((x) => x.missing != null);
+  const slotAfter = [tierCard];
+  if (first) {
+    const it = (data.items.items || []).find((x) => x.id === first.id) || {};
+    const name = it.label ? (it.label[lang] || it.label.id) : first.id;
+    slotAfter.push(h('section', { class: 'next-card' }, h('h2', {}, tt('home.next_title', 'Langkah berikutnya', 'Next step')),
+      h('p', {}, h('strong', {}, name), first.unit ? ' \u00b7 ' + tt('home.missing', 'kurang', 'short') + ' ' + first.missing + ' ' + first.unit : ''),
+      h('a', { class: 'btn btn-primary btn-block', href: '#/inventaris' }, tt('home.fill_stock', 'Isi persediaan', 'Fill in stock'))));
+  }
+  slotAfter.push(h('div', { class: 'stat-grid' },
+    h('div', { class: 'card' }, h('div', { class: 'muted' }, tt('home.bag', 'Tas siaga', 'Go-bag')), h('div', { class: 'stat-n' }, r.bag.yes + ' / ' + r.bag.applicable)),
+    h('div', { class: 'card' }, h('div', { class: 'muted' }, tt('home.family', 'Evaluasi keluarga', 'Family check')), h('div', { class: 'stat-n' }, r.family.total == null ? '-' : r.family.total + ' / 36'))));
+  slot.after(...slotAfter);
+}
+
 function renderHome(main) {
   const started = hasProfile();
-  main.append(h('h1', {}, started ? t('app.name') : t('home.title')),
+  if (started) {
+    main.append(h('p', { class: 'muted center' }, fmtDate(Date.now())), h('h1', { class: 'center' }, tt('home.ready_title', 'Kesiapan rumahmu', 'Your household readiness')));
+    const slot = h('section', { class: 'hero', 'aria-live': 'polite' });
+    main.append(slot);
+    fillHome(slot);
+  } else main.append(h('h1', {}, t('home.title')),
     h('p', { class: 'muted' }, t('app.subtitle')),
     h('p', {}, t('home.intro')), h('p', {}, t('home.privacy')));
   // pengingat
@@ -344,9 +410,11 @@ function renderHome(main) {
   // mode cepat / lengkap
   const mode = state.settings.mode === 'quick' ? 'quick' : 'full';
   const modeBtn = (m, label) => h('button', { class: 'btn', type: 'button', 'aria-pressed': String(mode === m), style: mode === m ? 'background:var(--c-primary);color:var(--c-on-primary)' : '', onclick: () => { state.settings.mode = m; save(); renderRoute(); } }, label);
-  main.append(h('div', { class: 'btn-row', role: 'group', 'aria-label': t('home.mode_hint') }, modeBtn('quick', t('home.quick_mode')), modeBtn('full', t('home.full_mode'))), h('p', { class: 'muted' }, t('home.mode_hint')));
-  // langkah
-  main.append(h('h2', {}, t('home.steps_title')), h('ol', {}, ['profile', 'target', 'inventory', 'result'].map((k) => h('li', {}, t('home.steps.' + k)))));
+  if (!started) {
+    main.append(h('div', { class: 'btn-row', role: 'group', 'aria-label': t('home.mode_hint') }, modeBtn('quick', t('home.quick_mode')), modeBtn('full', t('home.full_mode'))), h('p', { class: 'muted' }, t('home.mode_hint')));
+    // langkah
+    main.append(h('h2', {}, t('home.steps_title')), h('ol', {}, ['profile', 'target', 'inventory', 'result'].map((k) => h('li', {}, t('home.steps.' + k)))));
+  }
   // disclaimer
   const dis = h('section', { class: 'card', 'aria-labelledby': 'dis-h' }, h('h2', { id: 'dis-h' }, t('disclaimer.title')), h('p', {}, t('disclaimer.short')),
     h('a', { class: 'link-touch', href: '#/info/disclaimer' }, t('common.show_more')));

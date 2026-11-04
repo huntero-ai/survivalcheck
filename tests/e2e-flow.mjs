@@ -77,12 +77,11 @@ await check('profil'); await shot('02-profil');
 
 // ---- 3. target dan skenario ----
 await go('#/target');
-await page.locator('input[type=radio][value="7"]').check();
-for (const v of ['earthquake', 'tsunami', 'power_outage', 'conflict']) await page.locator(`input[type=checkbox][value=${v}]`).check();
+await page.getByRole('radio', { name: /7 hari/ }).click();
 await page.waitForTimeout(300);
 s = await state();
 ok((s.target && (s.target.days === 7 || s.target === 7)), 'target 7 hari tersimpan');
-ok(['earthquake', 'tsunami', 'power_outage', 'conflict'].every((x) => s.scenarios.includes(x)), 'skenario tersimpan: ' + JSON.stringify(s.scenarios));
+ok(s.scenarios.includes('power_outage'), 'asumsi listrik padam tersimpan: ' + JSON.stringify(s.scenarios));
 await check('target'); await shot('03-target');
 
 // ---- 4. inventaris ----

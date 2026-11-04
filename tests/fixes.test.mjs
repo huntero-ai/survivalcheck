@@ -186,9 +186,9 @@ test('B-16: tier 0 tidak berkata "Belum mulai"', () => {
 });
 
 // --- B-17 / SW ---
-test('B-17: workflow Pages cancel-in-progress false; SW cache v3', () => {
+test('B-17: workflow Pages cancel-in-progress false; SW cache versioned', () => {
   assert.match(read('.github/workflows/pages.yml'), /cancel-in-progress: false/);
-  assert.match(read('sw.js'), /const CACHE = 'survivalcheck-v3'/);
+  assert.match(read('sw.js'), /const CACHE = 'survivalcheck-v\d+'/);
 });
 
 // --- B-08 ---

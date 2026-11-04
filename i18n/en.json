@@ -183,8 +183,8 @@
     "summary_saved": "Profile saved. On to your target."
   },
   "target": {
-    "title": "Target and emergencies",
-    "intro": "How many days do you want to be able to manage at home without outside help?",
+    "title": "Survival target",
+    "intro": "How many days do you want to be ready to last at home?",
     "duration_title": "How long to be self-sufficient",
     "d3": "3 days",
     "d7": "7 days",
