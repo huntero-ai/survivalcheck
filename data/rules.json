@@ -1,0 +1,568 @@
+{
+ "version": "1.0.0",
+ "generated": "2026-11-03",
+ "agent": "S2",
+ "_about": {
+  "id": "Konfigurasi mesin hitung SurvivalCheck. Semua angka di sini bisa diganti tanpa mengubah logika. Algoritma lengkap: docs/scoring.md. Kuantitas per item (per_person_day, per_household, dst.) tetap di data/items.json; file ini hanya memuat angka lintas-item (air, kkal, tier, skor, skenario). Bila nilai air/kkal di sini berbeda dari items.json, rules.json yang dipakai.",
+  "en": "Calculation-engine configuration. Every number is replaceable without touching logic. Algorithm: docs/scoring.md. Per-item quantities stay in data/items.json; this file holds cross-item numbers (water, kcal, tiers, score, scenarios). If a water/kcal value differs from items.json, rules.json wins.",
+  "decisions": [
+   "D-001",
+   "D-003",
+   "D-004",
+   "D-005",
+   "D-006",
+   "D-008",
+   "D-009",
+   "D-010",
+   "D-012",
+   "D-014",
+   "D-016",
+   "D-017",
+   "D-026",
+   "D-027",
+   "D-028",
+   "D-029",
+   "D-030",
+   "D-032",
+   "D-034",
+   "D-045",
+   "D-046"
+  ],
+  "no_prices": true
+ },
+ "defaults": {
+  "target_days": 7,
+  "target_presets": [
+   3,
+   7,
+   14,
+   30
+  ],
+  "target_custom_min": 1,
+  "target_custom_max": 365,
+  "bnpb_minimum_days": 3,
+  "infant_feeding": "formula",
+  "indicator_default": 0,
+  "decision": "D-003"
+ },
+ "age_groups": [
+  {
+   "id": "infant",
+   "label": {
+    "id": "Bayi <1 tahun",
+    "en": "Infant <1 year"
+   },
+   "min_age": 0,
+   "max_age": 0,
+   "kcal_per_day": null,
+   "kcal_note": {
+    "id": "Tidak dihitung kkal; ASI/formula dari item bayi (D-010).",
+    "en": "No kcal counted; breast milk/formula via infant items (D-010)."
+   },
+   "counts_for_water": true,
+   "decision": "D-008,D-010"
+  },
+  {
+   "id": "toddler",
+   "label": {
+    "id": "Balita 1-4 tahun",
+    "en": "Toddler 1-4 years"
+   },
+   "min_age": 1,
+   "max_age": 4,
+   "kcal_per_day": 1430,
+   "counts_for_water": true,
+   "decision": "D-008"
+  },
+  {
+   "id": "child",
+   "label": {
+    "id": "Anak 5-12 tahun",
+    "en": "Child 5-12 years"
+   },
+   "min_age": 5,
+   "max_age": 12,
+   "kcal_per_day": 2000,
+   "counts_for_water": true,
+   "decision": "D-008"
+  },
+  {
+   "id": "adult",
+   "label": {
+    "id": "Dewasa 13-59 tahun",
+    "en": "Adult 13-59 years"
+   },
+   "min_age": 13,
+   "max_age": 59,
+   "kcal_per_day": 2230,
+   "counts_for_water": true,
+   "decision": "D-008"
+  },
+  {
+   "id": "elderly",
+   "label": {
+    "id": "Lansia >=60 tahun",
+    "en": "Elderly >=60 years"
+   },
+   "min_age": 60,
+   "max_age": null,
+   "kcal_per_day": 1890,
+   "counts_for_water": true,
+   "decision": "D-008"
+  }
+ ],
+ "energy_adjustments": {
+  "pregnant_extra_kcal": 285,
+  "breastfeeding_extra_kcal": 500,
+  "applies_per": "orang yang ditandai (jumlah di profil), ditambahkan ke kkal harian rumah tangga",
+  "decision": "D-009",
+  "note": {
+   "id": "Air hamil/menyusui: anjuran 'lebih banyak' tanpa angka; tidak dihitung.",
+   "en": "Water for pregnant/breastfeeding: 'more' advised, no number; not computed."
+  }
+ },
+ "water": {
+  "drinking_l_per_person_day": 3,
+  "drinking_gating_from_tier": 2,
+  "drinking_note": {
+   "id": "Semua usia termasuk bayi (D-004). Minimum BNPB 2 L ditampilkan sebagai catatan.",
+   "en": "All ages including infants (D-004). BNPB minimum 2 L shown as a note."
+  },
+  "bnpb_minimum_l_per_person_day": 2,
+  "hygiene_l_per_person_day": 2,
+  "hygiene_gating": false,
+  "hygiene_note": {
+   "id": "Saran, tidak gating, tidak ikut hari bertahan (D-005).",
+   "en": "Advisory, non-gating, not part of survival days (D-005)."
+  },
+  "drought_l_per_person_day": 4,
+  "pet_l_per_animal_day": {
+   "dog": 4,
+   "cat": 1
+  },
+  "pet_min_days": 5,
+  "pet_decision": "D-016",
+  "decision": "D-004,D-005,D-006"
+ },
+ "food": {
+  "aggregates": [
+   "food_rice",
+   "food_instant_noodle",
+   "food_biscuit",
+   "food_canned_fish",
+   "food_canned_meat",
+   "food_abon",
+   "food_nuts",
+   "food_sugar",
+   "food_honey",
+   "food_chocolate",
+   "food_uht_milk",
+   "food_condensed_milk",
+   "food_milk_powder",
+   "food_oatmeal",
+   "food_dates",
+   "food_dried_fruit",
+   "food_ready_meal"
+  ],
+  "kcal_per_100g": {
+   "food_rice": 359,
+   "food_instant_noodle": 470,
+   "food_biscuit": 458,
+   "food_canned_fish": 140,
+   "food_canned_meat": 289,
+   "food_abon": 404,
+   "food_nuts": 564,
+   "food_sugar": 394,
+   "food_honey": 294,
+   "food_chocolate": 565,
+   "food_uht_milk": 60,
+   "food_condensed_milk": 343,
+   "food_milk_powder": 513,
+   "food_oatmeal": 398,
+   "food_dates": null,
+   "food_dried_fruit": 343,
+   "food_ready_meal": null
+  },
+  "kcal_per_100g_source": "research/r5b-nutrition-firstaid.json food_kcal (TKPI via panganku.org, DIBACA). null = wajib input kkal dari label (kurma, makanan siap saji) (D-046).",
+  "unit_g_defaults": {
+   "kg": 1000
+  },
+  "unit_g_note": "Berat kemasan tidak bersumber (R5b). Hanya satuan 'kg' yang diketahui; satuan lain wajib grams_per_unit atau kcal_per_unit dari label, jika tidak: peringatan food_kcal_unresolved dan kkal = 0.",
+  "kcal_resolution_order": [
+   "kcal_total",
+   "qty*kcal_per_unit",
+   "qty*grams_per_unit*kcal_per_100g/100"
+  ],
+  "no_cook_ids": [
+   "food_biscuit",
+   "food_canned_fish",
+   "food_canned_meat",
+   "food_abon",
+   "food_nuts",
+   "food_honey",
+   "food_chocolate",
+   "food_uht_milk",
+   "food_condensed_milk",
+   "food_dates",
+   "food_dried_fruit",
+   "food_ready_meal"
+  ],
+  "no_cook_target_share_pct": 50,
+  "no_cook_gating": false,
+  "no_cook_decision": "D-011",
+  "buffer_pct": 0,
+  "buffer_note": "R5b menyarankan opsional cadangan 10%; default 0 (tidak dipakai).",
+  "decision": "D-008,D-046"
+ },
+ "meds": {
+  "min_days": 7,
+  "min_days_tier4": 14,
+  "stock_days_input": "per obat: stock_days (hari); stok rumah tangga = MIN dari semua obat rutin",
+  "decision": "D-014",
+  "note": {
+   "id": "Konsultasi dokter/faskes untuk isi ulang resep.",
+   "en": "Consult a doctor/facility for prescription refills."
+  }
+ },
+ "cash": {
+  "unit": "hari belanja",
+  "days_low": 3,
+  "days_high": 7,
+  "high_from_target_days": 7,
+  "gating_from_tier": 3,
+  "gating_days": 7,
+  "decision": "D-017",
+  "note": "days_low dipakai sebagai target hanya bila effective_target_days < 7 dan tanpa skenario konflik/listrik padam; gating tier 3+ selalu 7."
+ },
+ "item_applicability_overrides": {
+  "infant_formula": {
+   "profile_infant_feeding_in": [
+    "formula",
+    "mixed"
+   ],
+   "note": "Formula hanya dihitung bila bayi diberi formula/campuran; ASI eksklusif tidak butuh formula (D-010)."
+  }
+ },
+ "tiers": [
+  {
+   "id": 0,
+   "key": "belum_siap",
+   "name": {
+    "id": "Belum Siap",
+    "en": "Not Ready"
+   },
+   "stock_days": 0,
+   "rule": "hari bertahan < 1",
+   "bnpb_equivalent": "tas <50% / Rawan",
+   "decision": "D-001"
+  },
+  {
+   "id": 1,
+   "key": "rentan",
+   "name": {
+    "id": "Rentan",
+    "en": "Vulnerable"
+   },
+   "stock_days": 1,
+   "rule": "hari bertahan >= 1 tetapi syarat tier 2 belum terpenuhi",
+   "gating_scope": "komponen hari bertahan >= 1 hari",
+   "bnpb_equivalent": "tas 50-80%",
+   "decision": "D-001"
+  },
+  {
+   "id": 2,
+   "key": "siap_dasar",
+   "name": {
+    "id": "Siap Dasar 72 jam (standar BNPB)",
+    "en": "Basic Ready 72 hours (BNPB standard)"
+   },
+   "stock_days": 3,
+   "meds_days": 7,
+   "bag_pct_gt": 80,
+   "family_score_gte": 13,
+   "gating_scope": "semua item min_tier_gating<=2",
+   "bnpb_equivalent": "SIAP + Cukup Siaga",
+   "decision": "D-002,D-026,D-027"
+  },
+  {
+   "id": 3,
+   "key": "siap_seminggu",
+   "name": {
+    "id": "Siap 1 Minggu",
+    "en": "Ready for 1 Week"
+   },
+   "stock_days": 7,
+   "meds_days": 7,
+   "cash_days": 7,
+   "bag_pct_gt": 80,
+   "family_score_gte": 13,
+   "gating_scope": "semua item min_tier_gating<=3 (tambah: radio, power bank, dokumen, nomor tercetak, tunai 7 hari belanja)",
+   "decision": "D-001,D-017"
+  },
+  {
+   "id": 4,
+   "key": "tangguh_2minggu",
+   "name": {
+    "id": "Tangguh 2 Minggu",
+    "en": "Resilient 2 Weeks"
+   },
+   "stock_days": 14,
+   "meds_days": 14,
+   "cash_days": 7,
+   "bag_pct_gt": 80,
+   "family_score_gte": 25,
+   "gating_scope": "semua item min_tier_gating<=4 (tambah: kompor+gas, penjernih air, rencana keluarga)",
+   "decision": "D-001,D-014,D-027"
+  },
+  {
+   "id": 5,
+   "key": "mandiri",
+   "name": {
+    "id": "Mandiri >=30 hari",
+    "en": "Self-reliant 30+ days"
+   },
+   "stock_days": 30,
+   "meds_days": 30,
+   "cash_days": 7,
+   "bag_pct_gt": 80,
+   "family_score_gte": 25,
+   "gating_scope": "semua item min_tier_gating<=5 (tambah: salah satu daya alternatif, pengetahuan P3K)",
+   "decision": "D-001"
+  }
+ ],
+ "tier_rule": {
+  "statement": "Tier = tier tertinggi T (2..5) sehingga semua syarat tier 2..T terpenuhi berurutan (kumulatif). Jika tier 2 tidak terpenuhi: tier 1 bila hari bertahan >= 1, selain itu tier 0.",
+  "item_requirement": "item gating dengan min_tier_gating <= T dan berlaku bagi profil: tercukupi bila dimiliki >= kebutuhan untuk stock_days tier T (item stok) atau >= jumlah minimum (item hitungan/ya-tidak).",
+  "meds_days_formula": "max(stock_days tier T, meds.min_days)",
+  "cash_days_formula": "cash.gating_days bila T>=3",
+  "gating_groups": {
+   "alt_power_any": "cukup salah satu item grup (power_station, solar_panel, generator) dimiliki >= 1"
+  },
+  "score_cannot_raise_tier": true,
+  "target_tier": "tier tertinggi (>=1) dengan stock_days <= effective_target_days; hanya untuk tampilan 'target Anda setara tier X'",
+  "tier_does_not_depend_on_target": true
+ },
+ "scenario_rules": {
+  "merge": {
+   "items": "gabungan (union) tanpa dobel: item muncul bila salah satu skenario terpilih ada di item.scenarios",
+   "numeric_parameters": "diambil yang tertinggi (max) di antara skenario terpilih",
+   "effective_target_days": "max(target_days, semua effective_target_min_days skenario terpilih)"
+  },
+  "scenarios": {
+   "earthquake": {},
+   "tsunami": {},
+   "flood_landslide": {},
+   "eruption": {},
+   "haze": {},
+   "extreme_weather": {},
+   "nuclear": {
+    "note": "Shelter di dalam >=24 jam; stok tetap mengikuti target (D-033)."
+   },
+   "drought": {
+    "water_drinking_l_per_person_day": 4,
+    "decision": "D-006"
+   },
+   "power_outage": {
+    "cash_days": 7,
+    "decision": "D-017"
+   },
+   "pandemic": {
+    "effective_target_min_days": 14,
+    "meds_min_days": 30,
+    "decision": "D-034"
+   },
+   "conflict": {
+    "effective_target_min_days": 7,
+    "cash_days": 7,
+    "decision": "D-032"
+   }
+  },
+  "effective_target_note": "effective_target_days dipakai untuk kebutuhan, kekurangan, dan skor. Tier TIDAK berubah karena skenario; skenario hanya menaikkan target (dan memunculkan item).",
+  "meds_target_days": "max(effective_target_days, meds.min_days, semua meds_min_days skenario)",
+  "cash_target_days": "max(semua cash_days skenario, cash.days_high bila effective_target_days >= cash.high_from_target_days, selain itu cash.days_low)"
+ },
+ "survival_days": {
+  "formula": "MIN(komponen yang berlaku)",
+  "components": [
+   {
+    "id": "water",
+    "desc": "stok air minum / (liter per orang per hari * jumlah orang)",
+    "always": true
+   },
+   {
+    "id": "food",
+    "desc": "total kkal stok / kkal harian rumah tangga (tanpa bayi; + hamil/menyusui)",
+    "applies": "kkal harian > 0"
+   },
+   {
+    "id": "meds",
+    "desc": "MIN stock_days semua obat rutin",
+    "applies": "has_meds"
+   },
+   {
+    "id": "infant_food",
+    "desc": "MIN(formula/pemakaian harian [bila feeding formula atau mixed], MPASI/pemakaian harian [bila pemakaian > 0])",
+    "applies": "has_infant atau (has_toddler dan MPASI dipakai)"
+   },
+   {
+    "id": "power",
+    "desc": "days_power_medical dari modul daya (data/power.json, docs/power.md); 'self_sufficient' = tidak membatasi",
+    "applies": "has_electric_medical dan angka diberikan"
+   }
+  ],
+  "tie_break_order": [
+   "water",
+   "food",
+   "meds",
+   "infant_food",
+   "power"
+  ],
+  "tier1_item_ids": [
+   "water_drinking",
+   "food_kcal_total",
+   "meds_personal",
+   "infant_formula",
+   "medical_device_backup_power"
+  ],
+  "display": "days = floor(days_exact); tampilkan 'sekitar X hari'",
+  "not_included": "sanitasi dan penerangan hanya gating (D-028); air kebersihan tidak ikut",
+  "power_module_ref": "docs/power.md (days_power_medical = stored_wh / max(wh_day_med - solar_wh_day, 0)); jangan menduplikasi rumus daya di sini",
+  "decision": "D-028,D-045"
+ },
+ "bag_checklist": {
+  "total_items": 28,
+  "bands": {
+   "siap_gt": 80,
+   "perlu_dilengkapi_min": 50
+  },
+  "band_rule": "pct > 80 SIAP; 50 <= pct <= 80 PERLU DILENGKAPI (tepat 80 dan tepat 50 masuk sini); pct < 50 BELUM SIAP",
+  "excluded_when_not_relevant": [
+   {
+    "no": 4,
+    "relevant_if_any": [
+     "has_infant",
+     "has_toddler"
+    ],
+    "label": "Susu/MPASI (jika ada balita)"
+   },
+   {
+    "no": 27,
+    "relevant_if_any": [
+     "has_infant",
+     "has_toddler"
+    ],
+    "label": "Perlengkapan bayi"
+   },
+   {
+    "no": 28,
+    "relevant_if_any": [
+     "has_elderly"
+    ],
+    "label": "Obat lansia"
+   }
+  ],
+  "decision": "D-026"
+ },
+ "family_indicators": {
+  "count": 18,
+  "max_per_indicator": 2,
+  "max_total": 36,
+  "bands": [
+   {
+    "id": "rawan",
+    "min": 0,
+    "max": 12
+   },
+   {
+    "id": "cukup_siaga",
+    "min": 13,
+    "max": 24
+   },
+   {
+    "id": "siap",
+    "min": 25,
+    "max": 36
+   }
+  ],
+  "missing_value": 0,
+  "scenario_specific_still_counted": true,
+  "decision": "D-027"
+ },
+ "score": {
+  "weights": {
+   "critical_stock": 55,
+   "bag": 20,
+   "family": 15,
+   "scenario": 10
+  },
+  "critical_stock": "rata-rata coverage item berprioritas critical yang berlaku (bobot sama), coverage = min(dimiliki / kebutuhan untuk effective_target_days, 1)",
+  "bag": "ya / jumlah item checklist yang berlaku",
+  "family": "total indikator / 36",
+  "scenario": "rata-rata coverage item yang hanya muncul karena skenario (item.scenarios tidak kosong)",
+  "not_applicable_rule": "komponen tanpa item yang berlaku dikeluarkan dan total dinormalisasi: total = jumlah komponen * 100 / jumlah bobot komponen yang berlaku",
+  "usage_missing_rule": "item pemakaian-harian tanpa angka: bila critical/gating dianggap coverage 0; selain itu dikeluarkan dari rata-rata (peringatan usage_missing)",
+  "total_rounding": "half-up ke bilangan bulat; total_exact 2 desimal",
+  "cannot_raise_tier": true,
+  "decision": "D-029"
+ },
+ "shortfall": {
+  "formula": "missing = kebutuhan (effective_target_days) - dimiliki, tampilkan hanya bila > 0",
+  "sort": [
+   "priority: critical, important, extra",
+   "min_tier_gating naik (null terakhir)",
+   "persentase kekurangan terbesar",
+   "urutan di items.json"
+  ],
+  "priority_order": [
+   "critical",
+   "important",
+   "extra"
+  ],
+  "excluded_ids": "jenis pangan (agregat kkal) dan food_no_cook_share; kekurangan pangan dinyatakan dalam kkal pada food_kcal_total",
+  "to_next_tier": "daftar syarat tier berikutnya yang belum terpenuhi: item (kebutuhan untuk stock_days tier itu), tas siaga, indikator keluarga; disusun dengan urutan yang sama",
+  "decision": "F5,F6"
+ },
+ "rounding": {
+  "missing": "ceil ke bilangan bulat (setelah dibulatkan 6 desimal)",
+  "days_exact": "2 desimal",
+  "kcal": "2 desimal",
+  "score_components": "2 desimal",
+  "percent": "2 desimal",
+  "compare_epsilon": 1e-09,
+  "test_tolerance": {
+   "days": 0.01,
+   "score": 0.01,
+   "integers": 0
+  }
+ },
+ "advisories": {
+  "no_cook_share_low": {
+   "when": "no_cook_share_pct < food.no_cook_target_share_pct dan total kkal > 0",
+   "severity": "info"
+  },
+  "below_bnpb_minimum": {
+   "when": "target_days < defaults.bnpb_minimum_days",
+   "severity": "info"
+  },
+  "usage_missing": {
+   "when": "item pemakaian-harian berlaku tetapi angka pemakaian tidak diisi",
+   "severity": "warn"
+  },
+  "food_kcal_unresolved": {
+   "when": "jenis pangan tanpa kkal yang bisa dihitung",
+   "severity": "warn"
+  },
+  "medical_power_unknown": {
+   "when": "has_electric_medical tetapi modul daya belum memberi days_power_medical",
+   "severity": "warn"
+  },
+  "pregnant_breastfeeding_exceeds_household": {
+   "when": "hamil + menyusui > jumlah dewasa + lansia",
+   "severity": "info"
+  },
+  "indicators_incomplete": {
+   "when": "ada indikator tanpa nilai",
+   "severity": "info"
+  }
+ }
+}

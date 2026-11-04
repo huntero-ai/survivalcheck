@@ -1,0 +1,3305 @@
+{
+ "version": "1.0.0",
+ "generated": "2026-11-03",
+ "agent": "S2",
+ "rules_file": "data/rules.json",
+ "items_file": "data/items.json",
+ "conventions": {
+  "id": "Konvensi: input memakai skema docs/scoring.md. 'expected' hanya memuat subset yang dibandingkan. Toleransi: hari/skor/persen +-0,01; bilangan bulat dan teks persis. Daftar (shortfall_head, to_next_tier.requirements) dibandingkan berurutan. items_eval = kebutuhan/dimiliki/kurang untuk effective_target_days (kurang = ceil). Nilai nomor checklist tas untuk nomor yang tidak berlaku (4/27/28) diabaikan. Tanpa harga.",
+  "en": "Inputs follow docs/scoring.md. 'expected' holds the compared subset only. Tolerance: days/score/percent +-0.01; integers and strings exact. Lists are compared in order."
+ },
+ "cases": [
+  {
+   "id": "tc01_adult_3d",
+   "title": "1 dewasa, target 3 hari (minimum BNPB)",
+   "focus": [
+    "dasar",
+    "tier 2",
+    "bottleneck air"
+   ],
+   "input": {
+    "profile": {
+     "counts": {
+      "adult": 1
+     },
+     "target_days": 3,
+     "scenarios": []
+    },
+    "inventory": {
+     "water_drinking": 9,
+     "water_hygiene": 6,
+     "food_rice": {
+      "qty": 1
+     },
+     "food_instant_noodle": {
+      "qty": 10,
+      "grams_per_unit": 80
+     },
+     "toilet_bags": 15,
+     "flashlight": 1,
+     "spare_batteries": 1,
+     "gobag_main": 1,
+     "first_aid_kit": 1
+    },
+    "indicators": {
+     "ind_01": 2,
+     "ind_02": 2,
+     "ind_03": 2,
+     "ind_04": 2,
+     "ind_05": 2,
+     "ind_06": 2,
+     "ind_07": 2,
+     "ind_08": 0,
+     "ind_09": 0,
+     "ind_10": 0,
+     "ind_11": 0,
+     "ind_12": 0,
+     "ind_13": 0,
+     "ind_14": 0,
+     "ind_15": 0,
+     "ind_16": 0,
+     "ind_17": 0,
+     "ind_18": 0
+    },
+    "bag_checklist": {
+     "1": true,
+     "2": true,
+     "3": true,
+     "4": false,
+     "5": true,
+     "6": true,
+     "7": true,
+     "8": true,
+     "9": true,
+     "10": true,
+     "11": true,
+     "12": true,
+     "13": true,
+     "14": true,
+     "15": true,
+     "16": true,
+     "17": true,
+     "18": true,
+     "19": true,
+     "20": true,
+     "21": true,
+     "22": true,
+     "23": false,
+     "24": false,
+     "25": false,
+     "26": false,
+     "27": false,
+     "28": false
+    }
+   },
+   "calc": [
+    "N=1; kkal harian=2230; air 3 L/orang/hari; effective_target=3 (tanpa skenario)",
+    "air: butuh 3x1x3=9 L, punya 9 -> 3,00 hari",
+    "pangan: beras 1 kg = 1x1000x359/100 = 3590; mi 10 bungkus x 80 g x 470/100 = 3760; total 7350 kkal; butuh 2230x3=6690; hari = 7350/2230 = 3,296",
+    "survival = MIN(3,00; 3,296) = 3,00 -> bottleneck air; days=3",
+    "toilet: 5x1x3=15 kantong, punya 15",
+    "tas: 25 item berlaku (4,27,28 keluar); ya=21 -> 84,00% (>80) SIAP; indikator 14 -> Cukup Siaga (>=13)",
+    "tier 2: semua gating min_tier<=2 terpenuhi (air, kkal, toilet, senter, baterai, tas siaga) + tas>80 + indikator>=13. Tier 3 gagal: air butuh 21 (kurang 12), kkal 15610 (kurang 8260), toilet 35 (kurang 20), power bank, radio, nomor tercetak, 4 salinan dokumen, tas kedap air, tunai 7 hari belanja",
+    "skor: 6 item kritis semua 100% -> 55; tas 21/25x20=16,80; indikator 14/36x15=5,83; skenario tidak berlaku -> total=(55+16,80+5,83)x100/90=86,26 -> 86"
+   ],
+   "expected": {
+    "household": {
+     "n_total": 1,
+     "daily_kcal": 2230,
+     "water_l_per_person_day": 3
+    },
+    "targets": {
+     "target_days": 3,
+     "effective_target_days": 3,
+     "meds_target_days": 7,
+     "cash_target_days": 3,
+     "target_tier": 2
+    },
+    "food_total_kcal": 7350.0,
+    "survival": {
+     "days_exact": 3.0,
+     "days": 3,
+     "bottleneck": "water",
+     "components": {
+      "water": 3.0,
+      "food": 3.3,
+      "meds": null,
+      "infant_food": null,
+      "power": null
+     }
+    },
+    "tier": {
+     "value": 2,
+     "next_tier": 3,
+     "checks_2_to_5": {
+      "2": true,
+      "3": false,
+      "4": false,
+      "5": false
+     }
+    },
+    "to_next_tier": {
+     "tier": 3,
+     "requirements": [
+      {
+       "kind": "item",
+       "id": "water_drinking",
+       "unit": "L",
+       "need": 21.0,
+       "have": 9.0,
+       "missing": 12
+      },
+      {
+       "kind": "item",
+       "id": "food_kcal_total",
+       "unit": "kkal",
+       "need": 15610.0,
+       "have": 7350.0,
+       "missing": 8260
+      },
+      {
+       "kind": "item",
+       "id": "toilet_bags",
+       "unit": "kantong",
+       "need": 35.0,
+       "have": 15.0,
+       "missing": 20
+      },
+      {
+       "kind": "item",
+       "id": "power_bank",
+       "unit": "buah",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "radio_portable",
+       "unit": "buah",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "emergency_numbers_printed",
+       "unit": "lembar",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_copy_ktp",
+       "unit": "set",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_copy_kk",
+       "unit": "set",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_copy_property",
+       "unit": "set",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_copy_bank",
+       "unit": "set",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_waterproof_bag",
+       "unit": "buah",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "cash_days",
+       "unit": "hari belanja",
+       "need": 7.0,
+       "have": 0.0,
+       "missing": 7
+      }
+     ]
+    },
+    "bag": {
+     "yes": 21,
+     "applicable": 25,
+     "excluded": [
+      4,
+      27,
+      28
+     ],
+     "pct": 84.0,
+     "band": "siap"
+    },
+    "family": {
+     "total": 14,
+     "band": "cukup_siaga"
+    },
+    "score": {
+     "components": {
+      "critical_stock": 55.0,
+      "bag": 16.8,
+      "family": 5.83,
+      "scenario": null
+     },
+     "weight_sum": 90,
+     "total_exact": 86.26,
+     "total": 86
+    },
+    "warnings": [],
+    "advisories": [
+     "no_cook_share_low"
+    ],
+    "items_eval": {
+     "water_drinking": {
+      "unit": "L",
+      "need": 9.0,
+      "have": 9.0,
+      "missing": 0,
+      "coverage": 1.0
+     },
+     "food_kcal_total": {
+      "unit": "kkal",
+      "need": 6690.0,
+      "have": 7350.0,
+      "missing": 0,
+      "coverage": 1.0
+     },
+     "toilet_bags": {
+      "unit": "kantong",
+      "need": 15.0,
+      "have": 15.0,
+      "missing": 0,
+      "coverage": 1.0
+     },
+     "water_hygiene": {
+      "unit": "L",
+      "need": 6.0,
+      "have": 6.0,
+      "missing": 0,
+      "coverage": 1.0
+     }
+    },
+    "shortfall_count": 72,
+    "shortfall_head": [
+     {
+      "id": "power_bank",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "radio_portable",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "emergency_numbers_printed",
+      "unit": "lembar",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_ktp",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_kk",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_property",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_bank",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_waterproof_bag",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     }
+    ],
+    "category_progress": {
+     "water": 40.0,
+     "food": 25.0,
+     "meds_firstaid": 10.0,
+     "sanitation": 11.1,
+     "lighting": 20.0,
+     "power": 16.7,
+     "communication": 0.0,
+     "docs_cash": 0.0,
+     "clothing_warmth": 0.0,
+     "tools": 0.0,
+     "gobag": 50.0,
+     "special_needs": null,
+     "plan_knowledge": 0.0
+    }
+   }
+  },
+  {
+   "id": "tc02_family_infant_formula_7d",
+   "title": "2 dewasa + 1 balita + 1 bayi formula, target 7 hari",
+   "focus": [
+    "bayi",
+    "formula",
+    "tas 75% menahan tier",
+    "bottleneck makanan bayi"
+   ],
+   "input": {
+    "profile": {
+     "counts": {
+      "adult": 2,
+      "toddler": 1,
+      "infant": 1
+     },
+     "infant_feeding": "formula",
+     "usage_per_day": {
+      "infant_formula": 5,
+      "infant_mpasi": 2,
+      "infant_diapers": 8
+     },
+     "target_days": 7
+    },
+    "inventory": {
+     "water_drinking": 72,
+     "food_rice": {
+      "qty": 8
+     },
+     "food_instant_noodle": {
+      "qty": 40,
+      "grams_per_unit": 75
+     },
+     "toilet_bags": 150,
+     "flashlight": 1,
+     "spare_batteries": 1,
+     "gobag_main": 1,
+     "infant_formula": 28,
+     "infant_mpasi": 20,
+     "infant_diapers": 60
+    },
+    "indicators": {
+     "ind_01": 2,
+     "ind_02": 2,
+     "ind_03": 2,
+     "ind_04": 2,
+     "ind_05": 2,
+     "ind_06": 2,
+     "ind_07": 2,
+     "ind_08": 0,
+     "ind_09": 0,
+     "ind_10": 0,
+     "ind_11": 0,
+     "ind_12": 0,
+     "ind_13": 0,
+     "ind_14": 0,
+     "ind_15": 0,
+     "ind_16": 0,
+     "ind_17": 0,
+     "ind_18": 0
+    },
+    "bag_checklist": {
+     "1": true,
+     "2": true,
+     "3": true,
+     "4": true,
+     "5": true,
+     "6": true,
+     "7": true,
+     "8": true,
+     "9": true,
+     "10": true,
+     "11": true,
+     "12": true,
+     "13": true,
+     "14": true,
+     "15": true,
+     "16": true,
+     "17": true,
+     "18": true,
+     "19": true,
+     "20": true,
+     "21": true,
+     "22": false,
+     "23": false,
+     "24": false,
+     "25": false,
+     "26": false,
+     "27": false,
+     "28": false
+    }
+   },
+   "calc": [
+    "N=4 (2 dewasa, 1 balita, 1 bayi); kkal harian=2x2230+1430=5890 (bayi tanpa kkal); air 12 L/hari",
+    "air: 72/12=6,00 hari (butuh 84 untuk 7 hari)",
+    "pangan: beras 8x3590=28720; mi 40x75x470/100=14100; total 42820; 42820/5890=7,27 hari (butuh 41230)",
+    "makanan bayi: formula 28/5=5,6 hari; MPASI 20/2=10 hari -> infant_food=5,6",
+    "survival=MIN(6,00; 7,27; 5,6)=5,6 -> bottleneck infant_food; days=5",
+    "tas: 27 item berlaku (hanya 28 keluar); ya=21 -> 77,78% PERLU DILENGKAPI -> syarat tier 2 gagal walau semua stok tier 2 terpenuhi -> tier 1 (survival>=1)",
+    "to_next_tier 2: tas butuh ya >= floor(0,8x27)+1 = 22 -> kurang 1",
+    "skor: 9 item kritis; air 72/84=0,8571; formula 28/35=0,8; lainnya 1 -> (7+0,8571+0,8)/9=0,9619x55=52,90; tas 21/27x20=15,56; indikator 5,83 -> (52,90+15,56+5,83)x100/90=82,55 -> 83"
+   ],
+   "expected": {
+    "household": {
+     "n_total": 4,
+     "daily_kcal": 5890,
+     "water_l_per_person_day": 3
+    },
+    "targets": {
+     "target_days": 7,
+     "effective_target_days": 7,
+     "meds_target_days": 7,
+     "cash_target_days": 7,
+     "target_tier": 3
+    },
+    "food_total_kcal": 42820.0,
+    "survival": {
+     "days_exact": 5.6,
+     "days": 5,
+     "bottleneck": "infant_food",
+     "components": {
+      "water": 6.0,
+      "food": 7.27,
+      "meds": null,
+      "infant_food": 5.6,
+      "power": null
+     }
+    },
+    "tier": {
+     "value": 1,
+     "next_tier": 2,
+     "checks_2_to_5": {
+      "2": false,
+      "3": false,
+      "4": false,
+      "5": false
+     }
+    },
+    "to_next_tier": {
+     "tier": 2,
+     "requirements": [
+      {
+       "kind": "bag",
+       "required_pct_gt": 80,
+       "current_pct": 77.78,
+       "yes": 21,
+       "needed_yes": 22,
+       "missing": 1
+      }
+     ]
+    },
+    "bag": {
+     "yes": 21,
+     "applicable": 27,
+     "excluded": [
+      28
+     ],
+     "pct": 77.78,
+     "band": "perlu_dilengkapi"
+    },
+    "family": {
+     "total": 14,
+     "band": "cukup_siaga"
+    },
+    "score": {
+     "components": {
+      "critical_stock": 52.9,
+      "bag": 15.56,
+      "family": 5.83,
+      "scenario": null
+     },
+     "weight_sum": 90,
+     "total_exact": 82.55,
+     "total": 83
+    },
+    "warnings": [],
+    "advisories": [
+     "no_cook_share_low"
+    ],
+    "items_eval": {
+     "water_drinking": {
+      "unit": "L",
+      "need": 84.0,
+      "have": 72.0,
+      "missing": 12,
+      "coverage": 0.8571
+     },
+     "infant_formula": {
+      "unit": "porsi/botol",
+      "need": 35.0,
+      "have": 28.0,
+      "missing": 7,
+      "coverage": 0.8
+     },
+     "infant_mpasi": {
+      "unit": "buah",
+      "need": 14.0,
+      "have": 20.0,
+      "missing": 0,
+      "coverage": 1.0
+     },
+     "infant_diapers": {
+      "unit": "buah",
+      "need": 56.0,
+      "have": 60.0,
+      "missing": 0,
+      "coverage": 1.0
+     },
+     "food_kcal_total": {
+      "unit": "kkal",
+      "need": 41230.0,
+      "have": 42820.0,
+      "missing": 0,
+      "coverage": 1.0
+     },
+     "toilet_bags": {
+      "unit": "kantong",
+      "need": 140.0,
+      "have": 150.0,
+      "missing": 0,
+      "coverage": 1.0
+     }
+    },
+    "shortfall_count": 80,
+    "shortfall_head": [
+     {
+      "id": "infant_formula",
+      "unit": "porsi/botol",
+      "need": 35.0,
+      "have": 28.0,
+      "missing": 7
+     },
+     {
+      "id": "water_drinking",
+      "unit": "L",
+      "need": 84.0,
+      "have": 72.0,
+      "missing": 12
+     },
+     {
+      "id": "power_bank",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "radio_portable",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "emergency_numbers_printed",
+      "unit": "lembar",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_ktp",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_kk",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_property",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     }
+    ],
+    "category_progress": {
+     "water": 17.1,
+     "food": 25.0,
+     "meds_firstaid": 0.0,
+     "sanitation": 11.1,
+     "lighting": 20.0,
+     "power": 16.7,
+     "communication": 0.0,
+     "docs_cash": 0.0,
+     "clothing_warmth": 0.0,
+     "tools": 0.0,
+     "gobag": 33.3,
+     "special_needs": 56.0,
+     "plan_knowledge": 0.0
+    }
+   }
+  },
+  {
+   "id": "tc03_elderly_meds",
+   "title": "2 lansia dengan obat rutin (stok 12 dan 5 hari), target 7",
+   "focus": [
+    "obat rutin",
+    "MIN stok obat",
+    "bottleneck obat",
+    "tier tertahan obat"
+   ],
+   "input": {
+    "profile": {
+     "counts": {
+      "elderly": 2
+     },
+     "meds": [
+      {
+       "label": "Antihipertensi",
+       "doses_per_day": 1,
+       "stock_days": 12
+      },
+      {
+       "label": "Antidiabetik",
+       "doses_per_day": 2,
+       "stock_days": 5
+      }
+     ],
+     "target_days": 7
+    },
+    "inventory": {
+     "water_drinking": 42,
+     "food_rice": {
+      "qty": 6
+     },
+     "food_instant_noodle": {
+      "qty": 20,
+      "grams_per_unit": 80
+     },
+     "toilet_bags": 70,
+     "flashlight": 1,
+     "spare_batteries": 1,
+     "gobag_main": 1,
+     "elderly_meds": true
+    },
+    "indicators": {
+     "ind_01": 2,
+     "ind_02": 2,
+     "ind_03": 2,
+     "ind_04": 2,
+     "ind_05": 2,
+     "ind_06": 2,
+     "ind_07": 2,
+     "ind_08": 2,
+     "ind_09": 0,
+     "ind_10": 0,
+     "ind_11": 0,
+     "ind_12": 0,
+     "ind_13": 0,
+     "ind_14": 0,
+     "ind_15": 0,
+     "ind_16": 0,
+     "ind_17": 0,
+     "ind_18": 0
+    },
+    "bag_checklist": {
+     "1": true,
+     "2": true,
+     "3": true,
+     "4": true,
+     "5": true,
+     "6": true,
+     "7": true,
+     "8": true,
+     "9": true,
+     "10": true,
+     "11": true,
+     "12": true,
+     "13": true,
+     "14": true,
+     "15": true,
+     "16": true,
+     "17": true,
+     "18": true,
+     "19": true,
+     "20": true,
+     "21": true,
+     "22": true,
+     "23": false,
+     "24": false,
+     "25": false,
+     "26": false,
+     "27": false,
+     "28": false
+    }
+   },
+   "calc": [
+    "N=2 lansia; kkal harian=2x1890=3780; air 6 L/hari",
+    "air 42/6=7,00; pangan 6x3590=21540 + 20x80x470/100=7520 = 29060 -> 29060/3780=7,69",
+    "obat: MIN(12,5)=5 hari; kebutuhan tier 2 = max(3,7)=7 -> kurang 2",
+    "survival=MIN(7,00; 7,69; 5)=5,00 -> bottleneck meds; days=5",
+    "tas: 26 item berlaku (4 dan 27 keluar, 28 berlaku); ya=21 (nomor 4 pada input diabaikan) -> 80,77% SIAP",
+    "tier: gating meds_personal gagal -> tier 2 gagal -> tier 1",
+    "skor: 8 item kritis; obat 5/7=0,7143, lainnya 1 -> 7,7143/8=0,9643x55=53,04; tas 21/26x20=16,15; indikator 16/36x15=6,67 -> 75,86x100/90=84,28 -> 84"
+   ],
+   "expected": {
+    "household": {
+     "n_total": 2,
+     "daily_kcal": 3780,
+     "water_l_per_person_day": 3
+    },
+    "targets": {
+     "target_days": 7,
+     "effective_target_days": 7,
+     "meds_target_days": 7,
+     "cash_target_days": 7,
+     "target_tier": 3
+    },
+    "food_total_kcal": 29060.0,
+    "survival": {
+     "days_exact": 5.0,
+     "days": 5,
+     "bottleneck": "meds",
+     "components": {
+      "water": 7.0,
+      "food": 7.69,
+      "meds": 5.0,
+      "infant_food": null,
+      "power": null
+     }
+    },
+    "tier": {
+     "value": 1,
+     "next_tier": 2,
+     "checks_2_to_5": {
+      "2": false,
+      "3": false,
+      "4": false,
+      "5": false
+     }
+    },
+    "to_next_tier": {
+     "tier": 2,
+     "requirements": [
+      {
+       "kind": "item",
+       "id": "meds_personal",
+       "unit": "hari",
+       "need": 7.0,
+       "have": 5.0,
+       "missing": 2
+      }
+     ]
+    },
+    "bag": {
+     "yes": 21,
+     "applicable": 26,
+     "excluded": [
+      4,
+      27
+     ],
+     "pct": 80.77,
+     "band": "siap"
+    },
+    "family": {
+     "total": 16,
+     "band": "cukup_siaga"
+    },
+    "score": {
+     "components": {
+      "critical_stock": 53.04,
+      "bag": 16.15,
+      "family": 6.67,
+      "scenario": null
+     },
+     "weight_sum": 90,
+     "total_exact": 84.28,
+     "total": 84
+    },
+    "warnings": [],
+    "advisories": [
+     "no_cook_share_low"
+    ],
+    "items_eval": {
+     "meds_personal": {
+      "unit": "hari",
+      "need": 7.0,
+      "have": 5.0,
+      "missing": 2,
+      "coverage": 0.7143
+     },
+     "water_drinking": {
+      "unit": "L",
+      "need": 42.0,
+      "have": 42.0,
+      "missing": 0,
+      "coverage": 1.0
+     },
+     "food_kcal_total": {
+      "unit": "kkal",
+      "need": 26460.0,
+      "have": 29060.0,
+      "missing": 0,
+      "coverage": 1.0
+     }
+    },
+    "shortfall_count": 76,
+    "shortfall_head": [
+     {
+      "id": "meds_personal",
+      "unit": "hari",
+      "need": 7.0,
+      "have": 5.0,
+      "missing": 2
+     },
+     {
+      "id": "power_bank",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "radio_portable",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "emergency_numbers_printed",
+      "unit": "lembar",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_ktp",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_kk",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_property",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_bank",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     }
+    ],
+    "category_progress": {
+     "water": 20.0,
+     "food": 25.0,
+     "meds_firstaid": 6.5,
+     "sanitation": 11.1,
+     "lighting": 20.0,
+     "power": 16.7,
+     "communication": 0.0,
+     "docs_cash": 0.0,
+     "clothing_warmth": 0.0,
+     "tools": 0.0,
+     "gobag": 50.0,
+     "special_needs": 50.0,
+     "plan_knowledge": 0.0
+    }
+   }
+  },
+  {
+   "id": "tc04_dog_cat",
+   "title": "2 dewasa + 1 anjing + 1 kucing, target 3 (min hewan 5 hari)",
+   "focus": [
+    "hewan",
+    "min 5 hari",
+    "pakan input user",
+    "indikator tepat 13"
+   ],
+   "input": {
+    "profile": {
+     "counts": {
+      "adult": 2
+     },
+     "pets": {
+      "dog": 1,
+      "cat": 1
+     },
+     "usage_per_day": {
+      "pet_food": 400
+     },
+     "target_days": 3
+    },
+    "inventory": {
+     "water_drinking": 18,
+     "food_rice": {
+      "qty": 2
+     },
+     "food_instant_noodle": {
+      "qty": 20,
+      "grams_per_unit": 80
+     },
+     "toilet_bags": 30,
+     "flashlight": 1,
+     "spare_batteries": 1,
+     "gobag_main": 1,
+     "water_pet_dog": 20,
+     "water_pet_cat": 3,
+     "pet_food": 1500
+    },
+    "indicators": {
+     "ind_01": 2,
+     "ind_02": 2,
+     "ind_03": 2,
+     "ind_04": 2,
+     "ind_05": 2,
+     "ind_06": 2,
+     "ind_07": 1,
+     "ind_08": 0,
+     "ind_09": 0,
+     "ind_10": 0,
+     "ind_11": 0,
+     "ind_12": 0,
+     "ind_13": 0,
+     "ind_14": 0,
+     "ind_15": 0,
+     "ind_16": 0,
+     "ind_17": 0,
+     "ind_18": 0
+    },
+    "bag_checklist": {
+     "1": true,
+     "2": true,
+     "3": true,
+     "4": true,
+     "5": true,
+     "6": true,
+     "7": true,
+     "8": true,
+     "9": true,
+     "10": true,
+     "11": true,
+     "12": true,
+     "13": true,
+     "14": true,
+     "15": true,
+     "16": true,
+     "17": true,
+     "18": true,
+     "19": true,
+     "20": true,
+     "21": true,
+     "22": true,
+     "23": true,
+     "24": false,
+     "25": false,
+     "26": false,
+     "27": false,
+     "28": false
+    }
+   },
+   "calc": [
+    "N=2 dewasa; target 3; kkal harian 4460; air 6 L/hari; hewan: anjing 1, kucing 1",
+    "air 18/6=3,00; pangan 2x3590=7180 + 20x80x470/100=7520 = 14700 -> 3,296 (butuh 13380)",
+    "air anjing: 4 L x 1 x max(3,5)=20 L (punya 20); air kucing: 1 x 1 x 5 = 5 L (punya 3, kurang 2); pakan: 400 g/hari x max(3,5)=2000 g (punya 1500, kurang 500)",
+    "tas 22/25=88% SIAP; indikator 13 (tepat batas) Cukup Siaga -> tier 2 (item hewan non-gating tidak menahan tier)",
+    "skor: 6 item kritis semua 100% -> 55; tas 22/25x20=17,60; indikator 13/36x15=5,42 -> 78,02x100/90=86,69 -> 87"
+   ],
+   "expected": {
+    "household": {
+     "n_total": 2,
+     "daily_kcal": 4460,
+     "water_l_per_person_day": 3
+    },
+    "targets": {
+     "target_days": 3,
+     "effective_target_days": 3,
+     "meds_target_days": 7,
+     "cash_target_days": 3,
+     "target_tier": 2
+    },
+    "food_total_kcal": 14700.0,
+    "survival": {
+     "days_exact": 3.0,
+     "days": 3,
+     "bottleneck": "water",
+     "components": {
+      "water": 3.0,
+      "food": 3.3,
+      "meds": null,
+      "infant_food": null,
+      "power": null
+     }
+    },
+    "tier": {
+     "value": 2,
+     "next_tier": 3,
+     "checks_2_to_5": {
+      "2": true,
+      "3": false,
+      "4": false,
+      "5": false
+     }
+    },
+    "to_next_tier": {
+     "tier": 3,
+     "requirements": [
+      {
+       "kind": "item",
+       "id": "water_drinking",
+       "unit": "L",
+       "need": 42.0,
+       "have": 18.0,
+       "missing": 24
+      },
+      {
+       "kind": "item",
+       "id": "food_kcal_total",
+       "unit": "kkal",
+       "need": 31220.0,
+       "have": 14700.0,
+       "missing": 16520
+      },
+      {
+       "kind": "item",
+       "id": "toilet_bags",
+       "unit": "kantong",
+       "need": 70.0,
+       "have": 30.0,
+       "missing": 40
+      },
+      {
+       "kind": "item",
+       "id": "power_bank",
+       "unit": "buah",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "radio_portable",
+       "unit": "buah",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "emergency_numbers_printed",
+       "unit": "lembar",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_copy_ktp",
+       "unit": "set",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_copy_kk",
+       "unit": "set",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_copy_property",
+       "unit": "set",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_copy_bank",
+       "unit": "set",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_waterproof_bag",
+       "unit": "buah",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "cash_days",
+       "unit": "hari belanja",
+       "need": 7.0,
+       "have": 0.0,
+       "missing": 7
+      }
+     ]
+    },
+    "bag": {
+     "yes": 22,
+     "applicable": 25,
+     "excluded": [
+      4,
+      27,
+      28
+     ],
+     "pct": 88.0,
+     "band": "siap"
+    },
+    "family": {
+     "total": 13,
+     "band": "cukup_siaga"
+    },
+    "score": {
+     "components": {
+      "critical_stock": 55.0,
+      "bag": 17.6,
+      "family": 5.42,
+      "scenario": null
+     },
+     "weight_sum": 90,
+     "total_exact": 86.69,
+     "total": 87
+    },
+    "warnings": [],
+    "advisories": [
+     "no_cook_share_low"
+    ],
+    "items_eval": {
+     "water_pet_dog": {
+      "unit": "L",
+      "need": 20.0,
+      "have": 20.0,
+      "missing": 0,
+      "coverage": 1.0
+     },
+     "water_pet_cat": {
+      "unit": "L",
+      "need": 5.0,
+      "have": 3.0,
+      "missing": 2,
+      "coverage": 0.6
+     },
+     "pet_food": {
+      "unit": "g",
+      "need": 2000.0,
+      "have": 1500.0,
+      "missing": 500,
+      "coverage": 0.75
+     },
+     "water_drinking": {
+      "unit": "L",
+      "need": 18.0,
+      "have": 18.0,
+      "missing": 0,
+      "coverage": 1.0
+     }
+    },
+    "shortfall_count": 80,
+    "shortfall_head": [
+     {
+      "id": "power_bank",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "radio_portable",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "emergency_numbers_printed",
+      "unit": "lembar",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_ktp",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_kk",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_property",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_bank",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_waterproof_bag",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     }
+    ],
+    "category_progress": {
+     "water": 37.1,
+     "food": 25.0,
+     "meds_firstaid": 0.0,
+     "sanitation": 11.1,
+     "lighting": 20.0,
+     "power": 16.7,
+     "communication": 0.0,
+     "docs_cash": 0.0,
+     "clothing_warmth": 0.0,
+     "tools": 0.0,
+     "gobag": 50.0,
+     "special_needs": 15.0,
+     "plan_knowledge": 0.0
+    }
+   }
+  },
+  {
+   "id": "tc05_quake_tsunami_blackout",
+   "title": "Gempa + tsunami + listrik padam, 3 dewasa + 1 anak, alat medis listrik (CPAP, listrik 3,0 hari), target 7",
+   "focus": [
+    "skenario digabung",
+    "alat medis listrik membatasi hari bertahan",
+    "tunai 7 hari",
+    "skor skenario"
+   ],
+   "input": {
+    "profile": {
+     "counts": {
+      "adult": 3,
+      "child": 1
+     },
+     "scenarios": [
+      "earthquake",
+      "tsunami",
+      "power_outage"
+     ],
+     "has_electric_medical": true,
+     "target_days": 7
+    },
+    "inventory": {
+     "water_drinking": 84,
+     "food_rice": {
+      "qty": 12
+     },
+     "food_instant_noodle": {
+      "qty": 60,
+      "grams_per_unit": 80
+     },
+     "toilet_bags": 140,
+     "flashlight": 1,
+     "spare_batteries": 1,
+     "gobag_main": 1,
+     "cash_days": 7,
+     "head_protection": 4,
+     "fire_extinguisher": 1,
+     "furniture_straps": 0,
+     "drop_cover_hold": true,
+     "no_reentry_aftershock": true,
+     "tsunami_evacuation_plan": true,
+     "rechargeable_flashlight": 1,
+     "payment_card_pin": false,
+     "co_detector": 0,
+     "vehicle_tank_half": false,
+     "fridge_food_safety_knowledge": true
+    },
+    "indicators": {
+     "ind_01": 2,
+     "ind_02": 2,
+     "ind_03": 2,
+     "ind_04": 2,
+     "ind_05": 2,
+     "ind_06": 2,
+     "ind_07": 2,
+     "ind_08": 1,
+     "ind_09": 0,
+     "ind_10": 0,
+     "ind_11": 0,
+     "ind_12": 0,
+     "ind_13": 0,
+     "ind_14": 0,
+     "ind_15": 0,
+     "ind_16": 0,
+     "ind_17": 0,
+     "ind_18": 0
+    },
+    "bag_checklist": {
+     "1": true,
+     "2": true,
+     "3": true,
+     "4": false,
+     "5": true,
+     "6": true,
+     "7": true,
+     "8": true,
+     "9": true,
+     "10": true,
+     "11": true,
+     "12": true,
+     "13": true,
+     "14": true,
+     "15": true,
+     "16": true,
+     "17": true,
+     "18": true,
+     "19": true,
+     "20": true,
+     "21": true,
+     "22": true,
+     "23": false,
+     "24": false,
+     "25": false,
+     "26": false,
+     "27": false,
+     "28": false
+    },
+    "power": {
+     "days_power_medical": 3.0,
+     "source": "docs/power.md tc3-style: CPAP 60 W x 8 h = 480 Wh/hari; power station 2000 Wh x 0,8 x 0,9 = 1440 Wh; 1440/480 = 3,0 hari"
+    }
+   },
+   "calc": [
+    "N=4 (3 dewasa, 1 anak); kkal harian=3x2230+2000=8690; skenario earthquake+tsunami+power_outage: tidak ada pengali air; cash target 7 (power_outage)",
+    "air 84/12=7,00; pangan 12x3590=43080 + 60x80x470/100=22560 = 65640 -> 7,55",
+    "daya medis: input days_power_medical=3,0 (CPAP 480 Wh/hari; station 2000x0,8x0,9=1440 Wh; 1440/480=3,0) -> power=3,0",
+    "survival=MIN(7,00; 7,55; 3,0)=3,0 -> bottleneck power; days=3",
+    "tier 2: medical_device_backup_power butuh 3 hari (tier 2), punya 3,0 -> OK; tas 21/25=84%; indikator 15 -> tier 2. Tier 3 gagal: daya medis butuh 7 hari (kurang 4) + power bank, radio, nomor tercetak, dokumen, tunai (tunai 7 OK)",
+    "item skenario berlaku (11): head_protection 1, fire_extinguisher 1, furniture_straps 0, drop_cover_hold 1, no_reentry 1, tsunami_plan 1, rechargeable_flashlight 1, payment_card_pin 0, co_detector 0, vehicle_tank 0, fridge_knowledge 1 -> 7/11=0,6364",
+    "skor: 7 item kritis; daya medis 3/7=0,4286, lainnya 1 -> 6,4286/7=0,9184x55=50,51; tas 21/25x20=16,80; indikator 15/36x15=6,25; skenario 0,6364x10=6,36; total=(50,51+16,80+6,25+6,36)=79,92 (bobot 100) -> 80"
+   ],
+   "expected": {
+    "household": {
+     "n_total": 4,
+     "daily_kcal": 8690,
+     "water_l_per_person_day": 3
+    },
+    "targets": {
+     "target_days": 7,
+     "effective_target_days": 7,
+     "meds_target_days": 7,
+     "cash_target_days": 7,
+     "target_tier": 3
+    },
+    "food_total_kcal": 65640.0,
+    "survival": {
+     "days_exact": 3.0,
+     "days": 3,
+     "bottleneck": "power",
+     "components": {
+      "water": 7.0,
+      "food": 7.55,
+      "meds": null,
+      "infant_food": null,
+      "power": 3.0
+     }
+    },
+    "tier": {
+     "value": 2,
+     "next_tier": 3,
+     "checks_2_to_5": {
+      "2": true,
+      "3": false,
+      "4": false,
+      "5": false
+     }
+    },
+    "to_next_tier": {
+     "tier": 3,
+     "requirements": [
+      {
+       "kind": "item",
+       "id": "medical_device_backup_power",
+       "unit": "hari",
+       "need": 7.0,
+       "have": 3.0,
+       "missing": 4
+      },
+      {
+       "kind": "item",
+       "id": "power_bank",
+       "unit": "buah",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "radio_portable",
+       "unit": "buah",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "emergency_numbers_printed",
+       "unit": "lembar",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_copy_ktp",
+       "unit": "set",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_copy_kk",
+       "unit": "set",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_copy_property",
+       "unit": "set",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_copy_bank",
+       "unit": "set",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_waterproof_bag",
+       "unit": "buah",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      }
+     ]
+    },
+    "bag": {
+     "yes": 21,
+     "applicable": 25,
+     "excluded": [
+      4,
+      27,
+      28
+     ],
+     "pct": 84.0,
+     "band": "siap"
+    },
+    "family": {
+     "total": 15,
+     "band": "cukup_siaga"
+    },
+    "score": {
+     "components": {
+      "critical_stock": 50.51,
+      "bag": 16.8,
+      "family": 6.25,
+      "scenario": 6.36
+     },
+     "weight_sum": 100,
+     "total_exact": 79.92,
+     "total": 80
+    },
+    "warnings": [],
+    "advisories": [
+     "no_cook_share_low"
+    ],
+    "items_eval": {
+     "medical_device_backup_power": {
+      "unit": "hari",
+      "need": 7.0,
+      "have": 3.0,
+      "missing": 4,
+      "coverage": 0.4286
+     },
+     "cash_days": {
+      "unit": "hari belanja",
+      "need": 7.0,
+      "have": 7.0,
+      "missing": 0,
+      "coverage": 1.0
+     },
+     "head_protection": {
+      "unit": "buah",
+      "need": 4.0,
+      "have": 4.0,
+      "missing": 0,
+      "coverage": 1.0
+     },
+     "furniture_straps": {
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1,
+      "coverage": 0.0
+     }
+    },
+    "shortfall_count": 80,
+    "shortfall_head": [
+     {
+      "id": "medical_device_backup_power",
+      "unit": "hari",
+      "need": 7.0,
+      "have": 3.0,
+      "missing": 4
+     },
+     {
+      "id": "power_bank",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "radio_portable",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "emergency_numbers_printed",
+      "unit": "lembar",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_ktp",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_kk",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_property",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_bank",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     }
+    ],
+    "category_progress": {
+     "water": 20.0,
+     "food": 25.0,
+     "meds_firstaid": 0.0,
+     "sanitation": 11.1,
+     "lighting": 20.0,
+     "power": 28.6,
+     "communication": 0.0,
+     "docs_cash": 9.1,
+     "clothing_warmth": 16.7,
+     "tools": 10.0,
+     "gobag": 25.0,
+     "special_needs": 42.9,
+     "plan_knowledge": 23.5
+    }
+   }
+  },
+  {
+   "id": "tc06_drought",
+   "title": "Kekeringan: air minum 4 L/orang/hari, 2 dewasa (1 hamil) + 1 anak, stok lengkap tier 3, target 7",
+   "focus": [
+    "pengali air 4 L",
+    "hamil +285 kkal",
+    "tier 3",
+    "to_next tier 4"
+   ],
+   "notes": "Tanpa skenario kekeringan (3 L), air 90 L = 10 hari; dengan 4 L = 7,5 hari.",
+   "input": {
+    "profile": {
+     "counts": {
+      "adult": 2,
+      "child": 1
+     },
+     "pregnant": 1,
+     "scenarios": [
+      "drought"
+     ],
+     "target_days": 7
+    },
+    "inventory": {
+     "water_drinking": 90,
+     "water_hygiene": 20,
+     "food_rice": {
+      "qty": 7
+     },
+     "food_instant_noodle": {
+      "qty": 60,
+      "grams_per_unit": 80
+     },
+     "toilet_bags": 105,
+     "flashlight": 1,
+     "spare_batteries": 1,
+     "gobag_main": 1,
+     "water_collection_tank": 1,
+     "power_bank": true,
+     "radio_portable": 1,
+     "emergency_numbers_printed": true,
+     "doc_copy_ktp": true,
+     "doc_copy_kk": true,
+     "doc_copy_property": true,
+     "doc_copy_bank": true,
+     "doc_waterproof_bag": 1,
+     "cash_days": 7
+    },
+    "indicators": {
+     "ind_01": 2,
+     "ind_02": 2,
+     "ind_03": 2,
+     "ind_04": 2,
+     "ind_05": 2,
+     "ind_06": 2,
+     "ind_07": 2,
+     "ind_08": 2,
+     "ind_09": 2,
+     "ind_10": 2,
+     "ind_11": 0,
+     "ind_12": 0,
+     "ind_13": 0,
+     "ind_14": 0,
+     "ind_15": 0,
+     "ind_16": 0,
+     "ind_17": 0,
+     "ind_18": 0
+    },
+    "bag_checklist": {
+     "1": true,
+     "2": true,
+     "3": true,
+     "4": false,
+     "5": true,
+     "6": true,
+     "7": true,
+     "8": true,
+     "9": true,
+     "10": true,
+     "11": true,
+     "12": true,
+     "13": true,
+     "14": true,
+     "15": true,
+     "16": true,
+     "17": true,
+     "18": true,
+     "19": true,
+     "20": true,
+     "21": true,
+     "22": true,
+     "23": true,
+     "24": true,
+     "25": false,
+     "26": false,
+     "27": false,
+     "28": false
+    }
+   },
+   "calc": [
+    "N=3 (2 dewasa termasuk 1 hamil, 1 anak); kkal harian=2x2230+2000+285=6745; kekeringan: air 4 L/orang/hari -> 12 L/hari",
+    "air 90/12=7,50 (tanpa kekeringan: 90/9=10); butuh 7 hari = 84",
+    "pangan: 7x3590=25130 + 60x80x470/100=22560 = 47690 -> 47690/6745=7,07 (butuh 47215)",
+    "survival=MIN(7,50; 7,07)=7,07 -> bottleneck food; days=7",
+    "tier 3: semua gating min_tier<=3 terpenuhi (air 84<=90, kkal, toilet 105, radio, power bank, dokumen, tunai 7) + tas 23/25=92% + indikator 20. Tier 4 gagal: air butuh 4x3x14=168 (kurang 78), kkal 94430 (kurang 46740), toilet 210 (kurang 105), penjernih, kompor, gas 0,8571x3x14=36 tabung, rencana keluarga, indikator>=25 (kurang 5)",
+    "skor: 7 item kritis semua 100% -> 55; tas 23/25x20=18,40; indikator 20/36x15=8,33; skenario: 1 item (water_collection_tank) punya -> 10; total=(55+18,40+8,33+10)=91,73 -> 92"
+   ],
+   "expected": {
+    "household": {
+     "n_total": 3,
+     "daily_kcal": 6745,
+     "water_l_per_person_day": 4
+    },
+    "targets": {
+     "target_days": 7,
+     "effective_target_days": 7,
+     "meds_target_days": 7,
+     "cash_target_days": 7,
+     "target_tier": 3
+    },
+    "food_total_kcal": 47690.0,
+    "survival": {
+     "days_exact": 7.07,
+     "days": 7,
+     "bottleneck": "food",
+     "components": {
+      "water": 7.5,
+      "food": 7.07,
+      "meds": null,
+      "infant_food": null,
+      "power": null
+     }
+    },
+    "tier": {
+     "value": 3,
+     "next_tier": 4,
+     "checks_2_to_5": {
+      "2": true,
+      "3": true,
+      "4": false,
+      "5": false
+     }
+    },
+    "to_next_tier": {
+     "tier": 4,
+     "requirements": [
+      {
+       "kind": "item",
+       "id": "water_drinking",
+       "unit": "L",
+       "need": 168.0,
+       "have": 90.0,
+       "missing": 78
+      },
+      {
+       "kind": "item",
+       "id": "food_kcal_total",
+       "unit": "kkal",
+       "need": 94430.0,
+       "have": 47690.0,
+       "missing": 46740
+      },
+      {
+       "kind": "item",
+       "id": "toilet_bags",
+       "unit": "kantong",
+       "need": 210.0,
+       "have": 105.0,
+       "missing": 105
+      },
+      {
+       "kind": "item",
+       "id": "water_treatment_chemical",
+       "unit": "set",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "stove_portable",
+       "unit": "buah",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "gas_canister",
+       "unit": "tabung",
+       "need": 36.0,
+       "have": 0.0,
+       "missing": 36
+      },
+      {
+       "kind": "item",
+       "id": "family_emergency_plan",
+       "unit": "-",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "family",
+       "required_gte": 25,
+       "current": 20,
+       "missing": 5
+      }
+     ]
+    },
+    "bag": {
+     "yes": 23,
+     "applicable": 25,
+     "excluded": [
+      4,
+      27,
+      28
+     ],
+     "pct": 92.0,
+     "band": "siap"
+    },
+    "family": {
+     "total": 20,
+     "band": "cukup_siaga"
+    },
+    "score": {
+     "components": {
+      "critical_stock": 55.0,
+      "bag": 18.4,
+      "family": 8.33,
+      "scenario": 10.0
+     },
+     "weight_sum": 100,
+     "total_exact": 91.73,
+     "total": 92
+    },
+    "warnings": [],
+    "advisories": [
+     "no_cook_share_low"
+    ],
+    "items_eval": {
+     "water_drinking": {
+      "unit": "L",
+      "need": 84.0,
+      "have": 90.0,
+      "missing": 0,
+      "coverage": 1.0
+     },
+     "food_kcal_total": {
+      "unit": "kkal",
+      "need": 47215.0,
+      "have": 47690.0,
+      "missing": 0,
+      "coverage": 1.0
+     },
+     "gas_canister": {
+      "unit": "tabung",
+      "need": 18.0,
+      "have": 0.0,
+      "missing": 18,
+      "coverage": 0.0
+     },
+     "water_hygiene": {
+      "unit": "L",
+      "need": 42.0,
+      "have": 20.0,
+      "missing": 22,
+      "coverage": 0.4762
+     }
+    },
+    "shortfall_count": 68,
+    "shortfall_head": [
+     {
+      "id": "water_treatment_chemical",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "stove_portable",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "gas_canister",
+      "unit": "tabung",
+      "need": 18.0,
+      "have": 0.0,
+      "missing": 18
+     },
+     {
+      "id": "family_emergency_plan",
+      "unit": "-",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "first_aid_knowledge",
+      "unit": "-",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "water_container",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "cookware",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "med_antipyretic",
+      "unit": "strip",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     }
+    ],
+    "category_progress": {
+     "water": 41.3,
+     "food": 25.0,
+     "meds_firstaid": 0.0,
+     "sanitation": 11.1,
+     "lighting": 20.0,
+     "power": 33.3,
+     "communication": 40.0,
+     "docs_cash": 60.0,
+     "clothing_warmth": 0.0,
+     "tools": 0.0,
+     "gobag": 33.3,
+     "special_needs": 0.0,
+     "plan_knowledge": 0.0
+    }
+   }
+  },
+  {
+   "id": "tc07_pandemic",
+   "title": "Pandemi: target 3 dinaikkan ke 14 hari, obat 30 hari; 2 dewasa + 1 lansia",
+   "focus": [
+    "durasi min efektif 14",
+    "obat 30 hari",
+    "tier tidak berubah karena skenario",
+    "pemakaian N95 input user"
+   ],
+   "input": {
+    "profile": {
+     "counts": {
+      "adult": 2,
+      "elderly": 1
+     },
+     "scenarios": [
+      "pandemic"
+     ],
+     "meds": [
+      {
+       "label": "Obat rutin",
+       "doses_per_day": 1,
+       "stock_days": 20
+      }
+     ],
+     "usage_per_day": {
+      "mask_n95": 3
+     },
+     "target_days": 3
+    },
+    "inventory": {
+     "water_drinking": 54,
+     "food_rice": {
+      "qty": 6
+     },
+     "food_instant_noodle": {
+      "qty": 30,
+      "grams_per_unit": 80
+     },
+     "toilet_bags": 100,
+     "flashlight": 1,
+     "spare_batteries": 1,
+     "gobag_main": 1,
+     "elderly_meds": true,
+     "mask_n95": 20,
+     "disinfectant_surface": 1,
+     "pandemic_isolation_plan": true
+    },
+    "indicators": {
+     "ind_01": 2,
+     "ind_02": 2,
+     "ind_03": 2,
+     "ind_04": 2,
+     "ind_05": 2,
+     "ind_06": 2,
+     "ind_07": 2,
+     "ind_08": 1,
+     "ind_09": 0,
+     "ind_10": 0,
+     "ind_11": 0,
+     "ind_12": 0,
+     "ind_13": 0,
+     "ind_14": 0,
+     "ind_15": 0,
+     "ind_16": 0,
+     "ind_17": 0,
+     "ind_18": 0
+    },
+    "bag_checklist": {
+     "1": true,
+     "2": true,
+     "3": true,
+     "4": true,
+     "5": true,
+     "6": true,
+     "7": true,
+     "8": true,
+     "9": true,
+     "10": true,
+     "11": true,
+     "12": true,
+     "13": true,
+     "14": true,
+     "15": true,
+     "16": true,
+     "17": true,
+     "18": true,
+     "19": true,
+     "20": true,
+     "21": true,
+     "22": true,
+     "23": true,
+     "24": false,
+     "25": false,
+     "26": false,
+     "27": false,
+     "28": false
+    }
+   },
+   "calc": [
+    "N=3 (2 dewasa, 1 lansia); kkal harian=2x2230+1890=6350; target 3 -> effective_target=max(3,14)=14; meds_target=max(14,7,30)=30; cash_target=7",
+    "air 54/9=6,00; pangan 6x3590=21540 + 30x80x470/100=11280 = 32820 -> 5,17; obat 20",
+    "survival=MIN(6,00; 5,17; 20)=5,17 -> bottleneck food; days=5",
+    "tier 2: kebutuhan gating tier 2 memakai 3 hari (bukan 14): air 27<=54, kkal 19050<=32820, obat max(3,7)=7<=20, toilet 45<=100; tas 22/26=84,62%; indikator 15 -> tier 2 (skenario tidak mengubah tier). target_tier=4 (14 hari)",
+    "kekurangan vs 14 hari: kkal 88900-32820=56080; air 126-54=72; toilet 210-100=110; obat 30-20=10; mask_n95 3x14=42-20=22",
+    "skor: 8 item kritis; air 54/126=0,4286; kkal 32820/88900=0,3692; obat 20/30=0,6667; toilet 100/210=0,4762; 4 item lain 1 -> 5,9406/8=0,7426x55=40,84; tas 22/26x20=16,92; indikator 15/36x15=6,25; skenario: mask_n95 20/42=0,4762, disinfectant 1, rencana isolasi 1 -> 0,8254x10=8,25; total=40,84+16,92+6,25+8,25=72,27 (bobot 100) -> 72"
+   ],
+   "expected": {
+    "household": {
+     "n_total": 3,
+     "daily_kcal": 6350,
+     "water_l_per_person_day": 3
+    },
+    "targets": {
+     "target_days": 3,
+     "effective_target_days": 14,
+     "meds_target_days": 30,
+     "cash_target_days": 7,
+     "target_tier": 4
+    },
+    "food_total_kcal": 32820.0,
+    "survival": {
+     "days_exact": 5.17,
+     "days": 5,
+     "bottleneck": "food",
+     "components": {
+      "water": 6.0,
+      "food": 5.17,
+      "meds": 20.0,
+      "infant_food": null,
+      "power": null
+     }
+    },
+    "tier": {
+     "value": 2,
+     "next_tier": 3,
+     "checks_2_to_5": {
+      "2": true,
+      "3": false,
+      "4": false,
+      "5": false
+     }
+    },
+    "to_next_tier": {
+     "tier": 3,
+     "requirements": [
+      {
+       "kind": "item",
+       "id": "water_drinking",
+       "unit": "L",
+       "need": 63.0,
+       "have": 54.0,
+       "missing": 9
+      },
+      {
+       "kind": "item",
+       "id": "food_kcal_total",
+       "unit": "kkal",
+       "need": 44450.0,
+       "have": 32820.0,
+       "missing": 11630
+      },
+      {
+       "kind": "item",
+       "id": "toilet_bags",
+       "unit": "kantong",
+       "need": 105.0,
+       "have": 100.0,
+       "missing": 5
+      },
+      {
+       "kind": "item",
+       "id": "power_bank",
+       "unit": "buah",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "radio_portable",
+       "unit": "buah",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "emergency_numbers_printed",
+       "unit": "lembar",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_copy_ktp",
+       "unit": "set",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_copy_kk",
+       "unit": "set",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_copy_property",
+       "unit": "set",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_copy_bank",
+       "unit": "set",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "doc_waterproof_bag",
+       "unit": "buah",
+       "need": 1.0,
+       "have": 0.0,
+       "missing": 1
+      },
+      {
+       "kind": "item",
+       "id": "cash_days",
+       "unit": "hari belanja",
+       "need": 7.0,
+       "have": 0.0,
+       "missing": 7
+      }
+     ]
+    },
+    "bag": {
+     "yes": 22,
+     "applicable": 26,
+     "excluded": [
+      4,
+      27
+     ],
+     "pct": 84.62,
+     "band": "siap"
+    },
+    "family": {
+     "total": 15,
+     "band": "cukup_siaga"
+    },
+    "score": {
+     "components": {
+      "critical_stock": 40.84,
+      "bag": 16.92,
+      "family": 6.25,
+      "scenario": 8.25
+     },
+     "weight_sum": 100,
+     "total_exact": 72.27,
+     "total": 72
+    },
+    "warnings": [],
+    "advisories": [
+     "no_cook_share_low"
+    ],
+    "items_eval": {
+     "meds_personal": {
+      "unit": "hari",
+      "need": 30.0,
+      "have": 20.0,
+      "missing": 10,
+      "coverage": 0.6667
+     },
+     "water_drinking": {
+      "unit": "L",
+      "need": 126.0,
+      "have": 54.0,
+      "missing": 72,
+      "coverage": 0.4286
+     },
+     "food_kcal_total": {
+      "unit": "kkal",
+      "need": 88900.0,
+      "have": 32820.0,
+      "missing": 56080,
+      "coverage": 0.3692
+     },
+     "cash_days": {
+      "unit": "hari belanja",
+      "need": 7.0,
+      "have": 0.0,
+      "missing": 7,
+      "coverage": 0.0
+     },
+     "mask_n95": {
+      "unit": "buah",
+      "need": 42.0,
+      "have": 20.0,
+      "missing": 22,
+      "coverage": 0.4762
+     }
+    },
+    "shortfall_count": 80,
+    "shortfall_head": [
+     {
+      "id": "food_kcal_total",
+      "unit": "kkal",
+      "need": 88900.0,
+      "have": 32820.0,
+      "missing": 56080
+     },
+     {
+      "id": "water_drinking",
+      "unit": "L",
+      "need": 126.0,
+      "have": 54.0,
+      "missing": 72
+     },
+     {
+      "id": "toilet_bags",
+      "unit": "kantong",
+      "need": 210.0,
+      "have": 100.0,
+      "missing": 110
+     },
+     {
+      "id": "meds_personal",
+      "unit": "hari",
+      "need": 30.0,
+      "have": 20.0,
+      "missing": 10
+     },
+     {
+      "id": "power_bank",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "radio_portable",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "emergency_numbers_printed",
+      "unit": "lembar",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_ktp",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     }
+    ],
+    "category_progress": {
+     "water": 8.6,
+     "food": 9.2,
+     "meds_firstaid": 9.5,
+     "sanitation": 14.8,
+     "lighting": 20.0,
+     "power": 16.7,
+     "communication": 0.0,
+     "docs_cash": 0.0,
+     "clothing_warmth": 0.0,
+     "tools": 0.0,
+     "gobag": 50.0,
+     "special_needs": 50.0,
+     "plan_knowledge": 7.7
+    }
+   }
+  },
+  {
+   "id": "tc08_conflict",
+   "title": "Konflik: target 3 dinaikkan ke 7 hari, tunai 7 hari belanja; 1 dewasa + 1 anak; tas tepat 80%",
+   "focus": [
+    "durasi min efektif 7",
+    "tunai",
+    "batas tas tepat 80% = PERLU DILENGKAPI"
+   ],
+   "input": {
+    "profile": {
+     "counts": {
+      "adult": 1,
+      "child": 1
+     },
+     "scenarios": [
+      "conflict"
+     ],
+     "target_days": 3
+    },
+    "inventory": {
+     "water_drinking": 42,
+     "food_rice": {
+      "qty": 5
+     },
+     "food_instant_noodle": {
+      "qty": 20,
+      "grams_per_unit": 80
+     },
+     "toilet_bags": 70,
+     "flashlight": 1,
+     "spare_batteries": 1,
+     "gobag_main": 1,
+     "cash_days": 3,
+     "payment_card_pin": true
+    },
+    "indicators": {
+     "ind_01": 2,
+     "ind_02": 2,
+     "ind_03": 2,
+     "ind_04": 2,
+     "ind_05": 2,
+     "ind_06": 2,
+     "ind_07": 2,
+     "ind_08": 2,
+     "ind_09": 2,
+     "ind_10": 0,
+     "ind_11": 0,
+     "ind_12": 0,
+     "ind_13": 0,
+     "ind_14": 0,
+     "ind_15": 0,
+     "ind_16": 0,
+     "ind_17": 0,
+     "ind_18": 0
+    },
+    "bag_checklist": {
+     "1": true,
+     "2": true,
+     "3": true,
+     "4": false,
+     "5": true,
+     "6": true,
+     "7": true,
+     "8": true,
+     "9": true,
+     "10": true,
+     "11": true,
+     "12": true,
+     "13": true,
+     "14": true,
+     "15": true,
+     "16": true,
+     "17": true,
+     "18": true,
+     "19": true,
+     "20": true,
+     "21": true,
+     "22": false,
+     "23": false,
+     "24": false,
+     "25": false,
+     "26": false,
+     "27": false,
+     "28": false
+    }
+   },
+   "calc": [
+    "N=2 (1 dewasa, 1 anak); kkal harian=2230+2000=4230; target 3 -> effective_target=max(3,7)=7 (konflik); cash_target=7",
+    "air 42/6=7,00; pangan 5x3590=17950 + 20x80x470/100=7520 = 25470 -> 25470/4230=6,02 (butuh 29610, kurang 4140)",
+    "survival=MIN(7,00; 6,02)=6,02 -> bottleneck food; days=6",
+    "tunai: butuh 7 hari belanja, punya 3 -> kurang 4",
+    "tas: 25 item berlaku; ya=20 -> tepat 80,00% -> PERLU DILENGKAPI (bukan SIAP) -> tier 2 gagal -> tier 1; butuh ya>=floor(0,8x25)+1=21 -> kurang 1",
+    "item skenario konflik: payment_card_pin 1, vehicle_tank_half 0, conflict_stay_or_leave_plan 0 -> 1/3=0,3333",
+    "skor: 6 item kritis; kkal 25470/29610=0,8602, lainnya 1 -> 5,8602/6=0,9767x55=53,72; tas 16,00; indikator 18/36x15=7,50; skenario 3,33; total=80,55 -> 81"
+   ],
+   "expected": {
+    "household": {
+     "n_total": 2,
+     "daily_kcal": 4230,
+     "water_l_per_person_day": 3
+    },
+    "targets": {
+     "target_days": 3,
+     "effective_target_days": 7,
+     "meds_target_days": 7,
+     "cash_target_days": 7,
+     "target_tier": 3
+    },
+    "food_total_kcal": 25470.0,
+    "survival": {
+     "days_exact": 6.02,
+     "days": 6,
+     "bottleneck": "food",
+     "components": {
+      "water": 7.0,
+      "food": 6.02,
+      "meds": null,
+      "infant_food": null,
+      "power": null
+     }
+    },
+    "tier": {
+     "value": 1,
+     "next_tier": 2,
+     "checks_2_to_5": {
+      "2": false,
+      "3": false,
+      "4": false,
+      "5": false
+     }
+    },
+    "to_next_tier": {
+     "tier": 2,
+     "requirements": [
+      {
+       "kind": "bag",
+       "required_pct_gt": 80,
+       "current_pct": 80.0,
+       "yes": 20,
+       "needed_yes": 21,
+       "missing": 1
+      }
+     ]
+    },
+    "bag": {
+     "yes": 20,
+     "applicable": 25,
+     "excluded": [
+      4,
+      27,
+      28
+     ],
+     "pct": 80.0,
+     "band": "perlu_dilengkapi"
+    },
+    "family": {
+     "total": 18,
+     "band": "cukup_siaga"
+    },
+    "score": {
+     "components": {
+      "critical_stock": 53.72,
+      "bag": 16.0,
+      "family": 7.5,
+      "scenario": 3.33
+     },
+     "weight_sum": 100,
+     "total_exact": 80.55,
+     "total": 81
+    },
+    "warnings": [],
+    "advisories": [
+     "no_cook_share_low"
+    ],
+    "items_eval": {
+     "cash_days": {
+      "unit": "hari belanja",
+      "need": 7.0,
+      "have": 3.0,
+      "missing": 4,
+      "coverage": 0.4286
+     },
+     "food_kcal_total": {
+      "unit": "kkal",
+      "need": 29610.0,
+      "have": 25470.0,
+      "missing": 4140,
+      "coverage": 0.8602
+     },
+     "payment_card_pin": {
+      "unit": "kartu",
+      "need": 1.0,
+      "have": 1.0,
+      "missing": 0,
+      "coverage": 1.0
+     }
+    },
+    "shortfall_count": 79,
+    "shortfall_head": [
+     {
+      "id": "food_kcal_total",
+      "unit": "kkal",
+      "need": 29610.0,
+      "have": 25470.0,
+      "missing": 4140
+     },
+     {
+      "id": "power_bank",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "radio_portable",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "emergency_numbers_printed",
+      "unit": "lembar",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_ktp",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_kk",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_property",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "doc_copy_bank",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     }
+    ],
+    "category_progress": {
+     "water": 20.0,
+     "food": 21.5,
+     "meds_firstaid": 0.0,
+     "sanitation": 11.1,
+     "lighting": 20.0,
+     "power": 16.7,
+     "communication": 0.0,
+     "docs_cash": 13.0,
+     "clothing_warmth": 0.0,
+     "tools": 0.0,
+     "gobag": 25.0,
+     "special_needs": null,
+     "plan_knowledge": 0.0
+    }
+   }
+  },
+  {
+   "id": "tc09_empty",
+   "title": "Input kosong: 1 dewasa, inventaris kosong, indikator dan tas kosong, target default",
+   "focus": [
+    "nol",
+    "tier 0",
+    "skor 0",
+    "default target"
+   ],
+   "input": {
+    "profile": {
+     "counts": {
+      "adult": 1
+     }
+    },
+    "inventory": {},
+    "indicators": {},
+    "bag_checklist": {}
+   },
+   "calc": [
+    "N=1 dewasa; semua input kosong; target default 7; kkal harian 2230",
+    "air 0/3=0; pangan 0/2230=0 -> survival=0 (seri -> bottleneck mengikuti tie_break_order: water); tier 0",
+    "to_next_tier (tier 1): air 3 L (1 hari), kkal 2230",
+    "skor: kritis 0; tas 0/25; indikator 0 (tidak diisi = 0, advisory indicators_incomplete); skenario tidak berlaku -> total 0"
+   ],
+   "expected": {
+    "household": {
+     "n_total": 1,
+     "daily_kcal": 2230,
+     "water_l_per_person_day": 3
+    },
+    "targets": {
+     "target_days": 7,
+     "effective_target_days": 7,
+     "meds_target_days": 7,
+     "cash_target_days": 7,
+     "target_tier": 3
+    },
+    "food_total_kcal": 0.0,
+    "survival": {
+     "days_exact": 0.0,
+     "days": 0,
+     "bottleneck": "water",
+     "components": {
+      "water": 0.0,
+      "food": 0.0,
+      "meds": null,
+      "infant_food": null,
+      "power": null
+     }
+    },
+    "tier": {
+     "value": 0,
+     "next_tier": 1,
+     "checks_2_to_5": {
+      "2": false,
+      "3": false,
+      "4": false,
+      "5": false
+     }
+    },
+    "to_next_tier": {
+     "tier": 1,
+     "requirements": [
+      {
+       "kind": "item",
+       "id": "water_drinking",
+       "unit": "L",
+       "need": 3.0,
+       "have": 0.0,
+       "missing": 3
+      },
+      {
+       "kind": "item",
+       "id": "food_kcal_total",
+       "unit": "kkal",
+       "need": 2230.0,
+       "have": 0.0,
+       "missing": 2230
+      }
+     ]
+    },
+    "bag": {
+     "yes": 0,
+     "applicable": 25,
+     "excluded": [
+      4,
+      27,
+      28
+     ],
+     "pct": 0.0,
+     "band": "belum_siap"
+    },
+    "family": {
+     "total": 0,
+     "band": "rawan"
+    },
+    "score": {
+     "components": {
+      "critical_stock": 0.0,
+      "bag": 0.0,
+      "family": 0.0,
+      "scenario": null
+     },
+     "weight_sum": 90,
+     "total_exact": 0.0,
+     "total": 0
+    },
+    "warnings": [],
+    "advisories": [
+     "indicators_incomplete"
+    ],
+    "items_eval": {
+     "water_drinking": {
+      "unit": "L",
+      "need": 21.0,
+      "have": 0.0,
+      "missing": 21,
+      "coverage": 0.0
+     },
+     "food_kcal_total": {
+      "unit": "kkal",
+      "need": 15610.0,
+      "have": 0.0,
+      "missing": 15610,
+      "coverage": 0.0
+     }
+    },
+    "shortfall_count": 80,
+    "shortfall_head": [
+     {
+      "id": "water_drinking",
+      "unit": "L",
+      "need": 21.0,
+      "have": 0.0,
+      "missing": 21
+     },
+     {
+      "id": "food_kcal_total",
+      "unit": "kkal",
+      "need": 15610.0,
+      "have": 0.0,
+      "missing": 15610
+     },
+     {
+      "id": "toilet_bags",
+      "unit": "kantong",
+      "need": 35.0,
+      "have": 0.0,
+      "missing": 35
+     },
+     {
+      "id": "flashlight",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "spare_batteries",
+      "unit": "set",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "gobag_main",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "power_bank",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     },
+     {
+      "id": "radio_portable",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     }
+    ],
+    "category_progress": {
+     "water": 0.0,
+     "food": 0.0,
+     "meds_firstaid": 0.0,
+     "sanitation": 0.0,
+     "lighting": 0.0,
+     "power": 0.0,
+     "communication": 0.0,
+     "docs_cash": 0.0,
+     "clothing_warmth": 0.0,
+     "tools": 0.0,
+     "gobag": 0.0,
+     "special_needs": null,
+     "plan_knowledge": 0.0
+    }
+   }
+  },
+  {
+   "id": "tc10_20p_90d",
+   "title": "20 orang, target 90 hari, stok ~33 hari (tier 5)",
+   "focus": [
+    "skala besar",
+    "tier 5",
+    "target 90 vs stok 30+",
+    "bottleneck kkal",
+    "grup daya alternatif"
+   ],
+   "input": {
+    "profile": {
+     "counts": {
+      "adult": 12,
+      "elderly": 3,
+      "child": 3,
+      "toddler": 2
+     },
+     "pregnant": 1,
+     "breastfeeding": 1,
+     "meds": [
+      {
+       "label": "Obat rutin",
+       "doses_per_day": 2,
+       "stock_days": 45
+      }
+     ],
+     "usage_per_day": {
+      "infant_mpasi": 6,
+      "infant_diapers": 16
+     },
+     "target_days": 90
+    },
+    "inventory": {
+     "water_drinking": 2000,
+     "water_hygiene": 1000,
+     "food_rice": {
+      "qty": 400
+     },
+     "toilet_bags": 3200,
+     "gas_canister": 520,
+     "stove_portable": 1,
+     "flashlight": 1,
+     "spare_batteries": 1,
+     "gobag_main": 1,
+     "infant_mpasi": 210,
+     "infant_diapers": 500,
+     "elderly_meds": true,
+     "power_bank": true,
+     "radio_portable": 1,
+     "emergency_numbers_printed": true,
+     "doc_copy_ktp": true,
+     "doc_copy_kk": true,
+     "doc_copy_property": true,
+     "doc_copy_bank": true,
+     "doc_waterproof_bag": 1,
+     "cash_days": 7,
+     "water_treatment_chemical": true,
+     "family_emergency_plan": true,
+     "generator": true,
+     "first_aid_knowledge": true
+    },
+    "indicators": {
+     "ind_01": 2,
+     "ind_02": 2,
+     "ind_03": 2,
+     "ind_04": 2,
+     "ind_05": 2,
+     "ind_06": 2,
+     "ind_07": 2,
+     "ind_08": 2,
+     "ind_09": 2,
+     "ind_10": 2,
+     "ind_11": 2,
+     "ind_12": 2,
+     "ind_13": 1,
+     "ind_14": 1,
+     "ind_15": 1,
+     "ind_16": 1,
+     "ind_17": 1,
+     "ind_18": 1
+    },
+    "bag_checklist": {
+     "1": true,
+     "2": true,
+     "3": true,
+     "4": false,
+     "5": true,
+     "6": true,
+     "7": true,
+     "8": true,
+     "9": true,
+     "10": true,
+     "11": true,
+     "12": true,
+     "13": true,
+     "14": true,
+     "15": true,
+     "16": true,
+     "17": true,
+     "18": true,
+     "19": true,
+     "20": true,
+     "21": true,
+     "22": true,
+     "23": true,
+     "24": true,
+     "25": true,
+     "26": true,
+     "27": false,
+     "28": true
+    }
+   },
+   "calc": [
+    "N=20 (12 dewasa, 3 lansia, 3 anak, 2 balita), 1 hamil, 1 menyusui; kkal harian=26760+5670+6000+2860+285+500=42075; air 60 L/hari",
+    "air 2000/60=33,33; pangan 400x3590=1.436.000 -> /42075=34,13; obat 45; MPASI 210/6=35,0 -> survival=33,33 (air)",
+    "tier 5: kebutuhan 30 hari: air 1800, kkal 1.262.250, toilet 3000, gas 0,8571x20x30=514,26 (punya 520), obat max(30,7)=30 (punya 45), MPASI 180, popok 480; semua gating tier 3-5 terpenuhi (daya alternatif via generator); tas 26/28=92,86%; indikator 30",
+    "target 90 hari: air 5400 (kurang 3400); kkal 3.786.750 (kurang 2.350.750); toilet 9000 (kurang 5800); obat 90 (kurang 45); gas 1542,78 (kurang 1023); MPASI 540 (kurang 330); popok 1440 (kurang 940); target_tier=5",
+    "skor: 10 item kritis; air 0,3704; kkal 0,3792; obat 0,5; toilet 0,3556; MPASI 0,3889; popok 0,3472; senter, baterai, tas, obat lansia 1 -> 6,3413/10=0,6341x55=34,88; tas 18,57; indikator 30/36x15=12,50; skenario tidak berlaku -> (34,88+18,57+12,50)x100/90=73,28 -> 73"
+   ],
+   "expected": {
+    "household": {
+     "n_total": 20,
+     "daily_kcal": 42075,
+     "water_l_per_person_day": 3
+    },
+    "targets": {
+     "target_days": 90,
+     "effective_target_days": 90,
+     "meds_target_days": 90,
+     "cash_target_days": 7,
+     "target_tier": 5
+    },
+    "food_total_kcal": 1436000.0,
+    "survival": {
+     "days_exact": 33.33,
+     "days": 33,
+     "bottleneck": "water",
+     "components": {
+      "water": 33.33,
+      "food": 34.13,
+      "meds": 45.0,
+      "infant_food": 35.0,
+      "power": null
+     }
+    },
+    "tier": {
+     "value": 5,
+     "next_tier": null,
+     "checks_2_to_5": {
+      "2": true,
+      "3": true,
+      "4": true,
+      "5": true
+     }
+    },
+    "to_next_tier": null,
+    "bag": {
+     "yes": 26,
+     "applicable": 28,
+     "excluded": [],
+     "pct": 92.86,
+     "band": "siap"
+    },
+    "family": {
+     "total": 30,
+     "band": "siap"
+    },
+    "score": {
+     "components": {
+      "critical_stock": 34.88,
+      "bag": 18.57,
+      "family": 12.5,
+      "scenario": null
+     },
+     "weight_sum": 90,
+     "total_exact": 73.28,
+     "total": 73
+    },
+    "warnings": [],
+    "advisories": [
+     "no_cook_share_low"
+    ],
+    "items_eval": {
+     "water_drinking": {
+      "unit": "L",
+      "need": 5400.0,
+      "have": 2000.0,
+      "missing": 3400,
+      "coverage": 0.3704
+     },
+     "food_kcal_total": {
+      "unit": "kkal",
+      "need": 3786750.0,
+      "have": 1436000.0,
+      "missing": 2350750,
+      "coverage": 0.3792
+     },
+     "meds_personal": {
+      "unit": "hari",
+      "need": 90.0,
+      "have": 45.0,
+      "missing": 45,
+      "coverage": 0.5
+     },
+     "infant_mpasi": {
+      "unit": "buah",
+      "need": 540.0,
+      "have": 210.0,
+      "missing": 330,
+      "coverage": 0.3889
+     },
+     "infant_diapers": {
+      "unit": "buah",
+      "need": 1440.0,
+      "have": 500.0,
+      "missing": 940,
+      "coverage": 0.3472
+     },
+     "gas_canister": {
+      "unit": "tabung",
+      "need": 1542.78,
+      "have": 520.0,
+      "missing": 1023,
+      "coverage": 0.3371
+     },
+     "toilet_bags": {
+      "unit": "kantong",
+      "need": 9000.0,
+      "have": 3200.0,
+      "missing": 5800,
+      "coverage": 0.3556
+     }
+    },
+    "shortfall_count": 70,
+    "shortfall_head": [
+     {
+      "id": "infant_diapers",
+      "unit": "buah",
+      "need": 1440.0,
+      "have": 500.0,
+      "missing": 940
+     },
+     {
+      "id": "toilet_bags",
+      "unit": "kantong",
+      "need": 9000.0,
+      "have": 3200.0,
+      "missing": 5800
+     },
+     {
+      "id": "water_drinking",
+      "unit": "L",
+      "need": 5400.0,
+      "have": 2000.0,
+      "missing": 3400
+     },
+     {
+      "id": "food_kcal_total",
+      "unit": "kkal",
+      "need": 3786750.0,
+      "have": 1436000.0,
+      "missing": 2350750
+     },
+     {
+      "id": "infant_mpasi",
+      "unit": "buah",
+      "need": 540.0,
+      "have": 210.0,
+      "missing": 330
+     },
+     {
+      "id": "meds_personal",
+      "unit": "hari",
+      "need": 90.0,
+      "have": 45.0,
+      "missing": 45
+     },
+     {
+      "id": "gas_canister",
+      "unit": "tabung",
+      "need": 1542.78,
+      "have": 520.0,
+      "missing": 1023
+     },
+     {
+      "id": "water_container",
+      "unit": "buah",
+      "need": 1.0,
+      "have": 0.0,
+      "missing": 1
+     }
+    ],
+    "category_progress": {
+     "water": 33.0,
+     "food": 42.9,
+     "meds_firstaid": 4.5,
+     "sanitation": 4.0,
+     "lighting": 20.0,
+     "power": 50.0,
+     "communication": 40.0,
+     "docs_cash": 60.0,
+     "clothing_warmth": 0.0,
+     "tools": 0.0,
+     "gobag": 33.3,
+     "special_needs": 34.7,
+     "plan_knowledge": 15.4
+    }
+   }
+  }
+ ],
+ "extra_cases": [
+  {
+   "id": "ex01_infant_breastfed",
+   "title": "Bayi ASI eksklusif: formula tidak berlaku, ibu menyusui +500 kkal",
+   "input": {
+    "profile": {
+     "counts": {
+      "infant": 1,
+      "adult": 1
+     },
+     "infant_feeding": "breastfeeding",
+     "breastfeeding": 1,
+     "usage_per_day": {
+      "infant_diapers": 8
+     },
+     "target_days": 3
+    },
+    "inventory": {
+     "water_drinking": 18,
+     "food_rice": {
+      "qty": 1
+     },
+     "infant_diapers": 30,
+     "toilet_bags": 30
+    },
+    "indicators": {},
+    "bag_checklist": {}
+   },
+   "calc": [
+    "N=2; kkal harian=2230+500=2730 (bayi tanpa kkal); infant_formula tidak berlaku (infant_feeding=breastfeeding) -> infant_food=null (MPASI tanpa angka pemakaian tidak dihitung)",
+    "air 18/6=3,00; pangan 3590/2730=1,315 -> survival 1,32 (food); tier 1",
+    "infant_mpasi berlaku (ada bayi), kritis + gating, pemakaian tidak diisi -> usage_missing:infant_mpasi, status needs_input, menahan tier 2"
+   ],
+   "expected": {
+    "survival": {
+     "days_exact": 1.32,
+     "days": 1,
+     "bottleneck": "food",
+     "components": {
+      "water": 3.0,
+      "food": 1.32,
+      "meds": null,
+      "infant_food": null,
+      "power": null
+     }
+    },
+    "tier": {
+     "value": 1,
+     "next_tier": 2
+    },
+    "warnings": [
+     "usage_missing:infant_mpasi"
+    ],
+    "advisories": [
+     "no_cook_share_low",
+     "indicators_incomplete"
+    ],
+    "household": {
+     "n_total": 2,
+     "daily_kcal": 2730
+    },
+    "infant_formula_applicable": false,
+    "infant_mpasi_shortfall_status": "needs_input",
+    "bag": {
+     "yes": 0,
+     "applicable": 27,
+     "excluded": [
+      28
+     ],
+     "pct": 0.0,
+     "band": "belum_siap"
+    }
+   }
+  },
+  {
+   "id": "ex02_invalid_empty_household",
+   "title": "Rumah tangga 0 orang: tidak valid",
+   "input": {
+    "profile": {
+     "counts": {}
+    },
+    "inventory": {},
+    "indicators": {},
+    "bag_checklist": {}
+   },
+   "calc": [
+    "N=0 -> status invalid, errors=[household_empty]; tidak ada tier/skor"
+   ],
+   "expected": {
+    "status": "invalid",
+    "errors": [
+     "household_empty"
+    ]
+   }
+  }
+ ]
+}
