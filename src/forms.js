@@ -35,7 +35,7 @@ function tr(ctx, key, idText, enText, vars) {
 }
 const lab = (ctx, o) => (o && (o[ctx.lang] || o.id)) || '';
 const fmt = (ctx, n, d = 2) => (Number.isFinite(n) ? n.toLocaleString(ctx.lang === 'en' ? 'en-GB' : 'id-ID', { maximumFractionDigits: d }) : '-');
-const cp = (o) => JSON.parse(JSON.stringify(o));
+const cp = (o) => (o === undefined ? undefined : JSON.parse(JSON.stringify(o)));
 const items = (ctx) => (Array.isArray(ctx.data.items) ? ctx.data.items : ctx.data.items.items);
 const catsOf = (ctx) => (ctx.data.items.categories || ctx.data.categories || []);
 const rules = (ctx) => ctx.data.rules;
@@ -947,27 +947,30 @@ export function renderPower(root, ctx) {
   root.append(assumptions);
 
   function renderSafety() {
-    const o = ctx.state.power_inventory || {};
     safetyBox.textContent = '';
     const msg = (k) => (pd.safety_messages.find((m) => m.key === k) || {});
     const danger = ['co_outdoors', 'no_backfeed'];
-    const genActive = (Number(o.generator_w) || 0) > 0;
-    genWarnHost.textContent = '';
-    if (genActive) {
-      const c = hazardCard(ctx, tr(ctx, 'power.warn.co_title', 'Awas gas karbon monoksida (CO)'), tr(ctx, 'power.warn.co_body', msg('co_outdoors')[lang] || ''), true);
-      c.setAttribute('role', 'alert');
-      genWarnHost.append(c);
-    }
     safetyBox.append(h('h2', { text: tr(ctx, 'f.safety', 'Keselamatan listrik', 'Electrical safety') }));
     safetyBox.append(hazardCard(ctx, tr(ctx, 'power.warn.co_title', 'Awas gas karbon monoksida (CO)'), (tr(ctx, 'power.warn.co_body', '') || msg('co_outdoors')[lang]) + ' ' + tr(ctx, 'power.warn.co_symptoms', ''), true),
       hazardCard(ctx, tr(ctx, 'power.warn.house_wiring_title', 'Jangan sambung genset ke instalasi rumah sendiri'), tr(ctx, 'power.warn.house_wiring_body', msg('no_backfeed')[lang] || ''), true),
       hazardCard(ctx, tr(ctx, 'power.warn.dry_title', 'Simpan di tempat kering'), tr(ctx, 'power.warn.dry_body', msg('battery_storage')[lang] || ''), false));
     const rest = pd.safety_messages.filter((m) => !danger.includes(m.key) && !['battery_storage', 'medical_plan', 'medical_label'].includes(m.key));
-    const det = h('details', { class: 'guide' }, h('summary', { text: tr(ctx, 'f.more_safety', 'Tips keselamatan lain', 'More safety tips') }), h('div', null, h('ul', { class: 'f-list' }, rest.map((m) => h('li', { text: m[lang] || m.id })))));
-    safetyBox.append(det);
+    safetyBox.append(h('details', { class: 'guide' }, h('summary', { text: tr(ctx, 'f.more_safety', 'Tips keselamatan lain', 'More safety tips') }), h('div', null, h('ul', { class: 'f-list' }, rest.map((m) => h('li', { text: m[lang] || m.id }))))));
+  }
+  // peringatan CO di atas layar saat genset diisi (role=alert hanya saat pertama muncul)
+  let genShown = false;
+  function updateGenWarn() {
+    const on = (Number((ctx.state.power_inventory || {}).generator_w) || 0) > 0;
+    if (on === genShown) return;
+    genShown = on;
+    genWarnHost.textContent = '';
+    if (on) {
+      const c = hazardCard(ctx, tr(ctx, 'power.warn.co_title', 'Awas gas karbon monoksida (CO)'), tr(ctx, 'power.warn.co_body', (pd.safety_messages.find((m) => m.key === 'co_outdoors') || {})[lang] || ''), true);
+      c.setAttribute('role', 'alert');
+      genWarnHost.append(c);
+    }
   }
 
-  let firstGen = true;
   function renderResults() {
     const days = daysOf();
     const s = P.summarize(ctx.state, pd, days);
@@ -1017,8 +1020,9 @@ export function renderPower(root, ctx) {
       med.append(h('p', { class: 'f-hint', text: tr(ctx, 'power.medical_registry', '') }));
       results.append(med);
     }
-    renderSafety();
+    updateGenWarn();
   }
+  renderSafety();
   renderResults();
   root.append(savedNote(ctx), navBar(ctx, { href: '#/inventaris', label: tr(ctx, 'nav.inventory', 'Stok') }, { href: '#/keluarga', label: tr(ctx, 'f.to_family', 'Lanjut ke evaluasi keluarga') }));
 }

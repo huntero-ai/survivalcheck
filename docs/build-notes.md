@@ -40,3 +40,24 @@ Catatan teknis untuk E2/E3:
 - SW: CORE (wajib) = aset E1 + data + i18n + `docs/sources.md`; OPTIONAL (tidak menggagalkan instal) = `src/engine|power|forms|results|shopping.js`, `styles/forms|results|print.css`. Jika file baru ditambahkan, edit daftar di `sw.js` dan naikkan `CACHE`. `docs/sources.md` disalin ke `_site/docs/` oleh workflow (docs/ lain tidak dipublikasikan).
 - Bug data: tidak ada ditemukan. Catatan: `docs/sources.md` memuat satu baris sumber internasional dengan domain `info.gouv...`; tidak masalah.
 - Temuan untuk E3: `src/shopping.js` `render()` menghapus `<h1>` (`page.textContent = ''`) setelah hasil dimuat dan tidak menambahkannya lagi, sehingga `#/belanja` tanpa `<h1>` (a11y: fokus judul halaman). Mohon tambahkan lagi h1 setelah build. Uji e2e-shell menerima h1 atau h2 di rute itu.
+
+## E2 (engine, power, forms)
+
+Tes: `node --test` (Node 22 tidak menerima `node --test tests/`; pakai tanpa argumen atau `"tests/*.test.mjs"`). Semua kasus cases.json (10 + 2) dan test_cases power.json hijau; tidak ada selisih data.
+
+Catatan data (tidak diubah):
+- `items.json` unit `meds_personal` = "hari stok" dan `medical_device_backup_power` = "Wh", sedangkan cases.json mengharapkan "hari". Engine menimpa unit keduanya menjadi "hari" (UNIT_OVERRIDE di engine.js). Disarankan samakan di items.json.
+- `gas_canister.per_person_day` 0,8571 tabung/orang/hari (terlihat tak lazim) diikuti apa adanya sesuai cases tc10.
+
+Keputusan/ekstensi engine:
+- `evaluate(state, data)`: target dari `state.target` ({days} atau angka) lalu `profile.target_days`; skenario dari `state.scenarios` lalu `profile.scenarios`. Daya medis dari `state.power.days_power_medical`, atau dihitung dari `state.power_devices` + `state.power_inventory` lewat power.js.
+- Tambahan output: `result.applicable_ids`. Tambahan input: `inventory.food_other = {kcal_total}` (pangan lain dari label).
+- Skema power state: `power_devices = {id:{qty,hours,watts}}` (perangkat sendiri: kunci `custom_*` + `name`, `medical`); `power_inventory = {outage_days, power_bank_mah, power_bank_qty, power_station_wh, spare_battery_wh (ASUMSI: x0,8 tanpa inverter), generator_w, generator_fuel_hours, solar_wp, solar_sun_hours}`.
+- Form profil menyimpan juga `disability, aids, housing, altitude_over_1000, province, province_suggested_for, pets.other`. `state.target = {days, custom}`.
+- Bagian bayi/balita di Profil juga muncul untuk balita (popok/MPASI jadi gating tier 2).
+- Tanggal kedaluwarsa item (ux 3.4.2) belum ada tempat di skema state: tidak diimplementasi.
+
+Permintaan ke E1/PM:
+- `ctx.data.province_risks` (isi `research/r5-indonesia.json` record province_risks atau `data/province_risks.json`) bila ingin saran provinsi dari data; sementara forms.js memakai tabel bawaan hasil turunan IRBI 2024.
+- Kunci i18n kurang (fallback dipakai): f.range, f.needs_input, f.why, f.days, f.hours, f.qty, f.hungry, f.see_result, f.to_family, f.next_category, f.other_items, f.items, f.usage_per_day, f.meds_from_profile, f.power_from_module, f.grams_per_unit, f.kcal_required, f.kcal_unresolved, f.other_kcal_total, f.not_counted, f.answered, f.skip_warn, f.estimate_note, f.pick_medical, f.pick_medical_short, f.medical_days, f.medical_short, f.too_big, f.self_suff, f.sun_default, f.assumptions, f.assumption_note, f.safety, f.more_safety, f.no_province.
+- `ctx.save(patch)` dipakai sebagai shallow merge kunci tingkat atas; forms selalu mengirim objek utuh.
