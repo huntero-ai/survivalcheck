@@ -130,9 +130,10 @@ export function evaluate(state, data) {
   const aggIds = R.food.aggregates;
   const aggSet = new Set(aggIds);
   const itemById = {};
+  const IDX = {};
   I.items.forEach((it, i) => {
     itemById[it.id] = it;
-    it._idx = i;
+    IDX[it.id] = i;
   });
   let totalKcal = 0;
   let noCookKcal = 0;
@@ -294,7 +295,7 @@ export function evaluate(state, data) {
 
   // 3.8 tier
   const tierDef = (t) => tiers.find((x) => x.id === t);
-  const sortKey = (it) => [PRIORITY_RANK[it.priority] ?? 9, it.min_tier_gating == null ? 99 : it.min_tier_gating, it._idx];
+  const sortKey = (it) => [PRIORITY_RANK[it.priority] ?? 9, it.min_tier_gating == null ? 99 : it.min_tier_gating, IDX[it.id]];
   const cmpKey = (a, b) => {
     for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return a[i] - b[i];
     return 0;
@@ -423,7 +424,7 @@ export function evaluate(state, data) {
     if (!entry) continue;
     const { pct, ...rest } = entry;
     shortfall.push({
-      key: [PRIORITY_RANK[it.priority] ?? 9, it.min_tier_gating == null ? 99 : it.min_tier_gating, -pct, it._idx],
+      key: [PRIORITY_RANK[it.priority] ?? 9, it.min_tier_gating == null ? 99 : it.min_tier_gating, -pct, IDX[it.id]],
       row: { id: it.id, category: it.category, priority: it.priority, min_tier_gating: it.min_tier_gating ?? null, unit: e.unit, ...rest, blocks_tier: it.min_tier_gating ?? null },
     });
   }

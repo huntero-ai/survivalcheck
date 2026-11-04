@@ -7,7 +7,7 @@ const EPS = 1e-9;
 export function round(x, n = 2) {
   if (!Number.isFinite(x)) return x;
   const f = 10 ** n;
-  return Math.round(x * f * (1 + 1e-12)) / f;
+  return Math.round((x + (x < 0 ? -1e-12 : 1e-12)) * f) / f;
 }
 const ceil6 = (x) => Math.ceil(round(x, 6) - EPS);
 const num = (v, d = 0) => (typeof v === 'number' && Number.isFinite(v) ? v : d);

@@ -17,6 +17,7 @@ export function defaultState() {
     power_devices: null,
     settings: { lang: 'id', theme: 'system', reminders: { check: true, water: true, drill: true, power: true }, reminderDone: {}, disclaimerAccepted: false },
     family_plan: {},
+    shopping: { checked: {}, hide_bought: false },
     createdAt: null,
     updatedAt: null,
   };
