@@ -21,7 +21,7 @@ let fail = 0;
 const ok = (c, m) => { console.log((c ? 'ok   ' : 'FAIL ') + m); if (!c) fail++; };
 const browser = await chromium.launch();
 const page = await (await browser.newContext({ viewport: { width: 360, height: 640 } })).newPage();
-const expected = { '': 'home', '#/profil': 'stok', '#/target': 'stok', '#/keluarga': 'stok', '#/inventaris': 'stok', '#/daya': 'stok', '#/info': 'more', '#/pengaturan': 'more' };
+const expected = { '': 'home', '#/profil': 'stok', '#/target': 'stok', '#/keluarga': 'stok', '#/inventaris': 'stok', '#/daya': 'stok', '#/info': 'more', '#/pengaturan': 'more', '#/rincian': 'home', '#/belanja': 'more' };
 for (const [hash, tab] of Object.entries(expected)) {
   await page.goto(base + hash, { waitUntil: 'networkidle' });
   const cur = await page.$$eval('.bottom-nav a[aria-current="page"]', (a) => a.map((x) => x.dataset.tab));

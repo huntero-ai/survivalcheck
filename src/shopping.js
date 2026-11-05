@@ -1,4 +1,5 @@
 // SurvivalCheck - Daftar belanja (E3). Fungsi murni buildShoppingList/toPlainText bebas DOM (diuji di Node).
+import { glyph } from './icons.js';
 import { h, tr, fill, fmt, arr, indexById, loc, loadResult, normalizeShortfall } from './results.js';
 
 const LABEL_NOTE_IDS = /water_treatment|bleach|chlorine|iodine|purif|filter|mask/;
@@ -208,15 +209,16 @@ export function render(root, ctx) {
           const cid = 'sc-c-' + e.id;
           const input = h('input', { type: 'checkbox', id: cid, class: 'sc-check' });
           input.checked = !!checked[e.id];
-          const qty = e.needsInput ? tr(ctx, 'shopping.needs_input', FALLBACK.needs_input) : `${fmt(e.qty, ctx.lang)}${e.unit ? ' ' + e.unit : ''}`;
+          const qty = e.needsInput ? '' : `${fmt(e.qty, ctx.lang)}${e.unit ? ' ' + e.unit : ''}`;
           const li = h('li', { class: 'sc-checkitem' + (input.checked ? ' done' : '') });
           if (hide && input.checked) li.hidden = true;
           li.append(...[
             h('label', { for: cid, class: 'sc-checklabel' },
               input, h('span', { class: 'sc-box', 'aria-hidden': 'true' }),
               h('span', { class: 'sc-itemname', text: e.label }),
-              h('span', { class: 'sc-itemqty', text: qty })),
-            e.excerpt ? h('p', { class: 'sc-small sc-indent' }, h('span', { class: 'sc-chip sc-chip-excerpt', 'data-evidence': 'excerpt', text: '△ ' + tr(ctx, 'common.excerpt_badge', FALLBACK.excerpt) })) : null,
+              qty ? h('span', { class: 'sc-itemqty', text: qty }) : null),
+            e.needsInput ? h('p', { class: 'sc-small sc-muted sc-indent', text: tr(ctx, 'shopping.needs_input', FALLBACK.needs_input) }) : null,
+            e.excerpt ? h('p', { class: 'sc-small sc-indent' }, h('span', { class: 'sc-chip sc-chip-excerpt', 'data-evidence': 'excerpt' }, glyph('tri'), tr(ctx, 'common.excerpt_badge', FALLBACK.excerpt))) : null,
             e.anyOf.length ? h('p', { class: 'sc-small sc-muted sc-indent', text: tr(ctx, 'result.shortfall_any_of', FALLBACK.anyOf, { items: e.anyOf.join(' / ') }) }) : null,
             e.free ? h('p', { class: 'sc-small sc-muted sc-indent', text: e.free.text + (e.free.source ? ` (${e.free.source})` : '') }) : null,
             e.tip ? h('p', { class: 'sc-small sc-muted sc-indent', text: e.tip }) : null].filter(Boolean));
@@ -242,7 +244,7 @@ export function render(root, ctx) {
       page.append(h('section', { class: 'sc-card sc-empty' },
         h('h2', { text: tr(ctx, 'shopping.empty_title', 'Daftar belanja kosong') }),
         h('p', { text: tr(ctx, 'shopping.empty_body', 'Tidak ada kekurangan untuk target ini, atau datamu belum diisi.') }),
-        h('a', { class: 'sc-btn sc-btn-secondary', href: '#/hasil', text: tr(ctx, 'result.title', 'Hasil kesiapan') })));
+        h('a', { class: 'sc-btn sc-btn-secondary', href: '#/rincian', text: tr(ctx, 'result.title', 'Hasil kesiapan') })));
       return;
     }
 
@@ -274,7 +276,7 @@ export function render(root, ctx) {
       h('div', { class: 'sc-actions sc-noprint sc-sticky' }, btnPrint, btnCopy, btnTxt),
       h('p', { class: 'sc-small sc-muted sc-noprint', text: tr(ctx, 'shopping.print_tip', '') }),
       h('p', { class: 'sc-print-only sc-printfoot', text: `${new Date().toLocaleDateString(ctx.lang === 'en' ? 'en-GB' : 'id-ID')} · ${tr(ctx, 'warnings.not_substitute', 'Bukan pengganti instruksi otoritas setempat.')}` }),
-      h('p', { class: 'sc-noprint' }, h('a', { href: '#/hasil', class: 'sc-btn sc-btn-secondary', text: tr(ctx, 'common.back', 'Kembali') }))].filter(Boolean));
+      h('p', { class: 'sc-noprint' }, h('a', { href: '#/rincian', class: 'sc-btn sc-btn-secondary', text: tr(ctx, 'common.back', 'Kembali') }))].filter(Boolean));
     draw();
     updateProgress();
   }).catch(() => {

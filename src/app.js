@@ -1,6 +1,8 @@
 // SurvivalCheck - shell aplikasi: router hash, navigasi, halaman statis, pengaturan.
 import * as Store from './storage.js';
 import * as I18n from './i18n.js';
+import { glyph } from './icons.js';
+import { rovingRadios } from './a11y.js';
 
 const APP_VERSION = '1.0.0';
 const DATA_FILES = {
@@ -40,7 +42,6 @@ function h(tag, attrs, ...kids) {
 const ICONS = {
   home: '<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',
   box: '<path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4"/><path d="M12 11v10"/>',
-  chart: '<path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-8"/><path d="M22 20H2"/>',
   menu: '<path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/>',
   phone: '<path d="M5 3h4l2 5-2.5 1.5a11 11 0 005 5L15 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/>',
   gear: '<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>',
@@ -241,7 +242,7 @@ let current = null; // modul layar aktif
 let renderToken = 0;
 
 function activeTab(name) {
-  if (name === 'home') return 'home';
+  if (name === 'home' || name === 'rincian') return 'home';
   // Alur penyiapan (profil, target, keluarga) adalah bagian dari Stok.
   if (['profil', 'target', 'keluarga', 'inventaris', 'daya'].includes(name)) return 'stok';
   return 'more';
@@ -334,21 +335,23 @@ function dueReminder() {
 const BOTTLENECK_KEY = { water: 'water', food: 'kcal', meds: 'meds', infant_food: 'baby_food', power: 'power_medical' };
 // Pilihan hari persediaan di Beranda: ganti target (mis. 3 -> 7 hari) tanpa membuka halaman Target.
 const HOME_DAY_PRESETS = [3, 7, 14, 30];
+let pendingFocus = null; // selector yang difokuskan lagi setelah Beranda dirender ulang (navigasi panah)
 function daysPicker(current) {
   const row = h('div', { class: 'preset-row', role: 'radiogroup', 'aria-label': tt('home.days_label', 'Target hari persediaan', 'Supply target (days)') });
   for (const d of HOME_DAY_PRESETS) {
     row.append(h('button', {
       type: 'button', role: 'radio', 'aria-checked': String(d === current),
-      onclick: () => { save({ target: { days: d, custom: false } }); renderRoute(); },
+      onclick: () => { save({ target: { days: d, custom: false } }); pendingFocus = '.days-picker-home [aria-checked="true"]'; renderRoute(); },
     }, tt('common.units.day', '{n} hari', '{n} days').replace('{n}', String(d))));
   }
+  rovingRadios(row);
   const custom = !HOME_DAY_PRESETS.includes(current);
   return h('section', { class: 'days-picker-home' },
     h('h2', {}, tt('home.days_title', 'Target persediaan', 'Supply target')),
     row,
     h('p', { class: 'muted center' }, custom
       ? tt('home.days_custom', 'Target sekarang {n} hari. ', 'Current target is {n} days. ').replace('{n}', String(current))
-      : '', h('a', { href: '#/target' }, tt('home.days_other', 'Atur jumlah hari lain', 'Set another number of days'))));
+      : '', h('a', { class: 'link-touch', href: '#/target' }, tt('home.days_other', 'Atur jumlah hari lain', 'Set another number of days'))));
 }
 
 async function fillHome(slot) {
@@ -377,9 +380,10 @@ async function fillHome(slot) {
   // kartu tier + langkah berikutnya
   const n = r.tier.value;
   const seg = h('span', { class: 'seg-row', role: 'img', 'aria-label': t('tiers.segments_label', { n }) }, [1, 2, 3, 4, 5].map((i) => h('i', { class: i <= n ? 'on' : '' })));
-  const tierCard = h('div', { class: 'card tier-card' },
+  const tierCard = h('a', { class: 'card tier-card', href: '#/rincian' },
     h('span', { class: 'tier-top' }, seg, n >= 2 ? h('span', { class: 'chip' }, t('tiers.bnpb_badge')) : null),
-    h('span', { class: 'tier-sub' }, t('tiers.of', { n })), h('span', { class: 'tier-name', style: 'display:block' }, t('tiers.' + n + '.name')));
+    h('span', { class: 'tier-sub' }, t('tiers.of', { n })), h('span', { class: 'tier-name', style: 'display:block' }, t('tiers.' + n + '.name')),
+    h('span', { class: 'tier-more' }, t('result.detail_cta')));
   const first = (r.shortfall || []).find((x) => x.missing != null);
   const slotAfter = [tierCard];
   if (first) {
@@ -393,6 +397,7 @@ async function fillHome(slot) {
     h('a', { class: 'card', href: '#/inventaris/gobag' }, h('div', { class: 'muted' }, tt('home.bag', 'Tas siaga', 'Go-bag')), h('div', { class: 'stat-n' }, r.bag.yes + ' / ' + r.bag.applicable)),
     h('a', { class: 'card', href: '#/keluarga' }, h('div', { class: 'muted' }, tt('home.family', 'Keluarga', 'Family')), h('div', { class: 'stat-n' }, r.family.total == null ? '-' : r.family.total + ' / 36'))));
   slot.after(...slotAfter);
+  if (pendingFocus) { const f = document.querySelector(pendingFocus); pendingFocus = null; if (f) f.focus(); }
 }
 
 function renderHome(main) {
@@ -429,7 +434,7 @@ async function renderInfo(main, sub) {
     main.append(h('h1', {}, t('info.title')), h('p', { class: 'muted' }, t('info.offline_note')),
       h('ul', { class: 'link-list' },
         [['#/info/darurat', t('info.emergency.title')], ['#/info/panduan', t('info.guides.title')], ['#/info/air', t('info.water.title')],
-          ['#/info/kartu', t('info.family_plan.title')], ['#/belanja', t('nav.shopping')], ['#/info/sumber', t('info.sources.title')],
+          ['#/info/kartu', t('info.family_plan.title')], ['#/rincian', t('result.detail_cta')], ['#/belanja', t('nav.shopping')], ['#/info/sumber', t('info.sources.title')],
           ['#/info/disclaimer', t('disclaimer.title')], ['#/pengaturan', t('settings.title')], ['#/info/tentang', t('info.about.title')]]
           .map(([href, label]) => h('li', {}, h('a', { href }, h('span', {}, label))))));
     return;
@@ -456,7 +461,7 @@ function infoEmergency(main) {
     const text = t('info.emergency.' + key);
     const desc = text.includes(': ') ? text.slice(text.indexOf(': ') + 2) : text;
     for (const n of nums) {
-      grid.append(h('div', { class: 'tel-row' }, h('a', { class: 'btn btn-primary', href: 'tel:' + n, 'aria-label': t('a11y.call_number', { number: n }) }, n), h('span', {}, desc)));
+      grid.append(h('div', { class: 'tel-row' }, h('a', { class: 'btn btn-primary', href: 'tel:' + n, 'aria-label': t('a11y.call_number', { number: n }) }, n), h('span', {}, desc, key === 'n112' ? [' ', h('span', { class: 'chip' }, t('info.emergency.main_mark'))] : null)));
     }
   }
   main.append(grid, h('p', { class: 'notice warn' }, t('info.emergency.n112_caveat')), h('p', { class: 'muted' }, t('info.emergency.verify_note')));
@@ -488,7 +493,7 @@ function infoGuides(main) {
 }
 
 function infoWater(main) {
-  main.append(h('h1', {}, t('info.water.title')), h('div', { class: 'notice danger', role: 'note' }, h('strong', {}, '⚠ ' + t('disclaimer.title')), h('p', {}, t('info.water.label_rule'))));
+  main.append(h('h1', {}, t('info.water.title')), h('div', { class: 'notice danger', role: 'note' }, h('strong', {}, glyph('warn'), t('disclaimer.title')), h('p', {}, t('info.water.label_rule'))));
   for (const k of ['boil', 'settle', 'bleach', 'iodine', 'tablet']) {
     main.append(h('section', { class: 'card' }, h('h2', {}, t(`info.water.${k}_title`)), h('p', {}, t(`info.water.${k}_body`))));
   }
@@ -524,7 +529,7 @@ async function infoSources(main) {
       h('strong', {}, r.title), h('br'), h('span', { class: 'muted' }, [r.agency, r.id].filter(Boolean).join(' · ')), h('br'),
       r.url ? h('a', { href: r.url, target: '_blank', rel: 'noopener noreferrer', 'aria-label': r.title + '. ' + t('a11y.external_link') }, t('info.sources.open_link')) : null,
       h('br'),
-      h('span', { class: 'chip ' + (/DIBACA/i.test(r.evidence) ? 'chip-ok' : 'chip-warn') }, (/DIBACA/i.test(r.evidence) ? '✓ ' : '△ ') + t(/DIBACA/i.test(r.evidence) ? 'info.sources.evidence_read' : 'info.sources.evidence_snippet')),
+      h('span', { class: 'chip ' + (/DIBACA/i.test(r.evidence) ? 'chip-ok' : 'chip-warn') }, glyph(/DIBACA/i.test(r.evidence) ? 'check' : 'tri'), t(/DIBACA/i.test(r.evidence) ? 'info.sources.evidence_read' : 'info.sources.evidence_snippet')),
       r.accessed ? h('span', { class: 'muted' }, ' ' + t('info.sources.accessed_on', { date: r.accessed })) : null))));
   }
 }
@@ -571,7 +576,7 @@ function renderSettings(main) {
   // cadangan
   const status = h('p', { role: 'status', 'aria-live': 'polite', class: 'notice ok', hidden: true });
   const showStatus = (msg, kind = 'ok') => { status.hidden = false; status.className = 'notice ' + (kind === 'ok' ? 'ok' : 'danger'); status.textContent = msg; };
-  const file = h('input', { type: 'file', accept: 'application/json,.json', class: 'sr-only', id: 'import-file', tabindex: '-1' });
+  const file = h('input', { type: 'file', accept: 'application/json,.json', class: 'sr-only', id: 'import-file', tabindex: '-1', 'aria-label': t('settings.import') });
   file.addEventListener('change', async () => {
     const f = file.files && file.files[0]; file.value = '';
     if (!f) return;

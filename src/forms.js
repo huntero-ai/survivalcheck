@@ -4,6 +4,8 @@
 
 import { evaluate, haveOf } from './engine.js';
 import * as P from './power.js';
+import { glyph } from './icons.js';
+import { rovingRadios } from './a11y.js';
 
 // ---------- util ----------
 let uid = 0;
@@ -181,10 +183,10 @@ function switchRow(ctx, o) {
 }
 
 function statusChip(ctx, kind) {
-  if (kind === 'ok') return h('span', { class: 'chip chip-ok' }, h('span', { 'aria-hidden': 'true', text: '✓ ' }), tr(ctx, 'inventory.enough', 'Sudah cukup', 'Enough'));
-  if (kind === 'short') return h('span', { class: 'chip chip-warn' }, h('span', { 'aria-hidden': 'true', text: '△ ' }), tr(ctx, 'inventory.short', 'Masih kurang', 'Still short'));
-  if (kind === 'input') return h('span', { class: 'chip chip-warn' }, h('span', { 'aria-hidden': 'true', text: '△ ' }), tr(ctx, 'f.needs_input', 'Isi pemakaian harian', 'Enter daily use'));
-  return h('span', { class: 'chip' }, h('span', { 'aria-hidden': 'true', text: '— ' }), tr(ctx, 'inventory.empty', 'Belum diisi', 'Not filled in'));
+  if (kind === 'ok') return h('span', { class: 'chip chip-ok' }, glyph('check'), tr(ctx, 'inventory.enough', 'Sudah cukup', 'Enough'));
+  if (kind === 'short') return h('span', { class: 'chip chip-warn' }, glyph('tri'), tr(ctx, 'inventory.short', 'Masih kurang', 'Still short'));
+  if (kind === 'input') return h('span', { class: 'chip chip-warn' }, glyph('tri'), tr(ctx, 'f.needs_input', 'Isi pemakaian harian', 'Enter daily use'));
+  return h('span', { class: 'chip' }, glyph('circle'), tr(ctx, 'inventory.empty', 'Belum diisi', 'Not filled in'));
 }
 
 function notice(kind, ...kids) { return h('div', { class: 'notice' + (kind ? ' ' + kind : '') }, ...kids); }
@@ -199,7 +201,7 @@ function navBar(ctx, back, next) {
 }
 function hazardCard(ctx, title, body, danger) {
   return h('section', { class: 'notice ' + (danger ? 'danger' : ''), 'aria-label': title },
-    h('p', null, h('span', { 'aria-hidden': 'true', text: '⚠ ' }), h('strong', { text: title })),
+    h('p', { class: 'hazard-title' }, glyph('warn'), h('strong', { text: title })),
     h('p', { text: body }));
 }
 function sourceLine(ctx, it) {
@@ -213,7 +215,7 @@ function sourceLine(ctx, it) {
 /** Penanda terlihat untuk item evidence CUPLIKAN (tidak tersembunyi di <details>). */
 function evidenceBadge(ctx, it) {
   if (!it || it.evidence !== 'CUPLIKAN') return null;
-  return h('span', { class: 'chip chip-warn f-excerpt', 'data-evidence': 'excerpt' }, h('span', { 'aria-hidden': 'true', text: '△ ' }), tr(ctx, 'common.excerpt_badge', 'Dari kutipan sumber, perlu dicek ulang', 'From a source excerpt, to be re-checked'));
+  return h('span', { class: 'chip chip-warn f-excerpt', 'data-evidence': 'excerpt' }, glyph('tri'), tr(ctx, 'common.excerpt_badge', 'Dari kutipan sumber, perlu dicek ulang', 'From a source excerpt, to be re-checked'));
 }
 
 // =====================================================================
@@ -418,6 +420,7 @@ export function renderTarget(root, ctx) {
     presetRow.append(b);
     return [d, b];
   });
+  const syncRadios = rovingRadios(presetRow);
   function set(v) { days = Math.max(1, Math.min(max, Math.round(v))); saveTarget(); update(); }
   dec.addEventListener('click', () => set(days - 1));
   inc.addEventListener('click', () => set(days + 1));
@@ -426,6 +429,7 @@ export function renderTarget(root, ctx) {
     num.textContent = String(days);
     dec.disabled = days <= 1; inc.disabled = days >= max;
     for (const [d, b] of pBtns) b.setAttribute('aria-checked', String(d === days));
+    syncRadios();
     const min = R.defaults.bnpb_minimum_days;
     let l, hh;
     if (days < min) { l = tr(ctx, 'target.lv_below', 'Di bawah minimum BNPB', 'Below the BNPB minimum'); hh = tr(ctx, 'target.below_min', 'Target di bawah 3 hari berarti di bawah minimum BNPB. Kamu tetap boleh memakainya.', 'A target under 3 days is below the BNPB minimum. You can still use it.'); }
@@ -490,6 +494,9 @@ function categoryStats(ctx, res, catId) {
   return { total: list.length, filled };
 }
 
+// Kategori yang paling menentukan hari bertahan dan tier (air, pangan, obat). Penanda berupa teks, bukan warna.
+const CRITICAL_CATS = new Set(['water', 'food', 'meds_firstaid']);
+
 function renderCategoryList(root, ctx, res, cats) {
   root.append(h('h1', { text: tr(ctx, 'inventory.title', 'Stok', 'Stock') }));
   if (res.status !== 'ok') {
@@ -503,8 +510,10 @@ function renderCategoryList(root, ctx, res, cats) {
     if (!cs.total) continue;
     const pct = Math.round((cs.filled / cs.total) * 100);
     const done = cs.filled >= cs.total;
-    ul.append(h('li', null, h('a', { class: 'f-catcard', href: `#/inventaris/${c.id}`, 'aria-label': `${lab(ctx, c.label)}, ${cs.filled}/${cs.total}` },
-      h('span', { class: 'f-cat-top' }, h('strong', { text: lab(ctx, c.label) }), h('span', { class: 'f-stage-count', text: done ? '\u2713' : `${cs.filled}/${cs.total}` })),
+    const critical = CRITICAL_CATS.has(c.id);
+    const critText = tr(ctx, 'inventory.critical_mark', 'Kritis', 'Critical');
+    ul.append(h('li', null, h('a', { class: 'f-catcard', href: `#/inventaris/${c.id}`, 'aria-label': `${lab(ctx, c.label)}, ${critical ? critText + ', ' : ''}${cs.filled}/${cs.total}` },
+      h('span', { class: 'f-cat-top' }, h('strong', { text: lab(ctx, c.label) }), critical ? h('span', { class: 'chip f-critical', 'aria-hidden': 'true', text: critText }) : null, h('span', { class: 'f-stage-count', text: done ? '\u2713' : `${cs.filled}/${cs.total}` })),
       h('span', { class: 'f-bar', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': String(pct), 'aria-label': lab(ctx, c.label) }, h('span', { class: 'f-bar-fill', style: `width:${pct}%` })))));
   }
   root.append(ul);
@@ -578,7 +587,7 @@ function buildItemRow(ctx, it, res, refreshLive, live) {
   const chipHost = h('span', { class: 'f-chiphost' });
   const needEl = h('p', { class: 'f-need' });
   const id = nid('it');
-  li.append(h('div', { class: 'f-item-top' }, h('h3', { id: id + '-t', text: lab(ctx, it.label) }), chipHost), ...[evidenceBadge(ctx, it)].filter(Boolean), needEl);
+  li.append(h('div', { class: 'f-item-top' }, h('h2', { id: id + '-t', text: lab(ctx, it.label) }), chipHost), ...[evidenceBadge(ctx, it)].filter(Boolean), needEl);
   const inv = ctx.state.inventory || {};
   const cur = inv[it.id];
   const loc = it.location || 'home';
@@ -679,8 +688,8 @@ function buildBagChecklist(ctx, res, root) {
     const r = ev(ctx);
     sum.textContent = '';
     if (r.status !== 'ok') return;
-    const bandText = { siap: ['✓ ', tr(ctx, 'bands.bag.ready', 'SIAP'), 'chip-ok'], perlu_dilengkapi: ['△ ', tr(ctx, 'bands.bag.needs_work', 'PERLU DILENGKAPI'), 'chip-warn'], belum_siap: ['○ ', tr(ctx, 'bands.bag.not_ready', 'BELUM SIAP'), ''] }[r.bag.band];
-    sum.append(h('p', null, h('strong', { text: tr(ctx, 'inventory.gobag.progress', '{have} dari {total} item', '{have} of {total} items', { have: r.bag.yes, total: r.bag.applicable }) + ' · ' + fmt(ctx, r.bag.pct, 1) + '%' }), ' ', h('span', { class: 'chip ' + bandText[2] }, h('span', { 'aria-hidden': 'true', text: bandText[0] }), bandText[1])),
+    const bandText = { siap: [glyph('check'), tr(ctx, 'bands.bag.ready', 'SIAP'), 'chip-ok'], perlu_dilengkapi: [glyph('tri'), tr(ctx, 'bands.bag.needs_work', 'PERLU DILENGKAPI'), 'chip-warn'], belum_siap: [glyph('circle'), tr(ctx, 'bands.bag.not_ready', 'BELUM SIAP'), ''] }[r.bag.band];
+    sum.append(h('p', null, h('strong', { text: tr(ctx, 'inventory.gobag.progress', '{have} dari {total} item', '{have} of {total} items', { have: r.bag.yes, total: r.bag.applicable }) + ' · ' + fmt(ctx, r.bag.pct, 1) + '%' }), ' ', h('span', { class: 'chip ' + bandText[2] }, bandText[0], bandText[1])),
       h('p', { class: 'f-hint', text: tr(ctx, 'bands.bag.rule', 'Di atas 80% siap, 50 sampai 80% perlu dilengkapi, di bawah 50% belum siap. Tepat 80% masuk perlu dilengkapi.') }));
   }
   for (const [gk, from, to] of BAG_GROUPS) {
@@ -896,8 +905,8 @@ export function renderPower(root, ctx) {
         if (s.days_power === 'self_sufficient') results.append(h('p', { class: 'f-big', text: tr(ctx, 'f.self_suff', 'Mandiri selama cuaca cerah', 'Self-sufficient while the weather is sunny') }));
         else if (typeof s.days_power === 'number') {
           results.append(h('p', { class: 'f-big', text: tr(ctx, 'power.coverage', 'Listrik cukup untuk ± {n} hari', 'Power lasts about {n} days', { n: fmt(ctx, s.days_power, 1) }) }));
-          if (s.days_power + 1e-9 >= days) results.append(h('p', null, h('span', { class: 'chip chip-ok' }, '✓ ', tr(ctx, 'power.coverage_enough', 'Sudah cukup untuk target {n} hari.', 'Enough for the {n}-day target.', { n: days }))));
-          else results.append(h('p', null, h('span', { class: 'chip chip-warn' }, '△ ', tr(ctx, 'power.coverage_short', 'Kurang sekitar {n} Wh untuk target.', 'About {n} Wh short of the target.', { n: fmt(ctx, s.short_wh, 0) }))));
+          if (s.days_power + 1e-9 >= days) results.append(h('p', null, h('span', { class: 'chip chip-ok' }, glyph('check'), tr(ctx, 'power.coverage_enough', 'Sudah cukup untuk target {n} hari.', 'Enough for the {n}-day target.', { n: days }))));
+          else results.append(h('p', null, h('span', { class: 'chip chip-warn' }, glyph('tri'), tr(ctx, 'power.coverage_short', 'Kurang sekitar {n} Wh untuk target.', 'About {n} Wh short of the target.', { n: fmt(ctx, s.short_wh, 0) }))));
         }
       }
     }
@@ -911,7 +920,7 @@ export function renderPower(root, ctx) {
       else med.append(h('p', { class: 'f-hint', text: tr(ctx, 'f.pick_medical_short', 'Pilih alat medis di atas untuk melihat hari daya.', 'Select the medical device above to see the days of power.') }));
       if (typeof pm === 'number' && pm < days) {
         const mp = pd.safety_messages.find((m) => m.key === 'medical_plan');
-        med.append(h('p', null, h('span', { 'aria-hidden': 'true', text: '⚠ ' }), h('strong', { text: tr(ctx, 'f.medical_short', 'Daya alat medis kurang dari target {n} hari.', 'Medical device power is below the {n}-day target.', { n: days }) })), mp ? h('p', { text: mp[lang] || mp.id }) : null);
+        med.append(h('p', { class: 'hazard-title' }, glyph('warn'), h('strong', { text: tr(ctx, 'f.medical_short', 'Daya alat medis kurang dari target {n} hari.', 'Medical device power is below the {n}-day target.', { n: days }) })), mp ? h('p', { text: mp[lang] || mp.id }) : null);
       }
       med.append(h('p', { class: 'f-hint', text: tr(ctx, 'power.medical_registry', '') }));
       results.append(med);

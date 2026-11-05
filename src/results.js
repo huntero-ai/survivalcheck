@@ -1,9 +1,11 @@
 // SurvivalCheck - layar Hasil (E3). Hanya MEMBACA `result` dari engine.
 // Aman XSS: semua teks lewat createTextNode / textContent, tanpa innerHTML.
 
+import { glyph } from './icons.js';
+
 const TIER_ICON = ['○', '◔', '◑', '◕', '●', '●★'];
-const BAND_BAG = { siap: ['ready', '✓'], perlu_dilengkapi: ['needs_work', '△'], belum_siap: ['not_ready', '○'] };
-const BAND_FAMILY = { rawan: ['vulnerable', '○'], cukup_siaga: ['fairly_prepared', '◑'], siap: ['ready', '✓'] };
+const BAND_BAG = { siap: ['ready', 'check'], perlu_dilengkapi: ['needs_work', 'tri'], belum_siap: ['not_ready', 'circle'] };
+const BAND_FAMILY = { rawan: ['vulnerable', 'circle'], cukup_siaga: ['fairly_prepared', 'half'], siap: ['ready', 'check'] };
 const BOTTLENECK_KEY = { water: 'water', food: 'kcal', meds: 'meds', infant_food: 'baby_food', power: 'power_medical' };
 const PRIORITY_KEY = { critical: 'critical', important: 'important', extra: 'nice', nice: 'nice' };
 const SCORE_MAX = { critical_stock: 55, bag: 20, family: 15, scenario: 10 };
@@ -144,19 +146,19 @@ function scoreCard(ctx, result) {
 function bnpbCard(ctx, result) {
   const bag = result.bag || {};
   const fam = result.family || {};
-  const [bk, bi] = BAND_BAG[bag.band] || ['not_ready', '○'];
-  const [fk, fi] = BAND_FAMILY[fam.band] || ['vulnerable', '○'];
+  const [bk, bi] = BAND_BAG[bag.band] || ['not_ready', 'circle'];
+  const [fk, fi] = BAND_FAMILY[fam.band] || ['vulnerable', 'circle'];
   const indicators = ctx.state && ctx.state.indicators;
   const famFilled = indicators && Object.values(indicators).some((v) => v != null);
   return h('section', { class: 'sc-card', 'aria-labelledby': 'sc-bnpb-h' },
     h('h2', { id: 'sc-bnpb-h', text: tr(ctx, 'result.bnpb_heading', 'Dua alat ukur BNPB') }),
     h('div', { class: 'sc-row' },
       h('span', { text: tr(ctx, 'result.bnpb_bag_line', 'Tas siaga: {have} dari {total} item ({pct}%)', { have: bag.yes, total: bag.applicable, pct: fmt(Math.round(bag.pct || 0), ctx.lang) }) }),
-      h('span', { class: 'sc-chip sc-band-' + bk, text: `${bi} ${tr(ctx, 'bands.bag.' + bk, bk)}` })),
+      h('span', { class: 'sc-chip sc-band-' + bk }, glyph(bi), tr(ctx, 'bands.bag.' + bk, bk))),
     famFilled
       ? h('div', { class: 'sc-row' },
         h('span', { text: tr(ctx, 'result.bnpb_family_line', 'Evaluasi keluarga: {score} dari 36', { score: fam.total }) }),
-        h('span', { class: 'sc-chip sc-band-' + fk, text: `${fi} ${tr(ctx, 'bands.family.' + fk, fk)}` }))
+        h('span', { class: 'sc-chip sc-band-' + fk }, glyph(fi), tr(ctx, 'bands.family.' + fk, fk)))
       : h('div', { class: 'sc-row' },
         h('span', { text: tr(ctx, 'result.bnpb_family_missing', 'Evaluasi keluarga belum diisi.') }),
         link('#/keluarga', tr(ctx, 'result.bnpb_family_cta', 'Isi evaluasi keluarga'), 'sc-btn-secondary')));
@@ -168,7 +170,7 @@ function progressCard(ctx, result) {
   for (const [cat, pct] of Object.entries(cp)) {
     const name = tr(ctx, 'categories.' + cat, cat);
     let st, icon;
-    if (pct == null) { st = 'na'; icon = '—'; } else if (pct >= 99.5) { st = 'enough'; icon = '✓'; } else if (pct <= 0) { st = 'empty'; icon = '—'; } else { st = 'short'; icon = '△'; }
+    if (pct == null) { st = 'na'; icon = 'minus'; } else if (pct >= 99.5) { st = 'enough'; icon = 'check'; } else if (pct <= 0) { st = 'empty'; icon = 'circle'; } else { st = 'short'; icon = 'tri'; }
     const stText = tr(ctx, 'result.progress_status.' + st, st);
     const p = pct == null ? 0 : Math.round(pct);
     ul.append(h('li', null,
@@ -178,7 +180,7 @@ function progressCard(ctx, result) {
           'aria-label': `${name}: ${tr(ctx, 'a11y.progress_bar', 'Kemajuan {pct} persen', { pct: p })}` },
           h('span', { class: 'sc-bar-fill', style: `width:${p}%` })),
         h('span', { class: 'sc-prog-val', text: pct == null ? '' : p + '%' }),
-        h('span', { class: 'sc-chip sc-st-' + st, text: `${icon} ${stText}` }))));
+        h('span', { class: 'sc-chip sc-st-' + st }, glyph(icon), stText))));
   }
   return h('section', { class: 'sc-card', 'aria-labelledby': 'sc-prog-h' },
     h('h2', { id: 'sc-prog-h', text: tr(ctx, 'result.progress_heading', 'Kemajuan per kategori') }), ul);
@@ -219,7 +221,7 @@ function nextCard(ctx, result, itemsById) {
 /** Penanda terlihat untuk item evidence CUPLIKAN (B-01). */
 export function evidenceBadge(ctx, it) {
   if (!it || it.evidence !== 'CUPLIKAN') return null;
-  return h('p', { class: 'sc-chips' }, h('span', { class: 'sc-chip sc-chip-excerpt', 'data-evidence': 'excerpt', text: '△ ' + tr(ctx, 'common.excerpt_badge', 'Dari kutipan sumber, perlu dicek ulang') }));
+  return h('p', { class: 'sc-chips' }, h('span', { class: 'sc-chip sc-chip-excerpt', 'data-evidence': 'excerpt' }, glyph('tri'), tr(ctx, 'common.excerpt_badge', 'Dari kutipan sumber, perlu dicek ulang')));
 }
 
 function shortfallRow(ctx, s, itemsById, buyById, storeLabel) {
@@ -310,7 +312,7 @@ function safetyCards(ctx, result) {
   }
   if (medical || scen.includes('power_outage')) {
     out.push(h('section', { class: 'sc-card sc-danger', role: 'note' },
-      h('p', null, h('span', { 'aria-hidden': 'true', text: '⚠ ' }), h('strong', { text: tr(ctx, 'power.warn.co_title', 'Awas gas CO') })),
+      h('p', { class: 'hazard-title' }, glyph('warn'), h('strong', { text: tr(ctx, 'power.warn.co_title', 'Awas gas CO') })),
       h('p', { text: tr(ctx, 'power.warn.co_body', tr(ctx, 'warnings.co_genset', '')) }),
       h('p', { class: 'sc-small', text: tr(ctx, 'power.warn.house_wiring_body', '') })));
   }

@@ -1,12 +1,12 @@
 /* SurvivalCheck service worker - precache semua aset, cache-first, path relatif. */
-const CACHE = 'survivalcheck-v9';
+const CACHE = 'survivalcheck-v10';
 
 // Wajib ada: bila salah satu gagal, instalasi gagal (aset milik E1 + data + i18n).
 const CORE = [
   './', 'index.html', 'manifest.webmanifest',
   'styles/main.css',
   'src/app.js', 'src/storage.js', 'src/i18n.js',
-  'src/engine.js', 'src/power.js', 'src/forms.js', 'src/results.js', 'src/shopping.js',
+  'src/engine.js', 'src/power.js', 'src/forms.js', 'src/results.js', 'src/shopping.js', 'src/icons.js', 'src/a11y.js',
   'styles/forms.css', 'styles/results.css', 'styles/print.css',
   'fonts/rubik-latin-wght-normal.woff2', 'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png',
   'data/items.json', 'data/rules.json', 'data/power.json', 'data/bnpb_family_indicators.json', 'data/sources-to-buy.json', 'data/province_risks.json',

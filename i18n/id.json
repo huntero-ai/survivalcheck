@@ -272,6 +272,7 @@
   "inventory": {
     "title": "Persediaan",
     "intro": "Isi yang kamu punya sekarang. Angka kira-kira sudah cukup. Kamu bisa kembali kapan saja.",
+    "critical_mark": "Kritis",
     "category_progress": "{done} dari {total} terisi",
     "need_label": "Kebutuhan: {n}",
     "have_label": "Dimiliki",
@@ -550,6 +551,7 @@
   },
   "result": {
     "title": "Hasil kesiapan",
+    "detail_cta": "Hasil rinci",
     "calm_intro": "Hasil ini bukan nilai ujian. Ini peta langkah berikutnya.",
     "empty_title": "Hasil belum bisa dihitung",
     "empty_body": "Isi profil dan beberapa persediaan dulu, lalu hasilnya muncul di sini.",
@@ -681,6 +683,7 @@
       "title": "Nomor darurat",
       "tap_to_call": "Ketuk untuk menelepon {number}",
       "n112": "112: layanan darurat terpadu (kebakaran, kecelakaan, bencana, kesehatan, keamanan)",
+      "main_mark": "Nomor utama",
       "n112_caveat": "Ketersediaan 112 tergantung daerah. Bila tidak tersambung, pakai nomor di bawah.",
       "n110": "110: Polisi",
       "n113": "113: Pemadam kebakaran",

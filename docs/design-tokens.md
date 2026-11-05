@@ -1,5 +1,13 @@
 # SurvivalCheck — Design Tokens (v1)
 
+> **DIGANTIKAN oleh `DESIGN.md` (2026-11-05).** Dokumen ini adalah rancangan awal D1 dan sebagian besar tabel di bawah tidak lagi cocok dengan CSS aktif. Sumber kebenaran: `styles/main.css` dan `DESIGN.md`. Koreksi nilai aktif:
+> - Warna: primary biru `#0072CC` (gelap `#4DB8FF`), bukan teal `#0F6B5A`; CTA `#D93A14` (gelap `#FF6B47`); latar `#FDFDFD` / `#0F0F0F`; surface `#F3F6F9` / `#171B20`; batas kontrol `#8C8C8C` / `#7A7A7A`.
+> - Tier 0-5 monokrom (bukan spektrum warna di §2); arti lewat angka, nama, dan 5 segmen (kosong = garis luar).
+> - Bahaya/peringatan keselamatan: `--c-hazard` `#B00020` (gelap `#FF8A80`) + garis tegas + ikon SVG. `--c-danger-*` tidak lagi dipakai untuk panel bahaya.
+> - Font: Rubik variabel lokal (bukan font sistem). `tabular-nums` hanya di elemen angka, bukan body.
+> - Radius: sm 6, md 14, lg 20, tombol 16. Bottom nav 72 px. Padding halaman 24 px.
+> - Glyph status memakai SVG (`src/icons.js`), bukan karakter Unicode, kecuali ikon tier.
+
 > Disusun D1, 2026-11-03. Pasangan dengan `docs/ux-flow.md`. Dipakai E1–E3 sebagai CSS custom properties di `:root`.
 > `designreference` di root repo kosong saat disusun, jadi tidak ada acuan visual eksternal.
 > Prinsip: tenang, hangat, tidak menakut-nakuti (I4). Merah hanya untuk peringatan keselamatan (CO, listrik), **tidak pernah** untuk tier atau skor.

@@ -272,6 +272,7 @@
   "inventory": {
     "title": "Supplies",
     "intro": "Enter what you have now. Rough numbers are fine. You can come back any time.",
+    "critical_mark": "Critical",
     "category_progress": "{done} of {total} filled in",
     "need_label": "Needed: {n}",
     "have_label": "You have",
@@ -550,6 +551,7 @@
   },
   "result": {
     "title": "Readiness result",
+    "detail_cta": "Detailed results",
     "calm_intro": "This is not an exam grade. It is a map of your next steps.",
     "empty_title": "No result yet",
     "empty_body": "Fill in your profile and some supplies first, then your result will appear here.",
@@ -681,6 +683,7 @@
       "title": "Emergency numbers",
       "tap_to_call": "Tap to call {number}",
       "n112": "112: unified emergency service (fire, accidents, disasters, health, security)",
+      "main_mark": "Main number",
       "n112_caveat": "112 availability depends on your area. If it does not connect, use the numbers below.",
       "n110": "110: Police",
       "n113": "113: Fire brigade",

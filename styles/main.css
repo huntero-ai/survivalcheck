@@ -7,13 +7,14 @@
   --c-warn-fg:#111111; --c-warn-bg:#E9E9E9; --c-danger-fg:#FFFFFF; --c-danger-bg:#111111;
   --c-ink:#111111; --c-on-ink:#FFFFFF; --c-on-ink-muted:#D0D0D0; --c-ring:#8C8C8C;
   --c-cta:#D93A14; --c-on-cta:#FFFFFF; --c-dial:#0072CC; --c-dial-ring:#0099FF;
+  --c-cta-hover:#B92E0C; --c-primary-hover:#005FA8; --c-hazard:#B00020;
   --tier-0-fg:#FFFFFF; --tier-0-bg:#111111; --tier-0-accent:#FFFFFF;
   --tier-1-fg:#FFFFFF; --tier-1-bg:#111111; --tier-1-accent:#FFFFFF;
   --tier-2-fg:#FFFFFF; --tier-2-bg:#111111; --tier-2-accent:#FFFFFF;
   --tier-3-fg:#FFFFFF; --tier-3-bg:#111111; --tier-3-accent:#FFFFFF;
   --tier-4-fg:#FFFFFF; --tier-4-bg:#111111; --tier-4-accent:#FFFFFF;
   --tier-5-fg:#FFFFFF; --tier-5-bg:#111111; --tier-5-accent:#FFFFFF;
-  --shadow-1:none; --shadow-2:0 4px 16px rgb(0 0 0 / .12); --shadow-hero:0 24px 40px rgb(0 0 0 / .18);
+  --shadow-1:none; --shadow-2:0 4px 16px rgb(0 0 0 / .12); --shadow-hero:0 8px 20px rgb(0 0 0 / .16);
   --font-sans:"Rubik",system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Helvetica Neue",Arial,sans-serif;
   --font-mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"Liberation Mono",monospace;
   --fs-display:2rem; --fs-h1:1.5rem; --fs-h2:1.25rem; --fs-h3:1.0625rem; --fs-body:1rem; --fs-small:.875rem; --fs-tiny:.8125rem;
@@ -30,13 +31,14 @@
     --c-warn-fg:#F2F2F2; --c-warn-bg:#2A2A2A; --c-danger-fg:#111111; --c-danger-bg:#F2F2F2;
     --c-ink:#F2F2F2; --c-on-ink:#111111; --c-on-ink-muted:#4A4A4A; --c-ring:#5A5A5A;
   --c-cta:#FF6B47; --c-on-cta:#111111; --c-dial:#0072CC; --c-dial-ring:#1F4F7A;
+  --c-cta-hover:#FF8566; --c-primary-hover:#7CCBFF; --c-hazard:#FF8A80;
     --tier-0-fg:#111111; --tier-0-bg:#F2F2F2; --tier-0-accent:#111111;
     --tier-1-fg:#111111; --tier-1-bg:#F2F2F2; --tier-1-accent:#111111;
     --tier-2-fg:#111111; --tier-2-bg:#F2F2F2; --tier-2-accent:#111111;
     --tier-3-fg:#111111; --tier-3-bg:#F2F2F2; --tier-3-accent:#111111;
     --tier-4-fg:#111111; --tier-4-bg:#F2F2F2; --tier-4-accent:#111111;
     --tier-5-fg:#111111; --tier-5-bg:#F2F2F2; --tier-5-accent:#111111;
-    --shadow-1:none; --shadow-2:0 4px 16px rgb(0 0 0 / .5); --shadow-hero:0 24px 40px rgb(0 0 0 / .6); color-scheme:dark;
+    --shadow-1:none; --shadow-2:0 4px 16px rgb(0 0 0 / .5); --shadow-hero:0 8px 20px rgb(0 0 0 / .5); color-scheme:dark;
   }
 }
 :root[data-theme="dark"] {
@@ -46,23 +48,27 @@
   --c-warn-fg:#F2F2F2; --c-warn-bg:#2A2A2A; --c-danger-fg:#111111; --c-danger-bg:#F2F2F2;
   --c-ink:#F2F2F2; --c-on-ink:#111111; --c-on-ink-muted:#4A4A4A; --c-ring:#5A5A5A;
   --c-cta:#FF6B47; --c-on-cta:#111111; --c-dial:#0072CC; --c-dial-ring:#1F4F7A;
+  --c-cta-hover:#FF8566; --c-primary-hover:#7CCBFF; --c-hazard:#FF8A80;
   --tier-0-fg:#111111; --tier-0-bg:#F2F2F2; --tier-0-accent:#111111;
   --tier-1-fg:#111111; --tier-1-bg:#F2F2F2; --tier-1-accent:#111111;
   --tier-2-fg:#111111; --tier-2-bg:#F2F2F2; --tier-2-accent:#111111;
   --tier-3-fg:#111111; --tier-3-bg:#F2F2F2; --tier-3-accent:#111111;
   --tier-4-fg:#111111; --tier-4-bg:#F2F2F2; --tier-4-accent:#111111;
   --tier-5-fg:#111111; --tier-5-bg:#F2F2F2; --tier-5-accent:#111111;
-  --shadow-1:none; --shadow-2:0 4px 16px rgb(0 0 0 / .5); --shadow-hero:0 24px 40px rgb(0 0 0 / .6); color-scheme:dark;
+  --shadow-1:none; --shadow-2:0 4px 16px rgb(0 0 0 / .5); --shadow-hero:0 8px 20px rgb(0 0 0 / .5); color-scheme:dark;
 }
 
 *,*::before,*::after { box-sizing:border-box; }
 html { -webkit-text-size-adjust:100%; }
-body { margin:0; background:var(--c-bg); color:var(--c-text); font-family:var(--font-sans); font-size:var(--fs-body); line-height:1.5; font-variant-numeric:tabular-nums; overflow-x:hidden; }
+body { margin:0; background:var(--c-bg); color:var(--c-text); font-family:var(--font-sans); font-size:var(--fs-body); line-height:1.5; overflow-x:hidden; }
+.dial-num,.stat-n,.sc-itemqty,.sc-display,.sc-score,.sc-prog-val,.f-stage-count,.f-cat-pct,.f-stepper-input,.f-total,.f-big,.step-count,.tel-row .btn { font-variant-numeric:tabular-nums; }
 h1,h2,h3 { margin:0 0 var(--sp-3); line-height:1.25; }
 h1 { font-size:var(--fs-h1); } h2 { font-size:var(--fs-h2); font-weight:600; } h3 { font-size:var(--fs-h3); font-weight:600; }
 p { margin:0 0 var(--sp-3); } ul,ol { margin:0 0 var(--sp-3); padding-left:1.25rem; }
 a { color:var(--c-primary); }
 img,svg { max-width:100%; }
+button,a[href],summary,select,label[for],input[type="checkbox"],input[type="radio"],input[type="file"] { cursor:pointer; }
+button:disabled,input:disabled,select:disabled { cursor:not-allowed; }
 :focus-visible { outline:3px solid var(--c-focus); outline-offset:2px; }
 .sr-only { position:absolute!important; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 .skip-link { position:absolute; left:var(--sp-2); top:-100px; background:var(--c-primary); color:var(--c-on-primary); padding:var(--sp-3) var(--sp-4); border-radius:var(--r-md); z-index:100; }
@@ -90,7 +96,7 @@ img,svg { max-width:100%; }
 /* Stepper */
 .stepper { list-style:none; display:flex; gap:var(--sp-1); padding:0; margin:0 0 var(--sp-4); }
 .stepper li { flex:1; min-width:0; }
-.stepper a, .stepper span.step { display:flex; flex-direction:column; gap:2px; align-items:flex-start; min-height:var(--touch-min); padding-top:var(--sp-1); border-top:4px solid var(--c-divider); color:var(--c-text-muted); text-decoration:none; font-size:var(--fs-tiny); line-height:1.25; }
+.stepper a, .stepper span.step { display:flex; flex-direction:column; gap:2px; align-items:flex-start; min-height:var(--touch-min); padding-top:var(--sp-1); border-top:4px solid var(--c-border); color:var(--c-text-muted); text-decoration:none; font-size:var(--fs-tiny); line-height:1.25; }
 .stepper li[data-state="done"] a { border-top-color:var(--c-primary); }
 .stepper li[aria-current="step"] a, .stepper li[aria-current="step"] span.step { border-top-color:var(--c-primary); color:var(--c-text); font-weight:700; }
 .step-count { font-size:var(--fs-small); color:var(--c-text-muted); margin:0 0 var(--sp-2); }
@@ -164,8 +170,8 @@ details.guide > div { padding:0 var(--sp-4) var(--sp-4); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .icon-link .i-sun { display:block; } :root:not([data-theme="light"]) .icon-link .i-moon { display:none; } }
 .card { border:0; }
 .btn { background:transparent; border-radius:var(--r-md); }
-.btn:hover { background:var(--c-surface); }
-.btn-primary, .btn-primary:hover { min-height:52px; border-radius:16px; background:var(--c-cta); color:var(--c-on-cta); border-color:var(--c-cta); }
+.btn:hover { background:var(--c-surface-2); }
+.btn-primary { min-height:52px; border-radius:16px; background:var(--c-cta); color:var(--c-on-cta); border-color:var(--c-cta); }
 .chip { border-radius:var(--r-pill); }
 .notice { border:0; border-radius:var(--r-lg); }
 .notice a { color:inherit; }
@@ -181,7 +187,7 @@ details.guide { border:0; border-radius:var(--r-lg); }
 /* Hero: lingkaran hari bertahan */
 .hero { display:flex; flex-direction:column; align-items:center; gap:var(--sp-4); text-align:center; margin:0 0 var(--sp-6); }
 .dial { width:236px; height:236px; border-radius:50%; background:var(--c-dial); color:#FFFFFF; border:12px solid var(--c-dial-ring); box-shadow:var(--shadow-hero); display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box; }
-.dial .dial-lbl { font-size:var(--fs-small); color:#FFFFFF; opacity:.9; }
+.dial .dial-lbl { font-size:var(--fs-small); color:#FFFFFF; }
 .dial .dial-num { font-size:4rem; font-weight:500; line-height:1.05; letter-spacing:-1px; }
 .dial .dial-unit { font-size:var(--fs-h3); }
 .dial.dial-sm { width:196px; height:196px; border-width:11px; }
@@ -194,8 +200,8 @@ details.guide { border:0; border-radius:var(--r-lg); }
 .tier-card .tier-name { font-size:var(--fs-h3); font-weight:600; }
 .tier-card .tier-sub { font-size:var(--fs-tiny); color:var(--c-text-muted); }
 .seg-row { display:flex; gap:4px; }
-.seg-row i { width:34px; height:8px; border-radius:4px; background:var(--c-divider); display:block; }
-.seg-row i.on { background:var(--c-primary); }
+.seg-row i { width:34px; height:10px; border-radius:5px; background:transparent; border:2px solid var(--c-border); display:block; }
+.seg-row i.on { background:var(--c-primary); border-color:var(--c-primary); }
 .next-card { border:1.5px solid var(--c-divider); border-radius:var(--r-lg); padding:var(--sp-4); margin:0 0 var(--sp-4); }
 .next-card h2 { font-size:var(--fs-h3); margin:0 0 var(--sp-2); }
 .stat-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--sp-3); margin:0 0 var(--sp-4); }
@@ -208,7 +214,7 @@ details.guide { border:0; border-radius:var(--r-lg); }
 .round-btn.fill { background:var(--c-primary); color:var(--c-on-primary); border-color:var(--c-primary); }
 .round-btn svg { width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; }
 .preset-row { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--sp-2); margin:0 0 var(--sp-4); }
-.preset-row button { min-height:48px; border-radius:var(--r-md); border:1.5px solid var(--c-divider); background:transparent; color:var(--c-text); font:inherit; font-weight:500; cursor:pointer; }
+.preset-row button { min-height:48px; border-radius:var(--r-md); border:1.5px solid var(--c-border); background:transparent; color:var(--c-text); font:inherit; font-weight:500; cursor:pointer; }
 .preset-row button[aria-checked="true"] { background:var(--c-primary); color:var(--c-on-primary); border-color:var(--c-primary); }
 .center { text-align:center; }
 
@@ -250,3 +256,46 @@ p { margin-bottom:var(--sp-4); }
 .f-nav { margin-top:var(--sp-8); display:flex; gap:var(--sp-3); }
 .f-nav .btn { flex:1; }
 .foot-note a { display:inline-flex; align-items:center; min-height:44px; }
+
+/* ---- Perbaikan antislop 001 ---- */
+/* Header dan nav bawah: latar penuh, isi dibatasi selebar kolom isi (40rem) */
+.app-header { padding-inline:max(var(--sp-4), calc(50% - 20rem + var(--sp-4))); }
+.bottom-nav { padding-inline:max(0px, calc(50% - 20rem)); }
+@media (max-width:360px) { .app-header { padding-inline:var(--sp-2); } }
+
+/* Pilihan di dalam .field: tanpa ini .field label (tebal, block) mengalahkan .choice */
+.field .choice { display:flex; font-weight:400; margin:0; }
+
+/* Keadaan interaksi: hover, active, disabled berbeda dan bukan hanya warna */
+.btn:hover { text-decoration:underline; text-underline-offset:3px; }
+.btn-primary:hover { background:var(--c-cta-hover); border-color:var(--c-cta-hover); color:var(--c-on-cta); }
+.btn:active, .sc-btn:active, .round-btn:active, .preset-row button:active, .link-list a:active, .tier-card:active { transform:translateY(1px); box-shadow:inset 0 2px 4px rgb(0 0 0 / .22); }
+.btn:disabled { border-style:dashed; }
+.round-btn:hover { background:var(--c-surface-2); box-shadow:inset 0 0 0 1px currentColor; }
+.round-btn.fill:hover { background:var(--c-primary-hover); border-color:var(--c-primary-hover); }
+.round-btn:disabled { opacity:.45; border-style:dashed; cursor:not-allowed; }
+.preset-row button:hover { background:var(--c-surface-2); border-color:var(--c-primary); text-decoration:underline; text-underline-offset:3px; }
+.preset-row button[aria-checked="true"] { font-weight:700; }
+.preset-row button[aria-checked="true"]:hover { background:var(--c-primary-hover); border-color:var(--c-primary-hover); }
+.link-list a:hover { background:var(--c-surface-2); }
+.link-list a:hover span { text-decoration:underline; text-underline-offset:3px; }
+.link-list a:hover::after { transform:translateX(3px); }
+
+/* Kartu tier di Beranda: tautan ke Hasil rinci */
+.tier-card .tier-more { display:flex; align-items:center; justify-content:space-between; min-height:var(--touch-min); margin-top:var(--sp-2); font-weight:600; color:var(--c-primary); }
+.tier-card .tier-more::after { content:"\203A"; font-size:1.5rem; color:var(--c-text-muted); }
+.tier-card:hover { background:var(--c-surface-2); }
+.tier-card:hover .tier-more { text-decoration:underline; text-underline-offset:3px; }
+
+/* Glyph status SVG (satu keluarga dengan ikon navigasi) */
+.glyph { width:1em; height:1em; flex:none; fill:none; stroke:currentColor; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; vertical-align:-.125em; }
+.glyph-half path:last-child { fill:currentColor; }
+
+/* Bahaya dan peringatan keselamatan: pembeda tetap (garis tegas + ikon + warna bahaya), tidak dipakai kartu tier */
+.notice.danger { background:var(--c-surface); color:var(--c-text); border:2px solid var(--c-hazard); border-left-width:8px; border-radius:var(--r-md); }
+.notice.danger strong, .hazard-title { display:flex; align-items:center; gap:var(--sp-2); color:var(--c-hazard); }
+.notice.danger .glyph, .hazard-title .glyph { width:1.25em; height:1.25em; color:var(--c-hazard); }
+.hazard-title strong { display:inline; }
+
+/* Kategori kritis di daftar Stok */
+.f-cat-top .f-critical { margin:0 auto 0 var(--sp-2); border:1.5px solid var(--c-text); background:transparent; font-size:var(--fs-tiny); font-weight:600; }
