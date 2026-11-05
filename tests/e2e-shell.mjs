@@ -51,7 +51,7 @@ for (const i of mf.icons) ok((await context.request.get(new URL(i.src, BASE).hre
 await page.evaluate(() => navigator.serviceWorker.ready);
 await page.reload(); await page.waitForSelector('h1');
 ok(await page.evaluate(() => !!navigator.serviceWorker.controller), 'SW terdaftar dan mengendalikan halaman');
-const cached = await page.evaluate(async () => (await (await caches.open('survivalcheck-v10')).keys()).map((r) => new URL(r.url).pathname));
+const cached = await page.evaluate(async () => (await (await caches.open('survivalcheck-v11')).keys()).map((r) => new URL(r.url).pathname));
 ok(['index.html', 'src/app.js', 'data/items.json', 'i18n/id.json', 'i18n/en.json', 'docs/sources.md'].every((p) => cached.some((c) => c.endsWith('/' + p))), 'aset penting di-precache (' + cached.length + ' entri)');
 
 // 360 px tanpa scroll horizontal
@@ -96,13 +96,13 @@ await page.waitForSelector('.notice.danger');
 ok(true, 'impor file salah ditolak');
 await page.setInputFiles('#import-file', { name: 'ok.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(exported)) });
 await page.waitForSelector('[role=alertdialog]');
-await page.click('[role=alertdialog] .btn-primary');
+await page.click('[role=alertdialog] .btn-hazard');
 await page.waitForSelector('.toast');
 ok(true, 'impor valid setelah konfirmasi');
 await page.click('text=Hapus semua data saya');
 await page.waitForSelector('[role=alertdialog]');
 ok(await page.evaluate(() => document.activeElement.textContent === 'Batal'), 'fokus awal dialog hapus pada Batal');
-await page.click('[role=alertdialog] .btn-primary');
+await page.click('[role=alertdialog] .btn-hazard');
 await page.waitForSelector('.toast');
 ok(await page.evaluate(() => { const s = localStorage.getItem('survivalcheck.v1'); return !s || !JSON.parse(s).profile; }), 'hapus semua data menghapus profil');
 

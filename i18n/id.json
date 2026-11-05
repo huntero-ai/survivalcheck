@@ -65,11 +65,14 @@
     "settings": "Pengaturan",
     "shopping": "Belanja",
     "main_label": "Navigasi utama",
-    "skip_to_content": "Lewati ke isi utama"
+    "skip_to_content": "Lewati ke isi utama",
+    "dark_mode": "Mode gelap",
+    "dark_on": "Mode gelap aktif",
+    "dark_off": "Mode terang aktif"
   },
   "home": {
     "title": "Selamat datang",
-    "intro": "SurvivalCheck membantu kamu melihat seberapa siap rumah tangga menghadapi bencana, lalu menyusun langkah kecil berikutnya. Tidak perlu sempurna. Mulai dari yang ada saja.",
+    "intro": "SurvivalCheck membantu kamu melihat seberapa siap rumah tangga menghadapi bencana, lalu menyusun langkah kecil berikutnya. Angka perkiraan sudah cukup untuk memulai.",
     "privacy": "Datamu hanya tersimpan di perangkat ini. Tidak ada akun, tidak ada pelacakan, dan aplikasi tetap jalan tanpa internet.",
     "start": "Mulai, hanya sekitar 5 menit",
     "resume": "Lanjutkan yang tadi",
@@ -101,7 +104,21 @@
     "days_title": "Target persediaan",
     "days_label": "Target hari persediaan",
     "days_custom": "Target sekarang {n} hari. ",
-    "days_other": "Atur jumlah hari lain"
+    "days_other": "Atur jumlah hari lain",
+    "start_check": "Mulai cek kesiapan",
+    "survive_label": "bisa bertahan",
+    "ready_title": "Kesiapan rumahmu",
+    "fill_stock": "Isi persediaan",
+    "next_title": "Langkah berikutnya",
+    "short_days": "Kurang {n} hari",
+    "missing": "kurang",
+    "empty_dial": "Belum diukur",
+    "bag": "Tas siaga",
+    "family": "Keluarga",
+    "partial_chip": "Hasil sementara",
+    "partial_note": "Stokmu belum diisi, jadi angka ini baru perkiraan awal.",
+    "next_food": "Pilih satu jenis pangan yang ada di rumah dan isi jumlahnya.",
+    "disclaimer_link": "Baca selengkapnya"
   },
   "disclaimer": {
     "title": "Penting untuk diketahui",
@@ -212,7 +229,21 @@
       "days_required": "Isi jumlah hari antara 1 dan 365.",
       "days_large": "Target lebih dari 90 hari jarang realistis. Tetap lanjut?"
     },
-    "water_careful": "Angka hati-hati: 4 L berasal dari panduan untuk cuaca panas (Latvia), bukan khusus kekeringan. Anggap sebagai batas aman, bukan angka pasti."
+    "water_careful": "Angka hati-hati: 4 L berasal dari panduan untuk cuaca panas (Latvia), bukan khusus kekeringan. Anggap sebagai batas aman, bukan angka pasti.",
+    "dec": "Kurangi satu hari",
+    "inc": "Tambah satu hari",
+    "presets": "Pilihan cepat",
+    "lv_below": "Di bawah minimum BNPB",
+    "lv_bnpb": "Standar dasar BNPB",
+    "lv_bnpb_hint": "Minimal 72 jam, sesuai tas siaga BNPB.",
+    "lv_rec_hint": "Melampaui standar BNPB dan umum di panduan resmi.",
+    "lv_long": "Jangka panjang",
+    "lv_tough": "Tangguh",
+    "lv_tough_hint": "Perlu cara memasak, penjernih air, dan daya alternatif.",
+    "assume": "Dengan asumsi listrik padam dan air tidak mengalir, {n} orang perlu kira-kira:",
+    "need_water": "air minum",
+    "need_meds": "stok obat rutin",
+    "change_anytime": "Bisa diubah kapan saja."
   },
   "scenarios": {
     "earthquake": "Gempa bumi",
@@ -296,7 +327,7 @@
     "quick_banner": "Mode cepat: hanya pertanyaan inti. Hasil sementara bisa kurang akurat.",
     "switch_to_full": "Lengkapi dengan mode lengkap",
     "empty_state_title": "Belum ada yang diisi",
-    "empty_state_body": "Tidak apa-apa. Mulai dari satu kategori, misalnya air. Setiap isian langsung tersimpan.",
+    "empty_state_body": "Mulai dari satu kategori, misalnya air. Setiap isian langsung tersimpan.",
     "water_have": "Air minum yang dimiliki (liter)",
     "water_hygiene_have": "Air untuk kebersihan (liter, saran)",
     "water_note": "Kami memakai 3 L per orang per hari untuk minum dan masak. Air kebersihan 2 L per orang per hari adalah saran dan tidak menahan tier.",
@@ -426,7 +457,7 @@
   },
   "family_eval": {
     "title": "Evaluasi keluarga",
-    "intro": "Delapan belas pertanyaan dari BNPB untuk melihat kesiapan keluarga. Jawab apa adanya, tidak ada nilai buruk. Ini cara untuk tahu langkah berikutnya.",
+    "intro": "Delapan belas pertanyaan dari BNPB untuk melihat kesiapan keluarga. Jawab sesuai keadaan sekarang; hasilnya dipakai untuk menentukan langkah berikutnya.",
     "progress": "Pertanyaan {n} dari 18",
     "score_total": "Skor: {score} dari 36",
     "option": {
@@ -507,7 +538,7 @@
     "of": "Tier {n} dari 5",
     "0": {
       "name": "Belum Siap",
-      "summary": "Baru di awal, dan itu tidak apa-apa. Satu langkah kecil sudah cukup untuk naik."
+      "summary": "Kamu baru di awal. Satu langkah kecil sudah cukup untuk naik ke tier berikutnya."
     },
     "1": {
       "name": "Rentan",
@@ -515,7 +546,7 @@
     },
     "2": {
       "name": "Siap Dasar 72 jam (standar BNPB)",
-      "summary": "Kamu memenuhi standar dasar BNPB untuk 3 hari. Ini fondasi yang bagus."
+      "summary": "Kamu memenuhi standar dasar BNPB untuk 3 hari."
     },
     "3": {
       "name": "Siap 1 Minggu",
@@ -552,7 +583,7 @@
   "result": {
     "title": "Hasil kesiapan",
     "detail_cta": "Hasil rinci",
-    "calm_intro": "Hasil ini bukan nilai ujian. Ini peta langkah berikutnya.",
+    "calm_intro": "Hasil ini menunjukkan langkah berikutnya untuk rumahmu.",
     "empty_title": "Hasil belum bisa dihitung",
     "empty_body": "Isi profil dan beberapa persediaan dulu, lalu hasilnya muncul di sini.",
     "go_profile": "Isi profil",
@@ -608,7 +639,7 @@
     "shortfall_intro": "Diurutkan dari yang paling penting.",
     "shortfall_missing": "Kurang {qty}",
     "shortfall_why": "Alasan",
-    "shortfall_empty": "Tidak ada kekurangan untuk target ini. Kerja bagus.",
+    "shortfall_empty": "Tidak ada kekurangan untuk target ini.",
     "priority": {
       "critical": "Utama",
       "important": "Penting",
@@ -626,7 +657,7 @@
     "plan_week": "Minggu ini",
     "plan_month": "Bulan depan",
     "plan_later": "Setelah itu",
-    "tier_up_message": "Selamat, kamu naik ke tier {n}.",
+    "tier_up_message": "Kamu naik ke tier {n}.",
     "scenario_gaps": "Tambahan untuk skenario {scenario}",
     "next_group_any": "Salah satu dari: {items}",
     "next_input_missing": "{item}: isi angka pemakaian harian dulu",
@@ -677,7 +708,7 @@
     "examples_label": "Contoh umum (hanya contoh, bukan rekomendasi)"
   },
   "info": {
-    "title": "Info dan panduan",
+    "title": "Lainnya",
     "offline_note": "Semua halaman di sini bisa dibuka tanpa internet.",
     "emergency": {
       "title": "Nomor darurat",
@@ -1033,7 +1064,8 @@
     "start_fresh": "Mulai baru",
     "offline_page": "Kamu sedang offline. Aplikasi tetap bisa dipakai, hanya tautan sumber yang butuh internet.",
     "not_found": "Halaman tidak ditemukan.",
-    "go_home": "Ke beranda"
+    "go_home": "Ke beranda",
+    "not_found_hint": "Alamat ini tidak ada di aplikasi. Kembali ke beranda untuk melanjutkan."
   },
   "a11y": {
     "menu": "Menu",
@@ -1089,5 +1121,17 @@
     "safety": "Keselamatan listrik",
     "more_safety": "Tips keselamatan lain",
     "no_province": "Belum memilih provinsi? "
+  },
+  "quick": {
+    "a0": "Belum",
+    "q1": "Sudah punya tas siaga dan stok darurat?",
+    "q1b": "Sebagian",
+    "q1c": "Sudah lengkap",
+    "q2": "Keluarga tahu harus berbuat apa saat darurat?",
+    "q2b": "Sedikit",
+    "q2c": "Sudah latihan",
+    "q3": "Merasa siap menghadapi keadaan darurat?",
+    "q3b": "Cukup",
+    "q3c": "Siap"
   }
 }

@@ -71,15 +71,14 @@ ul.f-list:has(.f-listrow) { padding-left: 0; }
 .f-editor h3:focus { outline: none; }
 
 /* inventaris: daftar kategori */
-.f-catlist, .f-itemlist, .f-foodlist, .f-baglist, .f-devlist { list-style: none; padding: 0; margin: 0 0 var(--sp-4); }
-.f-catcard { display: flex; flex-direction: column; gap: var(--sp-2); min-height: var(--touch-min); padding: var(--sp-4); margin-bottom: var(--sp-2); border: 1px solid var(--c-divider); border-radius: var(--r-lg); background: var(--c-surface); color: var(--c-text); text-decoration: none; box-shadow: var(--shadow-1); }
+.f-catlist, .f-foodlist, .f-baglist, .f-devlist { list-style: none; padding: 0; margin: 0 0 var(--sp-4); }
+.f-catcard { display: flex; flex-direction: column; gap: var(--sp-3); min-height: var(--touch-min); padding: var(--sp-5) var(--sp-6); margin-bottom: var(--sp-2); border: 1px solid var(--c-border); border-radius: var(--r-lg); background: var(--c-surface); color: var(--c-text); text-decoration: none; box-shadow: var(--shadow-1); }
 .f-catcard:hover { border-color: var(--c-primary); }
-.f-cat-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--sp-2); }
+.f-cat-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--sp-2); font-size: var(--fs-h3); }
 .f-cat-prog { display: flex; flex-direction: column; gap: var(--sp-1); }
 .f-cat-pct { font-size: var(--fs-small); color: var(--c-text-muted); }
 .f-bar { display: block; height: 10px; border-radius: var(--r-pill); background: var(--c-surface-2); border: 1px solid var(--c-border); overflow: hidden; }
 .f-bar-fill { display: block; height: 100%; background: var(--c-primary); }
-.btn[aria-pressed="true"] { background: var(--c-primary); color: var(--c-on-primary); }
 
 /* baris item */
 .f-item { padding: var(--sp-4); }
@@ -131,15 +130,17 @@ ul.f-list:has(.f-listrow) { padding-left: 0; }
 
 /* ---- Stok per kategori ---- */
 .f-catgrid { list-style:none; margin:0; padding:0; display:grid; gap:var(--sp-3); }
-.f-catcard { display:flex; flex-direction:column; gap:var(--sp-3); padding:var(--sp-5) var(--sp-6); min-height:var(--touch-min); background:var(--c-surface); border:1px solid var(--c-border); border-radius:var(--r-lg); text-decoration:none; color:var(--c-text); }
-.f-cat-top { display:flex; justify-content:space-between; align-items:center; font-size:1.0625rem; }
 .f-stage-count { color:var(--c-text-muted); font-variant-numeric:tabular-nums; }
 .f-itemlist { list-style:none; padding:0; margin:0 0 var(--sp-5); }
 .f-itemlist > li { margin-bottom:var(--sp-4); }
 .f-quick { display:flex; flex-direction:column; gap:var(--sp-8); }
 .f-quick legend { font-size:1.25rem; font-weight:600; line-height:1.3; margin-bottom:var(--sp-5); padding:0; }
 .f-quick .f-options { display:flex; flex-direction:column; gap:var(--sp-3); }
-.f-quick .f-option { min-height:60px; padding:0 var(--sp-5); border-radius:18px; }
+.f-quick .f-option { min-height:60px; padding:0 var(--sp-5); border-radius:var(--r-lg); }
 .f-section { margin-bottom:var(--sp-6); }
-.field { margin-bottom:var(--sp-5); }
 .f-empty-block { text-align:center; display:flex; flex-direction:column; gap:var(--sp-5); align-items:center; }
+
+/* Layar Target: pengganti gaya inline */
+.f-target-label { font-weight: 600; margin: 0; }
+.f-target-hint { margin: 0 0 var(--sp-4); }
+.f-assume { margin: 0 0 var(--sp-3); }

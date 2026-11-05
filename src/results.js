@@ -12,7 +12,6 @@ const SCORE_MAX = { critical_stock: 55, bag: 20, family: 15, scenario: 10 };
 const SCORE_KEY = { critical_stock: 'critical', bag: 'bag', family: 'family', scenario: 'scenario' };
 const SHORTFALL_PAGE = 25;
 
-// ---------- util DOM & teks ----------
 export function h(tag, attrs, ...kids) {
   const e = document.createElement(tag);
   for (const [k, v] of Object.entries(attrs || {})) {
@@ -56,7 +55,6 @@ export function loc(obj, lang) {
   return obj[lang] || obj.id || obj.en || '';
 }
 
-// ---------- ambil result ----------
 function ensureCss(root) {
   if (typeof document === 'undefined' || document.getElementById('sc-results-css')) return;
   const mk = (id, file, media) => {
@@ -87,7 +85,6 @@ export function normalizeShortfall(result, itemsById) {
   });
 }
 
-// ---------- komponen ----------
 function link(href, text, cls) { return h('a', { href, class: 'sc-btn ' + (cls || ''), text }); }
 
 function tierCard(ctx, result) {
@@ -178,7 +175,7 @@ function progressCard(ctx, result) {
         h('span', { class: 'sc-prog-name', text: name }),
         h('span', { class: 'sc-bar', role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': p,
           'aria-label': `${name}: ${tr(ctx, 'a11y.progress_bar', 'Kemajuan {pct} persen', { pct: p })}` },
-          h('span', { class: 'sc-bar-fill', style: `width:${p}%` })),
+          (() => { const f = h('span', { class: 'sc-bar-fill' }); f.style.setProperty('--w', p + '%'); return f; })()),
         h('span', { class: 'sc-prog-val', text: pct == null ? '' : p + '%' }),
         h('span', { class: 'sc-chip sc-st-' + st }, glyph(icon), stText))));
   }
@@ -334,7 +331,6 @@ function isPartial(ctx, result, fixture) {
   return Object.keys(inv).length === 0 || (result.warnings || []).length > 0 || (result.advisories || []).includes('indicators_incomplete');
 }
 
-// ---------- render ----------
 let token = 0;
 export function render(root, ctx) {
   ensureCss(root);
@@ -359,7 +355,7 @@ export function render(root, ctx) {
       shortfallCard(ctx, result, itemsById, buyById, storeLabel),
       h('div', { class: 'sc-actions' },
         link('#/belanja', tr(ctx, 'result.see_shopping', 'Lihat daftar belanja'), 'sc-btn-primary'),
-        link('#/info', tr(ctx, 'nav.info', 'Info'), 'sc-btn-secondary'),
+        link('#/info', tr(ctx, 'nav.more', 'Lainnya'), 'sc-btn-secondary'),
         link('#/target', tr(ctx, 'target.title', 'Ubah target'), 'sc-btn-secondary')),
       h('p', { class: 'sc-small sc-muted', text: tr(ctx, 'result.recalc', '') }),
       h('p', { class: 'sc-small sc-muted', text: tr(ctx, 'warnings.not_substitute', 'Bukan pengganti instruksi otoritas setempat.') }));

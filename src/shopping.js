@@ -141,13 +141,12 @@ export function toPlainText(list, t) {
   return L.join('\n').replace(/\n{3,}/g, '\n\n').trim() + '\n';
 }
 
-// ---------- UI ----------
 async function copyText(text) {
   try {
     if (navigator.clipboard && navigator.clipboard.writeText) { await navigator.clipboard.writeText(text); return true; }
   } catch (e) { /* fallback */ }
   try {
-    const ta = h('textarea', { 'aria-hidden': 'true', tabindex: '-1', style: 'position:fixed;left:-9999px;top:0' });
+    const ta = h('textarea', { 'aria-hidden': 'true', tabindex: '-1', class: 'sc-offscreen' });
     ta.value = text;
     document.body.append(ta);
     ta.select();
@@ -159,7 +158,7 @@ async function copyText(text) {
 
 function downloadTxt(text, name) {
   const url = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' }));
-  const a = h('a', { href: url, download: name, style: 'display:none' });
+  const a = h('a', { href: url, download: name, hidden: true });
   document.body.append(a);
   a.click();
   a.remove();

@@ -207,6 +207,7 @@ for (const theme of ['light', 'dark']) {
   const rb1 = await page.$eval('.round-btn:not(.fill)', (e) => getComputedStyle(e).backgroundColor);
   ok(rb1 !== rb0, '#9 .round-btn: hover berbeda', { rb0, rb1 });
   await page.goto(srv.base + '#/belanja'); await page.waitForSelector('.sc-btn');
+  await page.mouse.move(1, 1);
   const sb0 = await page.$eval('.sc-btn-secondary', (e) => getComputedStyle(e).backgroundColor);
   await page.hover('.sc-btn-secondary');
   const sb1 = await page.$eval('.sc-btn-secondary', (e) => ({ bg: getComputedStyle(e).backgroundColor, td: getComputedStyle(e).textDecorationLine }));

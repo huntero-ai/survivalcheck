@@ -7,7 +7,6 @@ import * as P from './power.js';
 import { glyph } from './icons.js';
 import { rovingRadios } from './a11y.js';
 
-// ---------- util ----------
 let uid = 0;
 const nid = (p = 'f') => `${p}-${++uid}`;
 
@@ -35,6 +34,8 @@ function tr(ctx, key, idText, enText, vars) {
   if (typeof v === 'string' && v !== key) return v;
   return interp(ctx.lang === 'en' && enText != null ? enText : idText != null ? idText : key, vars);
 }
+// Lebar bar lewat CSSOM (custom property): tidak butuh atribut style inline, jadi CSP style-src tetap ketat.
+function setWidth(el, pct) { el.style.setProperty('--w', pct + '%'); return el; }
 const lab = (ctx, o) => (o && (o[ctx.lang] || o.id)) || '';
 const fmt = (ctx, n, d = 2) => (Number.isFinite(n) ? n.toLocaleString(ctx.lang === 'en' ? 'en-GB' : 'id-ID', { maximumFractionDigits: d }) : '-');
 const cp = (o) => (o === undefined ? undefined : JSON.parse(JSON.stringify(o)));
@@ -47,7 +48,6 @@ function ev(ctx) {
   catch (e) { console.error(e); return { status: 'invalid', errors: ['error'] }; }
 }
 
-// ---------- profil & state default ----------
 const AGE = ['infant', 'toddler', 'child', 'adult', 'elderly'];
 const AGE_KEY = { infant: 'infant', toddler: 'toddler', child: 'child', adult: 'adult', elderly: 'elder' };
 const AGE_FALLBACK = { infant: ['Bayi', 'di bawah 1 tahun'], toddler: ['Balita', '1 sampai 4 tahun'], child: ['Anak', '5 sampai 12 tahun'], adult: ['Dewasa', '13 sampai 59 tahun'], elderly: ['Lansia', '60 tahun ke atas'] };
@@ -99,7 +99,6 @@ function provinceScenarios(ctx, key) {
   return PROVINCE_SCENARIOS[key] || [];
 }
 
-// ---------- komponen UI ----------
 function validateNumber(raw, o) {
   const s = String(raw).trim().replace(',', '.');
   if (s === '') return { ok: true, empty: true, value: null };
@@ -218,9 +217,6 @@ function evidenceBadge(ctx, it) {
   return h('span', { class: 'chip chip-warn f-excerpt', 'data-evidence': 'excerpt' }, glyph('tri'), tr(ctx, 'common.excerpt_badge', 'Dari kutipan sumber, perlu dicek ulang', 'From a source excerpt, to be re-checked'));
 }
 
-// =====================================================================
-// PROFIL
-// =====================================================================
 export function renderProfile(root, ctx) {
   root.textContent = '';
   const p = getProfile(ctx);
@@ -229,7 +225,6 @@ export function renderProfile(root, ctx) {
 
   root.append(...pageHeader(ctx, tr(ctx, 'profile.title', 'Profil rumah tangga'), tr(ctx, 'profile.intro', 'Siapa saja yang kamu tanggung?')));
 
-  // 1. jumlah orang
   const totalEl = h('p', { class: 'f-total', 'aria-live': 'polite' });
   const warnEl = h('p', { class: 'f-error f-soft', 'aria-live': 'polite' });
   const section = (title, ...kids) => h('section', { class: 'card f-section' }, h('h2', { text: title }), ...kids);
@@ -241,7 +236,6 @@ export function renderProfile(root, ctx) {
   });
   root.append(section(tr(ctx, 'profile.people_title', 'Jumlah orang per kelompok usia'), ...peopleSteppers.map((s) => s.el), totalEl, warnEl));
 
-  // 2. hamil / menyusui
   const mkCount = (key, labelKey, fbLabel, fbCount) => {
     const wrap = h('div', { class: 'f-sub' });
     const stp = stepper(ctx, { label: tr(ctx, labelKey + '_count', fbCount, fbCount), groupLabel: fbLabel, value: Math.max(1, p[key]), max: 99, onChange: (n) => { upd((q) => { q[key] = n; }); refresh(); } });
@@ -258,7 +252,6 @@ export function renderProfile(root, ctx) {
     mkCount('breastfeeding', 'profile.breastfeeding', 'Ada yang sedang menyusui', 'Berapa orang menyusui?'),
     h('p', { class: 'f-hint', text: tr(ctx, 'profile.pregnancy_hint', 'Kebutuhan energi bertambah. Untuk air, panduan resmi hanya menyarankan minum lebih banyak, tanpa angka pasti.') })));
 
-  // 3. kebutuhan bayi / balita
   const babyBox = h('section', { class: 'card f-section' });
   const buildBaby = () => {
     babyBox.textContent = '';
@@ -286,7 +279,6 @@ export function renderProfile(root, ctx) {
   }
   root.append(babyBox);
 
-  // 4. obat rutin
   const medsBox = h('section', { class: 'card f-section' });
   const medEditorHost = h('div');
   let addBtn = null;
@@ -336,7 +328,6 @@ export function renderProfile(root, ctx) {
   }
   root.append(medsBox);
 
-  // 5. hewan
   const petUse = numField(ctx, { label: tr(ctx, 'profile.pets_food_per_day', 'Pakan per hari (sesuai yang biasa kamu beri)'), unit: 'g', min: 0, max: 100000, value: p.usage_per_day.pet_food, onValue: (v) => { upd((x) => { if (v == null) delete x.usage_per_day.pet_food; else x.usage_per_day.pet_food = v; }); } });
   const petFoodWrap = h('div', null, petUse.el);
   petFoodWrap.hidden = !(p.pets.dog + p.pets.cat > 0);
@@ -347,7 +338,6 @@ export function renderProfile(root, ctx) {
     petFoodWrap,
     h('p', { class: 'f-hint', text: tr(ctx, 'profile.pets_hint', 'Hewan peliharaan dihitung sebagai tambahan, tidak menentukan tier. Hanya anjing dan kucing yang dihitung.') })));
 
-  // 6. kebutuhan khusus
   const medCard = notice('', h('p', { text: tr(ctx, 'profile.special_electric_hint', 'Contohnya CPAP, konsentrator oksigen, nebulizer, atau kulkas obat. Kami akan membantu menghitung kebutuhan daya.') }), h('a', { class: 'btn', href: '#/daya', text: tr(ctx, 'power.title', 'Daya listrik') }));
   medCard.hidden = !p.has_electric_medical;
   root.append(section(tr(ctx, 'profile.special_title', 'Kebutuhan khusus'),
@@ -356,7 +346,6 @@ export function renderProfile(root, ctx) {
     switchRow(ctx, { label: tr(ctx, 'profile.special_electric_medical', 'Memakai alat medis yang butuh listrik'), checked: p.has_electric_medical, onChange: (on) => { upd((x) => { x.has_electric_medical = on; }); medCard.hidden = !on; } }).el,
     medCard));
 
-  // 7. tempat tinggal
   const houseName = nid('housing');
   const housing = h('fieldset', { class: 'f-fieldset' }, h('legend', { text: tr(ctx, 'profile.housing_title', 'Tempat tinggal') }));
   for (const k of ['house', 'apartment', 'boarding']) {
@@ -385,9 +374,6 @@ export function renderProfile(root, ctx) {
   refresh();
 }
 
-// =====================================================================
-// TARGET & SKENARIO
-// =====================================================================
 export function renderTarget(root, ctx) {
   root.textContent = '';
   const R = rules(ctx);
@@ -410,8 +396,8 @@ export function renderTarget(root, ctx) {
   const dial = h('div', { class: 'dial dial-sm', role: 'group', 'aria-live': 'polite' }, num, h('span', { class: 'dial-unit', text: tr(ctx, 'f.days', 'hari', 'days') }));
   const dec = h('button', { type: 'button', class: 'round-btn', 'aria-label': tr(ctx, 'target.dec', 'Kurangi satu hari', 'One day less') }, svg('M5 12h14'));
   const inc = h('button', { type: 'button', class: 'round-btn fill', 'aria-label': tr(ctx, 'target.inc', 'Tambah satu hari', 'One day more') }, svg('M12 5v14M5 12h14'));
-  const label = h('p', { class: 'center', style: 'font-weight:600;margin:0' });
-  const hint = h('p', { class: 'center muted', style: 'margin:0 0 var(--sp-4)' });
+  const label = h('p', { class: 'center f-target-label' });
+  const hint = h('p', { class: 'center muted f-target-hint' });
   const needs = h('div', { class: 'card' });
   const presetRow = h('div', { class: 'preset-row', role: 'radiogroup', 'aria-label': tr(ctx, 'target.presets', 'Pilihan cepat', 'Quick picks') });
   const pBtns = presets.map((d) => {
@@ -439,8 +425,8 @@ export function renderTarget(root, ctx) {
     else { l = tr(ctx, 'target.lv_tough', 'Tangguh', 'Resilient'); hh = tr(ctx, 'target.lv_tough_hint', 'Perlu cara memasak, penjernih air, dan daya alternatif.', 'Needs a way to cook, purify water, and backup power.'); }
     label.textContent = l; hint.textContent = hh;
     needs.textContent = '';
-    needs.append(h('p', { class: 'muted', style: 'margin:0 0 var(--sp-3)', text: tr(ctx, 'target.assume', 'Dengan asumsi listrik padam dan air tidak mengalir, {n} orang perlu kira-kira:', 'Assuming a power cut and no running water, {n} people need roughly:', { n: people || 1 }) }),
-      h('div', { class: 'stat-grid', style: 'margin:0' },
+    needs.append(h('p', { class: 'muted f-assume', text: tr(ctx, 'target.assume', 'Dengan asumsi listrik padam dan air tidak mengalir, {n} orang perlu kira-kira:', 'Assuming a power cut and no running water, {n} people need roughly:', { n: people || 1 }) }),
+      h('div', { class: 'stat-grid stat-flush' },
         h('div', null, h('div', { class: 'stat-n', text: Math.round(R.water.drinking_l_per_person_day * Math.max(people, 1) * days) + ' L' }), h('div', { class: 'muted', text: tr(ctx, 'target.need_water', 'air minum', 'drinking water') })),
         h('div', null, h('div', { class: 'stat-n', text: tr(ctx, 'common.units.day', '{n} hari', '{n} days', { n: Math.max(days, R.meds.min_days) }) }), h('div', { class: 'muted', text: tr(ctx, 'target.need_meds', 'stok obat rutin', 'routine medicine') }))));
   }
@@ -450,9 +436,6 @@ export function renderTarget(root, ctx) {
   root.append(savedNote(ctx), navBar(ctx, { href: '#/profil', label: tr(ctx, 'common.back', 'Kembali') }, { href: '#/keluarga', label: tr(ctx, 'common.next', 'Lanjut') }));
 }
 
-// =====================================================================
-// INVENTARIS
-// =====================================================================
 const BAG_GROUPS = [['a', 1, 4], ['b', 5, 12], ['c', 13, 17], ['d', 18, 22], ['e', 23, 28]];
 const UNIT_FALLBACK = { L: 'L' };
 
@@ -498,7 +481,7 @@ function categoryStats(ctx, res, catId) {
 const CRITICAL_CATS = new Set(['water', 'food', 'meds_firstaid']);
 
 function renderCategoryList(root, ctx, res, cats) {
-  root.append(h('h1', { text: tr(ctx, 'inventory.title', 'Stok', 'Stock') }));
+  root.append(h('h1', { class: 'h1-ring', text: tr(ctx, 'inventory.title', 'Stok', 'Stock') }));
   if (res.status !== 'ok') {
     root.append(h('div', { class: 'f-empty-block' }, h('p', { text: tr(ctx, 'profile.validation.no_people', 'Isi dulu data rumah tanggamu.') }), h('a', { class: 'btn btn-primary', href: '#/profil', text: tr(ctx, 'nav.profile', 'Profil') })));
     return;
@@ -514,7 +497,7 @@ function renderCategoryList(root, ctx, res, cats) {
     const critText = tr(ctx, 'inventory.critical_mark', 'Kritis', 'Critical');
     ul.append(h('li', null, h('a', { class: 'f-catcard', href: `#/inventaris/${c.id}`, 'aria-label': `${lab(ctx, c.label)}, ${critical ? critText + ', ' : ''}${cs.filled}/${cs.total}` },
       h('span', { class: 'f-cat-top' }, h('strong', { text: lab(ctx, c.label) }), critical ? h('span', { class: 'chip f-critical', 'aria-hidden': 'true', text: critText }) : null, h('span', { class: 'f-stage-count', text: done ? '\u2713' : `${cs.filled}/${cs.total}` })),
-      h('span', { class: 'f-bar', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': String(pct), 'aria-label': lab(ctx, c.label) }, h('span', { class: 'f-bar-fill', style: `width:${pct}%` })))));
+      h('span', { class: 'f-bar', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': String(pct), 'aria-label': lab(ctx, c.label) }, setWidth(h('span', { class: 'f-bar-fill' }), pct)))));
   }
   root.append(ul);
 }
@@ -549,7 +532,6 @@ function renderCategory(root, ctx, def, cats) {
     }
     if (def.id === 'food' && foodTotal) updateFoodTotals(res);
   }
-
 
   let foodTotal = null;
   let updateFoodTotals = () => {};
@@ -622,7 +604,6 @@ function buildItemRow(ctx, it, res, refreshLive, live) {
   return li;
 }
 
-// ----- pangan -----
 function buildFoodSection(ctx, res, refreshLive) {
   const R = rules(ctx);
   const byId = Object.fromEntries(items(ctx).map((i) => [i.id, i]));
@@ -675,7 +656,6 @@ function buildFoodSection(ctx, res, refreshLive) {
   return { el: wrap, totals, update: upd };
 }
 
-// ----- tas siaga 28 item -----
 function buildBagChecklist(ctx, res, root) {
   const all = items(ctx).filter((it) => it.bnpb_checklist);
   const byNo = new Map(all.map((it) => [it.bnpb_checklist, it]));
@@ -717,9 +697,6 @@ function buildBagChecklist(ctx, res, root) {
   return wrap;
 }
 
-// =====================================================================
-// DAYA LISTRIK
-// =====================================================================
 export function renderPower(root, ctx) {
   root.textContent = '';
   const pd = ctx.data.power;
@@ -749,7 +726,6 @@ export function renderPower(root, ctx) {
   const genWarnHost = h('div');
   root.append(genWarnHost);
 
-  // 1. perangkat
   const devBox = h('section', { class: 'card f-section' }, h('h2', { text: tr(ctx, 'power.devices_title', 'Perangkat yang paling penting') }), h('p', { class: 'muted', text: tr(ctx, 'power.devices_intro', 'Pilih perangkat yang harus tetap menyala. Watt tipikal sudah terisi dan bisa kamu ganti.') }));
   if (prof.has_electric_medical) devBox.append(notice('warn', h('p', { text: tr(ctx, 'f.pick_medical', 'Di Profil kamu menandai ada alat medis listrik. Pilih alat medisnya di bawah (ditandai "Alat medis") agar daya ikut menentukan hari bertahan.', 'Your profile says you use electric medical equipment. Select it below (marked "Medical device") so power counts toward survival days.') }), h('p', { class: 'f-hint', text: tr(ctx, 'medical_label', '') || (pd.safety_messages.find((m) => m.key === 'medical_label') || {})[lang] || '' })));
   const devList = h('ul', { class: 'f-devlist' });
@@ -816,14 +792,11 @@ export function renderPower(root, ctx) {
   buildCustoms();
   root.append(devBox);
 
-  // 2. hari tanpa listrik
   const outage = numField(ctx, { label: tr(ctx, 'power.outage_days', 'Berapa hari listrik padam yang ingin ditutup?'), hint: tr(ctx, 'power.outage_days_default', 'Sama dengan target: {n} hari', 'Same as target: {n} days', { n: targetDays }), min: 1, max: 365, integer: true, value: (ctx.state.power_inventory || {}).outage_days ?? '', unit: tr(ctx, 'f.days', 'hari', 'days'), onValue: (v) => { const o = getPInv(); if (v == null) delete o.outage_days; else o.outage_days = v; savePInv(o); renderResults(); } });
   root.append(h('section', { class: 'card f-section' }, outage.el));
 
-  // 3. hasil kebutuhan + saran
   root.append(results);
 
-  // 4. daya yang dimiliki
   const pi = getPInv();
   const own = (key, label, o) => numField(ctx, { label, min: 0, max: o.max ?? 1e7, rangeKey: 'power.validation.capacity_negative', value: pi[key] ?? '', unit: o.unit, hint: o.hint, compact: true, integer: o.integer, onValue: (v) => { const x = getPInv(); if (v == null) delete x[key]; else x[key] = v; savePInv(x); renderResults(); } }).el;
   const bankNote = h('p', { class: 'f-hint', 'aria-live': 'polite' });
@@ -842,7 +815,6 @@ export function renderPower(root, ctx) {
   bankWh();
   root.append(ownBox);
 
-  // 5. hasil dan keselamatan
   const safetyBox = h('section', { class: 'f-section' });
   root.append(safetyBox);
   const assumptions = h('details', { class: 'guide' }, h('summary', { text: tr(ctx, 'f.assumptions', 'Asumsi perhitungan', 'Calculation assumptions') }));
@@ -932,9 +904,6 @@ export function renderPower(root, ctx) {
   root.append(savedNote(ctx), navBar(ctx, { href: '#/inventaris', label: tr(ctx, 'nav.inventory', 'Stok') }, { href: '#/keluarga', label: tr(ctx, 'f.to_family', 'Lanjut ke evaluasi keluarga') }));
 }
 
-// =====================================================================
-// EVALUASI KELUARGA (18 indikator)
-// =====================================================================
 export function renderIndicators(root, ctx) {
   root.textContent = '';
   const ind = ctx.data.indicators;

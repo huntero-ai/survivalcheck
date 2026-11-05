@@ -7,7 +7,7 @@
   --c-warn-fg:#111111; --c-warn-bg:#E9E9E9; --c-danger-fg:#FFFFFF; --c-danger-bg:#111111;
   --c-ink:#111111; --c-on-ink:#FFFFFF; --c-on-ink-muted:#D0D0D0; --c-ring:#8C8C8C;
   --c-cta:#D93A14; --c-on-cta:#FFFFFF; --c-dial:#0072CC; --c-dial-ring:#0099FF;
-  --c-cta-hover:#B92E0C; --c-primary-hover:#005FA8; --c-hazard:#B00020;
+  --c-cta-hover:#B92E0C; --c-primary-hover:#005FA8; --c-hazard:#B00020; --c-hazard-hover:#8A0019; --c-on-hazard:#FFFFFF;
   --tier-0-fg:#FFFFFF; --tier-0-bg:#111111; --tier-0-accent:#FFFFFF;
   --tier-1-fg:#FFFFFF; --tier-1-bg:#111111; --tier-1-accent:#FFFFFF;
   --tier-2-fg:#FFFFFF; --tier-2-bg:#111111; --tier-2-accent:#FFFFFF;
@@ -19,7 +19,7 @@
   --font-mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"Liberation Mono",monospace;
   --fs-display:2rem; --fs-h1:1.5rem; --fs-h2:1.25rem; --fs-h3:1.0625rem; --fs-body:1rem; --fs-small:.875rem; --fs-tiny:.8125rem;
   --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:20px; --sp-6:24px; --sp-8:32px; --sp-12:48px;
-  --touch-min:44px; --r-sm:6px; --r-md:14px; --r-lg:20px; --r-pill:999px;
+  --touch-min:44px; --r-xs:2px; --r-sm:6px; --r-md:14px; --r-lg:20px; --r-btn:16px; --r-pill:999px;
   --dur-fast:120ms; --dur-base:200ms; --ease:cubic-bezier(.2,0,0,1);
   --nav-h:72px; color-scheme:light;
 }
@@ -31,7 +31,7 @@
     --c-warn-fg:#F2F2F2; --c-warn-bg:#2A2A2A; --c-danger-fg:#111111; --c-danger-bg:#F2F2F2;
     --c-ink:#F2F2F2; --c-on-ink:#111111; --c-on-ink-muted:#4A4A4A; --c-ring:#5A5A5A;
   --c-cta:#FF6B47; --c-on-cta:#111111; --c-dial:#0072CC; --c-dial-ring:#1F4F7A;
-  --c-cta-hover:#FF8566; --c-primary-hover:#7CCBFF; --c-hazard:#FF8A80;
+  --c-cta-hover:#FF8566; --c-primary-hover:#7CCBFF; --c-hazard:#FF8A80; --c-hazard-hover:#FFA8A0; --c-on-hazard:#0F0F0F;
     --tier-0-fg:#111111; --tier-0-bg:#F2F2F2; --tier-0-accent:#111111;
     --tier-1-fg:#111111; --tier-1-bg:#F2F2F2; --tier-1-accent:#111111;
     --tier-2-fg:#111111; --tier-2-bg:#F2F2F2; --tier-2-accent:#111111;
@@ -48,7 +48,7 @@
   --c-warn-fg:#F2F2F2; --c-warn-bg:#2A2A2A; --c-danger-fg:#111111; --c-danger-bg:#F2F2F2;
   --c-ink:#F2F2F2; --c-on-ink:#111111; --c-on-ink-muted:#4A4A4A; --c-ring:#5A5A5A;
   --c-cta:#FF6B47; --c-on-cta:#111111; --c-dial:#0072CC; --c-dial-ring:#1F4F7A;
-  --c-cta-hover:#FF8566; --c-primary-hover:#7CCBFF; --c-hazard:#FF8A80;
+  --c-cta-hover:#FF8566; --c-primary-hover:#7CCBFF; --c-hazard:#FF8A80; --c-hazard-hover:#FFA8A0; --c-on-hazard:#0F0F0F;
   --tier-0-fg:#111111; --tier-0-bg:#F2F2F2; --tier-0-accent:#111111;
   --tier-1-fg:#111111; --tier-1-bg:#F2F2F2; --tier-1-accent:#111111;
   --tier-2-fg:#111111; --tier-2-bg:#F2F2F2; --tier-2-accent:#111111;
@@ -102,15 +102,15 @@ button:disabled,input:disabled,select:disabled { cursor:not-allowed; }
 .step-count { font-size:var(--fs-small); color:var(--c-text-muted); margin:0 0 var(--sp-2); }
 
 /* Komponen dasar */
-.card { background:var(--c-surface); border:1px solid var(--c-divider); border-radius:var(--r-lg); padding:var(--sp-4); margin:0 0 var(--sp-4); box-shadow:var(--shadow-1); }
-.card > :last-child { margin-bottom:0; }
-.card h2,.card h3 { margin-top:0; }
-.btn { display:inline-flex; align-items:center; justify-content:center; gap:var(--sp-2); min-height:var(--touch-min); padding:var(--sp-2) var(--sp-5); border-radius:var(--r-md); border:1.5px solid var(--c-primary); background:var(--c-surface); color:var(--c-primary); font:inherit; font-weight:600; text-decoration:none; cursor:pointer; text-align:center; }
-.btn-primary { min-height:48px; background:var(--c-cta); color:var(--c-on-cta); border-color:var(--c-cta); }
+.card, .sc-card { background:var(--c-surface); border:1px solid var(--c-divider); border-radius:var(--r-lg); padding:var(--sp-4); margin:0 0 var(--sp-4); box-shadow:var(--shadow-1); }
+.card > :last-child, .sc-card > :last-child { margin-bottom:0; }
+.card h2,.card h3,.sc-card h2,.sc-card h3 { margin-top:0; }
+.btn, .sc-btn { display:inline-flex; align-items:center; justify-content:center; gap:var(--sp-2); min-height:var(--touch-min); padding:var(--sp-2) var(--sp-5); border-radius:var(--r-md); border:1.5px solid var(--c-primary); background:var(--c-surface); color:var(--c-primary); font:inherit; font-weight:600; text-decoration:none; cursor:pointer; text-align:center; }
+.btn-primary, .sc-btn-primary { min-height:48px; background:var(--c-cta); color:var(--c-on-cta); border-color:var(--c-cta); }
 .btn-block { display:flex; width:100%; }
-.btn:disabled { opacity:.55; cursor:not-allowed; }
+.btn:disabled, .sc-btn:disabled { opacity:.55; cursor:not-allowed; }
 .btn-row { display:flex; flex-wrap:wrap; gap:var(--sp-2); margin:var(--sp-3) 0; }
-.chip { display:inline-flex; align-items:center; gap:var(--sp-1); padding:2px var(--sp-3); border-radius:var(--r-sm); background:var(--c-surface-2); font-size:var(--fs-small); font-weight:500; }
+.chip, .sc-chip { display:inline-flex; align-items:center; gap:var(--sp-1); padding:2px var(--sp-3); border-radius:var(--r-sm); background:var(--c-surface-2); font-size:var(--fs-small); font-weight:500; }
 .chip-ok { background:var(--c-ok-bg); color:var(--c-ok-fg); } .chip-warn { background:var(--c-warn-bg); color:var(--c-warn-fg); } .chip-info { background:var(--c-info-bg); color:var(--c-info-fg); }
 .notice { display:block; padding:var(--sp-3) var(--sp-4); border-radius:var(--r-md); margin:0 0 var(--sp-4); background:var(--c-info-bg); color:var(--c-info-fg); border:1px solid transparent; }
 .notice.warn { background:var(--c-warn-bg); color:var(--c-warn-fg); }
@@ -168,11 +168,12 @@ details.guide > div { padding:0 var(--sp-4) var(--sp-4); }
 .icon-link:hover { background:var(--c-surface); }
 .icon-link .i-sun { display:none; } [data-theme="dark"] .icon-link .i-sun { display:block; } [data-theme="dark"] .icon-link .i-moon { display:none; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .icon-link .i-sun { display:block; } :root:not([data-theme="light"]) .icon-link .i-moon { display:none; } }
-.card { border:0; }
-.btn { background:transparent; border-radius:var(--r-md); }
-.btn:hover { background:var(--c-surface-2); }
-.btn-primary { min-height:52px; border-radius:16px; background:var(--c-cta); color:var(--c-on-cta); border-color:var(--c-cta); }
-.chip { border-radius:var(--r-pill); }
+.card, .sc-card { border:0; }
+.btn, .sc-btn { background:transparent; border-radius:var(--r-md); }
+.btn:hover, .sc-btn:hover { background:var(--c-surface-2); }
+.btn-primary, .sc-btn-primary { min-height:52px; border-radius:var(--r-btn); background:var(--c-cta); color:var(--c-on-cta); border-color:var(--c-cta); }
+.chip, .sc-chip { border-radius:var(--r-pill); }
+.sc-chip { border:1px solid var(--c-divider); }
 .notice { border:0; border-radius:var(--r-lg); }
 .notice a { color:inherit; }
 .bottom-nav { background:var(--c-bg); }
@@ -181,7 +182,7 @@ details.guide > div { padding:0 var(--sp-4) var(--sp-4); }
 .bottom-nav a[aria-current="page"] svg { stroke-width:2.4; }
 .link-list a { border:0; border-radius:var(--r-lg); }
 details.guide { border:0; border-radius:var(--r-lg); }
-.stepper a, .stepper span.step { border-top-width:4px; border-radius:2px; }
+.stepper a, .stepper span.step { border-top-width:4px; border-radius:var(--r-xs); }
 .toast { background:var(--c-ink); color:var(--c-on-ink); }
 
 /* Hero: lingkaran hari bertahan */
@@ -200,7 +201,7 @@ details.guide { border:0; border-radius:var(--r-lg); }
 .tier-card .tier-name { font-size:var(--fs-h3); font-weight:600; }
 .tier-card .tier-sub { font-size:var(--fs-tiny); color:var(--c-text-muted); }
 .seg-row { display:flex; gap:4px; }
-.seg-row i { width:34px; height:10px; border-radius:5px; background:transparent; border:2px solid var(--c-border); display:block; }
+.seg-row i { width:34px; height:10px; border-radius:var(--r-pill); background:transparent; border:2px solid var(--c-border); display:block; }
 .seg-row i.on { background:var(--c-primary); border-color:var(--c-primary); }
 .next-card { border:1.5px solid var(--c-divider); border-radius:var(--r-lg); padding:var(--sp-4); margin:0 0 var(--sp-4); }
 .next-card h2 { font-size:var(--fs-h3); margin:0 0 var(--sp-2); }
@@ -237,8 +238,8 @@ details.guide { border:0; border-radius:var(--r-lg); }
 h1 { margin-bottom:var(--sp-8); font-size:1.5rem; letter-spacing:-.3px; }
 h2 { margin-bottom:var(--sp-4); }
 p { margin-bottom:var(--sp-4); }
-.card { padding:var(--sp-6); margin-bottom:var(--sp-5); border-radius:var(--r-lg); box-shadow:none; }
-.btn { min-height:52px; padding:var(--sp-3) var(--sp-6); border-radius:16px; }
+.card, .sc-card { padding:var(--sp-6); margin-bottom:var(--sp-5); border-radius:var(--r-lg); box-shadow:none; }
+.btn, .sc-btn { min-height:52px; padding:var(--sp-3) var(--sp-6); border-radius:var(--r-btn); }
 .btn-block { width:100%; }
 .btn-row { gap:var(--sp-3); margin:var(--sp-6) 0; }
 .notice { padding:var(--sp-4) var(--sp-5); margin-bottom:var(--sp-5); }
@@ -250,7 +251,7 @@ p { margin-bottom:var(--sp-4); }
 .next-card p { margin-bottom:var(--sp-5); }
 .foot-note { text-align:center; margin-top:var(--sp-8); font-size:var(--fs-small); }
 .foot-note a { color:var(--c-text-muted); }
-.stepper-host { padding-bottom:0; }
+.stepper-host { max-width:40rem; margin:0 auto; padding:var(--sp-6) var(--sp-6) 0; }
 .step-count { display:none; }
 .f-hint, .f-saved { display:none; }
 .f-nav { margin-top:var(--sp-8); display:flex; gap:var(--sp-3); }
@@ -267,10 +268,10 @@ p { margin-bottom:var(--sp-4); }
 .field .choice { display:flex; font-weight:400; margin:0; }
 
 /* Keadaan interaksi: hover, active, disabled berbeda dan bukan hanya warna */
-.btn:hover { text-decoration:underline; text-underline-offset:3px; }
-.btn-primary:hover { background:var(--c-cta-hover); border-color:var(--c-cta-hover); color:var(--c-on-cta); }
+.btn:hover, .sc-btn:hover { text-decoration:underline; text-underline-offset:3px; }
+.btn-primary:hover, .sc-btn-primary:hover { background:var(--c-cta-hover); border-color:var(--c-cta-hover); color:var(--c-on-cta); }
 .btn:active, .sc-btn:active, .round-btn:active, .preset-row button:active, .link-list a:active, .tier-card:active { transform:translateY(1px); box-shadow:inset 0 2px 4px rgb(0 0 0 / .22); }
-.btn:disabled { border-style:dashed; }
+.btn:disabled, .sc-btn:disabled { border-style:dashed; }
 .round-btn:hover { background:var(--c-surface-2); box-shadow:inset 0 0 0 1px currentColor; }
 .round-btn.fill:hover { background:var(--c-primary-hover); border-color:var(--c-primary-hover); }
 .round-btn:disabled { opacity:.45; border-style:dashed; cursor:not-allowed; }
@@ -299,3 +300,31 @@ p { margin-bottom:var(--sp-4); }
 
 /* Kategori kritis di daftar Stok */
 .f-cat-top .f-critical { margin:0 auto 0 var(--sp-2); border:1.5px solid var(--c-text); background:transparent; font-size:var(--fs-tiny); font-weight:600; }
+
+/* ---- Perbaikan antislop 002 ---- */
+/* Aksen oranye-merah (.btn-primary) hanya untuk langkah utama. Tombol lain: biru (solid) atau bahaya (hazard). */
+.btn-solid { background:var(--c-primary); color:var(--c-on-primary); border-color:var(--c-primary); }
+.btn-solid:hover { background:var(--c-primary-hover); border-color:var(--c-primary-hover); color:var(--c-on-primary); }
+.btn-hazard { background:var(--c-hazard); color:var(--c-on-hazard); border-color:var(--c-hazard); }
+.btn-hazard:hover { background:var(--c-hazard-hover); border-color:var(--c-hazard-hover); color:var(--c-on-hazard); }
+.btn[aria-pressed="true"], .sc-btn[aria-pressed="true"] { background:var(--c-primary); color:var(--c-on-primary); }
+
+/* Pengganti gaya inline di JS */
+.tier-card .tier-name { display:block; }
+.stat-grid.stat-flush { margin:0; }
+.noscript-msg { padding:var(--sp-4); }
+.f-bar-fill, .sc-bar-fill { width:var(--w, 0%); }
+.sc-offscreen { position:fixed; left:-9999px; top:0; }
+
+/* Beranda awal: pengantar singkat dan pemberitahuan kesehatan yang terlihat */
+.home-intro { max-width:26rem; text-align:center; }
+.home-intro p { margin:0 0 var(--sp-2); }
+.home-intro p:last-child { margin:0; }
+.notice.home-disclaimer { border:1.5px solid var(--c-border); background:transparent; margin-top:var(--sp-8); }
+.home-disclaimer strong { display:flex; align-items:center; gap:var(--sp-2); }
+.home-disclaimer .glyph { width:1.25em; height:1.25em; }
+.home-disclaimer a { color:var(--c-primary); font-weight:600; }
+.pill.pill-partial { border:1.5px solid var(--c-border); background:transparent; font-weight:600; }
+
+/* Motif cincin kecil di judul layar Stok dan Lainnya (versi mini dari lingkaran hari bertahan) */
+.h1-ring::before { content:""; display:inline-block; width:.75em; height:.75em; margin-right:.5em; border-radius:50%; background:var(--c-dial); border:.18em solid var(--c-dial-ring); box-sizing:border-box; vertical-align:-.02em; }

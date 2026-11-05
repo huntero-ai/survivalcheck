@@ -65,11 +65,14 @@
     "settings": "Settings",
     "shopping": "Shopping list",
     "main_label": "Main navigation",
-    "skip_to_content": "Skip to main content"
+    "skip_to_content": "Skip to main content",
+    "dark_mode": "Dark mode",
+    "dark_on": "Dark mode on",
+    "dark_off": "Light mode on"
   },
   "home": {
     "title": "Welcome",
-    "intro": "SurvivalCheck helps you see how prepared your household is and turns it into small next steps. It does not need to be perfect. Start with what you have.",
+    "intro": "SurvivalCheck shows how prepared your household is for a disaster and suggests small next steps. Rough numbers are enough to begin.",
     "privacy": "Your data stays on this device. No account, no tracking, and the app keeps working without internet.",
     "start": "Start, it takes about 5 minutes",
     "resume": "Continue where you left off",
@@ -101,7 +104,21 @@
     "days_title": "Supply target",
     "days_label": "Supply target (days)",
     "days_custom": "Current target is {n} days. ",
-    "days_other": "Set another number of days"
+    "days_other": "Set another number of days",
+    "start_check": "Start readiness check",
+    "survive_label": "can last",
+    "ready_title": "Your household readiness",
+    "fill_stock": "Fill in stock",
+    "next_title": "Next step",
+    "short_days": "Short by {n} days",
+    "missing": "short",
+    "empty_dial": "Not measured yet",
+    "bag": "Go-bag",
+    "family": "Family",
+    "partial_chip": "Interim result",
+    "partial_note": "No stock entered yet, so this number is only a first estimate.",
+    "next_food": "Pick one kind of food you have at home and enter how much.",
+    "disclaimer_link": "Read the full notice"
   },
   "disclaimer": {
     "title": "Good to know",
@@ -212,7 +229,21 @@
       "days_required": "Enter a number of days between 1 and 365.",
       "days_large": "A target over 90 days is rarely realistic. Continue anyway?"
     },
-    "water_careful": "Cautious figure: 4 L comes from hot-weather guidance (Latvia), not drought-specific. Treat it as a safe margin, not an exact number."
+    "water_careful": "Cautious figure: 4 L comes from hot-weather guidance (Latvia), not drought-specific. Treat it as a safe margin, not an exact number.",
+    "dec": "One day less",
+    "inc": "One day more",
+    "presets": "Quick picks",
+    "lv_below": "Below the BNPB minimum",
+    "lv_bnpb": "BNPB basic standard",
+    "lv_bnpb_hint": "At least 72 hours, in line with the BNPB go-bag.",
+    "lv_rec_hint": "Beyond the BNPB standard and common in official guides.",
+    "lv_long": "Long term",
+    "lv_tough": "Resilient",
+    "lv_tough_hint": "Needs a way to cook, purify water, and backup power.",
+    "assume": "Assuming a power cut and no running water, {n} people need roughly:",
+    "need_water": "drinking water",
+    "need_meds": "routine medicine",
+    "change_anytime": "You can change this any time."
   },
   "scenarios": {
     "earthquake": "Earthquake",
@@ -296,7 +327,7 @@
     "quick_banner": "Quick mode: core questions only. The interim result may be less accurate.",
     "switch_to_full": "Complete in full mode",
     "empty_state_title": "Nothing filled in yet",
-    "empty_state_body": "That is fine. Start with one category, such as water. Every entry is saved right away.",
+    "empty_state_body": "Start with one category, such as water. Every entry is saved right away.",
     "water_have": "Drinking water you have (liters)",
     "water_hygiene_have": "Hygiene water (liters, suggested)",
     "water_note": "We use 3 L per person per day for drinking and cooking. Hygiene water of 2 L per person per day is a suggestion and does not hold back your tier.",
@@ -426,7 +457,7 @@
   },
   "family_eval": {
     "title": "Family evaluation",
-    "intro": "Eighteen questions from BNPB to see how ready your family is. Answer honestly. There are no bad scores, only a way to find your next step.",
+    "intro": "Eighteen questions from BNPB to see how ready your family is. Answer based on how things are today; the result is used to pick your next step.",
     "progress": "Question {n} of 18",
     "score_total": "Score: {score} of 36",
     "option": {
@@ -507,7 +538,7 @@
     "of": "Tier {n} of 5",
     "0": {
       "name": "Not Ready Yet",
-      "summary": "You are just at the start, and that is okay. One small step is enough to move up."
+      "summary": "You are at the start. One small step is enough to reach the next tier."
     },
     "1": {
       "name": "Vulnerable",
@@ -515,7 +546,7 @@
     },
     "2": {
       "name": "Basic Ready 72 hours (BNPB standard)",
-      "summary": "You meet the BNPB basic standard for 3 days. That is a solid foundation."
+      "summary": "You meet the BNPB basic standard for 3 days."
     },
     "3": {
       "name": "Ready for 1 Week",
@@ -552,7 +583,7 @@
   "result": {
     "title": "Readiness result",
     "detail_cta": "Detailed results",
-    "calm_intro": "This is not an exam grade. It is a map of your next steps.",
+    "calm_intro": "This result shows the next steps for your household.",
     "empty_title": "No result yet",
     "empty_body": "Fill in your profile and some supplies first, then your result will appear here.",
     "go_profile": "Fill in profile",
@@ -608,7 +639,7 @@
     "shortfall_intro": "Sorted from most important.",
     "shortfall_missing": "Missing {qty}",
     "shortfall_why": "Why",
-    "shortfall_empty": "Nothing is missing for this target. Well done.",
+    "shortfall_empty": "Nothing is missing for this target.",
     "priority": {
       "critical": "Key",
       "important": "Important",
@@ -626,7 +657,7 @@
     "plan_week": "This week",
     "plan_month": "Next month",
     "plan_later": "After that",
-    "tier_up_message": "Congratulations, you moved up to tier {n}.",
+    "tier_up_message": "You moved up to tier {n}.",
     "scenario_gaps": "Extras for the {scenario} scenario",
     "next_group_any": "Any one of: {items}",
     "next_input_missing": "{item}: enter daily use first",
@@ -677,7 +708,7 @@
     "examples_label": "General examples (examples only, not a recommendation)"
   },
   "info": {
-    "title": "Info and guides",
+    "title": "More",
     "offline_note": "Every page here works without internet.",
     "emergency": {
       "title": "Emergency numbers",
@@ -1033,7 +1064,8 @@
     "start_fresh": "Start fresh",
     "offline_page": "You are offline. The app still works, only source links need internet.",
     "not_found": "Page not found.",
-    "go_home": "Go to home"
+    "go_home": "Go to home",
+    "not_found_hint": "This address does not exist in the app. Go back to home to continue."
   },
   "a11y": {
     "menu": "Menu",
@@ -1089,5 +1121,17 @@
     "safety": "Electrical safety",
     "more_safety": "More safety tips",
     "no_province": "No province selected? "
+  },
+  "quick": {
+    "a0": "Not yet",
+    "q1": "Do you have a go-bag and emergency stock?",
+    "q1b": "Some",
+    "q1c": "All set",
+    "q2": "Does your family know what to do in an emergency?",
+    "q2b": "A little",
+    "q2c": "Practiced",
+    "q3": "Do you feel ready for an emergency?",
+    "q3b": "Fairly",
+    "q3c": "Ready"
   }
 }

@@ -74,9 +74,9 @@ test('#13 tanpa em dash di sumber JS dan i18n', () => {
   }
 });
 
-test('CACHE v10 dan berkas baru masuk precache', () => {
+test('CACHE v11 dan berkas baru masuk precache', () => {
   const sw = read('sw.js');
-  assert.match(sw, /survivalcheck-v10/);
+  assert.match(sw, /survivalcheck-v11/);
   assert.ok(sw.includes("'src/icons.js'") && sw.includes("'src/a11y.js'"));
   assert.ok(!/survivalcheck-v9/.test(sw));
 });

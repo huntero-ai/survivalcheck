@@ -173,7 +173,7 @@ test('B-15: manifest tanpa orientation; index.html punya CSP yang mengizinkan SW
   const csp = m[1];
   assert.match(csp, /script-src 'self'(;|$)/);
   assert.ok(!/script-src[^;]*unsafe/.test(csp));
-  assert.match(csp, /style-src 'self' 'unsafe-inline'/);
+  assert.match(csp, /style-src 'self'(;|$)/);
   assert.match(csp, /worker-src 'self'/);
   assert.match(csp, /connect-src 'self'/);
   assert.match(csp, /object-src 'none'/);
