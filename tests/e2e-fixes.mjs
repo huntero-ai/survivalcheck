@@ -151,7 +151,7 @@ for (const hash of ['#/rincian', '#/belanja', '#/profil']) {
   const sw = await page.evaluate(async () => { const r = await navigator.serviceWorker.ready; return !!r.active; });
   ok(sw, 'B-15 service worker aktif dengan CSP');
   const keys = await page.evaluate(async () => (await caches.keys()));
-  ok(keys.includes('survivalcheck-v8'), `SW cache v4: ${keys}`);
+  ok(keys.includes('survivalcheck-v9'), `SW cache v4: ${keys}`);
   const mf = await (await page.request.get(srv.base + 'manifest.webmanifest')).json();
   ok(!('orientation' in mf), 'B-15 manifest tanpa orientation');
   await ctx.close();

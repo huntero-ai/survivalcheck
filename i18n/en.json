@@ -97,7 +97,11 @@
     "reminder_water": "Replace water you filled yourself (every 6 months).",
     "reminder_power": "Recharge power banks and power stations (every 3 months).",
     "reminder_dismiss": "Later",
-    "reminder_done": "I have done it"
+    "reminder_done": "I have done it",
+    "days_title": "Supply target",
+    "days_label": "Supply target (days)",
+    "days_custom": "Current target is {n} days. ",
+    "days_other": "Set another number of days"
   },
   "disclaimer": {
     "title": "Good to know",

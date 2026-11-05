@@ -306,7 +306,7 @@ async function renderScreen(main, name, rest, token) {
   if (typeof fn !== 'function') { renderComingSoon(main, name); return; }
   def.css.forEach(loadCss);
   current = mod;
-  const params = name === 'inventaris' ? { category: rest[0] || null, tahap: rest[1] || null } : { rest };
+  const params = name === 'inventaris' ? { category: rest[0] || null } : { rest };
   await fn(main, ctx, params);
 }
 function renderComingSoon(main, name) {
@@ -324,14 +324,33 @@ function dueReminder() {
   if (!state.createdAt) return null;
   const now = Date.now();
   for (const r of REMINDERS) {
-    if (state.settings.reminders && state.settings.reminders[r.key] === false) continue;
+    if (state.settings && state.settings.reminders && state.settings.reminders[r.key] === false) continue;
     if (dismissedReminder === r.key) continue;
-    const since = Date.parse(state.settings.reminderDone[r.key] || state.createdAt);
+    const since = Date.parse(((state.settings && state.settings.reminderDone) || {})[r.key] || state.createdAt);
     if (now - since > r.months * MONTH_MS) return r;
   }
   return null;
 }
 const BOTTLENECK_KEY = { water: 'water', food: 'kcal', meds: 'meds', infant_food: 'baby_food', power: 'power_medical' };
+// Pilihan hari persediaan di Beranda: ganti target (mis. 3 -> 7 hari) tanpa membuka halaman Target.
+const HOME_DAY_PRESETS = [3, 7, 14, 30];
+function daysPicker(current) {
+  const row = h('div', { class: 'preset-row', role: 'radiogroup', 'aria-label': tt('home.days_label', 'Target hari persediaan', 'Supply target (days)') });
+  for (const d of HOME_DAY_PRESETS) {
+    row.append(h('button', {
+      type: 'button', role: 'radio', 'aria-checked': String(d === current),
+      onclick: () => { save({ target: { days: d, custom: false } }); renderRoute(); },
+    }, tt('common.units.day', '{n} hari', '{n} days').replace('{n}', String(d))));
+  }
+  const custom = !HOME_DAY_PRESETS.includes(current);
+  return h('section', { class: 'days-picker-home' },
+    h('h2', {}, tt('home.days_title', 'Target persediaan', 'Supply target')),
+    row,
+    h('p', { class: 'muted center' }, custom
+      ? tt('home.days_custom', 'Target sekarang {n} hari. ', 'Current target is {n} days. ').replace('{n}', String(current))
+      : '', h('a', { href: '#/target' }, tt('home.days_other', 'Atur jumlah hari lain', 'Set another number of days'))));
+}
+
 async function fillHome(slot) {
   let r = null;
   try { const eng = await import('./engine.js'); r = eng.evaluate(state, data); } catch (e) { r = null; }
@@ -353,7 +372,8 @@ async function fillHome(slot) {
       h('span', { class: 'pill' }, t('result.survive_target', { n: target })),
       ok ? null : h('span', { class: 'pill' }, tt('home.short_days', 'Kurang {n} hari', 'Short by {n} days').replace('{n}', String(target - d)))),
     h('p', { class: 'hero-note' }, ok ? t('result.bottleneck_ok')
-      : t('result.bottleneck_line', { resource: t('result.bottleneck.' + (BOTTLENECK_KEY[s.bottleneck] || s.bottleneck)), n: Math.min(365, Math.max(1, d)) })));
+      : t('result.bottleneck_line', { resource: t('result.bottleneck.' + (BOTTLENECK_KEY[s.bottleneck] || s.bottleneck)), n: Math.min(365, Math.max(1, d)) })),
+    daysPicker(target));
   // kartu tier + langkah berikutnya
   const n = r.tier.value;
   const seg = h('span', { class: 'seg-row', role: 'img', 'aria-label': t('tiers.segments_label', { n }) }, [1, 2, 3, 4, 5].map((i) => h('i', { class: i <= n ? 'on' : '' })));
@@ -393,7 +413,7 @@ function renderHome(main) {
   if (rem) {
     main.append(h('div', { class: 'notice warn', role: 'status' }, h('p', {}, t(rem.text)),
       h('div', { class: 'btn-row' },
-        h('button', { class: 'btn', type: 'button', onclick: () => { state.settings.reminderDone[rem.key] = new Date().toISOString(); save(); renderRoute(); } }, t('home.reminder_done')),
+        h('button', { class: 'btn', type: 'button', onclick: () => { state.settings = state.settings || {}; state.settings.reminderDone = state.settings.reminderDone || {}; state.settings.reminderDone[rem.key] = new Date().toISOString(); save(); renderRoute(); } }, t('home.reminder_done')),
         h('button', { class: 'btn', type: 'button', onclick: () => { dismissedReminder = rem.key; renderRoute(); } }, t('home.reminder_dismiss')))));
   }
   if (deferredInstall) {

@@ -97,7 +97,11 @@
     "reminder_water": "Ganti air simpanan yang kamu isi sendiri (tiap 6 bulan).",
     "reminder_power": "Isi ulang power bank dan power station (tiap 3 bulan).",
     "reminder_dismiss": "Nanti saja",
-    "reminder_done": "Sudah saya lakukan"
+    "reminder_done": "Sudah saya lakukan",
+    "days_title": "Target persediaan",
+    "days_label": "Target hari persediaan",
+    "days_custom": "Target sekarang {n} hari. ",
+    "days_other": "Atur jumlah hari lain"
   },
   "disclaimer": {
     "title": "Penting untuk diketahui",
@@ -240,7 +244,7 @@
   "categories": {
     "water": "Air",
     "water_desc": "Air minum, masak, dan kebersihan",
-    "food": "Pangan",
+    "food": "Makanan",
     "food_desc": "Makanan tahan lama dan siap santap",
     "meds_firstaid": "Obat dan P3K",
     "meds_firstaid_desc": "Obat rutin dan kotak P3K",

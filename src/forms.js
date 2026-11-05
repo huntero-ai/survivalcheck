@@ -459,8 +459,6 @@ function setInv(ctx, id, value) {
   ctx.save({ inventory: inv });
 }
 function isQuick() { return false; }
-function tahapOf(it) { return isCoreItem(it) ? 1 : it.priority === 'extra' ? 3 : 2; }
-function isCoreItem(it) { return it.priority === 'critical' || (it.gating && it.min_tier_gating != null && it.min_tier_gating <= 2); }
 function isFilled(ctx, it) {
   const inv = ctx.state.inventory || {};
   const v = inv[it.id];
@@ -477,18 +475,17 @@ export function renderInventory(root, ctx, params) {
   const res = ev(ctx);
   const cats = catsOf(ctx);
   if (!cat) return renderCategoryList(root, ctx, res, cats);
-  const tahap = params && params.tahap ? Number(params.tahap) : null;
   const def = cats.find((c) => c.id === cat);
   if (!def) {
     root.append(h('h1', { text: tr(ctx, 'errors.not_found', 'Halaman tidak ditemukan.') }), h('a', { class: 'btn btn-primary', href: '#/inventaris', text: tr(ctx, 'nav.inventory', 'Stok') }));
     return;
   }
-  renderCategory(root, ctx, def, cats, tahap);
+  renderCategory(root, ctx, def, cats);
 }
 
-function categoryStats(ctx, res, catId, tahap) {
+function categoryStats(ctx, res, catId) {
   const set = new Set(res.status === 'ok' ? res.applicable_ids : []);
-  const list = items(ctx).filter((it) => set.has(it.id) && (catId == null || it.category === catId) && (tahap == null || tahapOf(it) === tahap));
+  const list = items(ctx).filter((it) => set.has(it.id) && (catId == null || it.category === catId));
   const filled = list.filter((it) => isFilled(ctx, it)).length;
   return { total: list.length, filled };
 }
@@ -499,40 +496,21 @@ function renderCategoryList(root, ctx, res, cats) {
     root.append(h('div', { class: 'f-empty-block' }, h('p', { text: tr(ctx, 'profile.validation.no_people', 'Isi dulu data rumah tanggamu.') }), h('a', { class: 'btn btn-primary', href: '#/profil', text: tr(ctx, 'nav.profile', 'Profil') })));
     return;
   }
-  const TAHAP = [
-    [1, tr(ctx, 'stage.1', 'Bekal dasar', 'Essentials')],
-    [2, tr(ctx, 'stage.2', 'Lengkapi', 'Build up')],
-    [3, tr(ctx, 'stage.3', 'Pelengkap', 'Extras')],
-  ];
-  const stats = TAHAP.map(([n]) => categoryStats(ctx, res, null, n));
-  let current = stats.findIndex((st) => st.total > 0 && st.filled < st.total);
-  if (current < 0) current = 0;
-  const wrap = h('div', { class: 'f-stages' });
-  TAHAP.forEach(([n, name], i) => {
-    const st = stats[i];
-    if (!st.total) return;
-    const pct = Math.round((st.filled / st.total) * 100);
-    const done = st.filled >= st.total;
-    const det = h('details', { class: 'f-stage' + (i === current ? ' is-current' : '') });
-    if (i === current) det.open = true;
-    det.append(h('summary', null,
-      h('span', { class: 'f-stage-top' }, h('strong', { text: name }), h('span', { class: 'f-stage-count', text: done ? '\u2713' : `${st.filled}/${st.total}` })),
-      h('span', { class: 'f-bar', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': String(pct), 'aria-label': name }, h('span', { class: 'f-bar-fill', style: `width:${pct}%` }))));
-    const ul = h('ul', { class: 'f-catlist' });
-    for (const c of cats) {
-      const cs = categoryStats(ctx, res, c.id, n);
-      if (!cs.total) continue;
-      const cd = cs.filled >= cs.total;
-      ul.append(h('li', null, h('a', { class: 'f-catcard', href: `#/inventaris/${c.id}/${n}`, 'aria-label': `${lab(ctx, c.label)}, ${cs.filled}/${cs.total}` },
-        h('span', { class: 'f-cat-top' }, h('span', { text: lab(ctx, c.label) }), h('span', { class: 'f-stage-count', text: cd ? '\u2713' : `${cs.filled}/${cs.total}` })))));
-    }
-    det.append(ul);
-    wrap.append(det);
-  });
-  root.append(wrap);
+  // Kelompok berdasarkan jenis kebutuhan (air, makanan, listrik, dll.), bukan tahap.
+  const ul = h('ul', { class: 'f-catgrid' });
+  for (const c of cats) {
+    const cs = categoryStats(ctx, res, c.id, null);
+    if (!cs.total) continue;
+    const pct = Math.round((cs.filled / cs.total) * 100);
+    const done = cs.filled >= cs.total;
+    ul.append(h('li', null, h('a', { class: 'f-catcard', href: `#/inventaris/${c.id}`, 'aria-label': `${lab(ctx, c.label)}, ${cs.filled}/${cs.total}` },
+      h('span', { class: 'f-cat-top' }, h('strong', { text: lab(ctx, c.label) }), h('span', { class: 'f-stage-count', text: done ? '\u2713' : `${cs.filled}/${cs.total}` })),
+      h('span', { class: 'f-bar', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': String(pct), 'aria-label': lab(ctx, c.label) }, h('span', { class: 'f-bar-fill', style: `width:${pct}%` })))));
+  }
+  root.append(ul);
 }
 
-function renderCategory(root, ctx, def, cats, tahap) {
+function renderCategory(root, ctx, def, cats) {
   root.append(h('a', { class: 'back-link', href: '#/inventaris', text: '← ' + tr(ctx, 'nav.inventory', 'Stok') }));
   root.append(h('h1', { text: lab(ctx, def.label) }));
   const quick = false;
@@ -544,7 +522,6 @@ function renderCategory(root, ctx, def, cats, tahap) {
   }
   const applicable = new Set(res0.applicable_ids);
   let list = items(ctx).filter((it) => it.category === def.id && applicable.has(it.id));
-  if (tahap) list = list.filter((it) => tahapOf(it) === tahap);
 
   // pembaruan langsung chip & kebutuhan tanpa membuat ulang kolom isian
   const live = new Map(); // id -> {chipHost, needEl, it}
@@ -573,26 +550,17 @@ function renderCategory(root, ctx, def, cats, tahap) {
     root.append(fb.el);
   }
   if (def.id === 'water' && res0.household.water_l_per_person_day > rules(ctx).water.drinking_l_per_person_day) root.append(notice('', h('p', { 'data-note': 'water-careful', text: tr(ctx, 'target.water_careful', 'Angka hati-hati: 4 L berasal dari panduan untuk cuaca panas, bukan khusus kekeringan.', 'Cautious figure: 4 L comes from hot-weather guidance, not drought-specific.') })));
-  if (def.id === 'gobag' && !tahap) root.append(buildBagChecklist(ctx, res0, root));
+  if (def.id === 'gobag') root.append(buildBagChecklist(ctx, res0, root));
 
   const FOOD_SKIP = new Set([...(rules(ctx).food.aggregates), 'food_kcal_total', 'food_no_cook_share']);
   const ul = h('ul', { class: 'f-itemlist' });
-  const more = h('ul', { class: 'f-itemlist' });
-  more.hidden = true;
-  let shown = 0;
   const visible = list.filter((it) => !FOOD_SKIP.has(it.id));
   const todo = visible.filter((it) => !isFilled(ctx, it));
   const doneIts = visible.filter((it) => isFilled(ctx, it));
-  for (const it of [...todo, ...doneIts]) {
-    const row = buildItemRow(ctx, it, res0, refreshLive, live);
-    if (!tahap || shown < 5) ul.append(row); else more.append(row);
-    shown++;
-  }
+  const PRI = { critical: 0, important: 1, extra: 2 };
+  const byPri = (a, b) => (PRI[a.priority] ?? 1) - (PRI[b.priority] ?? 1);
+  for (const it of [...todo.sort(byPri), ...doneIts.sort(byPri)]) ul.append(buildItemRow(ctx, it, res0, refreshLive, live));
   if (ul.children.length) root.append(ul);
-  if (more.children.length) {
-    const btn = h('button', { type: 'button', class: 'btn btn-block', text: tr(ctx, 'f.show_rest', 'Tampilkan {n} lagi', 'Show {n} more', { n: more.children.length }), onclick: () => { more.hidden = false; btn.remove(); } });
-    root.append(btn, more);
-  }
   refreshLive();
 
   root.append(h('div', { class: 'f-nav' }, h('a', { class: 'btn btn-primary btn-block', href: '#/inventaris', text: tr(ctx, 'common.done', 'Selesai', 'Done') })));
