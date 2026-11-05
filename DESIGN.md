@@ -53,7 +53,7 @@ SVG stroke 2 px, 24 px, `aria-hidden`; tombol ikon punya `aria-label`. Relevansi
 rumah = Beranda; kotak/kubus = Stok (kotak persediaan; mirip ikon "package" generik, tetap dipakai karena paling dekat dengan arti); tiga garis = menu Lainnya; telepon = nomor darurat; dua slider = Pengaturan; bulan/matahari = tema; panah kiri = kembali.
 Ikon `chart` tidak dipakai dan sudah dihapus.
 Glyph status (centang, segitiga, lingkaran, setengah lingkaran, minus, peringatan) adalah SVG kecil di `src/icons.js` dengan gaya stroke yang sama. Pengecualian yang sengaja dibiarkan karena bentuknya bergantung pada bagian lingkaran: ikon tier `○ ◔ ◑ ◕ ● ●★` di kartu Hasil rinci, `✓` pada hitungan kategori, `→` pada tautan kembali, dan `⚠` di teks galat isian (`textContent`). Bentuknya tergantung font sistem; ganti ke SVG bila nanti perlu.
-Ikon aplikasi (`icons/icon.svg`) bersifat sementara: lihat D-048 di `docs/decisions.md`.
+Ikon aplikasi (`icons/icon.svg`): rumah putih dengan ransel siaga oranye di atas biru, dipilih pemilik (D-049 di `docs/decisions.md`). Oranye di sini adalah satu-satunya titik aksen pada ikon. Maskable memakai isi 70% agar aman dipotong lingkaran.
 
 ## Daftar seragam (#19)
 
