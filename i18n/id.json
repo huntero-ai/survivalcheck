@@ -537,7 +537,7 @@
     "label": "Tier",
     "of": "Tier {n} dari 5",
     "0": {
-      "name": "Belum Siap",
+      "name": "Belum siap",
       "summary": "Kamu baru di awal. Satu langkah kecil sudah cukup untuk naik ke tier berikutnya."
     },
     "1": {
@@ -545,19 +545,19 @@
       "summary": "Sudah ada bekal untuk 1 sampai 2 hari. Beberapa hal penting masih perlu dilengkapi."
     },
     "2": {
-      "name": "Siap Dasar 72 jam (standar BNPB)",
+      "name": "Siap dasar 72 jam (standar BNPB)",
       "summary": "Kamu memenuhi standar dasar BNPB untuk 3 hari."
     },
     "3": {
-      "name": "Siap 1 Minggu",
+      "name": "Siap 1 minggu",
       "summary": "Kamu melampaui standar BNPB dan siap untuk sekitar 7 hari."
     },
     "4": {
-      "name": "Tangguh 2 Minggu",
+      "name": "Tangguh 2 minggu",
       "summary": "Siap untuk sekitar 14 hari, lengkap dengan cara memasak dan menjernihkan air."
     },
     "5": {
-      "name": "Mandiri 30 Hari atau Lebih",
+      "name": "Mandiri 30 hari atau lebih",
       "summary": "Siap untuk 30 hari atau lebih, dengan daya alternatif dan keterampilan P3K."
     },
     "bnpb_badge": "BNPB",
@@ -567,9 +567,9 @@
   "bands": {
     "bag": {
       "title": "Tas siaga (BNPB)",
-      "ready": "SIAP",
-      "needs_work": "PERLU DILENGKAPI",
-      "not_ready": "BELUM SIAP",
+      "ready": "Siap",
+      "needs_work": "Perlu dilengkapi",
+      "not_ready": "Belum siap",
       "rule": "Di atas 80% siap, 50 sampai 80% perlu dilengkapi, di bawah 50% belum siap. Tepat 80% masuk perlu dilengkapi."
     },
     "family": {

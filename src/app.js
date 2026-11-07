@@ -468,7 +468,7 @@ function infoEmergency(main) {
     const text = t('info.emergency.' + key);
     const desc = text.includes(': ') ? text.slice(text.indexOf(': ') + 2) : text;
     for (const n of nums) {
-      grid.append(h('div', { class: 'tel-row' }, h('a', { class: key === 'n112' ? 'btn btn-primary' : 'btn btn-solid', href: 'tel:' + n, 'aria-label': t('a11y.call_number', { number: n }) }, n), h('span', {}, desc, key === 'n112' ? [' ', h('span', { class: 'chip' }, t('info.emergency.main_mark'))] : null)));
+      grid.append(h('div', { class: 'tel-row' }, h('a', { class: key === 'n112' ? 'btn btn-primary' : 'btn btn-tel', href: 'tel:' + n, 'aria-label': t('a11y.call_number', { number: n }) }, n), h('span', {}, desc, key === 'n112' ? [' ', h('span', { class: 'chip' }, t('info.emergency.main_mark'))] : null)));
     }
   }
   main.append(grid, h('p', { class: 'notice warn' }, t('info.emergency.n112_caveat')), h('p', { class: 'muted' }, t('info.emergency.verify_note')));

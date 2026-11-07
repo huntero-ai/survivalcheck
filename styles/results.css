@@ -12,14 +12,14 @@
 .sc-list { margin: 0 0 var(--sp-3); padding-left: 1.25rem; }
 .sc-list li { margin-bottom: var(--sp-2); }
 .sc-details summary { min-height: var(--touch-min); display: flex; align-items: center; cursor: pointer; color: var(--c-primary); font-weight: 600; }
-.sc-display { font-size: var(--fs-display); line-height: 1.2; font-weight: 700; margin: 0 0 var(--sp-1); font-variant-numeric: tabular-nums; }
-.sc-score { font-size: var(--fs-h1); font-weight: 700; margin: 0 0 var(--sp-1); font-variant-numeric: tabular-nums; }
+.sc-display { font-size: var(--fs-display); line-height: 1.2; font-weight: 600; margin: 0 0 var(--sp-1); font-variant-numeric: tabular-nums; }
+.sc-score { font-size: var(--fs-h1); font-weight: 600; margin: 0 0 var(--sp-1); font-variant-numeric: tabular-nums; }
 
 /* tier */
 .sc-tier { background: var(--tier-0-bg); color: var(--tier-0-fg); }
 .sc-badge { display: flex; align-items: center; gap: var(--sp-3); flex-wrap: wrap; margin-bottom: var(--sp-2); }
 .sc-badge-icon { font-size: 2rem; line-height: 1; }
-.sc-badge-text { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); font-size: var(--fs-h2); font-weight: 700; }
+.sc-badge-text { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); font-size: var(--fs-h2); font-weight: 600; }
 .sc-segs { display: flex; gap: 4px; margin-bottom: var(--sp-3); max-width: 16rem; }
 .sc-seg { flex: 1; height: 10px; border-radius: var(--r-pill); background: transparent; border: 2px solid var(--c-border); }
 .sc-seg.on { background: var(--tier-0-accent); border-color: var(--tier-0-accent); }

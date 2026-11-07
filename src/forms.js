@@ -668,7 +668,7 @@ function buildBagChecklist(ctx, res, root) {
     const r = ev(ctx);
     sum.textContent = '';
     if (r.status !== 'ok') return;
-    const bandText = { siap: [glyph('check'), tr(ctx, 'bands.bag.ready', 'SIAP'), 'chip-ok'], perlu_dilengkapi: [glyph('tri'), tr(ctx, 'bands.bag.needs_work', 'PERLU DILENGKAPI'), 'chip-warn'], belum_siap: [glyph('circle'), tr(ctx, 'bands.bag.not_ready', 'BELUM SIAP'), ''] }[r.bag.band];
+    const bandText = { siap: [glyph('check'), tr(ctx, 'bands.bag.ready', 'Siap'), 'chip-ok'], perlu_dilengkapi: [glyph('tri'), tr(ctx, 'bands.bag.needs_work', 'Perlu dilengkapi'), 'chip-warn'], belum_siap: [glyph('circle'), tr(ctx, 'bands.bag.not_ready', 'Belum siap'), ''] }[r.bag.band];
     sum.append(h('p', null, h('strong', { text: tr(ctx, 'inventory.gobag.progress', '{have} dari {total} item', '{have} of {total} items', { have: r.bag.yes, total: r.bag.applicable }) + ' · ' + fmt(ctx, r.bag.pct, 1) + '%' }), ' ', h('span', { class: 'chip ' + bandText[2] }, bandText[0], bandText[1])),
       h('p', { class: 'f-hint', text: tr(ctx, 'bands.bag.rule', 'Di atas 80% siap, 50 sampai 80% perlu dilengkapi, di bawah 50% belum siap. Tepat 80% masuk perlu dilengkapi.') }));
   }

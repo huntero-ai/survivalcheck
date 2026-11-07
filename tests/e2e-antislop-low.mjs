@@ -35,8 +35,8 @@ for (const theme of ['light', 'dark']) {
   const { ctx, page } = await open('#/info/darurat', { theme });
   const prim = await page.$$eval('.tel-row a.btn-primary', (a) => a.map((x) => x.textContent));
   ok(prim.length === 1 && prim[0] === '112', `#21 (${theme}) hanya 112 yang beraksen di tombol telepon`, prim);
-  ok(await page.locator('.tel-row a.btn-solid').count() === 8, `#21 (${theme}) 8 tombol telepon lain bergaya biru solid`);
-  const c = await colors(page, '.tel-row a.btn-solid');
+  ok(await page.locator('.tel-row a.btn-tel').count() === 8, `#21 (${theme}) 8 tombol telepon lain bergaya sekunder (unslop #1)`);
+  const c = await colors(page, '.tel-row a.btn-tel');
   ok(ratio(parse(c.bg), parse(c.fg)) >= 4.5, `#21 (${theme}) kontras tombol telepon >= 4.5`, ratio(parse(c.bg), parse(c.fg)));
   await ctx.close();
 }

@@ -537,7 +537,7 @@
     "label": "Tier",
     "of": "Tier {n} of 5",
     "0": {
-      "name": "Not Ready Yet",
+      "name": "Not ready yet",
       "summary": "You are at the start. One small step is enough to reach the next tier."
     },
     "1": {
@@ -545,19 +545,19 @@
       "summary": "You have supplies for 1 to 2 days. A few key things still need filling in."
     },
     "2": {
-      "name": "Basic Ready 72 hours (BNPB standard)",
+      "name": "Basic ready 72 hours (BNPB standard)",
       "summary": "You meet the BNPB basic standard for 3 days."
     },
     "3": {
-      "name": "Ready for 1 Week",
+      "name": "Ready for 1 week",
       "summary": "You go beyond the BNPB standard and are ready for about 7 days."
     },
     "4": {
-      "name": "Resilient for 2 Weeks",
+      "name": "Resilient for 2 weeks",
       "summary": "Ready for about 14 days, with a way to cook and purify water."
     },
     "5": {
-      "name": "Self-Reliant 30 Days or More",
+      "name": "Self-reliant 30 days or more",
       "summary": "Ready for 30 days or more, with alternative power and first-aid skills."
     },
     "bnpb_badge": "BNPB",
@@ -567,9 +567,9 @@
   "bands": {
     "bag": {
       "title": "Go-bag (BNPB)",
-      "ready": "READY",
-      "needs_work": "NEEDS MORE",
-      "not_ready": "NOT READY",
+      "ready": "Ready",
+      "needs_work": "Needs more",
+      "not_ready": "Not ready",
       "rule": "Above 80% is ready, 50 to 80% needs more, below 50% is not ready. Exactly 80% counts as needs more."
     },
     "family": {
