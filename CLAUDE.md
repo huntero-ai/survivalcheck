@@ -16,3 +16,6 @@ Only an explicit choice of antislop during or after selects a session mode. A re
 If the mode is unresolved, ask during/after and end the response; wait for the answer before any UI review, planning, or concept. For read-only tasks, put the active-mode notice only at the start of the final answer, never in progress messages. For editing tasks, announce before the first edit and omit it from the final answer.
 To update antislop later: `npx antislop-ai --update`, or run `npx antislop-ai` and pick Overwrite them.
 <!-- antislop:end -->
+
+## unslop
+Skill `unslop` (oleh Damir Sokolovsky, @heydamir, lisensi CC BY 4.0, repo https://github.com/heydamir/unslop) memeriksa dan merapikan UI yang terlihat seperti buatan AI. Baca `.claude/skills/unslop/SKILL.md` untuk pekerjaan audit atau polesan tampilan, bersama `DESIGN.md` dan `antislop`. Proyek ini sudah melewati audit antislop, jadi pakai mode polesan (jangan mendesain ulang layar yang sudah baik). Skill ini hanya instruksi kerja: jangan menyambungkan layanan gambar eksternal (fal, Replicate, dll.) dan jangan membuat aset visual tanpa izin pemilik; skrip `scripts/snapshot.mjs` dan `scripts/story.mjs` hanya dijalankan bila diminta. Kredit pembuat di `SKILL.md` wajib dipertahankan.
