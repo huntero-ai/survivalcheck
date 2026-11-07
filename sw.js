@@ -1,5 +1,5 @@
 /* SurvivalCheck service worker - precache semua aset, cache-first, path relatif. */
-const CACHE = 'survivalcheck-v13';
+const CACHE = 'survivalcheck-v14';
 
 // Wajib ada: bila salah satu gagal, instalasi gagal (aset milik E1 + data + i18n).
 const CORE = [

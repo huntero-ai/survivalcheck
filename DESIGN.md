@@ -27,7 +27,7 @@ Alasan pemilihan warna: [belum dikonfirmasi pemilik]
 
 ## Tipografi
 
-Rubik variabel (300-900, woff2 lokal, `font-display:swap`). Mono sistem hanya untuk nomor darurat.
+Rubik variabel (300-900, woff2 lokal, `font-display:swap`) untuk semua teks, termasuk nomor darurat (angka tabular). Tidak ada font monospace.
 Bobot hanya 500 (angka dial) dan 600 (judul, label, tombol, angka hasil); tidak ada 700. Tracking 0 untuk semua teks, kecuali angka dial 4rem (-1px). Nama tier, pita Tas siaga, dan label lain memakai sentence case (tanpa huruf kapital semua, tanpa Title Case).
 Skala: display 2rem, h1 1.5rem, h2 1.25rem, h3 1.0625rem, isi 1rem, kecil .875rem, mungil .8125rem.
 Angka label dial 4rem berat 500.
@@ -39,7 +39,7 @@ Alasan memilih Rubik: [belum dikonfirmasi pemilik]
 Satu kolom, lebar maksimum 40rem terpusat. Header dan nav bawah punya latar selebar layar, tetapi isinya dibatasi kolom yang sama.
 Padding halaman 24px, nav bawah 72px + safe-area. Spasi kelipatan 4px (4, 8, 12, 16, 20, 24, 32, 48).
 Target sentuh minimum 44px; tombol 52px; pilihan hari 48px. Tautan teks yang berdiri sendiri memakai `.link-touch`.
-Radius lewat token: `--r-xs` 2 (ujung stepper), `--r-sm` 6, `--r-md` 14 (input, pilihan), `--r-lg` 20 (kartu, pilihan besar), `--r-btn` 16 (tombol), `--r-pill` (chip, bar). Tidak ada angka radius di luar token kecuali 50% untuk lingkaran.
+Radius lewat token: `--r-xs` 2 (ujung stepper), `--r-sm` 6, `--r-md` 12 (input, pilihan), `--r-lg` 16 (kartu, pilihan besar), `--r-btn` 12 (tombol), `--r-pill` (chip, bar). Tidak ada angka radius di luar token kecuali 50% untuk lingkaran.
 Bayangan: kartu tanpa bayangan; dialog `0 4px 16px`; dial `0 8px 20px rgb(0 0 0 / .16)`.
 
 ## Motif identitas

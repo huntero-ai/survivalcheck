@@ -16,10 +16,9 @@
   --tier-5-fg:#FFFFFF; --tier-5-bg:#111111; --tier-5-accent:#FFFFFF;
   --shadow-1:none; --shadow-2:0 4px 16px rgb(0 0 0 / .12); --shadow-hero:0 8px 20px rgb(0 0 0 / .16);
   --font-sans:"Rubik",system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Helvetica Neue",Arial,sans-serif;
-  --font-mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"Liberation Mono",monospace;
   --fs-display:2rem; --fs-h1:1.5rem; --fs-h2:1.25rem; --fs-h3:1.0625rem; --fs-body:1rem; --fs-small:.875rem; --fs-tiny:.8125rem;
   --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:20px; --sp-6:24px; --sp-8:32px; --sp-12:48px;
-  --touch-min:44px; --r-xs:2px; --r-sm:6px; --r-md:14px; --r-lg:20px; --r-btn:16px; --r-pill:999px;
+  --touch-min:44px; --r-xs:2px; --r-sm:6px; --r-md:12px; --r-lg:16px; --r-btn:12px; --r-pill:999px;
   --dur-fast:120ms; --dur-base:200ms; --ease:cubic-bezier(.2,0,0,1);
   --nav-h:72px; color-scheme:light;
 }
@@ -149,7 +148,7 @@ textarea { min-height:5rem; }
 /* Info */
 .tel-grid { display:grid; gap:var(--sp-2); margin:0 0 var(--sp-4); }
 .tel-row { display:flex; align-items:center; gap:var(--sp-3); }
-.tel-row .btn { min-width:6.5rem; font-family:var(--font-mono); font-size:var(--fs-h3); }
+.tel-row .btn { min-width:6.5rem; font-size:var(--fs-h3); }
 .tel-row span { flex:1; min-width:0; overflow-wrap:anywhere; }
 details.guide { background:var(--c-surface); border:1px solid var(--c-divider); border-radius:var(--r-md); margin:0 0 var(--sp-2); }
 details.guide > summary { min-height:var(--touch-min); padding:var(--sp-3) var(--sp-4); font-weight:600; cursor:pointer; display:flex; align-items:center; gap:var(--sp-2); flex-wrap:wrap; }
